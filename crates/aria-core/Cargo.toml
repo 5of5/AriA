@@ -1,0 +1,31 @@
+[package]
+name = "aria-engine-core"
+description = "Spec-faithful Aria state machine engine — optical–JEPA–graph dynamical system core with formally verified safety invariants"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+documentation.workspace = true
+readme = "README.md"
+rust-version.workspace = true
+keywords = ["aria", "transformer", "formal-methods", "jepa", "safety"]
+categories = ["science", "algorithms", "data-structures"]
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+toml.workspace = true
+num-complex.workspace = true
+num-traits.workspace = true
+rand.workspace = true
+thiserror.workspace = true
+log.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
+tempfile.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,35 @@
+[package]
+name = "aria-engine"
+description = "CLI for the Aria transformer runtime — run Spec-faithful Φ-cycles with invariant checking, trace export, and configurable schedules"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+documentation.workspace = true
+readme = "README.md"
+rust-version.workspace = true
+keywords = ["aria", "cli", "transformer", "runtime", "safety"]
+categories = ["command-line-utilities", "science"]
+
+[[bin]]
+name = "aria"
+path = "src/main.rs"
+
+[dependencies]
+aria-engine-core = { version = "0.2.0", path = "../aria-core" }
+aria-engine-backends = { version = "0.2.0", path = "../aria-backends" }
+clap.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+toml.workspace = true
+log.workspace = true
+env_logger.workspace = true
+num-complex.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,30 @@
+[build-system]
+requires = ["maturin>=1.5,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "aria-engine"
+description = "Python bindings for the Aria transformer runtime — Spec-faithful Phi-cycles with invariant checking"
+requires-python = ">=3.8"
+license = { text = "MIT OR Apache-2.0" }
+authors = [{ name = "Aria Contributors" }]
+readme = "README.md"
+keywords = ["aria", "transformer", "jepa", "optical", "formal-methods"]
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/aria-ai/aria"
+Repository = "https://github.com/aria-ai/aria"
+
+# Training is native Rust (crates/aria-training) since M1/WS-A2 — the old
+# torch/scipy extra died with python/training/ (never resurrect it).
+
+[tool.maturin]
+manifest-path = "aria-py/Cargo.toml"
+module-name = "aria"
+features = ["pyo3/extension-module"]

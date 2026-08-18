@@ -1,0 +1,117 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/aria-core",
+    "crates/aria-backends",
+    "crates/aria-cli",
+    "crates/aria-wasm",
+    "python/aria-py",
+]
+
+[workspace.package]
+version = "0.2.0"
+edition = "2021"
+rust-version = "1.97"
+license = "MIT OR Apache-2.0"
+authors = ["Dylan Kawalec"]
+repository = "https://github.com/aria-ai/aria"
+homepage = "https://github.com/aria-ai/aria"
+documentation = "https://github.com/aria-ai/aria"
+readme = "README.md"
+
+# ---------------------------------------------------------------------------
+# Centralised dependency versions — single source of truth for the workspace.
+# Crates consume them via `dep = { workspace = true, features = [...] }`.
+# ---------------------------------------------------------------------------
+[workspace.dependencies]
+# Serialization / config
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+
+# Math / numerics
+num-complex = { version = "0.4", features = ["serde"] }
+num-traits = "0.2"
+
+# No OS entropy: every backend is seeded explicitly, which keeps runs
+# reproducible and lets the same code compile for wasm32-unknown-unknown.
+rand = { version = "0.8", default-features = false, features = ["std_rng", "alloc"] }
+rand_distr = { version = "0.4", default-features = false }
+
+# Error handling / CLI / logging
+thiserror = "2"
+clap = { version = "4", features = ["derive"] }
+log = "0.4"
+env_logger = "0.11"
+
+# Testing
+proptest = "1"
+tempfile = "3"
+
+# v0.2.0 (plan WS0) — pinned after a publication-age (≥ 7 days) and MSRV
+# (≤ 1.97) audit on 2026-08-13; see docs/CHANGELOG.log. Consumed by WS2
+# (rustfft), WS3 (instant-distance/usearch), WS4 (safetensors/tokenizers).
+rustfft = { version = "6.4.1", default-features = false }  # MSRV 1.61, published 2025-09-18
+libm = "0.2.16"                     # MSRV 1.63, published 2026-01-24 (WS2 parity fix)
+instant-distance = "0.6.1"        # MSRV 1.58, published 2023-06-26
+safetensors = "0.8.0"             # MSRV 1.80, published 2026-06-09
+tokenizers = { version = "0.23.1", default-features = false }  # published 2026-04-27
+usearch = { version = "2.26.0", default-features = false }     # published 2026-07-10
+
+# Python bindings (aria-engine-py only — features set per-crate)
+pyo3 = "0.22"
+
+# WASM bindings (aria-engine-wasm only)
+wasm-bindgen = "0.2"
+serde-wasm-bindgen = "0.6"
+console_error_panic_hook = "0.1"
+wasm-bindgen-test = "0.3"
+
+# ---------------------------------------------------------------------------
+# Shared lint policy — every crate opts in via:
+#   [lints]
+#   workspace = true
+# ---------------------------------------------------------------------------
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+# priority = -1 so the specific `allow`s below override the groups
+# (same-priority group/lint ordering is unspecified and clippy warns on it).
+all = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+# Pragmatic allows — pedantic lints that are too noisy for this codebase.
+module_name_repetitions = "allow"
+must_use_candidate = "allow"
+missing_errors_doc = "allow"
+missing_panics_doc = "allow"
+doc_markdown = "allow"
+# usize/u64 → f64 casts are pervasive and provably lossless here: the 𝒮 bounds
+# cap N ≤ 16384 and |G| ≤ 10⁶–10⁷, far below f64's 2^52 exact-integer range.
+cast_precision_loss = "allow"
+
+# ---------------------------------------------------------------------------
+# Profiles
+# ---------------------------------------------------------------------------
+
+# Dev: optimise heavy dependencies (num-complex, rand, proptest, …) so test
+# runs are fast, while keeping our own crates at opt-level 0 for quick
+# incremental compiles.
+[profile.dev.package."*"]
+opt-level = 2
+
+# UT-0 ingest gate runs under `cargo test` (dev). The DFT in this crate is
+# the thing being timed against serde-JSON; opt-level 0 makes the comparison
+# a debug-iterator bench, not an ingest bench.
+[profile.dev.package.aria-engine-backends]
+opt-level = 2
+
+# Release: maximum optimisation for CLI throughput and minimal WASM payload.
+# panic = "abort" is safe here — no catch_unwind in the codebase, and
+# console_error_panic_hook is designed to work with abort.
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+strip = "symbols"
+panic = "abort"

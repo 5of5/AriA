@@ -1,0 +1,36 @@
+[package]
+name = "aria-engine-wasm"
+description = "WebAssembly surface for the Aria transformer runtime — run Spec-faithful Φ-cycles in the browser"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+documentation.workspace = true
+readme = "README.md"
+rust-version.workspace = true
+keywords = ["aria", "wasm", "transformer", "runtime", "safety"]
+categories = ["wasm", "science"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+aria-engine-core = { version = "0.2.0", path = "../aria-core" }
+aria-engine-backends = { version = "0.2.0", path = "../aria-backends" }
+wasm-bindgen.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+serde-wasm-bindgen.workspace = true
+toml.workspace = true
+console_error_panic_hook = { workspace = true, optional = true }
+
+[features]
+default = ["console_error_panic_hook"]
+
+[dev-dependencies]
+wasm-bindgen-test.workspace = true
+
+[lints]
+workspace = true

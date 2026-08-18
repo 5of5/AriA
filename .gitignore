@@ -1,0 +1,106 @@
+# --- OS ---
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+desktop.ini
+The_Aria_Protocol_Graph-JEPA-Foundational-Spec.pdf
+# --- Editors / IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.fleet/
+.devin
+.reasonix/
+.github/workflows
+assets/aria.mmd
+assets/aria-v0.1.0.mmd
+plan_v0.2.0.md
+plan_v0.2.0_remaining_tasks.md
+last_tasks_towards_v.0.2.0.md
+# LNSPP / feeling kernels — local IP, not published.
+crates/aria-backends/src/observer.rs
+crates/aria-backends/src/sedenion.rs
+crates/aria-backends/tests/observer.rs
+crates/aria-backends/tests/sedenion_laplacian.rs
+crates/aria-backends/tests/market_spectral.rs
+# Python runtime + training (private; aria-py crate stays tracked via git
+# history — gitignore only blocks NEW untracked files, not existing ones).
+# WS5 will need to force-add new test files: `git add -f python/tests/test_training.py`
+/python/
+# Verification scripts (private; existing tracked scripts remain tracked).
+/scripts/
+# Root-level acceptance-test corpus only. A bare `tests` pattern would also
+# ignore crates/*/tests (the Rust integration suites) and python/tests —
+# new test files written during v0.2.0 execution must be trackable.
+/tests/
+python/training
+python/tests
+ideas.md
+feeling.tex
+# --- TLA+ / TLC artifacts ---
+.tla/
+*.stamp
+states/
+MC.out
+*.log
+classes/
+tla2tools.jar
+
+# --- Python (future runtime) ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+env/
+.python-version
+
+# --- Rust (future runtime) ---
+target/
+**/*.rs.bk
+docs/CHANGELOG.log
+# --- Node / WASM tooling ---
+node_modules/
+www/pkg/
+www/pkg-node/
+www/.cache/
+
+# Local scratch renders / moved snapshots (published SVG stays in assets/)
+assets/junk/
+
+# Native training engine — private IP; not published.
+crates/aria-training/
+
+# Trained weight dumps
+*.safetensors
+*.jsonl
+
+# --- Local env / secrets ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+reasonix.toml
+
+# --- Build / dist ---
+dist/
+build/
+*.tgz
+*.tar.gz
+
+# --- Developer-only docs (private build planning; not published) ---
+# All docs/ and spec/ are private — CHANGELOG, evidence receipts, formal spec,
+# safety proofs, planning docs. None are published to GitHub.
+docs
+spec
+
+# NOTE: Cargo.lock IS tracked on purpose.
+# This workspace produces binaries (aria-cli, aria-wasm cdylib), so per
+# Cargo convention the lockfile is committed for reproducible builds.
+# https://doc.rust-lang.org/cargo/faq.html#why-do-binaries-have-cargo-lock-in-version-control-but-not-libraries
