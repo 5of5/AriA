@@ -92,3 +92,150 @@ fn all_three_conditions_run_the_same_schedule() {
         assert_eq!(outcome.summary.action_sequence, "OPMD".repeat(10));
     }
 }
+
+/// A minimal `aria-predictor-v1` JSON checkpoint, deliberately far from the
+/// identity-ish stub `SimPredictor` produces — so a run/replay that actually
+/// uses it is visibly different from one that silently falls back to the
+/// stub. `lipschitz_bound` is kept tiny so `validate_config`'s Inv2
+/// worst-case-jump check passes at the default `eps`.
+fn small_predictor_json(n_modes: usize, latent_dim: usize) -> String {
+    let embed: Vec<Vec<f64>> = (0..latent_dim)
+        .map(|i| {
+            (0..2 * n_modes)
+                .map(|j| if (i + j) % 3 == 0 { 0.05 } else { -0.02 })
+                .collect()
+        })
+        .collect();
+    let predict: Vec<Vec<f64>> = (0..latent_dim)
+        .map(|i| {
+            (0..latent_dim)
+                .map(|j| if i == j { 0.03 } else { 0.0 })
+                .collect()
+        })
+        .collect();
+
+    serde_json::json!({
+        "format": "aria-predictor-v1",
+        "n_modes": n_modes,
+        "latent_dim": latent_dim,
+        "lipschitz_bound": 0.05,
+        "embed": embed,
+        "predict": {
+            "token": predict,
+            "diffusion": predict,
+            "world_model": predict,
+        }
+    })
+    .to_string()
+}
+
+/// Regression test for the bug fixed alongside this test: `aria emit` used
+/// to always replay with the untrained `SimPredictor`, silently decoding the
+/// wrong tokens for any run made with `aria run --predictor`. It also used
+/// to ignore the trace header's seed/schedule/condition/match_policy, so a
+/// `--config`-less replay of a non-default run diverged from the original
+/// trajectory without warning.
+///
+/// This exercises the real `aria` binary end to end: `run --predictor`,
+/// then `emit` both with and without `--predictor` against the same trace,
+/// and asserts the decoded output differs — proving `emit --predictor`
+/// actually drives the replay rather than being silently ignored.
+#[test]
+fn emit_predictor_flag_changes_decoded_output() {
+    use std::process::Command;
+
+    let dir = tempfile::tempdir().unwrap();
+    let base_config = dir.path().join("base.toml");
+    let predictor_path = dir.path().join("predictor.json");
+    let trace_path = dir.path().join("trace.jsonl");
+    let readout_path = dir.path().join("readout.safetensors");
+    let out_with = dir.path().join("out_with_predictor.jsonl");
+    let out_without = dir.path().join("out_without_predictor.jsonl");
+
+    // N = 8 is sub-spec; only reachable through the escape, which the CLI
+    // only exposes via a config file, not a flag.
+    std::fs::write(
+        &base_config,
+        "n_modes = 8\nlatent_dim = 16\nallow_sub_spec_dims = true\n",
+    )
+    .unwrap();
+    std::fs::write(&predictor_path, small_predictor_json(8, 16)).unwrap();
+
+    let bin = env!("CARGO_BIN_EXE_aria");
+    let run_ok = |cmd: &mut Command| {
+        let out = cmd.output().expect("spawn aria");
+        assert!(
+            out.status.success(),
+            "aria invocation failed: {}",
+            String::from_utf8_lossy(&out.stderr)
+        );
+    };
+
+    run_ok(
+        Command::new(bin)
+            .arg("run")
+            .arg("--config")
+            .arg(&base_config)
+            .arg("--steps")
+            .arg("20")
+            .arg("--seed")
+            .arg("7")
+            .arg("--predictor")
+            .arg(&predictor_path)
+            .arg("--output")
+            .arg(&trace_path),
+    );
+
+    // `--config` here supplies the `allow_sub_spec_dims` escape for N = 8;
+    // the trace header (not this file) is what supplies seed/schedule/
+    // condition/match_policy for a faithful replay.
+    run_ok(
+        Command::new(bin)
+            .arg("emit")
+            .arg("--config")
+            .arg(&base_config)
+            .arg("--trace")
+            .arg(&trace_path)
+            .arg("--readout")
+            .arg(&readout_path)
+            .arg("--init-seeded")
+            .arg("3"),
+    );
+
+    run_ok(
+        Command::new(bin)
+            .arg("emit")
+            .arg("--config")
+            .arg(&base_config)
+            .arg("--trace")
+            .arg(&trace_path)
+            .arg("--readout")
+            .arg(&readout_path)
+            .arg("--predictor")
+            .arg(&predictor_path)
+            .arg("--output")
+            .arg(&out_with),
+    );
+
+    run_ok(
+        Command::new(bin)
+            .arg("emit")
+            .arg("--config")
+            .arg(&base_config)
+            .arg("--trace")
+            .arg(&trace_path)
+            .arg("--readout")
+            .arg(&readout_path)
+            .arg("--output")
+            .arg(&out_without),
+    );
+
+    let with_predictor = std::fs::read_to_string(&out_with).unwrap();
+    let without_predictor = std::fs::read_to_string(&out_without).unwrap();
+    assert_ne!(
+        with_predictor, without_predictor,
+        "emit --predictor must change the decoded ids — before the fix, \
+         emit always replayed with the untrained stub regardless of \
+         --predictor, so these were identical"
+    );
+}
