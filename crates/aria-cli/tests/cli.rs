@@ -92,3 +92,101 @@ fn all_three_conditions_run_the_same_schedule() {
         assert_eq!(outcome.summary.action_sequence, "OPMD".repeat(10));
     }
 }
+
+/// A minimal `aria-predictor-v1` JSON checkpoint at the given dimensions,
+/// with a tiny `lipschitz_bound` so the Inv2 worst-case-jump check in
+/// `validate_config` passes at the default `eps`.
+fn small_predictor_json(n_modes: usize, latent_dim: usize) -> String {
+    let embed: Vec<Vec<f64>> = (0..latent_dim)
+        .map(|i| {
+            (0..2 * n_modes)
+                .map(|j| if (i + j) % 3 == 0 { 0.05 } else { -0.02 })
+                .collect()
+        })
+        .collect();
+    let predict: Vec<Vec<f64>> = (0..latent_dim)
+        .map(|i| (0..latent_dim).map(|j| if i == j { 0.03 } else { 0.0 }).collect())
+        .collect();
+
+    serde_json::json!({
+        "format": "aria-predictor-v1",
+        "n_modes": n_modes,
+        "latent_dim": latent_dim,
+        "lipschitz_bound": 0.05,
+        "embed": embed,
+        "predict": {
+            "token": predict,
+            "diffusion": predict,
+            "world_model": predict,
+        }
+    })
+    .to_string()
+}
+
+/// Regression test for the bug fixed alongside this test: `aria run
+/// --predictor` used to silently overwrite an explicitly-passed
+/// `--n-modes`/`--latent-dim` with the checkpoint's own dimensions instead
+/// of erroring on the conflict — which also made the dimension-mismatch
+/// check in `runner::validate_config` unreachable from the CLI, since the
+/// CLI had already forced agreement before calling it.
+#[test]
+fn run_errors_on_a_predictor_dimension_conflict_instead_of_silently_overriding() {
+    let dir = tempfile::tempdir().unwrap();
+    let predictor_path = dir.path().join("predictor.json");
+    let base_config = dir.path().join("base.toml");
+    let output = dir.path().join("trace.jsonl");
+
+    // Checkpoint trained at N=8, dim(Z)=16.
+    std::fs::write(&predictor_path, small_predictor_json(8, 16)).unwrap();
+    std::fs::write(
+        &base_config,
+        "n_modes = 8\nlatent_dim = 16\nallow_sub_spec_dims = true\n",
+    )
+    .unwrap();
+
+    let bin = env!("CARGO_BIN_EXE_aria");
+
+    // Explicit --n-modes conflicts with the checkpoint's N=8: must error,
+    // not silently adopt the checkpoint's dimensions.
+    let conflicting = std::process::Command::new(bin)
+        .arg("run")
+        .arg("--config")
+        .arg(&base_config)
+        .arg("--n-modes")
+        .arg("16")
+        .arg("--predictor")
+        .arg(&predictor_path)
+        .arg("--steps")
+        .arg("5")
+        .output()
+        .expect("spawn aria");
+    assert!(
+        !conflicting.status.success(),
+        "expected a conflict error, but the run succeeded"
+    );
+    let stderr = String::from_utf8_lossy(&conflicting.stderr);
+    assert!(
+        stderr.contains("--n-modes") && stderr.contains("conflicts"),
+        "expected a conflict message mentioning --n-modes, got: {stderr}"
+    );
+
+    // No --n-modes/--latent-dim pinned: the checkpoint's dimensions are
+    // still adopted automatically, same as before this fix.
+    let unpinned = std::process::Command::new(bin)
+        .arg("run")
+        .arg("--config")
+        .arg(&base_config)
+        .arg("--predictor")
+        .arg(&predictor_path)
+        .arg("--steps")
+        .arg("5")
+        .arg("--output")
+        .arg(&output)
+        .output()
+        .expect("spawn aria");
+    assert!(
+        unpinned.status.success(),
+        "unpinned run should still succeed: {}",
+        String::from_utf8_lossy(&unpinned.stderr)
+    );
+}

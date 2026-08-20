@@ -427,7 +427,10 @@ fn real_main(cli: Cli) -> Result<(), String> {
                 Some(ref path) => {
                     let trained = TrainedPredictor::from_file(path)
                         .map_err(|e| format!("failed to load {}: {}", path.display(), e))?;
-                    // The checkpoint fixes N and dim(Z); adopt them.
+                    check_predictor_dims(n_modes, latent_dim, &trained, path)?;
+                    // The checkpoint fixes N and dim(Z); adopt them (unless
+                    // the caller explicitly pinned different ones, checked
+                    // above).
                     config.n_modes = trained.n_modes();
                     config.latent_dim = trained.latent_dim();
                     let lip = trained.measured_lipschitz().map_err(|e| e.to_string())?;
@@ -923,6 +926,9 @@ fn verify_cmd(
         Some(path) => {
             let trained = TrainedPredictor::from_file(path)
                 .map_err(|e| format!("failed to load {}: {}", path.display(), e))?;
+            check_predictor_dims(n_modes, latent_dim, &trained, path)?;
+            // The checkpoint fixes N and dim(Z); adopt them (unless the
+            // caller explicitly pinned different ones, checked above).
             config.n_modes = trained.n_modes();
             config.latent_dim = trained.latent_dim();
             eprintln!(
@@ -1155,6 +1161,45 @@ fn parse_trace(jsonl: &str) -> Result<(usize, usize, f64, TraceRows), String> {
         return Err("trace has no step rows".into());
     }
     Ok((n_modes, latent_dim, eps, rows))
+}
+
+/// Errors if the caller explicitly pinned `--n-modes`/`--latent-dim` to
+/// something other than what `trained` was learned for.
+///
+/// `None` means "not pinned" — the checkpoint's dimensions are then adopted
+/// silently by the caller, which stays the convenient default (most runs
+/// don't pass these flags alongside `--predictor` at all). A pinned-but-
+/// conflicting value used to be silently overridden instead of surfaced,
+/// which also made the dimension check in `runner::validate_config`
+/// unreachable from the CLI (it never saw a mismatch, because the CLI had
+/// already forced agreement before calling it).
+fn check_predictor_dims(
+    n_modes: Option<usize>,
+    latent_dim: Option<usize>,
+    trained: &TrainedPredictor,
+    predictor_path: &std::path::Path,
+) -> Result<(), String> {
+    if let Some(v) = n_modes {
+        if v != trained.n_modes() {
+            return Err(format!(
+                "--n-modes {v} conflicts with predictor {}: the checkpoint was trained at N={}. \
+                 Omit --n-modes to use the checkpoint's dimensions, or pass the matching value.",
+                predictor_path.display(),
+                trained.n_modes()
+            ));
+        }
+    }
+    if let Some(v) = latent_dim {
+        if v != trained.latent_dim() {
+            return Err(format!(
+                "--latent-dim {v} conflicts with predictor {}: the checkpoint was trained at dim(Z)={}. \
+                 Omit --latent-dim to use the checkpoint's dimensions, or pass the matching value.",
+                predictor_path.display(),
+                trained.latent_dim()
+            ));
+        }
+    }
+    Ok(())
 }
 
 fn parse_match_policy(s: &str) -> Result<MatchPolicy, String> {
