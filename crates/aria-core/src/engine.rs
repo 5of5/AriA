@@ -17,7 +17,7 @@ use crate::invariants::InvariantReport;
 use crate::policy::{DiffPolicy, MatchPolicy};
 use crate::scheduler::Scheduler;
 use crate::state::State;
-use crate::trace::Trace;
+use crate::trace::{initial_graph_of, Trace};
 
 /// [`Engine::run_monitored_with_latents`] return type — factored out so the
 /// signature stays inside clippy's type-complexity budget.
@@ -466,6 +466,11 @@ where
             &self.config.schedule,
             a,
             self.config.match_policy,
+            self.config.diff_policy,
+            self.config.stutter_k,
+            self.config.optical.clone(),
+            self.config.merge_tau,
+            initial_graph_of(&state.g),
         );
         let mut monitor = GateMonitor::new(self.config.gates.clone());
 
@@ -512,6 +517,11 @@ where
             &self.config.schedule,
             a,
             self.config.match_policy,
+            self.config.diff_policy,
+            self.config.stutter_k,
+            self.config.optical.clone(),
+            self.config.merge_tau,
+            initial_graph_of(&state.g),
         );
         let mut monitor = GateMonitor::new(self.config.gates.clone());
         let mut latents = Vec::with_capacity(usize::try_from(steps).unwrap_or(0));
@@ -557,6 +567,11 @@ where
             &self.config.schedule,
             a,
             self.config.match_policy,
+            self.config.diff_policy,
+            self.config.stutter_k,
+            self.config.optical.clone(),
+            self.config.merge_tau,
+            initial_graph_of(&state.g),
         );
         let mut monitor = GateMonitor::new(self.config.gates.clone());
         let cap = usize::try_from(steps).unwrap_or(0);

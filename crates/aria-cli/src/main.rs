@@ -17,7 +17,7 @@ use aria_engine_core::action::Action;
 use aria_engine_core::condition::Condition;
 use aria_engine_core::config::AriaConfig;
 use aria_engine_core::gates::{Gate, GateConfig};
-use aria_engine_core::policy::MatchPolicy;
+use aria_engine_core::policy::{DiffPolicy, MatchPolicy};
 use aria_engine_core::scheduler::Scheduler;
 use clap::{Parser, Subcommand};
 use std::fs;
@@ -245,11 +245,13 @@ enum Commands {
     ///
     /// Reads a JSONL trace and a readout weight file. Recovers `z` by
     /// replaying Φ from the trace header (seed, schedule, condition, match
-    /// policy — `--config` only fills in what the header omits). Pass
+    /// policy, diff policy, stutter budget, optical backend, and merge
+    /// threshold — `--config` only fills in what the header omits). Pass
     /// `--predictor` when the original `aria run` used one: without it, a
     /// trace produced by a trained predictor replays with the untrained stub
-    /// and silently decodes the wrong tokens. Never writes back into the
-    /// engine — emit is an I/O sink.
+    /// and silently decodes the wrong tokens. A trace recorded from a
+    /// non-empty seed graph is rejected outright, since emit replays from an
+    /// empty graph. Never writes back into the engine — emit is an I/O sink.
     Emit {
         /// JSONL trace from `aria run --output`
         #[arg(long)]
@@ -1067,6 +1069,23 @@ fn emit_cmd(
     config.schedule.clone_from(&header.schedule);
     config.condition = header.condition;
     config.match_policy = header.match_policy;
+    config.diff_policy = header.diff_policy;
+    config.stutter_k = header.stutter_k;
+    config.optical.clone_from(&header.optical);
+    config.merge_tau = header.merge_tau;
+
+    // `latents_with` replays Φ from `canonical_init`, i.e. `Graph::empty()`.
+    // A run seeded with a non-empty `G₀` (`run --seed-graph` / `verify`)
+    // therefore cannot be replayed faithfully from this header — reject it
+    // loudly instead of emitting latents that silently diverge from the run.
+    if let Some(ref g0) = header.initial_graph {
+        return Err(format!(
+            "aria emit: trace started from a non-empty graph ({} nodes, {} edges); \
+             emit replays from an empty graph and cannot reproduce this run faithfully",
+            g0.node_count(),
+            g0.edge_count()
+        ));
+    }
 
     let predictor = match predictor_path {
         Some(path) => {
@@ -1165,6 +1184,14 @@ struct TraceHeader {
     schedule: String,
     condition: Condition,
     match_policy: MatchPolicy,
+    diff_policy: DiffPolicy,
+    stutter_k: u64,
+    optical: Option<String>,
+    merge_tau: f64,
+    /// `G₀` the run started from. `Some` iff the header recorded a non-empty
+    /// initial graph — emit replays from `Graph::empty()`, so it must reject
+    /// such a trace rather than silently diverge.
+    initial_graph: Option<aria_engine_core::graph::Graph>,
 }
 
 fn header_usize(header: &serde_json::Value, key: &str) -> Result<usize, String> {
@@ -1211,6 +1238,22 @@ fn parse_trace(jsonl: &str) -> Result<(TraceHeader, TraceRows), String> {
     let schedule = header_field_or_warn(&header, "schedule", "opmd".to_string())?;
     let condition = header_field_or_warn(&header, "condition", Condition::Token)?;
     let match_policy = header_field_or_warn(&header, "match_policy", MatchPolicy::Identity)?;
+    // The remaining trajectory inputs. The defaults are the `AriaConfig`
+    // defaults, so a pre-v0.2.1 header (which records none of them) replays
+    // the same way it always did — with the loud `header_field_or_warn`
+    // notice that the replay may diverge.
+    let diff_policy = header_field_or_warn(&header, "diff_policy", DiffPolicy::default())?;
+    let stutter_k = header_field_or_warn(&header, "stutter_k", 2u64)?;
+    let optical = header_field_or_warn(&header, "optical", Option::<String>::None)?;
+    let merge_tau = header_field_or_warn(&header, "merge_tau", 0.5f64)?;
+    // Absent (legacy) and explicit `null` both mean "started from an empty
+    // graph"; only a recorded non-null graph counts as a seeded run.
+    let initial_graph = match header.get("initial_graph") {
+        Some(v) if !v.is_null() => Some(
+            serde_json::from_value(v.clone()).map_err(|e| format!("trace header initial_graph: {e}"))?,
+        ),
+        _ => None,
+    };
 
     let mut rows = Vec::new();
     for (i, line) in lines.enumerate() {
@@ -1242,6 +1285,11 @@ fn parse_trace(jsonl: &str) -> Result<(TraceHeader, TraceRows), String> {
             schedule,
             condition,
             match_policy,
+            diff_policy,
+            stutter_k,
+            optical,
+            merge_tau,
+            initial_graph,
         },
         rows,
     ))

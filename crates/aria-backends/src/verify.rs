@@ -22,9 +22,8 @@ use aria_engine_core::error::AriaError;
 use aria_engine_core::gates::{GateMonitor, GateReport};
 use aria_engine_core::graph::Graph;
 use aria_engine_core::invariants;
-use aria_engine_core::policy::MatchPolicy;
 use aria_engine_core::scheduler::Scheduler;
-use aria_engine_core::trace::Trace;
+use aria_engine_core::trace::{initial_graph_of, Trace};
 use serde::{Deserialize, Serialize};
 
 use crate::growth::{fit_growth_exponent, log_checkpoints};
@@ -299,13 +298,12 @@ pub fn verify(opts: VerifyOpts) -> Result<VerifyReceipt, AriaError> {
     let mut sink = match trace_path {
         Some(ref path) => Some(open_trace_sink(
             path,
-            n_modes,
-            latent_dim,
-            eps,
-            config.seed,
+            &config,
             &schedule,
             condition,
-            config.match_policy,
+            // `state.g` is still `G₀` here — Init stores it untouched and the
+            // loop has not run yet.
+            initial_graph_of(&state.g),
         )?),
         None => None,
     };
@@ -438,20 +436,29 @@ pub fn verify(opts: VerifyOpts) -> Result<VerifyReceipt, AriaError> {
     Ok(receipt)
 }
 
-#[allow(clippy::too_many_arguments)]
 fn open_trace_sink(
     path: &Path,
-    n_modes: usize,
-    latent_dim: usize,
-    eps: f64,
-    seed: Option<u64>,
+    config: &AriaConfig,
     schedule: &str,
     condition: Condition,
-    match_policy: MatchPolicy,
+    initial_graph: Option<Graph>,
 ) -> Result<BufWriter<File>, AriaError> {
     let file = File::create(path).map_err(|e| AriaError::Backend(e.to_string()))?;
     let mut writer = BufWriter::new(file);
-    let header = Trace::new(n_modes, latent_dim, eps, seed, schedule, condition, match_policy);
+    let header = Trace::new(
+        config.n_modes,
+        config.latent_dim,
+        config.eps,
+        config.seed,
+        schedule,
+        condition,
+        config.match_policy,
+        config.diff_policy,
+        config.stutter_k,
+        config.optical.clone(),
+        config.merge_tau,
+        initial_graph,
+    );
     writer
         .write_all(header.to_jsonl().lines().next().unwrap_or("").as_bytes())
         .map_err(|e| AriaError::Backend(e.to_string()))?;
@@ -507,6 +514,7 @@ fn config_hash(config: &AriaConfig) -> String {
 mod tests {
     use super::*;
     use crate::predictor::SimPredictor;
+    use aria_engine_core::policy::MatchPolicy;
 
     fn cfg() -> AuditConfig {
         AuditConfig {

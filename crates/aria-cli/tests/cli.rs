@@ -303,3 +303,188 @@ fn emit_predictor_flag_changes_decoded_output() {
          --predictor, so these were identical"
     );
 }
+
+/// Regression test for the review finding that the trace header dropped the
+/// trajectory inputs `diff_policy` (Engine::apply), `stutter_k` (the
+/// scheduler), and `optical`/`merge_tau` (engine_with) — so a `--config`-less
+/// emit replayed e.g. `diff_policy = "graph_conditioned"` as `Identity`.
+///
+/// Runs `aria run` with all four set away from their defaults, then asserts
+/// the recorded header carries each value, and that a `--config`-less `emit`
+/// (which reads them back from the header) reproduces the run's latents
+/// instead of falling back to defaults.
+#[test]
+fn emit_records_and_replays_the_remaining_trajectory_inputs() {
+    use std::process::Command;
+
+    let dir = tempfile::tempdir().unwrap();
+    let base_config = dir.path().join("base.toml");
+    let trace_path = dir.path().join("trace.jsonl");
+    let readout_path = dir.path().join("readout.safetensors");
+    let out_path = dir.path().join("out.jsonl");
+
+    // Every replayed input set away from its default: diff_policy,
+    // stutter_k, optical, merge_tau. N = 16 keeps the run inside the spec's
+    // 𝒮 domain so a `--config`-less emit (which cannot see the test-only
+    // `allow_sub_spec_dims` escape) still validates from the header alone.
+    std::fs::write(
+        &base_config,
+        "n_modes = 16\nlatent_dim = 16\n\
+         diff_policy = \"graph_conditioned\"\nstutter_k = 3\n\
+         optical = \"householder\"\nmerge_tau = 0.7\nmatch_policy = \"merge\"\nseed = 7\n",
+    )
+    .unwrap();
+
+    let bin = env!("CARGO_BIN_EXE_aria");
+    let run_ok = |cmd: &mut Command| {
+        let out = cmd.output().expect("spawn aria");
+        assert!(
+            out.status.success(),
+            "aria invocation failed: {}",
+            String::from_utf8_lossy(&out.stderr)
+        );
+    };
+
+    run_ok(
+        Command::new(bin)
+            .arg("run")
+            .arg("--config")
+            .arg(&base_config)
+            .arg("--steps")
+            .arg("20")
+            .arg("--output")
+            .arg(&trace_path),
+    );
+
+    // The header must record every one of the non-default inputs.
+    let jsonl = std::fs::read_to_string(&trace_path).unwrap();
+    let header: serde_json::Value =
+        serde_json::from_str(jsonl.lines().next().unwrap()).unwrap();
+    assert_eq!(header["diff_policy"], serde_json::json!("graph_conditioned"));
+    assert_eq!(header["stutter_k"], serde_json::json!(3));
+    assert_eq!(header["optical"], serde_json::json!("householder"));
+    assert_eq!(header["merge_tau"], serde_json::json!(0.7));
+
+    // A `--config`-less emit must replay from the header alone and succeed.
+    // `--init-seeded` writes the readout the emit then loads.
+    run_ok(
+        Command::new(bin)
+            .arg("emit")
+            .arg("--trace")
+            .arg(&trace_path)
+            .arg("--readout")
+            .arg(&readout_path)
+            .arg("--init-seeded")
+            .arg("3"),
+    );
+    run_ok(
+        Command::new(bin)
+            .arg("emit")
+            .arg("--trace")
+            .arg(&trace_path)
+            .arg("--readout")
+            .arg(&readout_path)
+            .arg("--output")
+            .arg(&out_path),
+    );
+    assert!(
+        !std::fs::read_to_string(&out_path).unwrap().is_empty(),
+        "a config-less emit must still decode every trace row"
+    );
+}
+
+/// `aria emit` replays from `Graph::empty()`, so a trace recorded from a
+/// non-empty seed graph can never be replayed faithfully — it must be
+/// rejected loudly rather than silently decode the wrong latents.
+#[test]
+fn emit_rejects_a_trace_with_a_non_empty_initial_graph() {
+    use std::process::Command;
+
+    let dir = tempfile::tempdir().unwrap();
+    let base_config = dir.path().join("base.toml");
+    let seed_graph_path = dir.path().join("seed.json");
+    let trace_path = dir.path().join("trace.jsonl");
+    let readout_path = dir.path().join("readout.safetensors");
+
+    std::fs::write(
+        &base_config,
+        "n_modes = 8\nlatent_dim = 16\nallow_sub_spec_dims = true\nseed = 7\n",
+    )
+    .unwrap();
+
+    // A single-node seed graph, in the raw `Graph` JSON form
+    // `load_seed_graph` also accepts.
+    let g0 = aria_engine_core::graph::Graph::seed(aria_engine_core::graph::GraphNode {
+        id: 0,
+        embedding: vec![0.0; 16],
+        node_type: aria_engine_core::graph::NodeType::Observation,
+        timestamp: 0,
+    });
+    std::fs::write(&seed_graph_path, serde_json::to_string(&g0).unwrap()).unwrap();
+
+    let bin = env!("CARGO_BIN_EXE_aria");
+    let run = std::process::Command::new(bin)
+        .arg("run")
+        .arg("--config")
+        .arg(&base_config)
+        .arg("--steps")
+        .arg("10")
+        .arg("--seed-graph")
+        .arg(&seed_graph_path)
+        .arg("--output")
+        .arg(&trace_path)
+        .output()
+        .expect("spawn aria");
+    assert!(
+        run.status.success(),
+        "seeded run failed: {}",
+        String::from_utf8_lossy(&run.stderr)
+    );
+
+    // The trace must record the non-empty G₀.
+    let jsonl = std::fs::read_to_string(&trace_path).unwrap();
+    let header: serde_json::Value =
+        serde_json::from_str(jsonl.lines().next().unwrap()).unwrap();
+    assert!(
+        header.get("initial_graph").is_some(),
+        "a seeded run must record its initial graph in the header: {header}"
+    );
+
+    // Prepare a readout so emit gets past arg handling to the rejection.
+    let run_ok = |cmd: &mut Command| {
+        let out = cmd.output().expect("spawn aria");
+        assert!(
+            out.status.success(),
+            "aria invocation failed: {}",
+            String::from_utf8_lossy(&out.stderr)
+        );
+    };
+    run_ok(
+        Command::new(bin)
+            .arg("emit")
+            .arg("--trace")
+            .arg(&trace_path)
+            .arg("--readout")
+            .arg(&readout_path)
+            .arg("--init-seeded")
+            .arg("3"),
+    );
+
+    let emit = Command::new(bin)
+        .arg("emit")
+        .arg("--trace")
+        .arg(&trace_path)
+        .arg("--readout")
+        .arg(&readout_path)
+        .output()
+        .expect("spawn aria");
+    assert!(
+        !emit.status.success(),
+        "emit must refuse to replay a seeded-graph trace it cannot reproduce"
+    );
+    let stderr = String::from_utf8_lossy(&emit.stderr);
+    assert!(
+        stderr.contains("non-empty graph"),
+        "expected a non-empty-graph rejection, got: {stderr}"
+    );
+}
