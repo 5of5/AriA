@@ -21,12 +21,6 @@ assets/aria-v0.1.0.mmd
 plan_v0.2.0.md
 plan_v0.2.0_remaining_tasks.md
 last_tasks_towards_v.0.2.0.md
-# LNSPP / feeling kernels — local IP, not published.
-crates/aria-backends/src/observer.rs
-crates/aria-backends/src/sedenion.rs
-crates/aria-backends/tests/observer.rs
-crates/aria-backends/tests/sedenion_laplacian.rs
-crates/aria-backends/tests/market_spectral.rs
 # Python runtime + training (private; aria-py crate stays tracked via git
 # history — gitignore only blocks NEW untracked files, not existing ones).
 # WS5 will need to force-add new test files: `git add -f python/tests/test_training.py`
@@ -72,9 +66,6 @@ www/.cache/
 
 # Local scratch renders / moved snapshots (published SVG stays in assets/)
 assets/junk/
-
-# Native training engine — private IP; not published.
-crates/aria-training/
 
 # Trained weight dumps
 *.safetensors

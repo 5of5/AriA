@@ -13,10 +13,12 @@ pub mod graph;
 pub mod growth;
 pub mod index;
 pub mod laplacian;
+pub mod observer;
 pub mod optical;
 pub mod predictor;
 pub mod readout;
 pub mod runner;
+pub mod sedenion;
 pub mod spectral;
 pub mod tokenizer;
 pub mod trained;
@@ -32,7 +34,13 @@ pub use graph::SimGraphBackend;
 pub use growth::{fit_growth_exponent, log_checkpoints, GrowthFit};
 pub use index::{HnswIndex, HnswParams, NearestStats, VectorIndex};
 pub use laplacian::{
-    FiedlerResult, GraphLaplacian, MarketMapNode,
+    cd_path_signature, cd_spectral_attention, FiedlerResult, GraphLaplacian, MarketMapNode,
+};
+pub use observer::{
+    evaluate_functional, sha256, CollapsePoint, ObserverLedger, ObserverFunctional, PassiveObserver,
+    BoundaryCertificate, MobiusVector, RESIDUAL_WINDOW, UNCONSTRAINED_PHASE_BITS, ZETA_HALF_LINE_OFFSET,
+    DISSIPATION_SCALE, RATIONAL_PHASE_STEP, COHERENCE_FLOOR, OCTONION_MISALIGNMENT, RATIONAL_PI,
+    SHADOW_SECTOR_DIM, BOUNDARY_CERT_BYTES, VISIBLE_SECTOR_DIM, FIXED_PHASE_OFFSET,
 };
 pub use optical::{FftOptical, RefOptical, SimOptical};
 pub use predictor::SimPredictor;
@@ -41,8 +49,12 @@ pub use readout::{
     VOCAB_MAX, VOCAB_MIN,
 };
 pub use runner::{
-    engine_with, latents_of, latents_with, run, run_with, run_with_graph, sim_engine,
-    RefPredictor, RunOutcome, RunSummary, SimEngine,
+    engine_with, latents_of, latents_with, run, run_observed, run_observed_with_graph, run_with,
+    run_with_graph, sim_engine, ObservedRun, RefPredictor, RunOutcome, RunSummary, SimEngine,
+};
+pub use sedenion::{
+    canonical_zero_divisor_pair, certified_context_mask, nullity_energy, AnnihilatorCertificate,
+    Sedenion,
 };
 pub use spectral::{
     power_iteration, power_iteration_with_vectors, project_spectral, Matrix, SpectralError,

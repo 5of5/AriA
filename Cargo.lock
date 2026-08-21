@@ -146,6 +146,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "aria-training"
+version = "0.2.0"
+dependencies = [
+ "aria-engine-backends",
+ "aria-engine-core",
+ "libm",
+ "proptest",
+ "safetensors",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "thiserror",
+]
+
+[[package]]
 name = "async-trait"
 version = "0.1.92"
 source = "registry+https://github.com/rust-lang/crates.io-index"

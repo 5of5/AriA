@@ -1,0 +1,39 @@
+[package]
+name = "aria-training"
+description = "Native training engine for the Aria transformer — 4-term hybrid objective on the probability simplex with invariant-preserving spectral projection (M1, ARIA-TRAINING-PRD v7.3)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+documentation.workspace = true
+readme = "README.md"
+rust-version.workspace = true
+keywords = ["aria", "jepa", "training", "spectral", "lipschitz"]
+categories = ["science", "algorithms"]
+
+# Native-only training engine (ARIA-TRAINING-PRD v7.3): never a dependency of
+# aria-core / aria-backends / aria-wasm, so the engine crates stay wasm-clean.
+# Zero new external dependencies — the minimal-dependency doctrine is satisfied
+# by construction (everything below is already a workspace pin).
+[dependencies]
+aria-engine-core = { version = "0.2.0", path = "../aria-core" }
+aria-engine-backends = { version = "0.2.0", path = "../aria-backends" }
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+# Same rule as the engine (WS2 parity): transcendentals that affect produced
+# artifacts go through the compiled-in libm so trained weights are bit-stable
+# across host libms. Only ℒ_NLL uses exp/log; everything else is +,·,√ (IEEE).
+libm.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
+tempfile.workspace = true
+# Provenance-recovery assertions in the v2 round-trip test read the
+# safetensors header directly (runtime loading goes through aria-backends).
+safetensors.workspace = true
+
+[lints]
+workspace = true

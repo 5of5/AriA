@@ -1064,7 +1064,7 @@ fn emit_cmd(
     if let Some(seed) = header.seed {
         config.seed = Some(seed);
     }
-    config.schedule = header.schedule.clone();
+    config.schedule.clone_from(&header.schedule);
     config.condition = header.condition;
     config.match_policy = header.match_policy;
 

@@ -5,6 +5,7 @@ members = [
     "crates/aria-backends",
     "crates/aria-cli",
     "crates/aria-wasm",
+    "crates/aria-training",
     "python/aria-py",
 ]
 

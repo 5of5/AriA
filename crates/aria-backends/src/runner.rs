@@ -16,6 +16,7 @@ use aria_engine_core::trace::Trace;
 use num_complex::Complex64;
 use serde::{Deserialize, Serialize};
 
+use crate::observer::{ObserverLedger, PassiveObserver};
 use crate::optical::RefOptical;
 use crate::spectral::SpectralReport;
 use crate::trained::TrainedPredictor;
@@ -141,6 +142,13 @@ pub struct RunOutcome {
     pub state: State,
 }
 
+/// Φ run plus a passive observer ledger. The trace is the same object
+/// [`run`] would have written — the observer does not choose actions.
+pub struct ObservedRun {
+    pub outcome: RunOutcome,
+    pub ledger: ObserverLedger,
+}
+
 /// Run the reference engine from the canonical initial state.
 ///
 /// This is the one function every surface calls. Invariants are checked after
@@ -148,6 +156,83 @@ pub struct RunOutcome {
 pub fn run(config: AriaConfig, steps: u64) -> Result<RunOutcome, AriaError> {
     let predictor = RefPredictor::Sim(SimPredictor::new(config.n_modes, config.latent_dim));
     run_with(config, steps, predictor)
+}
+
+/// Run Φ and attach a passive holographic ledger (real $z_t$, real $\arg\psi_0$).
+///
+/// Identical `apply` sequence to [`run_with_graph`]. The observer cannot
+/// change the trace (ℂ2). JSONL stays free of $z$.
+pub fn run_observed(config: AriaConfig, steps: u64) -> Result<ObservedRun, AriaError> {
+    let predictor = RefPredictor::Sim(SimPredictor::new(config.n_modes, config.latent_dim));
+    run_observed_with_graph(config, steps, predictor, Graph::empty())
+}
+
+/// [`run_observed`] with an explicit predictor and $G_0$.
+pub fn run_observed_with_graph(
+    config: AriaConfig,
+    steps: u64,
+    predictor: RefPredictor,
+    g0: Graph,
+) -> Result<ObservedRun, AriaError> {
+    config.validate()?;
+    validate_config(&config, &predictor)?;
+
+    let condition = config.condition;
+    let schedule = config.schedule.clone();
+    let stutter_k = config.stutter_k;
+    let latent_dim = config.latent_dim;
+
+    let spectral_report = match &predictor {
+        RefPredictor::Trained(p) => Some(
+            p.spectral_report()
+                .map_err(|e| AriaError::Backend(e.to_string()))?,
+        ),
+        RefPredictor::Sim(_) => None,
+    };
+
+    let engine = engine_with(config, predictor);
+    if !engine.graph_backend().ok(&g0) {
+        return Err(AriaError::Config(format!(
+            "seed graph fails GraphOK at latent_dim={latent_dim}"
+        )));
+    }
+    let psi0 = canonical_psi0(engine.config().n_modes);
+    let state = engine.init(psi0, g0, condition)?;
+
+    let mut scheduler =
+        Scheduler::from_string(&schedule, stutter_k).map_err(AriaError::Schedule)?;
+
+    let (final_state, trace, gates, latents, phases) =
+        engine.run_monitored_fields(state, &mut scheduler, steps, condition)?;
+    let report = engine.check(&final_state, condition);
+
+    let residuals: Vec<f64> = trace.entries.iter().map(|e| e.res).collect();
+    let mut observer = PassiveObserver::new(latent_dim);
+    observer.observe_run(&residuals, &latents, &phases);
+    let ledger = observer.ledger(Some(&final_state.g));
+
+    let summary = RunSummary {
+        steps,
+        t: final_state.t,
+        graph_size: final_state.g.size(),
+        node_count: final_state.g.node_count(),
+        energy: final_state.energy(),
+        residual: trace.entries.last().map_or(0.0, |e| e.res),
+        action_sequence: trace.action_sequence(),
+        invariants_ok: report.all_ok(),
+        failures: report.failures(),
+        gates,
+        spectral_report,
+    };
+
+    Ok(ObservedRun {
+        outcome: RunOutcome {
+            summary,
+            trace,
+            state: final_state,
+        },
+        ledger,
+    })
 }
 
 /// [`run_with`] starting from a caller-supplied `G₀` (Init, not a new action).

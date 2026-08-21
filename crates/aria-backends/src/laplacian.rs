@@ -15,6 +15,7 @@ use std::collections::{BTreeMap, BTreeSet};
 use serde::{Deserialize, Serialize};
 
 use aria_engine_core::graph::{Graph, NodeId};
+use crate::sedenion::Sedenion;
 
 /// Fiedler spectral decomposition result.
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -333,6 +334,193 @@ impl GraphLaplacian {
     pub fn hierarchical_market_map(&self, g: &Graph, max_depth: usize) -> MarketMapNode {
         decompose_cluster(self, g, &self.node_ids, 0, max_depth, "Market_Root")
     }
+
+    /// $\mathrm{G}_2$-Calibrated Sedenion Spectral Walk (Unified Cayley–Dickson Diffusion):
+    ///
+    /// Merges graph Laplacian effective resistance $\Omega(u, v)$ with non-associative
+    /// sedenion algebra on $\mathbb{S}^{14}$ and zero-divisor topological resonance.
+    ///
+    /// At each step from node $u$ to neighbor $v$, transition weight is:
+    /// $$W(u, v) = \exp(-\Omega(u, v) / \tau) \cdot \left(1.0 - \frac{\|S(u) \cdot S(v)\|^2}{8}\right)$$
+    /// Accumulated path state is the non-associative Cayley–Dickson product:
+    /// $$S_{t+1} = \mathrm{Normalize}(S(v) \cdot S_t)$$
+    pub fn cd_spectral_walk(
+        &self,
+        g: &Graph,
+        start_node: NodeId,
+        steps: usize,
+        tau: f64,
+    ) -> Vec<(NodeId, Sedenion)> {
+        let mut trajectory = Vec::with_capacity(steps + 1);
+        let Some(start_node_data) = g.nodes.get(&start_node) else {
+            return trajectory;
+        };
+
+        let mut curr_node = start_node;
+        let mut curr_sedenion = Sedenion::from_latent(&start_node_data.embedding);
+        trajectory.push((curr_node, curr_sedenion));
+
+        let effective_tau = if tau <= 1e-6 { 0.5 } else { tau };
+
+        for _ in 0..steps {
+            // Find incident neighbors
+            let mut neighbors = Vec::new();
+            for edge in &g.edges {
+                if edge.from == curr_node && g.nodes.contains_key(&edge.to) {
+                    neighbors.push(edge.to);
+                } else if edge.to == curr_node && g.nodes.contains_key(&edge.from) {
+                    neighbors.push(edge.from);
+                }
+            }
+
+            if neighbors.is_empty() {
+                // If isolated, walk to nearest node in latent space
+                let curr_emb = &g.nodes[&curr_node].embedding;
+                let mut best_id = curr_node;
+                let mut min_d = f64::INFINITY;
+                for (&id, node) in &g.nodes {
+                    if id != curr_node {
+                        let d: f64 = curr_emb.iter().zip(&node.embedding).map(|(&x, &y)| (x - y) * (x - y)).sum();
+                        if d < min_d {
+                            min_d = d;
+                            best_id = id;
+                        }
+                    }
+                }
+                if best_id == curr_node {
+                    break;
+                }
+                neighbors.push(best_id);
+            }
+
+            // Score neighbors by resistance decay × sedenion zero-divisor resonance
+            let mut best_neighbor = neighbors[0];
+            let mut max_weight = -1.0;
+
+            for &v in &neighbors {
+                let v_node = &g.nodes[&v];
+                let v_sedenion = Sedenion::from_latent(&v_node.embedding);
+                let r_eff = self.effective_resistance(curr_node, v);
+                let ann_norm = curr_sedenion.annihilation_norm_sq(&v_sedenion);
+
+                // Zero divisor resonance: maximum when ann_norm == 0 (orthogonal associative fibers)
+                let resonance = (1.0 - (ann_norm / 8.0)).clamp(0.01, 1.0);
+                let weight = libm::exp(-r_eff / effective_tau) * resonance;
+
+                if weight > max_weight {
+                    max_weight = weight;
+                    best_neighbor = v;
+                }
+            }
+
+            let next_node_data = &g.nodes[&best_neighbor];
+            let next_s = Sedenion::from_latent(&next_node_data.embedding);
+            curr_sedenion = next_s.mul(&curr_sedenion).normalize();
+            curr_node = best_neighbor;
+            trajectory.push((curr_node, curr_sedenion));
+        }
+
+        trajectory
+    }
+}
+
+/// Computes the exact recursive Cayley–Dickson non-associative trajectory signature:
+/// $$\mathcal{P}(z_0, z_1, \dots, z_k) = S(z_k) \cdot (\dots (S(z_1) \cdot S(z_0)))$$
+///
+/// Because sedenions are strictly non-associative, $\mathcal{P}$ uniquely encodes
+/// the temporal-causal order of the trajectory without external positional tags.
+pub fn cd_path_signature(embeddings: &[&[f64]]) -> Sedenion {
+    if embeddings.is_empty() {
+        return Sedenion::ZERO;
+    }
+    let mut acc = Sedenion::from_latent(embeddings[0]);
+    for &z in &embeddings[1..] {
+        let s = Sedenion::from_latent(z);
+        acc = s.mul(&acc).normalize();
+    }
+    acc
+}
+
+/// Unified $\mathrm{G}_2$ Sedenion-Spectral Attention Kernel (UT-2, UT-10):
+///
+/// Modulates multi-head query-key affinities by zero-divisor topological filtering
+/// and graph Laplacian resistance distance.
+pub fn cd_spectral_attention(
+    queries: &[Vec<f64>],
+    keys: &[Vec<f64>],
+    laplacian: Option<&GraphLaplacian>,
+    tau: f64,
+) -> Vec<Vec<f64>> {
+    let l_q = queries.len();
+    let l_k = keys.len();
+    let mut attn = vec![vec![0.0; l_k]; l_q];
+    if l_q == 0 || l_k == 0 {
+        return attn;
+    }
+
+    let d = queries[0].len() as f64;
+    let inv_sqrt_d = 1.0 / libm::sqrt(d.max(1.0));
+    let effective_tau = if tau <= 1e-6 { 0.5 } else { tau };
+
+    let q_s: Vec<Sedenion> = queries.iter().map(|z| Sedenion::from_latent(z)).collect();
+    let k_s: Vec<Sedenion> = keys.iter().map(|z| Sedenion::from_latent(z)).collect();
+
+    for i in 0..l_q {
+        let qi = &queries[i];
+        let mut row_max = -1e30;
+        let mut logits = vec![0.0; l_k];
+
+        for j in 0..l_k {
+            let kj = &keys[j];
+            let dot: f64 = qi.iter().zip(kj).map(|(&x, &y)| x * y).sum();
+            let mut logit = dot * inv_sqrt_d;
+
+            // 1. Table prune, CD-walk certify (hybrid LNSPP-G2).
+            let table_norm = q_s[i].mul_table(&k_s[j]).norm_sq();
+            if table_norm < 1e-6 {
+                let cert = q_s[i].certify(&k_s[j], 1e-6);
+                if cert.agrees && cert.walk_norm_sq < 1e-6 {
+                    logit -= 100.0;
+                } else {
+                    let resonance = (1.0 - (table_norm / 8.0)).clamp(0.01, 1.0);
+                    logit += libm::log(resonance);
+                }
+            } else {
+                let resonance = (1.0 - (table_norm / 8.0)).clamp(0.01, 1.0);
+                logit += libm::log(resonance);
+            }
+
+            // 2. Graph Laplacian resistance decay (if graph nodes present)
+            if let Some(lap) = laplacian {
+                if i < lap.node_ids.len() && j < lap.node_ids.len() {
+                    let r_eff = lap.effective_resistance(lap.node_ids[i], lap.node_ids[j]);
+                    if r_eff.is_finite() {
+                        logit -= r_eff / effective_tau;
+                    }
+                }
+            }
+
+            logits[j] = logit;
+            if logit > row_max {
+                row_max = logit;
+            }
+        }
+
+        // Softmax normalization
+        let mut sum_exp = 0.0;
+        for j in 0..l_k {
+            let exp_val = libm::exp(logits[j] - row_max);
+            attn[i][j] = exp_val;
+            sum_exp += exp_val;
+        }
+
+        let inv_sum = if sum_exp > 1e-300 { 1.0 / sum_exp } else { 1.0 / l_k as f64 };
+        for item in &mut attn[i] {
+            *item *= inv_sum;
+        }
+    }
+
+    attn
 }
 
 fn decompose_cluster(
