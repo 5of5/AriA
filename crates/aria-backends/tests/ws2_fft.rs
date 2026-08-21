@@ -100,7 +100,32 @@ fn default_selection_at_spec_scale_uses_the_fft_path() {
     forced.optical = Some("fft".into());
     let a = runner::run(auto, 400).unwrap();
     let b = runner::run(forced, 400).unwrap();
-    assert_eq!(a.trace.to_jsonl(), b.trace.to_jsonl());
+
+    // The trajectories (every step row) must be byte-identical: both configs
+    // resolve to the same FFT backend. The headers differ only in the
+    // recorded `optical` field — `null` (auto) vs `"fft"` (explicit) — which
+    // is exactly what a faithful, self-describing trace should preserve.
+    let (a_jsonl, b_jsonl) = (a.trace.to_jsonl(), b.trace.to_jsonl());
+    let entries = |jsonl: &str| {
+        jsonl.lines()
+            .skip(1)
+            .map(str::to_string)
+            .collect::<Vec<_>>()
+    };
+    assert_eq!(entries(&a_jsonl), entries(&b_jsonl));
+
+    let header_of = |jsonl: &str| {
+        serde_json::from_str::<serde_json::Value>(jsonl.lines().next().unwrap()).unwrap()
+    };
+    let (ha, hb) = (header_of(&a_jsonl), header_of(&b_jsonl));
+    assert_eq!(ha["optical"], serde_json::Value::Null);
+    assert_eq!(hb["optical"], serde_json::json!("fft"));
+    // Apart from `optical`, the headers agree — the resolved run is the same.
+    let strip = |mut h: serde_json::Value| {
+        h.as_object_mut().unwrap().remove("optical");
+        h
+    };
+    assert_eq!(strip(ha), strip(hb));
 }
 
 #[test]
