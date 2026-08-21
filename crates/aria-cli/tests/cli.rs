@@ -193,6 +193,87 @@ fn run_errors_on_a_predictor_dimension_conflict_instead_of_silently_overriding()
     );
 }
 
+/// The `Commands::Check` half of the predictor-dimension conflict fix: `aria
+/// check --latent-dim <conflicting> --predictor <ckpt>` must error instead of
+/// silently adopting the checkpoint's dimensions — the same guarantee
+/// `run_errors_on_a_predictor_dimension_conflict_instead_of_silently_overriding`
+/// pins down for `aria run`.
+#[test]
+fn check_errors_on_a_predictor_latent_dim_conflict_instead_of_silently_overriding() {
+    let dir = tempfile::tempdir().unwrap();
+    let predictor_path = dir.path().join("predictor.json");
+    let base_config = dir.path().join("base.toml");
+    let state_path = dir.path().join("state.json");
+
+    // Checkpoint trained at N=8, dim(Z)=16.
+    std::fs::write(&predictor_path, small_predictor_json(8, 16)).unwrap();
+    std::fs::write(
+        &base_config,
+        "n_modes = 8\nlatent_dim = 16\nallow_sub_spec_dims = true\n",
+    )
+    .unwrap();
+
+    let bin = env!("CARGO_BIN_EXE_aria");
+
+    // Mint a valid state to run the check against.
+    let step = std::process::Command::new(bin)
+        .arg("step")
+        .arg("--config")
+        .arg(&base_config)
+        .arg("--action")
+        .arg("OpticalStep")
+        .output()
+        .expect("spawn aria");
+    assert!(
+        step.status.success(),
+        "state generation failed: {}",
+        String::from_utf8_lossy(&step.stderr)
+    );
+    std::fs::write(&state_path, &step.stdout).unwrap();
+
+    // Explicit --latent-dim conflicts with the checkpoint's dim(Z)=16: must
+    // error, not silently adopt the checkpoint's dimensions.
+    let conflicting = std::process::Command::new(bin)
+        .arg("check")
+        .arg("--config")
+        .arg(&base_config)
+        .arg("--state")
+        .arg(&state_path)
+        .arg("--latent-dim")
+        .arg("8")
+        .arg("--predictor")
+        .arg(&predictor_path)
+        .output()
+        .expect("spawn aria");
+    assert!(
+        !conflicting.status.success(),
+        "expected a conflict error, but the check succeeded"
+    );
+    let stderr = String::from_utf8_lossy(&conflicting.stderr);
+    assert!(
+        stderr.contains("--latent-dim") && stderr.contains("conflicts"),
+        "expected a conflict message mentioning --latent-dim, got: {stderr}"
+    );
+
+    // No --latent-dim pinned: the checkpoint's dimensions are still adopted
+    // automatically, same as before this fix.
+    let unpinned = std::process::Command::new(bin)
+        .arg("check")
+        .arg("--config")
+        .arg(&base_config)
+        .arg("--state")
+        .arg(&state_path)
+        .arg("--predictor")
+        .arg(&predictor_path)
+        .output()
+        .expect("spawn aria");
+    assert!(
+        unpinned.status.success(),
+        "unpinned check should still succeed: {}",
+        String::from_utf8_lossy(&unpinned.stderr)
+    );
+}
+
 /// Regression test for the bug fixed alongside this test: `aria emit` used
 /// to always replay with the untrained `SimPredictor`, silently decoding the
 /// wrong tokens for any run made with `aria run --predictor`. It also used
