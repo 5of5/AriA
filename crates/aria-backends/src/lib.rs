@@ -41,8 +41,8 @@ pub use readout::{
     VOCAB_MAX, VOCAB_MIN,
 };
 pub use runner::{
-    engine_with, latents_of, run, run_with, run_with_graph, sim_engine, RefPredictor, RunOutcome,
-    RunSummary, SimEngine,
+    engine_with, latents_of, latents_with, run, run_with, run_with_graph, sim_engine,
+    RefPredictor, RunOutcome, RunSummary, SimEngine,
 };
 pub use spectral::{
     power_iteration, power_iteration_with_vectors, project_spectral, Matrix, SpectralError,

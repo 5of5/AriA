@@ -15,12 +15,14 @@ use std::path::{Path, PathBuf};
 use std::time::Instant;
 
 use aria_engine_core::action::Action;
+use aria_engine_core::condition::Condition;
 use aria_engine_core::config::AriaConfig;
 use aria_engine_core::engine::GraphBackend;
 use aria_engine_core::error::AriaError;
 use aria_engine_core::gates::{GateMonitor, GateReport};
 use aria_engine_core::graph::Graph;
 use aria_engine_core::invariants;
+use aria_engine_core::policy::MatchPolicy;
 use aria_engine_core::scheduler::Scheduler;
 use aria_engine_core::trace::Trace;
 use serde::{Deserialize, Serialize};
@@ -295,7 +297,16 @@ pub fn verify(opts: VerifyOpts) -> Result<VerifyReceipt, AriaError> {
         Scheduler::from_string(&schedule, stutter_k).map_err(AriaError::Schedule)?;
 
     let mut sink = match trace_path {
-        Some(ref path) => Some(open_trace_sink(path, n_modes, latent_dim, eps)?),
+        Some(ref path) => Some(open_trace_sink(
+            path,
+            n_modes,
+            latent_dim,
+            eps,
+            config.seed,
+            &schedule,
+            condition,
+            config.match_policy,
+        )?),
         None => None,
     };
 
@@ -427,15 +438,20 @@ pub fn verify(opts: VerifyOpts) -> Result<VerifyReceipt, AriaError> {
     Ok(receipt)
 }
 
+#[allow(clippy::too_many_arguments)]
 fn open_trace_sink(
     path: &Path,
     n_modes: usize,
     latent_dim: usize,
     eps: f64,
+    seed: Option<u64>,
+    schedule: &str,
+    condition: Condition,
+    match_policy: MatchPolicy,
 ) -> Result<BufWriter<File>, AriaError> {
     let file = File::create(path).map_err(|e| AriaError::Backend(e.to_string()))?;
     let mut writer = BufWriter::new(file);
-    let header = Trace::new(n_modes, latent_dim, eps);
+    let header = Trace::new(n_modes, latent_dim, eps, seed, schedule, condition, match_policy);
     writer
         .write_all(header.to_jsonl().lines().next().unwrap_or("").as_bytes())
         .map_err(|e| AriaError::Backend(e.to_string()))?;
@@ -491,7 +507,6 @@ fn config_hash(config: &AriaConfig) -> String {
 mod tests {
     use super::*;
     use crate::predictor::SimPredictor;
-    use aria_engine_core::policy::MatchPolicy;
 
     fn cfg() -> AuditConfig {
         AuditConfig {

@@ -14,6 +14,7 @@ use aria_engine_backends::{
     VectorIndex,
 };
 use aria_engine_core::action::Action;
+use aria_engine_core::condition::Condition;
 use aria_engine_core::config::AriaConfig;
 use aria_engine_core::gates::{Gate, GateConfig};
 use aria_engine_core::policy::MatchPolicy;
@@ -243,8 +244,12 @@ enum Commands {
     /// Decode a completed run's z-sequence (𝔸5 / 𝕃5).
     ///
     /// Reads a JSONL trace and a readout weight file. Recovers `z` by
-    /// replaying Φ from the trace header + `--config` (default config if
-    /// omitted). Never writes back into the engine — emit is an I/O sink.
+    /// replaying Φ from the trace header (seed, schedule, condition, match
+    /// policy — `--config` only fills in what the header omits). Pass
+    /// `--predictor` when the original `aria run` used one: without it, a
+    /// trace produced by a trained predictor replays with the untrained stub
+    /// and silently decodes the wrong tokens. Never writes back into the
+    /// engine — emit is an I/O sink.
     Emit {
         /// JSONL trace from `aria run --output`
         #[arg(long)]
@@ -272,6 +277,12 @@ enum Commands {
         /// head exists (WS5).
         #[arg(long)]
         init_seeded: Option<u64>,
+
+        /// Trained predictor weights the original `aria run` used (JSON v1 or
+        /// safetensors v2). Required to replay a trained run faithfully —
+        /// omit only when the trace was produced with the Phase 1 stub.
+        #[arg(long)]
+        predictor: Option<PathBuf>,
     },
 
     /// Streaming long-horizon verification (spec §8 / WS6).
@@ -427,7 +438,10 @@ fn real_main(cli: Cli) -> Result<(), String> {
                 Some(ref path) => {
                     let trained = TrainedPredictor::from_file(path)
                         .map_err(|e| format!("failed to load {}: {}", path.display(), e))?;
-                    // The checkpoint fixes N and dim(Z); adopt them.
+                    check_predictor_dims(n_modes, latent_dim, &trained, path)?;
+                    // The checkpoint fixes N and dim(Z); adopt them (unless
+                    // the caller explicitly pinned different ones, checked
+                    // above).
                     config.n_modes = trained.n_modes();
                     config.latent_dim = trained.latent_dim();
                     let lip = trained.measured_lipschitz().map_err(|e| e.to_string())?;
@@ -610,6 +624,7 @@ fn real_main(cli: Cli) -> Result<(), String> {
                 Some(ref path) => {
                     let trained = TrainedPredictor::from_file(path)
                         .map_err(|e| format!("failed to load {}: {}", path.display(), e))?;
+                    check_predictor_dims(None, latent_dim, &trained, path)?;
                     config.n_modes = trained.n_modes();
                     config.latent_dim = trained.latent_dim();
                     let report = trained.spectral_report().map_err(|e| e.to_string())?;
@@ -822,6 +837,7 @@ fn real_main(cli: Cli) -> Result<(), String> {
             output,
             dump_latents,
             init_seeded,
+            predictor,
         } => emit_cmd(
             base,
             &trace,
@@ -830,6 +846,7 @@ fn real_main(cli: Cli) -> Result<(), String> {
             output.as_deref(),
             dump_latents.as_deref(),
             init_seeded,
+            predictor.as_deref(),
         ),
 
         Commands::Verify {
@@ -923,6 +940,9 @@ fn verify_cmd(
         Some(path) => {
             let trained = TrainedPredictor::from_file(path)
                 .map_err(|e| format!("failed to load {}: {}", path.display(), e))?;
+            check_predictor_dims(n_modes, latent_dim, &trained, path)?;
+            // The checkpoint fixes N and dim(Z); adopt them (unless the
+            // caller explicitly pinned different ones, checked above).
             config.n_modes = trained.n_modes();
             config.latent_dim = trained.latent_dim();
             eprintln!(
@@ -1003,6 +1023,7 @@ fn verify_cmd(
 }
 
 /// Post-hoc readout. Structurally incapable of mutating Φ.
+#[allow(clippy::too_many_arguments, clippy::too_many_lines)]
 fn emit_cmd(
     mut config: AriaConfig,
     trace_path: &std::path::Path,
@@ -1011,30 +1032,54 @@ fn emit_cmd(
     output: Option<&std::path::Path>,
     dump_latents: Option<&std::path::Path>,
     init_seeded: Option<u64>,
+    predictor_path: Option<&std::path::Path>,
 ) -> Result<(), String> {
-    use aria_engine_backends::{latents_of, BpeTokenizer, DiscreteReadout, Readout};
+    use aria_engine_backends::runner::latents_with;
+    use aria_engine_backends::{BpeTokenizer, DiscreteReadout, Readout};
 
     let jsonl = fs::read_to_string(trace_path)
         .map_err(|e| format!("failed to read trace {}: {e}", trace_path.display()))?;
-    let (n_modes, latent_dim, eps, rows) = parse_trace(&jsonl)?;
-    config.n_modes = n_modes;
-    config.latent_dim = latent_dim;
-    config.eps = eps;
+    let (header, rows) = parse_trace(&jsonl)?;
+    config.n_modes = header.n_modes;
+    config.latent_dim = header.latent_dim;
+    config.eps = header.eps;
 
     if let Some(seed) = init_seeded {
-        let head = DiscreteReadout::seeded(latent_dim, config.vocab_size, 1.0, seed)
+        let head = DiscreteReadout::seeded(header.latent_dim, config.vocab_size, 1.0, seed)
             .map_err(|e| e.to_string())?;
         head.to_file(readout_path).map_err(|e| e.to_string())?;
         eprintln!(
-            "wrote seeded discrete head dim={latent_dim} vocab={} seed={seed} → {}",
+            "wrote seeded discrete head dim={} vocab={} seed={seed} → {}",
+            header.latent_dim,
             config.vocab_size,
             readout_path.display()
         );
         return Ok(());
     }
 
+    // The trace header is the source of truth for the trajectory-defining
+    // fields; `--config` only fills in what the header omits. Overriding
+    // these from `--config` would silently diverge the replay from the run
+    // that produced the trace.
+    if let Some(seed) = header.seed {
+        config.seed = Some(seed);
+    }
+    config.schedule = header.schedule.clone();
+    config.condition = header.condition;
+    config.match_policy = header.match_policy;
+
+    let predictor = match predictor_path {
+        Some(path) => {
+            let trained = TrainedPredictor::from_file(path)
+                .map_err(|e| format!("failed to load {}: {}", path.display(), e))?;
+            check_predictor_dims(None, None, &trained, path)?;
+            RefPredictor::Trained(trained)
+        }
+        None => RefPredictor::Sim(SimPredictor::new(config.n_modes, config.latent_dim)),
+    };
+
     let steps = u64::try_from(rows.len()).map_err(|_| "trace longer than u64::MAX".to_string())?;
-    let zs = latents_of(config, steps).map_err(|e| e.to_string())?;
+    let zs = latents_with(config, steps, predictor).map_err(|e| e.to_string())?;
     if zs.len() != rows.len() {
         return Err(format!(
             "replay produced {} latents for {} trace rows — config does not match the run",
@@ -1055,10 +1100,11 @@ fn emit_cmd(
 
     let readout = Readout::from_file(readout_path)
         .map_err(|e| format!("failed to load readout {}: {e}", readout_path.display()))?;
-    if readout.dim() != latent_dim {
+    if readout.dim() != header.latent_dim {
         return Err(format!(
-            "readout dim {} does not match trace latent_dim {latent_dim}",
-            readout.dim()
+            "readout dim {} does not match trace latent_dim {}",
+            readout.dim(),
+            header.latent_dim
         ));
     }
     let tokenizer = match tokenizer_path {
@@ -1111,6 +1157,16 @@ fn emit_cmd(
 
 type TraceRows = Vec<(u64, String)>;
 
+struct TraceHeader {
+    n_modes: usize,
+    latent_dim: usize,
+    eps: f64,
+    seed: Option<u64>,
+    schedule: String,
+    condition: Condition,
+    match_policy: MatchPolicy,
+}
+
 fn header_usize(header: &serde_json::Value, key: &str) -> Result<usize, String> {
     let n = header
         .get(key)
@@ -1119,11 +1175,29 @@ fn header_usize(header: &serde_json::Value, key: &str) -> Result<usize, String> 
     usize::try_from(n).map_err(|_| format!("header {key} exceeds usize"))
 }
 
-fn parse_trace(jsonl: &str) -> Result<(usize, usize, f64, TraceRows), String> {
+fn header_field_or_warn<T: serde::de::DeserializeOwned>(
+    header: &serde_json::Value,
+    key: &str,
+    default: T,
+) -> Result<T, String> {
+    if let Some(v) = header.get(key) {
+        serde_json::from_value(v.clone()).map_err(|e| format!("trace header {key}: {e}"))
+    } else {
+        eprintln!(
+            "aria emit: trace header has no '{key}' (pre-v0.2.1 trace format) — \
+             assuming a default; replay may not match the original run exactly"
+        );
+        Ok(default)
+    }
+}
+
+fn parse_trace(jsonl: &str) -> Result<(TraceHeader, TraceRows), String> {
     let mut lines = jsonl.lines();
-    let header = lines.next().ok_or_else(|| "trace is empty".to_string())?;
+    let header_line = lines
+        .next()
+        .ok_or_else(|| "trace is empty".to_string())?;
     let header: serde_json::Value =
-        serde_json::from_str(header).map_err(|e| format!("trace header: {e}"))?;
+        serde_json::from_str(header_line).map_err(|e| format!("trace header: {e}"))?;
     if header.get("type").and_then(serde_json::Value::as_str) != Some("config") {
         return Err("first trace line must be a config header".into());
     }
@@ -1133,6 +1207,11 @@ fn parse_trace(jsonl: &str) -> Result<(usize, usize, f64, TraceRows), String> {
         .get("eps")
         .and_then(serde_json::Value::as_f64)
         .ok_or("header missing eps")?;
+    let seed = header.get("seed").and_then(serde_json::Value::as_u64);
+    let schedule = header_field_or_warn(&header, "schedule", "opmd".to_string())?;
+    let condition = header_field_or_warn(&header, "condition", Condition::Token)?;
+    let match_policy = header_field_or_warn(&header, "match_policy", MatchPolicy::Identity)?;
+
     let mut rows = Vec::new();
     for (i, line) in lines.enumerate() {
         if line.trim().is_empty() {
@@ -1154,7 +1233,57 @@ fn parse_trace(jsonl: &str) -> Result<(usize, usize, f64, TraceRows), String> {
     if rows.is_empty() {
         return Err("trace has no step rows".into());
     }
-    Ok((n_modes, latent_dim, eps, rows))
+    Ok((
+        TraceHeader {
+            n_modes,
+            latent_dim,
+            eps,
+            seed,
+            schedule,
+            condition,
+            match_policy,
+        },
+        rows,
+    ))
+}
+
+/// Errors if the caller explicitly pinned `--n-modes`/`--latent-dim` to
+/// something other than what `trained` was learned for.
+///
+/// `None` means "not pinned" — the checkpoint's dimensions are then adopted
+/// silently by the caller, which stays the convenient default (most runs
+/// don't pass these flags alongside `--predictor` at all). A pinned-but-
+/// conflicting value used to be silently overridden instead of surfaced,
+/// which also made the dimension check in `runner::validate_config`
+/// unreachable from the CLI (it never saw a mismatch, because the CLI had
+/// already forced agreement before calling it).
+fn check_predictor_dims(
+    n_modes: Option<usize>,
+    latent_dim: Option<usize>,
+    trained: &TrainedPredictor,
+    predictor_path: &std::path::Path,
+) -> Result<(), String> {
+    if let Some(v) = n_modes {
+        if v != trained.n_modes() {
+            return Err(format!(
+                "--n-modes {v} conflicts with predictor {}: the checkpoint was trained at N={}. \
+                 Omit --n-modes to use the checkpoint's dimensions, or pass the matching value.",
+                predictor_path.display(),
+                trained.n_modes()
+            ));
+        }
+    }
+    if let Some(v) = latent_dim {
+        if v != trained.latent_dim() {
+            return Err(format!(
+                "--latent-dim {v} conflicts with predictor {}: the checkpoint was trained at dim(Z)={}. \
+                 Omit --latent-dim to use the checkpoint's dimensions, or pass the matching value.",
+                predictor_path.display(),
+                trained.latent_dim()
+            ));
+        }
+    }
+    Ok(())
 }
 
 fn parse_match_policy(s: &str) -> Result<MatchPolicy, String> {

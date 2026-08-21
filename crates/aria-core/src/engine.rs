@@ -455,7 +455,15 @@ where
         steps: u64,
         a: Condition,
     ) -> Result<(State, Trace, GateReport), AriaError> {
-        let mut trace = Trace::new(self.config.n_modes, self.config.latent_dim, self.config.eps);
+        let mut trace = Trace::new(
+            self.config.n_modes,
+            self.config.latent_dim,
+            self.config.eps,
+            self.config.seed,
+            &self.config.schedule,
+            a,
+            self.config.match_policy,
+        );
         let mut monitor = GateMonitor::new(self.config.gates.clone());
 
         for _ in 0..steps {
@@ -493,7 +501,15 @@ where
         steps: u64,
         a: Condition,
     ) -> Result<MonitoredLatents, AriaError> {
-        let mut trace = Trace::new(self.config.n_modes, self.config.latent_dim, self.config.eps);
+        let mut trace = Trace::new(
+            self.config.n_modes,
+            self.config.latent_dim,
+            self.config.eps,
+            self.config.seed,
+            &self.config.schedule,
+            a,
+            self.config.match_policy,
+        );
         let mut monitor = GateMonitor::new(self.config.gates.clone());
         let mut latents = Vec::with_capacity(usize::try_from(steps).unwrap_or(0));
 
