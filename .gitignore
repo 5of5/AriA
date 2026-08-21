@@ -30,6 +30,7 @@ last_tasks_towards_v.0.2.0.md
 # Root-level acceptance-test corpus only. A bare `tests` pattern would also
 # ignore crates/*/tests (the Rust integration suites) and python/tests —
 # new test files written during v0.2.0 execution must be trackable.
+# Golden trace fixtures under tests/traces/ are force-added (git add -f).
 /tests/
 python/training
 python/tests
