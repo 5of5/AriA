@@ -162,6 +162,24 @@ impl Trace {
     }
 }
 
+/// The `G₀` to record in a trace header.
+///
+/// Returns `None` for an empty `G₀` so the common canonical-init header stays
+/// free of a graph blob; a non-empty `G₀` is cloned verbatim so the trace
+/// stays self-describing (and `aria emit`, which replays from
+/// `Graph::empty()`, can reject it loudly rather than silently diverge).
+///
+/// Shared by every trace producer (the engine's `run_monitored*` loops and
+/// the streaming verifier) so the empty-vs-recorded rule lives in exactly one
+/// place.
+pub fn initial_graph_of(g0: &Graph) -> Option<Graph> {
+    if g0.size() == 0 {
+        None
+    } else {
+        Some(g0.clone())
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

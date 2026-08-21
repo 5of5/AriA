@@ -17,7 +17,7 @@ use crate::invariants::InvariantReport;
 use crate::policy::{DiffPolicy, MatchPolicy};
 use crate::scheduler::Scheduler;
 use crate::state::State;
-use crate::trace::Trace;
+use crate::trace::{initial_graph_of, Trace};
 
 /// [`Engine::run_monitored_with_latents`] return type — factored out so the
 /// signature stays inside clippy's type-complexity budget.
@@ -93,21 +93,6 @@ pub trait GraphBackend: Debug + Send + Sync {
 pub trait Diffuser: Debug + Send + Sync {
     /// Diffusion step: z' = Diff_G(z)
     fn diffuse(&self, g: &Graph, z: &[f64], policy: DiffPolicy) -> Vec<f64>;
-}
-
-/// The `G₀` a run started from, for the trace header.
-///
-/// `state.g` at loop entry *is* the initial graph (Init: `G = G₀`, before any
-/// Match mutates it). Returns `None` for an empty `G₀` so the common
-/// canonical-init header stays free of a graph blob; a non-empty `G₀` is
-/// recorded verbatim so the trace stays self-describing (and `aria emit`,
-/// which replays from `Graph::empty()`, can reject it loudly).
-fn initial_graph_of(state: &State) -> Option<Graph> {
-    if state.g.size() == 0 {
-        None
-    } else {
-        Some(state.g.clone())
-    }
 }
 
 /// Aria Engine — the Spec state machine with pluggable backends.
@@ -485,7 +470,7 @@ where
             self.config.stutter_k,
             self.config.optical.clone(),
             self.config.merge_tau,
-            initial_graph_of(&state),
+            initial_graph_of(&state.g),
         );
         let mut monitor = GateMonitor::new(self.config.gates.clone());
 
@@ -536,7 +521,7 @@ where
             self.config.stutter_k,
             self.config.optical.clone(),
             self.config.merge_tau,
-            initial_graph_of(&state),
+            initial_graph_of(&state.g),
         );
         let mut monitor = GateMonitor::new(self.config.gates.clone());
         let mut latents = Vec::with_capacity(usize::try_from(steps).unwrap_or(0));
@@ -586,7 +571,7 @@ where
             self.config.stutter_k,
             self.config.optical.clone(),
             self.config.merge_tau,
-            initial_graph_of(&state),
+            initial_graph_of(&state.g),
         );
         let mut monitor = GateMonitor::new(self.config.gates.clone());
         let cap = usize::try_from(steps).unwrap_or(0);

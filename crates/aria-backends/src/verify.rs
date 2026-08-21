@@ -23,7 +23,7 @@ use aria_engine_core::gates::{GateMonitor, GateReport};
 use aria_engine_core::graph::Graph;
 use aria_engine_core::invariants;
 use aria_engine_core::scheduler::Scheduler;
-use aria_engine_core::trace::Trace;
+use aria_engine_core::trace::{initial_graph_of, Trace};
 use serde::{Deserialize, Serialize};
 
 use crate::growth::{fit_growth_exponent, log_checkpoints};
@@ -434,18 +434,6 @@ pub fn verify(opts: VerifyOpts) -> Result<VerifyReceipt, AriaError> {
     }
 
     Ok(receipt)
-}
-
-/// The `G₀` a verify run started from, for the trace header — `None` for an
-/// empty graph so common headers stay clean, otherwise the graph verbatim so
-/// the trace is self-describing (and a replay from `Graph::empty()` can be
-/// rejected rather than silently diverge).
-fn initial_graph_of(g0: &Graph) -> Option<Graph> {
-    if g0.size() == 0 {
-        None
-    } else {
-        Some(g0.clone())
-    }
 }
 
 fn open_trace_sink(
