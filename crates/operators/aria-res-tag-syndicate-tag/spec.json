@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "SYNDICATE_TAG"
+  ],
+  "binary_id": "BIN.TAG.SYNDICATE_TAG",
+  "class": "TAG",
+  "crate": "aria_res_tag_syndicate_tag",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.SYNDICATE_TAG",
+  "package": "aria-res-tag-syndicate-tag",
+  "parent": "SYNDICATE",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.syndicate_tag",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/syndicate_tag@v1",
+  "verify": true,
+  "wave": "A"
+}

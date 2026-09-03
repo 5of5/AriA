@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.VIRAL_COEFFICIENT",
+  "class": "PROP",
+  "crate": "aria_res_prop_viral_coefficient",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "PROP.VIRAL_COEFFICIENT",
+  "package": "aria-res-prop-viral-coefficient",
+  "parent": "PORTFOLIO",
+  "pass_through": false,
+  "property_key": "viral_coefficient",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.viral_coefficient",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/viral_coefficient@v1",
+  "verify": true,
+  "wave": "C"
+}

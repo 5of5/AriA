@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.NODE.MARKET",
+  "class": "NODE",
+  "crate": "aria_res_node_market",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [
+    "Market"
+  ],
+  "operator": "NODE.MARKET",
+  "package": "aria-res-node-market",
+  "parent": "MARKET",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "residual.node.market",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/node/market@v1",
+  "verify": true,
+  "wave": "A"
+}

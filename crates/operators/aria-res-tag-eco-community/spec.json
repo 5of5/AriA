@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "ECO_COMMUNITY"
+  ],
+  "binary_id": "BIN.TAG.ECO_COMMUNITY",
+  "class": "TAG",
+  "crate": "aria_res_tag_eco_community",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.ECO_COMMUNITY",
+  "package": "aria-res-tag-eco-community",
+  "parent": "PARTNER",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.eco_community",
+  "retrieval_step": "memory",
+  "taxonomy": "ECOSYSTEM_TAG",
+  "telemetry_fork": "aria/res/tag/eco_community@v1",
+  "verify": true,
+  "wave": "B"
+}

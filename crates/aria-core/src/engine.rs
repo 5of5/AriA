@@ -17,11 +17,14 @@ use crate::invariants::InvariantReport;
 use crate::policy::{DiffPolicy, MatchPolicy};
 use crate::scheduler::Scheduler;
 use crate::state::State;
-use crate::trace::Trace;
+use crate::trace::{initial_graph_of, Trace};
 
 /// [`Engine::run_monitored_with_latents`] return type — factored out so the
 /// signature stays inside clippy's type-complexity budget.
 pub type MonitoredLatents = (State, Trace, GateReport, Vec<Vec<f64>>);
+
+/// Latents plus per-step optical phase \(\arg\psi_0\). Observer-only; not JSONL.
+pub type MonitoredFields = (State, Trace, GateReport, Vec<Vec<f64>>, Vec<f64>);
 
 /// Optical backend trait — PRD §5.3
 pub trait OpticalBackend: Debug + Send + Sync {
@@ -455,7 +458,20 @@ where
         steps: u64,
         a: Condition,
     ) -> Result<(State, Trace, GateReport), AriaError> {
-        let mut trace = Trace::new(self.config.n_modes, self.config.latent_dim, self.config.eps);
+        let mut trace = Trace::new(
+            self.config.n_modes,
+            self.config.latent_dim,
+            self.config.eps,
+            self.config.seed,
+            &self.config.schedule,
+            a,
+            self.config.match_policy,
+            self.config.diff_policy,
+            self.config.stutter_k,
+            self.config.optical.clone(),
+            self.config.merge_tau,
+            initial_graph_of(&state.g),
+        );
         let mut monitor = GateMonitor::new(self.config.gates.clone());
 
         for _ in 0..steps {
@@ -493,7 +509,20 @@ where
         steps: u64,
         a: Condition,
     ) -> Result<MonitoredLatents, AriaError> {
-        let mut trace = Trace::new(self.config.n_modes, self.config.latent_dim, self.config.eps);
+        let mut trace = Trace::new(
+            self.config.n_modes,
+            self.config.latent_dim,
+            self.config.eps,
+            self.config.seed,
+            &self.config.schedule,
+            a,
+            self.config.match_policy,
+            self.config.diff_policy,
+            self.config.stutter_k,
+            self.config.optical.clone(),
+            self.config.merge_tau,
+            initial_graph_of(&state.g),
+        );
         let mut monitor = GateMonitor::new(self.config.gates.clone());
         let mut latents = Vec::with_capacity(usize::try_from(steps).unwrap_or(0));
 
@@ -518,6 +547,59 @@ where
         }
 
         Ok((state, trace, monitor.finish(), latents))
+    }
+
+    /// Same loop as [`Self::run_monitored_with_latents`], plus \(\arg\psi_0\)
+    /// after each step. The extra scalars are observer fields. They do not
+    /// enter JSONL and they do not change `apply`.
+    pub fn run_monitored_fields(
+        &self,
+        mut state: State,
+        scheduler: &mut Scheduler,
+        steps: u64,
+        a: Condition,
+    ) -> Result<MonitoredFields, AriaError> {
+        let mut trace = Trace::new(
+            self.config.n_modes,
+            self.config.latent_dim,
+            self.config.eps,
+            self.config.seed,
+            &self.config.schedule,
+            a,
+            self.config.match_policy,
+            self.config.diff_policy,
+            self.config.stutter_k,
+            self.config.optical.clone(),
+            self.config.merge_tau,
+            initial_graph_of(&state.g),
+        );
+        let mut monitor = GateMonitor::new(self.config.gates.clone());
+        let cap = usize::try_from(steps).unwrap_or(0);
+        let mut latents = Vec::with_capacity(cap);
+        let mut phases = Vec::with_capacity(cap);
+
+        for _ in 0..steps {
+            let action = scheduler.next_action_budgeted();
+            let t_before = state.t;
+
+            state = self.apply(state, action, a)?;
+
+            let residual = self.compute_residual(&state, a);
+            let energy = state.energy();
+            trace.push(
+                t_before,
+                action,
+                residual,
+                energy,
+                state.g.size(),
+                &format!("{a:?}").to_lowercase(),
+            );
+            monitor.observe(action, &state, residual, self.config.eps);
+            latents.push(state.z.clone());
+            phases.push(state.psi.first().map_or(0.0, |c| c.arg()));
+        }
+
+        Ok((state, trace, monitor.finish(), latents, phases))
     }
 
     /// Check all invariants on the current state without applying an action.

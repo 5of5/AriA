@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.CRATE",
+  "class": "PROP",
+  "crate": "aria_res_prop_crate",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.CRATE",
+  "package": "aria-res-prop-crate",
+  "parent": "all operators",
+  "pass_through": false,
+  "property_key": "crate",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.crate",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/crate@v1",
+  "verify": true,
+  "wave": "A"
+}

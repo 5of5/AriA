@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.REL.PARTNERS_WITH",
+  "class": "REL",
+  "crate": "aria_res_rel_partners_with",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "REL.PARTNERS_WITH",
+  "package": "aria-res-rel-partners-with",
+  "parent": "PARTNER",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "PARTNERS_WITH"
+  ],
+  "result_definition_ref": "residual.rel.partners_with",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/rel/partners_with@v1",
+  "verify": true,
+  "wave": "B"
+}

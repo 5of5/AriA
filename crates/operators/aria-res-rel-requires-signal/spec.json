@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.REL.REQUIRES_SIGNAL",
+  "class": "REL",
+  "crate": "aria_res_rel_requires_signal",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "REL.REQUIRES_SIGNAL",
+  "package": "aria-res-rel-requires-signal",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "REQUIRES_SIGNAL"
+  ],
+  "result_definition_ref": "residual.rel.requires_signal",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/rel/requires_signal@v1",
+  "verify": true,
+  "wave": "B"
+}

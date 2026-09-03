@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.LIMITATION",
+  "class": "PROP",
+  "crate": "aria_res_prop_limitation",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.LIMITATION",
+  "package": "aria-res-prop-limitation",
+  "parent": "all operators",
+  "pass_through": false,
+  "property_key": "limitation",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.limitation",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/limitation@v1",
+  "verify": true,
+  "wave": "B"
+}

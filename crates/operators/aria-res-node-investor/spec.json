@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.NODE.INVESTOR",
+  "class": "NODE",
+  "crate": "aria_res_node_investor",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [
+    "Investor"
+  ],
+  "operator": "NODE.INVESTOR",
+  "package": "aria-res-node-investor",
+  "parent": "VENTURE_CAPITAL",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "residual.node.investor",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/node/investor@v1",
+  "verify": true,
+  "wave": "A"
+}

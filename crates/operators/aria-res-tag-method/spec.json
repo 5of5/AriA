@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "METHOD"
+  ],
+  "binary_id": "BIN.TAG.METHOD",
+  "class": "TAG",
+  "crate": "aria_res_tag_method",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.METHOD",
+  "package": "aria-res-tag-method",
+  "parent": "SOURCE",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.method",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/method@v1",
+  "verify": true,
+  "wave": "B"
+}

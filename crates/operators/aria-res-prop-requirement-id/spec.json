@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.REQUIREMENT_ID",
+  "class": "PROP",
+  "crate": "aria_res_prop_requirement_id",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.REQUIREMENT_ID",
+  "package": "aria-res-prop-requirement-id",
+  "parent": "all operators",
+  "pass_through": false,
+  "property_key": "requirement_id",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.requirement_id",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/requirement_id@v1",
+  "verify": true,
+  "wave": "A"
+}

@@ -5,18 +5,30 @@ members = [
     "crates/aria-backends",
     "crates/aria-cli",
     "crates/aria-wasm",
+    "crates/aria-training",
+    "crates/aria-operator",
+    "python/aria-py",
+    "crates/operators/*",
+]
+default-members = [
+    "crates/aria-core",
+    "crates/aria-backends",
+    "crates/aria-cli",
+    "crates/aria-wasm",
+    "crates/aria-training",
+    "crates/aria-operator",
     "python/aria-py",
 ]
 
 [workspace.package]
-version = "0.2.0"
+version = "0.2.1"
 edition = "2021"
 rust-version = "1.97"
 license = "MIT OR Apache-2.0"
 authors = ["Dylan Kawalec"]
-repository = "https://github.com/aria-ai/aria"
-homepage = "https://github.com/aria-ai/aria"
-documentation = "https://github.com/aria-ai/aria"
+repository = "https://github.com/5of5/AriA"
+homepage = "https://github.com/5of5/AriA"
+documentation = "https://docs.rs/aria-engine-core"
 readme = "README.md"
 
 # ---------------------------------------------------------------------------
@@ -24,6 +36,12 @@ readme = "README.md"
 # Crates consume them via `dep = { workspace = true, features = [...] }`.
 # ---------------------------------------------------------------------------
 [workspace.dependencies]
+# In-workspace crates — path + version so publish rewrites to crates.io.
+# 535 operator programs stay workspace-only (publish = false).
+aria-engine-core = { version = "0.2.1", path = "crates/aria-core" }
+aria-engine-backends = { version = "0.2.1", path = "crates/aria-backends" }
+aria-json-telemetry = { version = "0.2.2", path = "crates/aria-operator" }
+
 # Serialization / config
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"

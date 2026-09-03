@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CO_FUND_VEHICLE"
+  ],
+  "binary_id": "BIN.TAG.CO_FUND_VEHICLE",
+  "class": "TAG",
+  "crate": "aria_res_tag_co_fund_vehicle",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CO_FUND_VEHICLE",
+  "package": "aria-res-tag-co-fund-vehicle",
+  "parent": "VENTURE_CAPITAL",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.co_fund_vehicle",
+  "retrieval_step": "memory",
+  "taxonomy": "COMPANY_TYPE",
+  "telemetry_fork": "aria/res/tag/co_fund_vehicle@v1",
+  "verify": true,
+  "wave": "A"
+}

@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "PERSON"
+  ],
+  "binary_id": "BIN.TAG.PERSON",
+  "class": "TAG",
+  "crate": "aria_res_tag_person",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.PERSON",
+  "package": "aria-res-tag-person",
+  "parent": "PEOPLE",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.person",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/person@v1",
+  "verify": true,
+  "wave": "A"
+}

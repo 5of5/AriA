@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CYPHER_TEMPLATE"
+  ],
+  "binary_id": "BIN.TAG.CYPHER_TEMPLATE",
+  "class": "TAG",
+  "crate": "aria_res_tag_cypher_template",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CYPHER_TEMPLATE",
+  "package": "aria-res-tag-cypher-template",
+  "parent": "neo4j-aura",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.cypher_template",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/cypher_template@v1",
+  "verify": true,
+  "wave": "C"
+}

@@ -1,0 +1,26 @@
+# Generated. Unique operator crate; AriA is linked via aria-operator.
+[package]
+name = 'aria-res-prop-proof-strength'
+description = 'Aria operator binary BIN.PROP.PROOF_STRENGTH (PROP.PROOF_STRENGTH)'
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+documentation.workspace = true
+rust-version.workspace = true
+publish = false
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = 'aria-res-prop-proof-strength'
+path = "src/main.rs"
+
+[dependencies]
+aria-json-telemetry = { workspace = true, features = ["cli"] }
+
+[lints]
+workspace = true

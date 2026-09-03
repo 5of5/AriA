@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.SCHEMA_VERSION",
+  "class": "PROP",
+  "crate": "aria_res_prop_schema_version",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.SCHEMA_VERSION",
+  "package": "aria-res-prop-schema-version",
+  "parent": "all operators",
+  "pass_through": false,
+  "property_key": "schema_version",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.schema_version",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/schema_version@v1",
+  "verify": true,
+  "wave": "A"
+}

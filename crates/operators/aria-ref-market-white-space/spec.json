@@ -1,0 +1,36 @@
+{
+  "anchor_tags": [
+    "COMPANY",
+    "MARKET",
+    "CATEGORY",
+    "Market White Space",
+    "MAP_TYPE"
+  ],
+  "binary_id": "BIN.REF.MARKET_WHITE_SPACE",
+  "class": "REFINEMENT",
+  "crate": "aria_ref_market_white_space",
+  "default_limit": null,
+  "layer": "REFINEMENT",
+  "neo4j_pass": true,
+  "node_types": [
+    "Company",
+    "Market",
+    "Category",
+    "MarketSignal"
+  ],
+  "operator": "REF.MARKET_WHITE_SPACE",
+  "package": "aria-ref-market-white-space",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "IN_CATEGORY",
+    "ADJACENT_TO"
+  ],
+  "result_definition_ref": "map.ref.market_white_space",
+  "retrieval_step": "memory",
+  "taxonomy": "Market White Space",
+  "telemetry_fork": "aria/ref/market_white_space@v1",
+  "verify": true,
+  "wave": null
+}

@@ -1,0 +1,38 @@
+{
+  "anchor_tags": [
+    "EVENT",
+    "COMPANY",
+    "TIMESTAMP",
+    "MEDIA",
+    "Category Creation Timeline",
+    "MAP_TYPE"
+  ],
+  "binary_id": "BIN.REF.CATEGORY_CREATION_TIMELINE",
+  "class": "REFINEMENT",
+  "crate": "aria_ref_category_creation_timeline",
+  "default_limit": null,
+  "layer": "REFINEMENT",
+  "neo4j_pass": true,
+  "node_types": [
+    "Event",
+    "MarketSignal",
+    "Company",
+    "Content"
+  ],
+  "operator": "REF.CATEGORY_CREATION_TIMELINE",
+  "package": "aria-ref-category-creation-timeline",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "ANNOUNCED",
+    "OCCURRED_AT",
+    "SIGNALS"
+  ],
+  "result_definition_ref": "map.ref.category_creation_timeline",
+  "retrieval_step": "memory",
+  "taxonomy": "Category Creation Timeline",
+  "telemetry_fork": "aria/ref/category_creation_timeline@v1",
+  "verify": true,
+  "wave": null
+}

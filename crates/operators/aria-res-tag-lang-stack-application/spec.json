@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "LANG_STACK_APPLICATION"
+  ],
+  "binary_id": "BIN.TAG.LANG_STACK_APPLICATION",
+  "class": "TAG",
+  "crate": "aria_res_tag_lang_stack_application",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.LANG_STACK_APPLICATION",
+  "package": "aria-res-tag-lang-stack-application",
+  "parent": "PRODUCT",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.lang_stack_application",
+  "retrieval_step": "memory",
+  "taxonomy": "MAP_LANGUAGE",
+  "telemetry_fork": "aria/res/tag/lang_stack_application@v1",
+  "verify": true,
+  "wave": "B"
+}

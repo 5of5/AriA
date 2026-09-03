@@ -1,0 +1,39 @@
+{
+  "anchor_tags": [
+    "COMPANY",
+    "SIGNAL",
+    "FUNDING",
+    "HIRING",
+    "LAUNCH",
+    "Market Heat Island",
+    "MAP_TYPE"
+  ],
+  "binary_id": "BIN.REF.MARKET_HEAT_ISLAND",
+  "class": "REFINEMENT",
+  "crate": "aria_ref_market_heat_island",
+  "default_limit": null,
+  "layer": "REFINEMENT",
+  "neo4j_pass": true,
+  "node_types": [
+    "Company",
+    "MarketSignal",
+    "Event",
+    "Market",
+    "Category"
+  ],
+  "operator": "REF.MARKET_HEAT_ISLAND",
+  "package": "aria-ref-market-heat-island",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "SIGNALS",
+    "OPERATES_IN"
+  ],
+  "result_definition_ref": "map.ref.market_heat_island",
+  "retrieval_step": "memory",
+  "taxonomy": "Market Heat Island",
+  "telemetry_fork": "aria/ref/market_heat_island@v1",
+  "verify": true,
+  "wave": null
+}

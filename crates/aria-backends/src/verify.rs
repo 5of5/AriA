@@ -15,6 +15,7 @@ use std::path::{Path, PathBuf};
 use std::time::Instant;
 
 use aria_engine_core::action::Action;
+use aria_engine_core::condition::Condition;
 use aria_engine_core::config::AriaConfig;
 use aria_engine_core::engine::GraphBackend;
 use aria_engine_core::error::AriaError;
@@ -22,7 +23,7 @@ use aria_engine_core::gates::{GateMonitor, GateReport};
 use aria_engine_core::graph::Graph;
 use aria_engine_core::invariants;
 use aria_engine_core::scheduler::Scheduler;
-use aria_engine_core::trace::Trace;
+use aria_engine_core::trace::{initial_graph_of, Trace};
 use serde::{Deserialize, Serialize};
 
 use crate::growth::{fit_growth_exponent, log_checkpoints};
@@ -295,7 +296,15 @@ pub fn verify(opts: VerifyOpts) -> Result<VerifyReceipt, AriaError> {
         Scheduler::from_string(&schedule, stutter_k).map_err(AriaError::Schedule)?;
 
     let mut sink = match trace_path {
-        Some(ref path) => Some(open_trace_sink(path, n_modes, latent_dim, eps)?),
+        Some(ref path) => Some(open_trace_sink(
+            path,
+            &config,
+            &schedule,
+            condition,
+            // `state.g` is still `G₀` here — Init stores it untouched and the
+            // loop has not run yet.
+            initial_graph_of(&state.g),
+        )?),
         None => None,
     };
 
@@ -429,13 +438,27 @@ pub fn verify(opts: VerifyOpts) -> Result<VerifyReceipt, AriaError> {
 
 fn open_trace_sink(
     path: &Path,
-    n_modes: usize,
-    latent_dim: usize,
-    eps: f64,
+    config: &AriaConfig,
+    schedule: &str,
+    condition: Condition,
+    initial_graph: Option<Graph>,
 ) -> Result<BufWriter<File>, AriaError> {
     let file = File::create(path).map_err(|e| AriaError::Backend(e.to_string()))?;
     let mut writer = BufWriter::new(file);
-    let header = Trace::new(n_modes, latent_dim, eps);
+    let header = Trace::new(
+        config.n_modes,
+        config.latent_dim,
+        config.eps,
+        config.seed,
+        schedule,
+        condition,
+        config.match_policy,
+        config.diff_policy,
+        config.stutter_k,
+        config.optical.clone(),
+        config.merge_tau,
+        initial_graph,
+    );
     writer
         .write_all(header.to_jsonl().lines().next().unwrap_or("").as_bytes())
         .map_err(|e| AriaError::Backend(e.to_string()))?;

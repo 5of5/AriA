@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.PERSONA_ROLE",
+  "class": "PROP",
+  "crate": "aria_res_prop_persona_role",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.PERSONA_ROLE",
+  "package": "aria-res-prop-persona-role",
+  "parent": "BUYER",
+  "pass_through": false,
+  "property_key": "persona_role",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.persona_role",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/persona_role@v1",
+  "verify": true,
+  "wave": "B"
+}

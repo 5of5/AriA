@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.ENTITY_KIND",
+  "class": "PROP",
+  "crate": "aria_res_prop_entity_kind",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.ENTITY_KIND",
+  "package": "aria-res-prop-entity-kind",
+  "parent": "all entity",
+  "pass_through": false,
+  "property_key": "entity_kind",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.entity_kind",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/entity_kind@v1",
+  "verify": true,
+  "wave": "A"
+}

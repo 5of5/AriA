@@ -1,0 +1,32 @@
+{
+  "anchor_tags": [
+    "ACCOUNT",
+    "ICP",
+    "WARM_PATH"
+  ],
+  "binary_id": "BIN.ACCOUNT",
+  "class": "ENTITY",
+  "crate": "aria_telemetry_account",
+  "default_limit": 18,
+  "layer": "ENTITY",
+  "neo4j_pass": true,
+  "node_types": [
+    "Account"
+  ],
+  "operator": "ACCOUNT",
+  "package": "aria-telemetry-account",
+  "parent": "CUSTOMER",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TARGETED_BY",
+    "HAS_PERSONA",
+    "PATH_TO"
+  ],
+  "result_definition_ref": "entity.account",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/account@v1",
+  "verify": true,
+  "wave": null
+}

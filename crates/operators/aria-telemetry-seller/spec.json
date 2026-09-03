@@ -1,0 +1,33 @@
+{
+  "anchor_tags": [
+    "SELLER_TAG",
+    "COMPANY",
+    "PRODUCT"
+  ],
+  "binary_id": "BIN.SELLER",
+  "class": "TAG",
+  "crate": "aria_telemetry_seller",
+  "default_limit": null,
+  "layer": "TAG",
+  "neo4j_pass": true,
+  "node_types": [
+    "Company",
+    "Product"
+  ],
+  "operator": "SELLER",
+  "package": "aria-telemetry-seller",
+  "parent": "COMPANY",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "SELLS_TO",
+    "OFFERED_BY",
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "tag.seller",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/seller@v1",
+  "verify": true,
+  "wave": null
+}

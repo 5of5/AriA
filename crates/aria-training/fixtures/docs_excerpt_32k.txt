@@ -1,0 +1,832 @@
+# Aria Transformer
+
+<p align="center">
+  <img src="assets/aria-logo-transparent.png" alt="Aria" width="360" />
+</p>
+
+<p align="center">
+  <strong>Optical interference · Pure JEPA latent prediction · First-class experience graph · Jointly inductive safety</strong>
+</p>
+
+<p align="center">
+  <a href="https://crates.io/crates/aria-engine-core"><img src="https://img.shields.io/crates/v/aria-engine-core?label=aria-engine-core&color=4a4a8a" /></a>
+  <a href="https://crates.io/crates/aria-engine-backends"><img src="https://img.shields.io/crates/v/aria-engine-backends?label=aria-engine-backends&color=3a6a3a" /></a>
+  <a href="https://crates.io/crates/aria-engine"><img src="https://img.shields.io/crates/v/aria-engine?label=aria-engine&color=aa7a4a" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue" /></a>
+</p>
+
+---
+
+Aria (Ariadne) is a transformer architecture that unifies next-token prediction, continuous diffusion, and latent world modeling inside a single state machine.
+It replaces conventional electronic attention with optical interference, performs pure joint-embedding predictive modeling in latent space (no reconstruction in the core loop), and treats experience as a first-class typed graph that supports one-shot structural correction.
+The design is grounded in an explicit discrete-state specification with inductive safety invariants for optical energy conservation, predictive contractivity, and graph integrity.
+
+## Architecture
+
+<p align="center">
+  <img src="assets/aria-v0.1.0.svg" alt="Aria Architecture" width="100%" />
+</p>
+
+Aria is **not a residual-stream Softmax transformer.** It is a formally specified **optical–JEPA–graph dynamical system** with exactly five named actions, four jointly inductive safety invariants, and a machine-checked TLA⁺ specification at its foundation.
+
+```
+Φ = Diff ∘ Match ∘ P ∘ U          Spec ≜ Init ∧ □[Next]_vars
+```
+
+### The four decisive differences
+
+| Dimension | Mainstream Transformers | Aria |
+|---|---|---|
+| **Compute substrate** | Electronic QKᵀ matmul + Softmax | Optical unitary interference (𝔸4) |
+| **State** | Residual stream + KV cache | Single triple ⟨ψ, z, G⟩ |
+| **Prediction** | Reconstruct tokens / pixels | Pure latent JEPA — no decoder in core |
+| **Formal guarantees** | Architecture diagram + loss function | Inductive invariants + TLA⁺ model check |
+
+### The five named actions
+
+| Action | Symbol | Mutates | Spec |
+|---|---|---|---|
+| **OpticalStep** | `O` | ψ | ψ′ = Uₜ(ψ); UNCHANGED ⟨z,G,t⟩ |
+| **Predict** | `P` | z | z′ = P(I(ψ), aₜ); UNCHANGED ⟨ψ,G,t⟩ |
+| **Match** | `M` | G | G′ = ED(G⊕z, G★); UNCHANGED ⟨ψ,z,t⟩ |
+| **Diffuse** | `D` | z, t | z′ = Diff_G(z); t′ = t+1; UNCHANGED ⟨ψ,G⟩ |
+| **Stutter** | `S` | — | UNCHANGED all (TLA stuttering) |
+
+**Preferred Φ-cycle (𝐂4):** O → P → M → D
+
+### The four safety invariants
+
+Checked after every `apply`. Jointly inductive under Next.
+
+| Invariant | Statement | Witness |
+|---|---|---|
+| **Inv1** | ‖ψ‖₂ = ‖ψ₀‖₂ — optical energy conserved | OpticalStep (exact unitarity) |
+| **Inv2** | Res(ψ,z,t) ≤ prevRes + ε — predictive contractivity | Predict (ℙ2: 𝔼[Lip(P)] ≤ 1) |
+| **Inv3** | GraphOK(G) — typed nodes/edges, embeddings in Z | Match (ℙ3: elementary edits) |
+| **Inv4** | TypeOK — all state variables well-typed | Every action |
+
+---
+
+## Get started
+
+### Install the CLI
+
+```bash
+cargo install aria-engine
+```
+
+### Run your first Φ-cycle
+
+```bash
+# 1,000-step OPMD run with default config
+aria run --steps 1000 --schedule opmd
+
+# Custom dimensions and export trace
+aria run --steps 500 --n-modes 256 --latent-dim 64 --eps 1.0 --output trace.jsonl
+
+# Optional Inv5–11 operating gates (monitors, never Spec enlargement)
+aria run --steps 1000 --gates all --strict-gates
+
+# Single-step control
+aria step --action OpticalStep --n-modes 8 --latent-dim 16
+
+# Invariant audit
+aria check --state state.json --latent-dim 16
+
+# Throughput across sizes
+aria bench --n-modes 16,64,256 --steps 1000
+```
+
+### From Python
+
+```bash
+# Inside a .venv with torch + pytest (system-site-packages recommended)
+pip install maturin
+maturin develop --manifest-path python/aria-py/Cargo.toml
+python -m pytest python/tests -q          # use python -m (not bare pytest)
+```
+
+```python
+import aria
+
+engine = aria.AriaEngine(aria.Config(n_modes=64, latent_dim=32, seed=42))
+state = engine.step_phi(engine.init())      # O -> P -> M -> D
+assert engine.check(state).all_ok
+
+aria.run(steps=1000)                        # same numbers as `aria run`
+```
+
+### In the browser
+
+```bash
+./scripts/build_wasm.sh
+python3 -m http.server -d www               # open http://localhost:8000
+node www/parity.mjs                         # assert WASM == CLI
+```
+
+### As a Rust library
+
+```rust
+use aria_engine_core::prelude::*;
+use aria_engine_backends::*;
+
+let config = AriaConfig::default();
+let engine = Engine::new(
+    config,
+    SimOptical::new(256),
+    SimPredictor::new(256, 64),
+    SimGraphBackend::new(64),
+    SimDiffuser::new(64),
+);
+
+let state = engine.init(psi0, Graph::empty(), Condition::Token);
+let state = engine.step_phi(state, Condition::Token)?;
+let report = engine.check(&state, Condition::Token);
+assert!(report.all_ok());
+```
+
+### Verify the TLA⁺ machine Spec
+
+```bash
+cd spec
+java -cp tla2tools.jar tlc2.TLC -config AriaInstance.cfg AriaInstance
+# 2026-08-09: 36049 states, 2616 distinct, Inv1–4 held (t ≤ 3)
+# See spec/RUN.md for setup and full TLC invocation options.
+```
+
+### Run the test suite
+
+```bash
+cargo test --workspace                                  # 81 Rust tests
+cargo clippy --workspace --all-targets -- -D warnings   # workspace lints enforced
+./scripts/check_action_alphabet.sh                      # Σ has exactly 5 members
+
+./scripts/build_wasm.sh && node www/parity.mjs          # WASM == CLI
+python -m pytest python/tests -q                        # Python == CLI, and training
+```
+
+### Train the predictor on real data (Phase 3)
+
+Real bytes — text, code, logs — become optical fields: a field is the **spectrum**
+of a byte window, so interference between fields *is* window similarity. The
+JEPA target is the embedding of the next window; there is no decoder anywhere
+in the loop, and `Lip(P)` is projected onto its bound after every optimizer
+step rather than merely penalised.
+
+```bash
+# Production path — real corpus
+aria dataset --input corpus.txt --n-modes 64 --output data.json
+python python/training/train_jepa.py --data data.json --latent-dim 64 --out weights.json
+aria run --steps 1000 --predictor weights.json
+
+# Synthetic phase ramps exist for smoke tests only (no --input warns you)
+```
+
+Trained on this repository's own documentation (153 KB of real text), the
+quality gate output is:
+
+```
+holdout residual 0.887485 -> 0.362181 (decreased)
+persistence baseline 0.645385 — model BEATS it
+Lip(P) = 0.4291 <= 0.49 (P2 enforced)
+```
+
+Exit₃ is gated on two things, not one: the held-out residual must fall **and**
+the model must beat "predict tomorrow = today" measured in the same latent
+space. A model that cannot beat persistence has learned nothing.
+
+---
+
+## Crates
+
+| Crate | Version | Purpose |
+|---|---|---|
+| [`aria-engine-core`](https://crates.io/crates/aria-engine-core) | 0.2.0 | State machine, Inv1–4, Inv5–11 gates, scheduler, config, traits |
+| [`aria-engine-backends`](https://crates.io/crates/aria-engine-backends) | 0.2.0 | SimOptical, SimPredictor, TrainedPredictor, SimGraphBackend, SimDiffuser, shared runner |
+| [`aria-engine`](https://crates.io/crates/aria-engine) | 0.2.0 | CLI — `run`, `step`, `check`, `bench`, `dataset`, `emit`, `verify` |
+| `aria-engine-wasm` | 0.2.0 | wasm-bindgen surface for the browser |
+| `aria-engine-py` | 0.2.0 | PyO3 extension — `import aria` |
+
+All three user-facing surfaces call one function, `runner::run`, so parity is
+structural rather than three implementations kept in step by hand.
+
+---
+
+## Repository
+
+```
+aria/
+  assets/                     brand + architecture diagram
+  crates/
+    aria-core/                State, Action, Engine, Inv1–4, Inv5–11 gates, config
+    aria-backends/            Operator implementations + the shared reference runner
+    aria-cli/                 CLI binary
+    aria-wasm/                wasm-bindgen surface
+  python/
+    aria-py/                  PyO3 extension
+    training/train_jepa.py    JEPA training with Lipschitz regularization
+    tests/                    parity + training tests
+  www/                        browser demo + Node parity harness
+  scripts/                    Σ alphabet gate, wasm build
+  docs/                       Formal specification (private — not published)
+  spec/                       TLA⁺ machine Spec (private — not published)
+```
+
+---
+
+## Documentation
+
+The formal specification, safety proofs, TLA⁺ model, rationale, performance data,
+trace families, and living changelog live in `docs/` and `spec/`. These are
+maintained locally and not published to GitHub — clone the repository to read them.
+
+- `docs/FORMAL_SPEC.md` — discrete Spec: axioms 𝔸1–4, postulates ℙ1–3, corollaries 𝐂1–8
+- `docs/SAFETY.md` — Inv1–4 inductive safety arguments
+- `docs/CONTINUOUS_REFINEMENT.md` — Level 0–1 geometry (continuous prototypes)
+- `docs/RATIONALE.md` — ontology: why not a Softmax residual-stream transformer
+- `docs/TRACES.md` — W1–W7 accept, X1–X5 reject trajectory families
+- `docs/PERFORMANCE.md` — measured throughput, scaling, simulation limits
+- `docs/CHANGELOG.log` — living history and rate-of-change record (private)
+- `spec/Aria.tla` — full discrete Spec (TLA⁺)
+- `spec/AriaMC.tla` — finite model instance for TLC
+- `spec/AriaInstance.tla` / `AriaInstance.cfg` — TLC entry point
+
+---
+
+## Requirements
+
+- **Rust** ≥ 1.97 (MSRV; workspace enforces `unsafe_code = "forbid"` + clippy pedantic)
+- **Python** ≥ 3.8 (training: PyTorch 2.4+, scipy, pytest — use `.venv`)
+- **Node** ≥ 20 (WASM parity: `wasm-bindgen` + `www/parity.mjs`)
+- `Cargo.lock` is tracked — all surfaces share identical dependency versions for
+  byte-reproducible parity guarantees.
+
+## Language stack
+
+| Layer | Language | Role |
+|---|---|---|
+| Core runtime | **Rust** | Spec state machine, invariant enforcement, WASM, C/Python ABI |
+| ML training | **Python** (PyTorch) | Learn P, I with Lipschitz regularization |
+| Formal authority | **TLA⁺** | Executable specification of admissible behaviors |
+
+---
+
+## Status
+
+| Area | State |
+|---|---|
+| Discrete Spec | **Frozen** — five actions, no enlargement |
+| TLA⁺ / TLC | **Verified** — 36049 states, Inv1–4 held |
+| Continuous annex | **Present** — Level 0–1 geometry |
+| Phase 1 — reference engine | **Complete** — OPMD 1000-step green |
+| Phase 2 — Python + WASM | **Complete** — CLI, notebook, and browser run the same schedule |
+| Phase 3 — learning loop | **Complete** — held-out JEPA residual 0.887 → 0.362, beats persistence 0.645, Lip(P) ≤ 0.49 |
+| Phase 4 — gates + backends | **Complete** — Inv5–11 toggles, backend swap, performance documented |
+| Optical **hardware** backend | Not built — the trait is the seam; ℙ1's `O(log N)` is a substrate property the electronic simulation does not evidence |
+
+---
+
+## License
+
+MIT OR Apache-2.0 — see the [License](#) file.
+
+---
+
+<p align="center">
+  <sub>Build directive: Spec fidelity over trend-chasing. Four actions + Stutter. No decoder in the core loop. No fifth named action.</sub>
+</p>
+# Aria — Product Requirements Document (PRD)
+
+**Product:** Ariadne Transformer (Aria) — universal runnable implementation  
+**Status:** Spec-complete (docs + TLA+); runtime **not** yet built  
+**Authority:** [FORMAL_SPEC.md](FORMAL_SPEC.md), [SAFETY.md](SAFETY.md), [CONTINUOUS_REFINEMENT.md](CONTINUOUS_REFINEMENT.md) (Level 0–1), [OPERATING_SCHEDULE.md](OPERATING_SCHEDULE.md), [TRACES.md](TRACES.md), [VALIDATION.md](VALIDATION.md)  
+**Non-authority:** Training hacks, fifth named actions, architecture that enlarges Spec  
+
+---
+
+## 0. Ontology and continuous Level 0–1 (first-class)
+
+### 0.1 What Aria is
+
+Aria is a **discrete-state formal specification** of an **optical–JEPA–graph dynamical system** — not a residual-stream Softmax GPT clone. Continuous geometry and dynamics (Hilbert field \(\psi\), latent \(\mathcal{Z}\), predictor \(P\), graph morphisms, diffusion samples) **induce** the named discrete transitions; they do not replace Spec.
+
+| Layer | Role | Authority |
+|-------|------|-----------|
+| **Level 0–1** | Geometry + continuous prototypes + refine/sample | [CONTINUOUS_REFINEMENT.md](CONTINUOUS_REFINEMENT.md) |
+| **Level 2** | Discrete admissible behaviors + Inv1–4 | FORMAL_SPEC, SAFETY, `spec/Aria.tla` |
+| **Level 3** | Runnable engine (this PRD) | Rust core + Python training + TLA retained |
+
+**Named actions only:** OpticalStep · Predict · Match · Diffuse (+ Stutter).  
+**Inv1–4 meanings fixed:** energy · contractivity · graph integrity · TypeOK.
+
+### 0.2 Stack split (unchanged)
+
+| Layer | Language | Why |
+|-------|----------|-----|
+| Core runtime | **Rust** | Spec state machine; Inv checks; portable |
+| ML / \(P\), \(I\), Diff heads | **Python** | Training ecosystem |
+| Formal Spec | **TLA+** | Admissible behaviors; TLC |
+
+Math does **not** force a revision of this split: continuous annex is documentation of refinement sources; execution remains discrete Spec steps in Rust with learned operators plugged in.
+
+---
+
+## 1. Executive answer: which language, and how do we run it?
+
+### Recommendation (universal)
+
+| Layer | Language | Why |
+|-------|----------|-----|
+| **Core runtime (state machine)** | **Rust** | Cross-compiles to Linux / macOS / Windows / WASM; no GIL; strong types map to TypeOK; embeddable as `cdylib` / C ABI; long-running loops without GC pauses |
+| **ML / learning of \(P\), \(I\), Diff heads** | **Python** (+ PyTorch or JAX) | Universal research ecosystem; JEPA training, data loaders, experiment harness |
+| **Formal Spec (source of truth)** | **TLA+** (already in `spec/`) | Admissible behaviors; TLC safety checks; not the production runtime |
+| **FFI / “run everywhere”** | Rust → **Python bindings** (PyO3) + optional **C ABI** + **WASM** | One core; call from Python, Node, Go, browsers, edge |
+| **Optical / hardware backend** | Trait in Rust; sim default; optional photonic plugin | Spec’s optical idealization vs electronic simulation of the same state machine |
+
+**Ship order for universal use:**
+
+1. **Reference runtime in Rust** that executes `Init` / `Next` and checks Inv1–4 after every step.  
+2. **Python package** wrapping it for notebooks, training, and scripting.  
+3. **WASM build** for browser / sandboxed “run anywhere.”  
+4. **Optional** accelerated backends (GPU for \(P\); photonic for \(U\) later).
+
+**Do not** implement the core Spec only in Python if the goal is *universal production* runtime: Python is ideal for *learning* and *orchestration*, weak as the sole long-lived state machine for graph + optical field at scale.
+
+**Do not** implement the Spec only in C++ without strong cause: higher portability tax than Rust for WASM + safe packaging.
+
+**Do not** treat TLA+ as the execution engine for products; it validates the design, it does not ship inference.
+
+### How a user “runs” Aria (target UX)
+
+```bash
+# Native (Rust binary)
+aria run --schedule opmd --eps 1 --steps 100 --input prompt.json
+
+# Python
+from aria import AriaEngine
+eng = AriaEngine.from_config("opmd")
+out = eng.step_phi(condition="token")
+
+# WASM (browser / edge)
+aria-wasm.init(); aria-wasm.step_phi({ a: "token" });
+```
+
+Every path must execute the **same** named actions and refuse transitions that violate Inv1–4.
+
+---
+
+## 2. Product vision
+
+### 2.1 Problem
+
+Mainstream transformers couple substrate (electronic matmul), prediction (token/pixel reconstruction), and memory (KV cache) without a discrete Spec of admissible behaviors. Aria is specified as a **dynamical system** with optical field \(\psi\), JEPA latent \(z\), and experience graph \(G\). There is no production implementation yet—only docs + TLA+.
+
+### 2.2 Product
+
+A **universal, Spec-faithful Aria engine**:
+
+- Runs on commodity CPUs (and optionally GPU / future optical backends).  
+- Implements exactly the four named actions + Stutter.  
+- Enforces Inv1–4 (and optional Inv5–11 operating gates).  
+- Supports conditioning \(a_t \in \{\texttt{token},\texttt{diffusion},\texttt{world\_model}\}\) (**𝐂2**).  
+- Is portable: native + Python + WASM.
+
+### 2.3 Non-goals
+
+| Non-goal | Reason |
+|----------|--------|
+| Fifth named action / new architecture | LOCK |
+| Replacing Spec with “just a big net” | Rationale / formal guarantees |
+| Photonic silicon fab in v1 | Spec idealization first; backend trait later |
+| Decoder-in-core-loop | JEPA axiom: pure latent prediction |
+| Full TLC of continuous \(\mathbb{C}^N\) | Use finite abstraction as today |
+| Multi-binary / multi-README packaging law for OPGROK | Separate monorepo concern |
+
+### 2.4 Success metrics (product)
+
+| Metric | Target |
+|--------|--------|
+| Spec fidelity | 100% transitions ∈ {OpticalStep, Predict, Match, Diffuse, Stutter} |
+| Safety | Inv1–4 true after every step in reference suite |
+| Portability | Linux + macOS + Windows builds; WASM demo |
+| Python | `pip install` (or path install) + 5-line notebook works |
+| Trace compliance | Default scheduler emits W1/W2 families ([TRACES.md](TRACES.md)); rejects X1–X5 |
+| Performance (reference) | Φ-step latency budget documented; electronic sim OK for v1 |
+
+---
+
+## 3. Users & use cases
+
+| Persona | Need |
+|---------|------|
+| **Researcher** | Train \(P\), probe JEPA residual, run schedules |
+| **Formal methods** | Replay traces, check Inv*, compare to TLA+ |
+| **Systems eng** | Embed engine in services; FFI stability |
+| **Product eng** | Condition for token vs diffusion vs world-model (**𝐂2**) |
+| **Ops** | Operating defaults: ε, K, Match/Diff policies |
+
+### Primary use cases
+
+1. **UC1 — Preferred Φ-cycle:** Run OpticalStep → Predict → Match → Diffuse for \(T\) steps.  
+2. **UC2 — Conditioning switch:** Same engine, change \(a_t\) only.  
+3. **UC3 — Experience correction:** Match with `one_edit` / `rebuild_gstar` vs expert graph.  
+4. **UC4 — Safety monitor:** Log Inv1–4 (and optional Inv5–11) each step.  
+5. **UC5 — Trace export:** Emit action sequence + residuals for validation against TRACES.  
+6. **UC6 — Universal host:** Call from Python training loop and from a static WASM page.
+
+---
+
+## 4. Spec contract (must implement)
+
+### 4.1 State
+
+```
+State {
+  psi: Complex[N]          // optical field
+  z: Latent                // JEPA embedding
+  G: TypedGraph            // experience/thought graph
+  t: u64                   // discrete clock
+  prev_res: f64 | u64      // history for Inv2
+}
+```
+
+Observable core: \((\psi, z, G, t)\). `prev_res` is auxiliary (does not enlarge Spec dynamics).
+
+### 4.2 Named actions (only)
+
+| Action | Mutates | Spec formula |
+|--------|---------|--------------|
+| **OpticalStep** | \(\psi\) | \(\psi' = U_t(\psi)\); UNCHANGED \(z,G,t\) |
+| **Predict** | \(z\) | \(z' = P(I(\psi), a_t)\); UNCHANGED \(\psi,G,t\) |
+| **Match** | \(G\) | \(G' = \mathrm{ED}(G \oplus z, G^*)\); UNCHANGED \(\psi,z,t\) |
+| **Diffuse** | \(z,t\) | \(z' = \mathrm{Diff}_G(z)\); \(t' = t+1\); UNCHANGED \(\psi,G\) |
+| **Stutter** | — | UNCHANGED all |
+
+**Next** = disjunction of the five.  
+**Preferred schedule (𝐂4):** O → P → M → D.  
+**Scheduler** is a policy layer (defaults in OPERATING_SCHEDULE); it must not invent actions.
+
+### 4.3 Primary invariants (hard fail)
+
+| Inv | Check after every transition |
+|-----|------------------------------|
+| **Inv1** | \(\mathrm{Energy}(\psi) = \mathrm{Energy}(\psi_0)\) (ideal unitary) |
+| **Inv2** | \(\mathrm{Res}(\psi,z,t) \le \mathit{prevRes} + \varepsilon\) |
+| **Inv3** | GraphOK(\(G\)) — typed nodes/edges, embeddings in \(\mathcal{Z}\) |
+| **Inv4** | TypeOK on full state |
+
+Optional operating gates Inv5–11 (stutter K, residual productivity, merge acyclicity, JEPA window, …) are **configurable**, not Spec enlargement.
+
+### 4.4 Conditioning (**𝐂2**)
+
+```
+enum Condition { Token, Diffusion, WorldModel }
+```
+
+Only changes \(a_t\) into \(P\) and Diff; same state type; no separate architectures.
+
+### 4.5 Operators to plug in
+
+| Operator | Role | v1 implementation |
+|----------|------|-------------------|
+| \(I\) | Isometry \(\mathcal{H}\to\mathcal{Z}\) | Linear isometry / learned encoder with energy-aware norm |
+| \(U_t\) | Near-unitary optical step | Householder / FFT / unitary RNN / learned unitary |
+| \(P\) | Contractive predictor | JEPA predictor MLP/Transformer-in-latent (Lip regularized) |
+| \(\mathrm{Diff}_G\) | Graph-conditioned diffusion | Message passing / score net conditioned on \(G\) |
+| \(\mathrm{ED}\) | Graph edit | identity / one_edit / rebuild_gstar policies |
+| \(d\) | Latent distance | L2 / cosine distance |
+| \(\mathrm{Energy}\) | \(\|\psi\|_2\) | Euclidean norm |
+
+All must be **trait objects / interfaces** so electronic sim and future optical hardware share one Spec runner.
+
+---
+
+## 5. Language & runtime architecture
+
+### 5.1 Why Rust for the universal core
+
+| Criterion | Rust | Pure Python | C++ |
+|-----------|------|-------------|-----|
+| Cross-platform single binary | Excellent | Interpreter required | Good, harder packaging |
+| WASM | First-class | Limited | Tooling heavier |
+| Safety around graph + field | Ownership/types | Runtime errors | Manual |
+| Embed in Python | PyO3 mature | N/A | pybind11 |
+| Long-running fidelity loops | No GC | GIL/GC | OK |
+| Universal “ship it” | High | Medium | Medium |
+
+**Conclusion:** Rust core + Python façade = universal *and* research-friendly.
+
+### 5.2 Recommended crate / package layout
+
+```
+aria/
+  docs/ ...                  # Spec (existing)
+  spec/ ...                  # TLA+ (existing)
+  crates/
+    aria-core/               # State, actions, Inv checks, scheduler
+    aria-backends/           # UnitarySim, GraphEd, Predictor traits
+    aria-cli/                # `aria` binary
+    aria-wasm/               # wasm-bindgen
+  python/
+    aria/                    # PyO3 module + pure-Python training helpers
+  tests/
+    inv_suite/               # Inv1–4 property tests
+    traces/                  # W1/W2 accept, X1–X5 reject
+  PRD.md                     # this file (or docs/PRD.md)
+```
+
+### 5.3 Core API (Rust sketch — normative shape, not final code)
+
+```rust
+pub enum Action { OpticalStep, Predict, Match, Diffuse, Stutter }
+
+pub struct State { /* psi, z, g, t, prev_res */ }
+
+pub trait OpticalBackend {
+    fn unitary_step(&self, t: u64, psi: &Field) -> Field;
+    fn energy(&self, psi: &Field) -> f64;
+}
+
+pub trait Predictor {
+    fn embed(&self, psi: &Field) -> Latent;      // I
+    fn predict(&self, z: &Latent, a: Condition) -> Latent; // P
+    fn dist(&self, a: &Latent, b: &Latent) -> f64;
+}
+
+pub trait GraphBackend {
+    fn edit(&self, g: &Graph, z: &Latent, policy: MatchPolicy, target: Option<&Graph>) -> Graph;
+    fn ok(&self, g: &Graph) -> bool;
+}
+
+pub trait Diffuser {
+    fn diffuse(&self, g: &Graph, z: &Latent) -> Latent;
+}
+
+pub struct Engine<O, P, G, D> { /* backends + config */ }
+
+impl Engine {
+    pub fn init(&self, psi0: Field, g0: Graph) -> State;
+    pub fn apply(&self, s: State, action: Action, a: Condition) -> Result<State, InvViolation>;
+    pub fn step_phi(&self, s: State, a: Condition) -> Result<State, InvViolation>; // O,P,M,D
+    pub fn check(&self, s: &State) -> InvReport;
+}
+```
+
+### 5.4 Scheduler (policy, not Spec)
+
+Default: **OPMD** (𝐂4) with:
+
+- Optical-first bias awareness (𝐂7)  
+- P-before-M when residual cold (𝐂8)  
+- Stutter budget \(K\le 2\) (𝐂5)  
+- Residual-adaptive Match eligibility (OPERATING_SCHEDULE)  
+- Match policies: `identity` | `one_edit` | `rebuild_gstar`  
+- Diff policies: `identity` | `flip` | `graph_conditioned`
+
+Scheduler outputs a stream of `Action`s; Engine only applies Spec transitions.
+
+### 5.5 Python surface
+
+```python
+from aria import AriaEngine, Condition, MatchPolicy
+
+eng = AriaEngine.load("models/aria-ref.pt")  # loads P, I weights; Rust core still runs Spec
+s = eng.init_from_text("hello")              # optional IO adapter → psi0
+s = eng.step_phi(s, condition=Condition.TOKEN)
+assert eng.invariants(s).all_ok()
+```
+
+Training of \(P\) lives in Python; after each train step, export weights into the engine’s Predictor backend. **Never train a decoder as part of the core loop.**
+
+### 5.6 Universal distribution targets
+
+| Target | Artifact |
+|--------|----------|
+| CLI | `aria` (Rust) |
+| Library | `libaria` / `aria_core` crate |
+| Python | `aria` wheel (manylinux + macOS + win) |
+| WASM | `aria_wasm` npm or raw wasm |
+| Docker | slim image with CLI + Python |
+
+---
+
+## 6. Functional requirements
+
+### FR-1 State machine
+
+- **MUST** implement Init, five actions, Next, Spec-faithful UNCHANGED clauses.  
+- **MUST** update `prev_res` on non-stutter steps as in TLA encoding.  
+- **MUST NOT** add actions or hidden global stores outside \(G\).
+
+### FR-2 Invariants
+
+- **MUST** check Inv1–4 after every `apply`.  
+- **MUST** return structured `InvViolation` (which Inv, before/after snapshot).  
+- **SHOULD** support Inv5–11 as toggles in config.
+
+### FR-3 Schedules & traces
+
+- **MUST** provide default OPMD `step_phi`.  
+- **MUST** allow custom action sequences for experiments.  
+- **SHOULD** export traces as JSONL `{t, action, res, energy, |G|}`.  
+- **MUST** document reject shapes X1–X5; optional runtime deny list.
+
+### FR-4 Conditioning
+
+- **MUST** support at least `token | diffusion | world_model`.  
+- **MUST** change only \(a_t\) for task family (**𝐂2**).
+
+### FR-5 Graph
+
+- **MUST** implement GraphOK and elementary edits (add/delete/relabel/edge) per **ℙ3**.  
+- **MUST** support Match policies identity / one_edit / rebuild.  
+- **SHOULD** implement L3 merge policy: agree → Match; else Diffuse → Match; else Stutter.
+
+### FR-6 Optical field
+
+- **MUST** treat \(\psi\) as complex vector of length \(N\).  
+- **MUST** preserve energy under OpticalStep in ideal mode (Inv1).  
+- **SHOULD** allow near-unitary with explicit ε_energy config (documented deviation from ideal).
+
+### FR-7 Predictor / JEPA
+
+- **MUST** keep \(P\) in latent space only (no core decoder).  
+- **MUST** expose residual \(\mathrm{Res}=d(z,P(I(\psi),a))\).  
+- **SHOULD** regularize Lip(\(P\)) ≤ 1 in training (**ℙ2**).
+
+### FR-8 I/O adapters (outside Spec)
+
+- Tokenize text → field/latent adapters.  
+- Optional decode heads **outside** core engine for human display only.  
+- Explicitly labeled “non-Spec façade.”
+
+### FR-9 Observability
+
+- Structured logs; optional OpenTelemetry.  
+- Metrics: residual, energy, |G|, stutter streak, JEPA window trend.
+
+### FR-10 Config
+
+YAML/TOML:
+
+```toml
+n_modes = 256
+latent_dim = 512
+eps = 1.0
+stutter_k = 2
+schedule = "opmd"
+match_policy = "identity"
+diff_policy = "identity"
+condition = "token"
+check_inv = ["inv1","inv2","inv3","inv4"]
+optional_gates = ["inv5","inv6"]
+```
+
+---
+
+## 7. Non-functional requirements
+
+| ID | Requirement |
+|----|-------------|
+| NFR-1 | Deterministic mode (seeded) for replay |
+| NFR-2 | Cross-platform CI: Linux, macOS, Windows |
+| NFR-3 | WASM build in CI |
+| NFR-4 | Property tests for Inv1–4 on random legal sequences |
+| NFR-5 | Golden traces vs TRACES accept/reject |
+| NFR-6 | Versioned model weight format + engine SemVer |
+| NFR-7 | No network required for core `apply` / `step_phi` |
+| NFR-8 | Document electronic energy ≠ optical idealization |
+
+---
+
+## 8. Security & safety product requirements
+
+- Inv violations are **hard errors** in production default (not silent clamp).  
+- Optional `strict=false` research mode logs violation and continues (never default in prod).  
+- No shell execution inside core.  
+- Model weights treated as untrusted input (size limits, checksum).  
+- Graph size caps (DoS): max nodes/edges config (aligns with finite GraphOK).
+
+---
+
+## 9. Phased delivery
+
+### Phase 0 — Spec freeze (includes continuous annex) — **done**
+
+- Discrete Spec + TLA+ + TLC Safety.  
+- **Level 0–1 continuous annex:** [CONTINUOUS_REFINEMENT.md](CONTINUOUS_REFINEMENT.md) — geometric core, continuous prototypes for all five discrete interfaces, refine-vs-sample stance, Diffuse-as-atomic-sample, epistemic labels.  
+- **Exit met:** no Spec enlargement; Inv1–4 meanings fixed; continuous annex non-vacuous and linked from FORMAL_SPEC / README / this PRD.
+
+### Phase 1 — Reference engine (MVP)
+
+- Rust `aria-core` with simulated unitary \(U\), stub \(P\), in-memory graph.  
+- Inv1–4 checks.  
+- CLI `aria step` / `aria run`.  
+- Unit + property tests.  
+- **Exit:** Inv suite green; OPMD 1k steps.
+
+### Phase 2 — Universal packaging
+
+- PyO3 `import aria`.  
+- WASM demo.  
+- Config + trace export.  
+- **Exit:** notebook + browser demo run same schedule.
+
+### Phase 3 — Learning loop
+
+- Python training for \(P\) / \(I\) with Lip regularization.  
+- Load weights into Rust Predictor.  
+- Residual / JEPA metrics.  
+- **Exit:** residual decreases on held-out trajectories without decoder in core.
+
+### Phase 4 — Scale & backends
+
+- Graph store (optional RocksDB / embedded).  
+- GPU Predictor backend.  
+- Optical backend trait pilot (if hardware available).  
+- Optional Inv5–11 enforcement profiles.  
+- **Exit:** documented perf; backend swap without Spec change.
+
+---
+
+## 10. Testing strategy
+
+| Layer | What |
+|-------|------|
+| Unit | Each action UNCHANGED clauses |
+| Invariant | Random Next sequences; fuzz until Inv break |
+| Trace | W1/W2 must pass; X1–X5 must fail or be denied |
+| Differential | Python façade == Rust core on golden inputs |
+| Formal | TLC on `AriaInstance` remains green after any Spec-affecting change |
+| Contract | No fifth action symbol in codebase (grep CI) |
+
+---
+
+## 11. API surface summary
+
+| Surface | Entry |
+|---------|--------|
+| Rust | `Engine::step_phi`, `Engine::apply` |
+| CLI | `aria run --schedule opmd --steps N` |
+| Python | `AriaEngine.step_phi` |
+| WASM | `step_phi(state, condition)` |
+| Config | TOML/YAML as above |
+| Trace | JSONL export |
+
+---
+
+## 12. Risks & mitigations
+
+| Risk | Mitigation |
+|------|------------|
+| Spec drift in code | CI: action enum frozen; TLC on Spec changes |
+| “Just train a big net” pressure | PRD non-goals; JEPA-only core review gate |
+| Python-only forever | Phase 2 packaging forced before Phase 3 scale claims |
+| Optical claims without hardware | Clear “electronic simulation of Spec” labeling |
+| Inv2 hard to learn | ε config + Lip reg + residual adaptive scheduler |
+| Graph blow-up | max \|G\| + L3 merge policy |
+
+---
+
+## 13. Open decisions (to resolve at Phase 1 kickoff)
+
+1. Latent dim / \(N\) defaults for reference model.  
+2. PyTorch vs JAX for training track.  
+3. Whether near-unitary ε_energy is allowed in production or research-only.  
+4. Default max \|G\|.  
+5. License for code (docs already Spec-only).
+
+---
+
+## 14. Acceptance criteria for “Aria runs universally”
+
+The product is **done for universal run** when:
+
+1. A user on Linux, macOS, or Windows installs **one** of: native CLI, Python wheel, or WASM demo.  
+2. They execute a preferred Φ-cycle without custom code.  
+3. Inv1–4 hold on the reference suite.  
+4. Conditioning switches between token / diffusion / world_model without loading a second architecture.  
+5. Traces export and match TRACES accept families.  
+6. Source of truth remains FORMAL_SPEC + SAFETY + TLA+; code is a refinement, not a fork.
+
+---
+
+## 15. Document control
+
+| Field | Value |
+|-------|--------|
+| Version | 1.2 |
+| Path | `docs/PRD.md` |
+| Depends on | FORMAL_SPEC, SAFETY, CONTINUOUS_REFINEMENT, OPERATING_SCHEDULE, TRACES, VALIDATION |
+| Language decision | **Rust core + Python ML + WASM**; TLA+ Spec retained |
+| Phase 0 | Complete (discrete Spec + continuous annex frozen) |
+| Next engineering step | Phase 1 `crates/aria-core` scaffold |
+
+---
+
+## 16. One-paragraph summary
+
+**To run Aria universally, assemble the Spec as a Rust state machine (portable native + WASM + Python bindings) and use Python only for learning \(P\)/\(I\) and host orchestration—not as the sole production runtime.** Code exactly the four named actions plus Stutter, enforce Inv1–4 every step, schedule by OPERATING_SCHEDULE defaults (OPMD, ε, K, residual-adaptive Match), and keep optical/hardware as swappable backends behind traits so the same transformer Spec runs on laptops, servers, browsers, and—eventually—optical engines without changing the mathematical object defined in this repository.
+# Aria — Build Status
+
+**Phase 1

@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.FOUNDED_YEAR",
+  "class": "PROP",
+  "crate": "aria_res_prop_founded_year",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.FOUNDED_YEAR",
+  "package": "aria-res-prop-founded-year",
+  "parent": "COMPANY",
+  "pass_through": false,
+  "property_key": "founded_year",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.founded_year",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/founded_year@v1",
+  "verify": true,
+  "wave": "B"
+}

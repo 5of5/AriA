@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.VERIFY",
+  "class": "PROP",
+  "crate": "aria_res_prop_verify",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.VERIFY",
+  "package": "aria-res-prop-verify",
+  "parent": "all operators",
+  "pass_through": false,
+  "property_key": "verify",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.verify",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/verify@v1",
+  "verify": true,
+  "wave": "A"
+}

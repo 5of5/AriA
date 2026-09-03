@@ -1,0 +1,33 @@
+{
+  "anchor_tags": [
+    "MARKET",
+    "CATEGORY",
+    "SEGMENT"
+  ],
+  "binary_id": "BIN.MARKET",
+  "class": "ENTITY",
+  "crate": "aria_telemetry_market",
+  "default_limit": 14,
+  "layer": "ENTITY",
+  "neo4j_pass": true,
+  "node_types": [
+    "Market",
+    "Category"
+  ],
+  "operator": "MARKET",
+  "package": "aria-telemetry-market",
+  "parent": "PORTFOLIO",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "IN_CATEGORY",
+    "ADJACENT_TO",
+    "CONTAINS_SEGMENT"
+  ],
+  "result_definition_ref": "entity.market",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/market@v1",
+  "verify": true,
+  "wave": null
+}

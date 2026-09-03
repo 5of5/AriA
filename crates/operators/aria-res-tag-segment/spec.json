@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "SEGMENT"
+  ],
+  "binary_id": "BIN.TAG.SEGMENT",
+  "class": "TAG",
+  "crate": "aria_res_tag_segment",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.SEGMENT",
+  "package": "aria-res-tag-segment",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.segment",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/segment@v1",
+  "verify": true,
+  "wave": "A"
+}

@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "LANG_PREVIOUS_COMPANY"
+  ],
+  "binary_id": "BIN.TAG.LANG_PREVIOUS_COMPANY",
+  "class": "TAG",
+  "crate": "aria_res_tag_lang_previous_company",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.LANG_PREVIOUS_COMPANY",
+  "package": "aria-res-tag-lang-previous-company",
+  "parent": "COMPANY",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.lang_previous_company",
+  "retrieval_step": "memory",
+  "taxonomy": "MAP_LANGUAGE",
+  "telemetry_fork": "aria/res/tag/lang_previous_company@v1",
+  "verify": true,
+  "wave": "B"
+}

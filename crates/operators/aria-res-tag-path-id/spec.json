@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "PATH_ID"
+  ],
+  "binary_id": "BIN.TAG.PATH_ID",
+  "class": "TAG",
+  "crate": "aria_res_tag_path_id",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "TAG.PATH_ID",
+  "package": "aria-res-tag-path-id",
+  "parent": "feed.by-name",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.path_id",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/path_id@v1",
+  "verify": true,
+  "wave": "C"
+}

@@ -10,7 +10,7 @@
 #![allow(clippy::useless_conversion)]
 
 use aria_engine_backends::runner::{self, canonical_init, sim_engine, SimEngine};
-use aria_engine_backends::DEFAULT_ITERATIONS;
+use aria_engine_backends::{BpeTokenizer, ContinuousReadout, DiscreteReadout, Readout, DEFAULT_ITERATIONS};
 use aria_engine_core::action::Action;
 use aria_engine_core::condition::Condition;
 use aria_engine_core::config::AriaConfig;
@@ -307,6 +307,198 @@ impl PyAriaEngine {
     }
 }
 
+/// A decoupled readout head (𝔸5 / 𝕃5) — decodes a finished latent `z` to
+/// either a discrete token id or a continuous action vector. Never writes
+/// back into `ψ`, `z`, `G`, or `t`; this is a pure post-hoc I/O sink, the
+/// same as `aria emit` and the WASM `emitIds`.
+#[pyclass(name = "Readout")]
+#[derive(Clone)]
+pub struct PyReadout {
+    inner: Readout,
+}
+
+#[pymethods]
+impl PyReadout {
+    /// Load an `aria-readout-v1` safetensors file (discrete or continuous).
+    #[staticmethod]
+    fn from_file(path: &str) -> PyResult<Self> {
+        Ok(PyReadout {
+            inner: Readout::from_file(path).map_err(value_err)?,
+        })
+    }
+
+    /// Load from an in-memory `aria-readout-v1` safetensors buffer.
+    #[staticmethod]
+    #[allow(clippy::needless_pass_by_value)]
+    fn from_bytes(bytes: Vec<u8>) -> PyResult<Self> {
+        Ok(PyReadout {
+            inner: Readout::from_bytes(&bytes).map_err(value_err)?,
+        })
+    }
+
+    /// A seeded, untrained discrete head — real weights, no OS entropy.
+    /// Mints an `aria-readout-v1` file before a trained head exists, same as
+    /// `aria emit --init-seeded`.
+    #[staticmethod]
+    #[pyo3(signature = (dim, vocab_size, temperature = 1.0, seed = 0))]
+    fn seeded_discrete(dim: usize, vocab_size: usize, temperature: f64, seed: u64) -> PyResult<Self> {
+        Ok(PyReadout {
+            inner: Readout::Discrete(
+                DiscreteReadout::seeded(dim, vocab_size, temperature, seed).map_err(value_err)?,
+            ),
+        })
+    }
+
+    /// A seeded, untrained continuous head.
+    #[staticmethod]
+    #[pyo3(signature = (dim, d_a, seed = 0))]
+    fn seeded_continuous(dim: usize, d_a: usize, seed: u64) -> PyResult<Self> {
+        Ok(PyReadout {
+            inner: Readout::Continuous(
+                ContinuousReadout::seeded(dim, d_a, seed).map_err(value_err)?,
+            ),
+        })
+    }
+
+    /// `"discrete"` or `"continuous"`.
+    #[getter]
+    fn kind(&self) -> &'static str {
+        match &self.inner {
+            Readout::Discrete(_) => "discrete",
+            Readout::Continuous(_) => "continuous",
+        }
+    }
+
+    #[getter]
+    fn dim(&self) -> usize {
+        self.inner.dim()
+    }
+
+    /// Greedy token id (discrete heads only). Argmax of logits, ties → lowest index.
+    #[allow(clippy::needless_pass_by_value)]
+    fn decode_id(&self, z: Vec<f64>) -> PyResult<u32> {
+        match &self.inner {
+            Readout::Discrete(h) => h.decode_id(&z).map_err(value_err),
+            Readout::Continuous(_) => Err(value_err("decode_id requires a discrete readout")),
+        }
+    }
+
+    /// Temperature-softmax probabilities over the vocabulary (discrete heads only).
+    #[allow(clippy::needless_pass_by_value)]
+    fn probs(&self, z: Vec<f64>) -> PyResult<Vec<f64>> {
+        match &self.inner {
+            Readout::Discrete(h) => h.probs(&z).map_err(value_err),
+            Readout::Continuous(_) => Err(value_err("probs requires a discrete readout")),
+        }
+    }
+
+    /// Raw logits `W · LN(z)` (discrete heads only).
+    #[allow(clippy::needless_pass_by_value)]
+    fn logits(&self, z: Vec<f64>) -> PyResult<Vec<f64>> {
+        match &self.inner {
+            Readout::Discrete(h) => h.logits(&z).map_err(value_err),
+            Readout::Continuous(_) => Err(value_err("logits requires a discrete readout")),
+        }
+    }
+
+    /// Continuous action vector `a = W · z` (continuous heads only).
+    #[allow(clippy::needless_pass_by_value)]
+    fn emit(&self, z: Vec<f64>) -> PyResult<Vec<f64>> {
+        match &self.inner {
+            Readout::Continuous(h) => h.emit(&z).map_err(value_err),
+            Readout::Discrete(_) => Err(value_err("emit requires a continuous readout")),
+        }
+    }
+
+    fn to_bytes(&self) -> PyResult<Vec<u8>> {
+        self.inner.to_bytes().map_err(value_err)
+    }
+
+    fn to_file(&self, path: &str) -> PyResult<()> {
+        self.inner.to_file(path).map_err(value_err)
+    }
+
+    fn __repr__(&self) -> String {
+        format!("Readout(kind='{}', dim={})", self.kind(), self.dim())
+    }
+}
+
+/// A deterministic byte-level BPE tokenizer — the discrete vocabulary beside
+/// a [`PyReadout`]. Identical merge table on every surface (spec §5.1 note).
+#[pyclass(name = "Tokenizer")]
+#[derive(Clone)]
+pub struct PyTokenizer {
+    inner: BpeTokenizer,
+}
+
+#[pymethods]
+impl PyTokenizer {
+    /// Spec-minimum identity tokenizer: id `i` ↔ byte `i`.
+    #[staticmethod]
+    fn bytes_identity() -> Self {
+        PyTokenizer {
+            inner: BpeTokenizer::bytes(),
+        }
+    }
+
+    /// Train BPE on `corpus` up to `vocab_size` (in `[256, 128000]`).
+    #[staticmethod]
+    #[allow(clippy::needless_pass_by_value)]
+    fn train(corpus: Vec<u8>, vocab_size: usize) -> PyResult<Self> {
+        Ok(PyTokenizer {
+            inner: BpeTokenizer::train(&corpus, vocab_size).map_err(value_err)?,
+        })
+    }
+
+    #[staticmethod]
+    fn from_file(path: &str) -> PyResult<Self> {
+        Ok(PyTokenizer {
+            inner: BpeTokenizer::from_file(path).map_err(value_err)?,
+        })
+    }
+
+    #[staticmethod]
+    fn from_json(src: &str) -> PyResult<Self> {
+        Ok(PyTokenizer {
+            inner: BpeTokenizer::from_json(src).map_err(value_err)?,
+        })
+    }
+
+    #[getter]
+    fn vocab_size(&self) -> usize {
+        self.inner.vocab_size()
+    }
+
+    /// Encode bytes with the trained merges (greedy, left-to-right).
+    #[allow(clippy::needless_pass_by_value)]
+    fn encode(&self, text: Vec<u8>) -> Vec<u32> {
+        self.inner.encode(&text)
+    }
+
+    /// Decode a single id to its piece (UTF-8 lossy for display).
+    fn decode_one(&self, id: u32) -> PyResult<String> {
+        self.inner.decode_one(id).map_err(value_err)
+    }
+
+    /// Decode a sequence of ids back to bytes.
+    #[allow(clippy::needless_pass_by_value)]
+    fn decode(&self, ids: Vec<u32>) -> PyResult<Vec<u8>> {
+        self.inner.decode(&ids).map_err(value_err)
+    }
+
+    fn to_json(&self) -> PyResult<String> {
+        self.inner.to_json().map_err(value_err)
+    }
+
+    fn to_file(&self, path: &str) -> PyResult<()> {
+        self.inner.to_file(path).map_err(value_err)
+    }
+
+    fn __repr__(&self) -> String {
+        format!("Tokenizer(vocab_size={})", self.vocab_size())
+    }
+}
+
 /// Run the reference schedule and return a summary dict.
 ///
 /// Identical in every field to `aria run` and to the WASM `run()`.
@@ -364,6 +556,19 @@ fn run_trace_jsonl(py: Python<'_>, steps: u64, config: Option<PyConfig>) -> PyRe
     Ok(outcome.trace.to_jsonl())
 }
 
+/// Replay Φ and return the post-step latent `z` after every action.
+///
+/// The same seam `aria emit` and the WASM `emitIds` use to recover `z`
+/// without writing it into the JSONL trace. Pairs with [`PyReadout`] /
+/// [`PyTokenizer`] to decode a run to tokens entirely from a notebook —
+/// previously the only surface with no path from a run to decoded output.
+#[pyfunction]
+#[pyo3(signature = (steps = 1000, config = None))]
+fn latents(py: Python<'_>, steps: u64, config: Option<PyConfig>) -> PyResult<Vec<Vec<f64>>> {
+    let cfg = config.map(|c| c.inner).unwrap_or_default();
+    py.allow_threads(|| runner::latents_of(cfg, steps)).map_err(runtime_err)
+}
+
 /// The five named actions: Σ = {OpticalStep, Predict, Match, Diffuse, Stutter}.
 #[pyfunction]
 fn actions() -> Vec<String> {
@@ -389,8 +594,11 @@ fn aria(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_class::<PyState>()?;
     m.add_class::<PyInvariantReport>()?;
     m.add_class::<PyAriaEngine>()?;
+    m.add_class::<PyReadout>()?;
+    m.add_class::<PyTokenizer>()?;
     m.add_function(wrap_pyfunction!(run, m)?)?;
     m.add_function(wrap_pyfunction!(run_trace_jsonl, m)?)?;
+    m.add_function(wrap_pyfunction!(latents, m)?)?;
     m.add_function(wrap_pyfunction!(actions, m)?)?;
     m.add_function(wrap_pyfunction!(power_iteration, m)?)?;
     m.add("__version__", env!("CARGO_PKG_VERSION"))?;

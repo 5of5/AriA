@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "IND_FINTECH"
+  ],
+  "binary_id": "BIN.TAG.IND_FINTECH",
+  "class": "TAG",
+  "crate": "aria_res_tag_ind_fintech",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.IND_FINTECH",
+  "package": "aria-res-tag-ind-fintech",
+  "parent": "MARKET",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.ind_fintech",
+  "retrieval_step": "memory",
+  "taxonomy": "INDUSTRY_TYPE",
+  "telemetry_fork": "aria/res/tag/ind_fintech@v1",
+  "verify": true,
+  "wave": "A"
+}

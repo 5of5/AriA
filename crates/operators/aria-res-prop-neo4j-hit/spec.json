@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.NEO4J_HIT",
+  "class": "PROP",
+  "crate": "aria_res_prop_neo4j_hit",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.NEO4J_HIT",
+  "package": "aria-res-prop-neo4j-hit",
+  "parent": "all operators",
+  "pass_through": false,
+  "property_key": "neo4j_hit",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.neo4j_hit",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/neo4j_hit@v1",
+  "verify": true,
+  "wave": "A"
+}

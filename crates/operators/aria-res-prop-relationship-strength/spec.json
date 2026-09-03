@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.RELATIONSHIP_STRENGTH",
+  "class": "PROP",
+  "crate": "aria_res_prop_relationship_strength",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.RELATIONSHIP_STRENGTH",
+  "package": "aria-res-prop-relationship-strength",
+  "parent": "CUSTOMER",
+  "pass_through": false,
+  "property_key": "relationship_strength",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.relationship_strength",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/relationship_strength@v1",
+  "verify": true,
+  "wave": "B"
+}

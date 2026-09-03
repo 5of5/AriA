@@ -1,0 +1,34 @@
+{
+  "anchor_tags": [
+    "PORTFOLIO",
+    "MARKET_MAP",
+    "CURRENT_CONTEXT_VERSION"
+  ],
+  "binary_id": "BIN.PORTFOLIO",
+  "class": "ENVELOPE",
+  "crate": "aria_telemetry_portfolio",
+  "default_limit": null,
+  "layer": "ENVELOPE",
+  "neo4j_pass": true,
+  "node_types": [
+    "Portfolio",
+    "MarketMap",
+    "Workspace"
+  ],
+  "operator": "PORTFOLIO",
+  "package": "aria-telemetry-portfolio",
+  "parent": "\u2014",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "CONTAINS_MAP",
+    "SCOPED_TO",
+    "VERSION_OF"
+  ],
+  "result_definition_ref": "portfolio.envelope",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/portfolio@v1",
+  "verify": true,
+  "wave": null
+}

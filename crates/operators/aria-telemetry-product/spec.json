@@ -1,0 +1,33 @@
+{
+  "anchor_tags": [
+    "PRODUCT",
+    "CAPABILITY",
+    "LAYER"
+  ],
+  "binary_id": "BIN.PRODUCT",
+  "class": "ENTITY",
+  "crate": "aria_telemetry_product",
+  "default_limit": 18,
+  "layer": "ENTITY",
+  "neo4j_pass": true,
+  "node_types": [
+    "Product"
+  ],
+  "operator": "PRODUCT",
+  "package": "aria-telemetry-product",
+  "parent": "COMPANY",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "OFFERED_BY",
+    "INTEGRATES_WITH",
+    "SUBSTITUTES",
+    "HAS_CAPABILITY"
+  ],
+  "result_definition_ref": "entity.product",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/product@v1",
+  "verify": true,
+  "wave": null
+}

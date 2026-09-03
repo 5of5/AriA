@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.DECAY_HALF_LIFE",
+  "class": "PROP",
+  "crate": "aria_res_prop_decay_half_life",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.DECAY_HALF_LIFE",
+  "package": "aria-res-prop-decay-half-life",
+  "parent": "SIGNAL",
+  "pass_through": false,
+  "property_key": "decay_half_life",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.decay_half_life",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/decay_half_life@v1",
+  "verify": true,
+  "wave": "C"
+}

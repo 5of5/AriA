@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "ECO_PLATFORM_OWNER"
+  ],
+  "binary_id": "BIN.TAG.ECO_PLATFORM_OWNER",
+  "class": "TAG",
+  "crate": "aria_res_tag_eco_platform_owner",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.ECO_PLATFORM_OWNER",
+  "package": "aria-res-tag-eco-platform-owner",
+  "parent": "PARTNER",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.eco_platform_owner",
+  "retrieval_step": "memory",
+  "taxonomy": "ECOSYSTEM_TAG",
+  "telemetry_fork": "aria/res/tag/eco_platform_owner@v1",
+  "verify": true,
+  "wave": "B"
+}

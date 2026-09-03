@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CO_ACQUISITION_TARGET"
+  ],
+  "binary_id": "BIN.TAG.CO_ACQUISITION_TARGET",
+  "class": "TAG",
+  "crate": "aria_res_tag_co_acquisition_target",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CO_ACQUISITION_TARGET",
+  "package": "aria-res-tag-co-acquisition-target",
+  "parent": "COMPANY",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.co_acquisition_target",
+  "retrieval_step": "memory",
+  "taxonomy": "COMPANY_TYPE",
+  "telemetry_fork": "aria/res/tag/co_acquisition_target@v1",
+  "verify": true,
+  "wave": "A"
+}

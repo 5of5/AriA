@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "SELLER_TAG"
+  ],
+  "binary_id": "BIN.TAG.SELLER_TAG",
+  "class": "TAG",
+  "crate": "aria_res_tag_seller_tag",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.SELLER_TAG",
+  "package": "aria-res-tag-seller-tag",
+  "parent": "SELLER",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.seller_tag",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/seller_tag@v1",
+  "verify": true,
+  "wave": "A"
+}

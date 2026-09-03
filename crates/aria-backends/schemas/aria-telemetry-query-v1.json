@@ -1,0 +1,298 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/5of5/AriA/schemas/aria-telemetry-query-v1.json",
+  "title": "aria-telemetry-query-v1",
+  "description": "The guaranteed body of an Aria telemetry invocation. On success this object, and only this object, reaches the primary sink. It is a structured query plus its result: the host payload preserved, the typed graph Aria shaped from it, the counted facts that produced every structural decision, and an invariant receipt. It carries no Trust state, no score, no Goal disposition, and no prose - Aria is an internal transform, never a judge.",
+  "type": "object",
+  "required": ["schema", "version", "query", "graph", "records", "source", "source_sha256", "tags", "receipt"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "aria-telemetry-query-v1" },
+    "version": { "const": 1 },
+
+    "query": {
+      "description": "The normalized structured query, storable and re-issuable by the host. JSON query semantics - deliberately not openCypher. Always present, even when omitted from `return`.",
+      "type": "object",
+      "required": ["match", "where", "return"],
+      "additionalProperties": false,
+      "properties": {
+        "match": {
+          "type": "object",
+          "required": ["nodes", "edges"],
+          "additionalProperties": false,
+          "properties": {
+            "nodes": { "type": "string", "description": "'*' selects all. Type filters arrive in a later version." },
+            "edges": { "type": "string", "description": "'*' selects all." }
+          }
+        },
+        "where": {
+          "type": "object",
+          "required": ["tau", "include_full_graph"],
+          "additionalProperties": false,
+          "properties": {
+            "edge_types": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Empty means no filter, never 'match nothing'."
+            },
+            "binary_types": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Empty means no filter."
+            },
+            "tau": {
+              "type": "number",
+              "description": "The merge radius the run used. Reported for recomputation; never re-applied to Phi after the fact."
+            },
+            "include_full_graph": {
+              "type": "boolean",
+              "description": "true: `graph` is the full G. false: `graph` is the pruned probable view."
+            }
+          }
+        },
+        "return": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Which envelope keys to include. `query` and `receipt` are always present regardless."
+        }
+      }
+    },
+
+    "graph": { "$ref": "aria-graph-ipo-v1.json" },
+
+    "records": {
+      "type": "object",
+      "description": "Every ingested host identity, keyed by decimal graph node id. This is where 'remove nothing' is honored: labels, notes, and unknown host keys survive here rather than being dropped once the embedding is computed.",
+      "propertyNames": { "pattern": "^[0-9]+$" },
+      "additionalProperties": { "$ref": "#/$defs/record" }
+    },
+
+    "source": {
+      "description": "The complete parsed host payload. Semantic losslessness is asserted by parsed-value equality with the input."
+    },
+
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "SHA-256 over the exact original input bytes. Byte provenance, complementing the parsed `source`."
+    },
+
+    "structure": {
+      "description": "Deterministic structure measurements, present when the payload was tabular. Absent for explicit-graph payloads.",
+      "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/structureReport" }]
+    },
+
+    "tags": {
+      "description": "The probable, pruned, natural tagging of the whole map. A view over G, not a second transformer.",
+      "type": "object",
+      "required": ["policy", "tau", "pruned", "clusters", "probable_edges", "binary_index"],
+      "additionalProperties": false,
+      "properties": {
+        "policy": { "type": "string", "description": "Match policy wire name." },
+        "tau": { "type": "number" },
+        "pruned": { "type": "boolean", "description": "Whether self-loops and duplicate morphs were dropped from the view. Host-supplied edges are never pruned." },
+        "clusters": {
+          "type": "array",
+          "description": "Cluster decomposition. Empty array when not computed - never null.",
+          "items": {
+            "type": "object",
+            "required": ["id", "label", "node_ids", "connectivity"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "integer", "minimum": 0 },
+              "label": { "type": "string" },
+              "node_ids": { "type": "array", "items": { "type": "integer", "minimum": 0 } },
+              "connectivity": { "type": "number", "description": "Algebraic connectivity lambda_2 of the sub-cluster." }
+            }
+          }
+        },
+        "probable_edges": {
+          "type": "array",
+          "description": "Host edges plus tau-near pairs, re-checked in the engine's own f64 metric. Every endpoint must be a node of `graph`.",
+          "items": { "$ref": "aria-graph-ipo-v1.json#/$defs/edge" }
+        },
+        "binary_index": {
+          "type": "object",
+          "description": "Relation type -> binary types present. The inverted routing index a host filters on.",
+          "additionalProperties": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+
+    "ledger": {
+      "description": "Passive observer output, present when requested. The observer never alters the action sequence (C2), so its presence cannot change any other field."
+    },
+
+    "receipt": { "$ref": "#/$defs/receipt" },
+
+    "ocid": {
+      "description": "Observation Commitment IDentifier, present when the host requested one. Binds payload, configuration and output under one recomputable hash, optionally anchored to a verified Ed25519 public key. Aria holds no private key and never signs - a signing key is a credential the refusal surface forbids. The host authority signs; Aria verifies and commits.",
+      "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/ocid" }]
+    }
+  },
+
+  "$defs": {
+    "record": {
+      "type": "object",
+      "required": ["id", "anchor"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "integer", "minimum": 0 },
+        "host_id": { "description": "The host's own identity value, verbatim." },
+        "label": { "type": "string" },
+        "notes": { "type": "string", "description": "Free text the embedding was computed from, unmodified." },
+        "properties": {
+          "type": "object",
+          "description": "Every remaining host key, preserved exactly."
+        },
+        "binary_type": { "type": "string" },
+        "anchor": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "SHA-256 over this record's canonical JSON. Identity and provenance only - never a semantic label, never evidence about host truth."
+        }
+      }
+    },
+
+    "columnStat": {
+      "description": "Per-column measurement plus the rule that fired. Every field is a count or a ratio of counts, so a host can recompute all of them from `source` and falsify the role. That self-refutation property is what separates telemetry from judgement.",
+      "type": "object",
+      "required": ["column", "role", "rule", "n_rows", "present", "distinct", "coverage", "uniqueness", "singletons"],
+      "additionalProperties": false,
+      "properties": {
+        "column": { "type": "string" },
+        "role": {
+          "enum": ["key_anchor", "near_key_anchor", "facet", "free_attribute", "constant", "empty"],
+          "description": "Derived from counted facts only. No column name, no cell semantics, and no learned weight participates - which is what makes the assignment invariant under row permutation and column rename."
+        },
+        "rule": { "type": "string", "description": "The predicate that selected the role, as text." },
+        "n_rows": { "type": "integer", "minimum": 0 },
+        "present": { "type": "integer", "minimum": 0, "description": "Rows where the column was non-null and non-empty." },
+        "distinct": { "type": "integer", "minimum": 0, "description": "Distinct canonical values among present rows." },
+        "coverage": { "type": "number", "description": "present / n_rows." },
+        "uniqueness": { "type": "number", "description": "distinct / present, or 0 when present is 0." },
+        "singletons": { "type": "integer", "minimum": 0, "description": "Distinct values occurring exactly once among present rows - the value-level anchors." }
+      }
+    },
+
+    "structureReport": {
+      "type": "object",
+      "required": ["n_rows", "columns", "functional_deps", "thresholds", "dependency_scan_complete"],
+      "additionalProperties": false,
+      "properties": {
+        "n_rows": { "type": "integer", "minimum": 0 },
+        "columns": { "type": "array", "items": { "$ref": "#/$defs/columnStat" } },
+        "functional_deps": {
+          "type": "array",
+          "description": "Measured dependencies: every distinct `from` value maps to exactly one `to` value wherever both are present. This is the hierarchy source (the city -> country shape).",
+          "items": {
+            "type": "object",
+            "required": ["from", "to", "distinct_from", "distinct_to", "support"],
+            "additionalProperties": false,
+            "properties": {
+              "from": { "type": "string" },
+              "to": { "type": "string" },
+              "distinct_from": { "type": "integer", "minimum": 0 },
+              "distinct_to": { "type": "integer", "minimum": 0 },
+              "support": { "type": "integer", "minimum": 0, "description": "Rows where both columns were present." }
+            }
+          }
+        },
+        "thresholds": {
+          "type": "object",
+          "required": ["near_key_coverage", "facet_max_distinct", "facet_max_ratio"],
+          "additionalProperties": false,
+          "properties": {
+            "near_key_coverage": { "type": "number" },
+            "facet_max_distinct": { "type": "integer", "minimum": 0 },
+            "facet_max_ratio": { "type": "number" }
+          }
+        },
+        "dependency_scan_complete": {
+          "type": "boolean",
+          "description": "false when the pair scan hit its bound; the reported dependencies are then a prefix, not the full set."
+        }
+      }
+    },
+
+    "ocid": {
+      "type": "object",
+      "required": ["schema", "ocid", "binds"],
+      "additionalProperties": false,
+      "properties": {
+        "schema": { "const": "aria-ocid-v1" },
+        "ocid": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "SHA-256 over a length-prefixed, domain-separated preimage of every bound digest. Each field is prefixed with its length as 8 big-endian bytes: plain concatenation would be ambiguous, since ('ab','c') and ('a','bc') would otherwise commit identically."
+        },
+        "key": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "The Ed25519 public key bound in, when supplied."
+        },
+        "signature_verified": {
+          "type": "boolean",
+          "description": "true when a supplied signature verified over the exact payload bytes using verify_strict (which rejects small-order keys). false is never emitted: a failed verification is a hard error, not a field, because a document saying 'this did not verify' invites a host to ignore it."
+        },
+        "note": {
+          "type": "string",
+          "description": "Why signature verification was not performed, when it was not."
+        },
+        "binds": {
+          "type": "object",
+          "description": "The exact digests the commitment binds, emitted so a third party can recompute each one independently rather than trusting the total.",
+          "required": ["domain", "public_key", "source_sha256", "config_sha256", "graph_sha256", "structure_sha256"],
+          "additionalProperties": false,
+          "properties": {
+            "domain": { "const": "aria-ocid-v1" },
+            "public_key": { "type": "string", "description": "64 hex digits, or empty when unbound." },
+            "source_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+            "config_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$", "description": "Over the canonical trajectory-defining configuration: n_modes, latent_dim, eps, seed, schedule, match_policy, merge_tau, steps. Every one of these is reported in the receipt, which is what makes the commitment fully recomputable from the document alone." },
+            "graph_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+            "structure_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+          }
+        }
+      }
+    },
+
+    "receipt": {
+      "description": "What the run measured. Reports invariants only - never Trust, never a coverage score, never a Goal disposition.",
+      "type": "object",
+      "required": ["invariants_ok", "failures", "steps", "t", "node_count", "edge_count", "input_node_count", "transform_node_count", "energy", "residual", "predictor", "match_policy", "n_modes", "latent_dim", "eps", "schedule", "limits"],
+      "additionalProperties": false,
+      "properties": {
+        "invariants_ok": { "type": "boolean", "description": "Inv1-Inv4 on the final state." },
+        "failures": { "type": "array", "items": { "type": "string" } },
+        "steps": { "type": "integer", "minimum": 0 },
+        "t": { "type": "integer", "minimum": 0 },
+        "node_count": { "type": "integer", "minimum": 0 },
+        "edge_count": { "type": "integer", "minimum": 0 },
+        "input_node_count": { "type": "integer", "minimum": 0, "description": "Nodes shaped from the payload." },
+        "transform_node_count": { "type": "integer", "minimum": 0, "description": "Nodes Phi created." },
+        "energy": { "type": "number" },
+        "residual": { "type": "number" },
+        "predictor": { "type": "string", "enum": ["sim", "trained"] },
+        "match_policy": { "type": "string" },
+        "seed": { "type": "integer", "minimum": 0 },
+        "n_modes": { "type": "integer", "minimum": 1, "description": "Optical modes N. Present so the OCID config digest is recomputable from the document." },
+        "latent_dim": { "type": "integer", "minimum": 1, "description": "Latent dimension dim(Z)." },
+        "eps": { "type": "number", "description": "Contractivity tolerance epsilon." },
+        "schedule": { "type": "string", "description": "The schedule the scheduler ran." },
+        "limits": {
+          "type": "object",
+          "description": "Deterministic ceilings in force. A serverless invocation of untrusted JSON is bounded before allocation, not discovered to be unbounded later.",
+          "required": ["max_input_bytes", "max_nodes", "max_edges", "max_steps", "max_dependency_pairs"],
+          "additionalProperties": false,
+          "properties": {
+            "max_input_bytes": { "type": "integer", "minimum": 0 },
+            "max_nodes": { "type": "integer", "minimum": 0 },
+            "max_edges": { "type": "integer", "minimum": 0 },
+            "max_steps": { "type": "integer", "minimum": 0 },
+            "max_dependency_pairs": { "type": "integer", "minimum": 0 }
+          }
+        }
+      }
+    }
+  }
+}

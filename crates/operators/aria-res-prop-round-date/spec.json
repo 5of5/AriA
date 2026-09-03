@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.ROUND_DATE",
+  "class": "PROP",
+  "crate": "aria_res_prop_round_date",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.ROUND_DATE",
+  "package": "aria-res-prop-round-date",
+  "parent": "SIGNAL",
+  "pass_through": false,
+  "property_key": "round_date",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.round_date",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/round_date@v1",
+  "verify": true,
+  "wave": "B"
+}

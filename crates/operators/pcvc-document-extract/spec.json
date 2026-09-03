@@ -1,0 +1,25 @@
+{
+  "anchor_tags": [
+    "DOCUMENT_CLASS",
+    "BYTES"
+  ],
+  "binary_id": "BIN.DOC_EXTRACT",
+  "class": "HOST",
+  "crate": "pcvc_document_extract",
+  "default_limit": null,
+  "layer": "HOST",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "document-extract",
+  "package": "pcvc-document-extract",
+  "parent": "\u2014",
+  "pass_through": true,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "host.document_extract",
+  "retrieval_step": "live",
+  "taxonomy": null,
+  "telemetry_fork": "pcvc/document-extract@dev",
+  "verify": false,
+  "wave": null
+}

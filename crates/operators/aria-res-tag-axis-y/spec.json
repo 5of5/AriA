@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "AXIS_Y"
+  ],
+  "binary_id": "BIN.TAG.AXIS_Y",
+  "class": "TAG",
+  "crate": "aria_res_tag_axis_y",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "TAG.AXIS_Y",
+  "package": "aria-res-tag-axis-y",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.axis_y",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/axis_y@v1",
+  "verify": true,
+  "wave": "B"
+}

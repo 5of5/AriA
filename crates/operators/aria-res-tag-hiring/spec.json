@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "HIRING"
+  ],
+  "binary_id": "BIN.TAG.HIRING",
+  "class": "TAG",
+  "crate": "aria_res_tag_hiring",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.HIRING",
+  "package": "aria-res-tag-hiring",
+  "parent": "SIGNAL",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.hiring",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/hiring@v1",
+  "verify": true,
+  "wave": "B"
+}

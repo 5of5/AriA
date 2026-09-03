@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "LANG_INFLUENCE_PATH"
+  ],
+  "binary_id": "BIN.TAG.LANG_INFLUENCE_PATH",
+  "class": "TAG",
+  "crate": "aria_res_tag_lang_influence_path",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.LANG_INFLUENCE_PATH",
+  "package": "aria-res-tag-lang-influence-path",
+  "parent": "PEOPLE",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.lang_influence_path",
+  "retrieval_step": "memory",
+  "taxonomy": "MAP_LANGUAGE",
+  "telemetry_fork": "aria/res/tag/lang_influence_path@v1",
+  "verify": true,
+  "wave": "B"
+}

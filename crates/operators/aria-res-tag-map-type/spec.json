@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "MAP_TYPE"
+  ],
+  "binary_id": "BIN.TAG.MAP_TYPE",
+  "class": "TAG",
+  "crate": "aria_res_tag_map_type",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.MAP_TYPE",
+  "package": "aria-res-tag-map-type",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.map_type",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/map_type@v1",
+  "verify": true,
+  "wave": "A"
+}

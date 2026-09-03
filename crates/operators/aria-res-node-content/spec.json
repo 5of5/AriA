@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.NODE.CONTENT",
+  "class": "NODE",
+  "crate": "aria_res_node_content",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [
+    "Content"
+  ],
+  "operator": "NODE.CONTENT",
+  "package": "aria-res-node-content",
+  "parent": "CLAIM",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "residual.node.content",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/node/content@v1",
+  "verify": true,
+  "wave": "A"
+}

@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.HEADCOUNT",
+  "class": "PROP",
+  "crate": "aria_res_prop_headcount",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.HEADCOUNT",
+  "package": "aria-res-prop-headcount",
+  "parent": "COMPANY",
+  "pass_through": false,
+  "property_key": "headcount",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.headcount",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/headcount@v1",
+  "verify": true,
+  "wave": "B"
+}

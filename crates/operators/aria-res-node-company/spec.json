@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.NODE.COMPANY",
+  "class": "NODE",
+  "crate": "aria_res_node_company",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [
+    "Company"
+  ],
+  "operator": "NODE.COMPANY",
+  "package": "aria-res-node-company",
+  "parent": "COMPANY",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "residual.node.company",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/node/company@v1",
+  "verify": true,
+  "wave": "A"
+}

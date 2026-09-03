@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.REL.INTEGRATES_WITH",
+  "class": "REL",
+  "crate": "aria_res_rel_integrates_with",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "REL.INTEGRATES_WITH",
+  "package": "aria-res-rel-integrates-with",
+  "parent": "PRODUCT",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "INTEGRATES_WITH"
+  ],
+  "result_definition_ref": "residual.rel.integrates_with",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/rel/integrates_with@v1",
+  "verify": true,
+  "wave": "B"
+}

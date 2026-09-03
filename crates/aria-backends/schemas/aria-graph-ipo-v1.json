@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/5of5/AriA/schemas/aria-graph-ipo-v1.json",
+  "title": "aria-graph-ipo-v1",
+  "description": "Typed experience graph exported by the Aria telemetry transform. A projection of the engine's graph G, produced strictly outside the core loop (A5/L5). Embeddings are f64; reduced precision is view-only and never appears here.",
+  "type": "object",
+  "required": ["schema", "nodes", "edges"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "aria-graph-ipo-v1"
+    },
+    "nodes": {
+      "type": "array",
+      "description": "Nodes in ascending id order.",
+      "items": { "$ref": "#/$defs/node" }
+    },
+    "edges": {
+      "type": "array",
+      "description": "Typed directed edges. Every endpoint must be a node id present in `nodes` (Inv3: no dangling edges).",
+      "items": { "$ref": "#/$defs/edge" }
+    }
+  },
+  "$defs": {
+    "origin": {
+      "description": "Provenance discriminator. `input` was shaped from the host payload during Init. `transform` is a deterministic anchor Phi created (a Match-absorbed latent); it carries no prose and asserts no host fact.",
+      "enum": ["input", "transform"]
+    },
+    "binaryType": {
+      "type": "string",
+      "description": "Host research-binary kind this element routes to. Resolved deterministically: host-supplied value, then a Custom label already containing a '.', then the fixed built-in table. Never inferred by a model."
+    },
+    "node": {
+      "type": "object",
+      "required": ["id", "type", "embedding", "timestamp", "origin"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Arena identity, unique within the envelope."
+        },
+        "type": {
+          "type": "string",
+          "description": "Wire name of the node type: observation, hypothesis, action, goal, invariant_checkpoint, or a Custom label."
+        },
+        "embedding": {
+          "type": "array",
+          "description": "Point of Z. Every component finite; all nodes share one dimension.",
+          "items": { "type": "number" }
+        },
+        "timestamp": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "origin": { "$ref": "#/$defs/origin" },
+        "binary_type": { "$ref": "#/$defs/binaryType" }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "required": ["from", "to", "type", "origin"],
+      "additionalProperties": false,
+      "properties": {
+        "from": { "type": "integer", "minimum": 0 },
+        "to": { "type": "integer", "minimum": 0 },
+        "type": {
+          "type": "string",
+          "description": "Wire name of the relation: causally_precedes, contradicts, refines, temporal_next, or a Custom label."
+        },
+        "origin": { "$ref": "#/$defs/origin" },
+        "binary_type": { "$ref": "#/$defs/binaryType" }
+      }
+    }
+  }
+}

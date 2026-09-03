@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.DISPLAY_NAME",
+  "class": "PROP",
+  "crate": "aria_res_prop_display_name",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.DISPLAY_NAME",
+  "package": "aria-res-prop-display-name",
+  "parent": "all entity",
+  "pass_through": false,
+  "property_key": "display_name",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.display_name",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/display_name@v1",
+  "verify": true,
+  "wave": "A"
+}

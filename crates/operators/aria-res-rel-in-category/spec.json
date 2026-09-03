@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.REL.IN_CATEGORY",
+  "class": "REL",
+  "crate": "aria_res_rel_in_category",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "REL.IN_CATEGORY",
+  "package": "aria-res-rel-in-category",
+  "parent": "MARKET",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "IN_CATEGORY"
+  ],
+  "result_definition_ref": "residual.rel.in_category",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/rel/in_category@v1",
+  "verify": true,
+  "wave": "B"
+}

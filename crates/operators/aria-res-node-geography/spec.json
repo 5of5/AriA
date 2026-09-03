@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.NODE.GEOGRAPHY",
+  "class": "NODE",
+  "crate": "aria_res_node_geography",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [
+    "Geography"
+  ],
+  "operator": "NODE.GEOGRAPHY",
+  "package": "aria-res-node-geography",
+  "parent": "MARKET",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "residual.node.geography",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/node/geography@v1",
+  "verify": true,
+  "wave": "A"
+}

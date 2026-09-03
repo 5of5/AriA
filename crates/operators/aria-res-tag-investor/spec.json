@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "INVESTOR"
+  ],
+  "binary_id": "BIN.TAG.INVESTOR",
+  "class": "TAG",
+  "crate": "aria_res_tag_investor",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.INVESTOR",
+  "package": "aria-res-tag-investor",
+  "parent": "VENTURE_CAPITAL",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.investor",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/investor@v1",
+  "verify": true,
+  "wave": "A"
+}

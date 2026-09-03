@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "TELEMETRY_SPINE"
+  ],
+  "binary_id": "BIN.TAG.TELEMETRY_SPINE",
+  "class": "TAG",
+  "crate": "aria_res_tag_telemetry_spine",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "TAG.TELEMETRY_SPINE",
+  "package": "aria-res-tag-telemetry-spine",
+  "parent": "AriA",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.telemetry_spine",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/telemetry_spine@v1",
+  "verify": true,
+  "wave": "C"
+}

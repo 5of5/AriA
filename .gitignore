@@ -1,3 +1,12 @@
+# Local dump analysis (garbage collection / operator scores)
+/dump/
+
+# Proprietary workbook — the binary grammar source. Local reference only;
+# the frozen public digest is crates/aria-operator/catalog/operators.json.
+/*.xlsx
+
+# One-shot measurement scratch (superseded by dump/analysis.json).
+/measure-binary-repo-now.md
 # --- OS ---
 .DS_Store
 .DS_Store?
@@ -21,12 +30,6 @@ assets/aria-v0.1.0.mmd
 plan_v0.2.0.md
 plan_v0.2.0_remaining_tasks.md
 last_tasks_towards_v.0.2.0.md
-# LNSPP / feeling kernels — local IP, not published.
-crates/aria-backends/src/observer.rs
-crates/aria-backends/src/sedenion.rs
-crates/aria-backends/tests/observer.rs
-crates/aria-backends/tests/sedenion_laplacian.rs
-crates/aria-backends/tests/market_spectral.rs
 # Python runtime + training (private; aria-py crate stays tracked via git
 # history — gitignore only blocks NEW untracked files, not existing ones).
 # WS5 will need to force-add new test files: `git add -f python/tests/test_training.py`
@@ -36,6 +39,7 @@ crates/aria-backends/tests/market_spectral.rs
 # Root-level acceptance-test corpus only. A bare `tests` pattern would also
 # ignore crates/*/tests (the Rust integration suites) and python/tests —
 # new test files written during v0.2.0 execution must be trackable.
+# Golden trace fixtures under tests/traces/ are force-added (git add -f).
 /tests/
 python/training
 python/tests
@@ -73,9 +77,6 @@ www/.cache/
 # Local scratch renders / moved snapshots (published SVG stays in assets/)
 assets/junk/
 
-# Native training engine — private IP; not published.
-crates/aria-training/
-
 # Trained weight dumps
 *.safetensors
 *.jsonl
@@ -99,6 +100,25 @@ build/
 # safety proofs, planning docs. None are published to GitHub.
 docs
 spec
+
+# Root-level planning notes are private for the same reason, and are listed
+# explicitly because the remotes are public. They quote internal product and
+# commercial material that does not belong in a public tree. Listing them here
+# means an accidental `git add -A` cannot publish them.
+/plan.md
+/plan-1.md
+/plan-3.md
+# Internal planning inside the public crate (implementation-only handoff).
+/crates/aria-operator/PLAN.md
+/crates/aria-operator/DUMP_ANALYSIS.md
+/crates/aria-operator/gen_refiners_and_docs.py
+/crates/aria-operator/generate.py
+/issues.md
+/explainer-101-lowdown-real-shit.md
+/OBJECTIVES.md
+
+# Host demo / caller façade, not part of the telemetry product itself.
+/www/
 
 # NOTE: Cargo.lock IS tracked on purpose.
 # This workspace produces binaries (aria-cli, aria-wasm cdylib), so per

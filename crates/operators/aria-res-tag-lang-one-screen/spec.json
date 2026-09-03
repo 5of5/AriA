@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "LANG_ONE_SCREEN"
+  ],
+  "binary_id": "BIN.TAG.LANG_ONE_SCREEN",
+  "class": "TAG",
+  "crate": "aria_res_tag_lang_one_screen",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.LANG_ONE_SCREEN",
+  "package": "aria-res-tag-lang-one-screen",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.lang_one_screen",
+  "retrieval_step": "memory",
+  "taxonomy": "MAP_LANGUAGE",
+  "telemetry_fork": "aria/res/tag/lang_one_screen@v1",
+  "verify": true,
+  "wave": "B"
+}

@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.CLUSTER_GRAVITY",
+  "class": "PROP",
+  "crate": "aria_res_prop_cluster_gravity",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.CLUSTER_GRAVITY",
+  "package": "aria-res-prop-cluster-gravity",
+  "parent": "MARKET",
+  "pass_through": false,
+  "property_key": "cluster_gravity",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.cluster_gravity",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/cluster_gravity@v1",
+  "verify": true,
+  "wave": "B"
+}

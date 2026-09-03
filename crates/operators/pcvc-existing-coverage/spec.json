@@ -1,0 +1,25 @@
+{
+  "anchor_tags": [
+    "EXISTING_COVERAGE",
+    "REQUIREMENT_ID"
+  ],
+  "binary_id": "BIN.EXISTING_COVERAGE",
+  "class": "HOST",
+  "crate": "pcvc_existing_coverage",
+  "default_limit": null,
+  "layer": "HOST",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "existing-coverage",
+  "package": "pcvc-existing-coverage",
+  "parent": "\u2014",
+  "pass_through": true,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "host.existing_coverage",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "pcvc/existing-coverage@dev",
+  "verify": true,
+  "wave": null
+}

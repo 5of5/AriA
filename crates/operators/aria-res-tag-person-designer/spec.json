@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "PERSON_DESIGNER"
+  ],
+  "binary_id": "BIN.TAG.PERSON_DESIGNER",
+  "class": "TAG",
+  "crate": "aria_res_tag_person_designer",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.PERSON_DESIGNER",
+  "package": "aria-res-tag-person-designer",
+  "parent": "PEOPLE",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.person_designer",
+  "retrieval_step": "memory",
+  "taxonomy": "PERSON_TYPE",
+  "telemetry_fork": "aria/res/tag/person_designer@v1",
+  "verify": true,
+  "wave": "A"
+}

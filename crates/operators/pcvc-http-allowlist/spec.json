@@ -1,0 +1,25 @@
+{
+  "anchor_tags": [
+    "API_NAME",
+    "PLAN_URL"
+  ],
+  "binary_id": "BIN.HTTP_ALLOWLIST",
+  "class": "HOST",
+  "crate": "pcvc_http_allowlist",
+  "default_limit": null,
+  "layer": "HOST",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "allowlisted-http",
+  "package": "pcvc-http-allowlist",
+  "parent": "\u2014",
+  "pass_through": true,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "host.allowlisted_http",
+  "retrieval_step": "live",
+  "taxonomy": null,
+  "telemetry_fork": "pcvc/allowlisted-http@dev",
+  "verify": true,
+  "wave": null
+}

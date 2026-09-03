@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.REL.PATH_TO",
+  "class": "REL",
+  "crate": "aria_res_rel_path_to",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "REL.PATH_TO",
+  "package": "aria-res-rel-path-to",
+  "parent": "PARTNER",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "PATH_TO"
+  ],
+  "result_definition_ref": "residual.rel.path_to",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/rel/path_to@v1",
+  "verify": true,
+  "wave": "B"
+}

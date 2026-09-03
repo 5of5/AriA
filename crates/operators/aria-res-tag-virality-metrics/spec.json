@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "VIRALITY_METRICS"
+  ],
+  "binary_id": "BIN.TAG.VIRALITY_METRICS",
+  "class": "TAG",
+  "crate": "aria_res_tag_virality_metrics",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "TAG.VIRALITY_METRICS",
+  "package": "aria-res-tag-virality-metrics",
+  "parent": "PORTFOLIO",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.virality_metrics",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/virality_metrics@v1",
+  "verify": true,
+  "wave": "C"
+}

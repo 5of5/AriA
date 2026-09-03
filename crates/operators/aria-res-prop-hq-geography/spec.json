@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.HQ_GEOGRAPHY",
+  "class": "PROP",
+  "crate": "aria_res_prop_hq_geography",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.HQ_GEOGRAPHY",
+  "package": "aria-res-prop-hq-geography",
+  "parent": "COMPANY",
+  "pass_through": false,
+  "property_key": "hq_geography",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.hq_geography",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/hq_geography@v1",
+  "verify": true,
+  "wave": "B"
+}

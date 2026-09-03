@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.RESULTDEFINITIONREF",
+  "class": "PROP",
+  "crate": "aria_res_prop_resultdefinitionref",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.RESULTDEFINITIONREF",
+  "package": "aria-res-prop-resultdefinitionref",
+  "parent": "all operators",
+  "pass_through": false,
+  "property_key": "resultDefinitionRef",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.resultdefinitionref",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/resultdefinitionref@v1",
+  "verify": true,
+  "wave": "A"
+}

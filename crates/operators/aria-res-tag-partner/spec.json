@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "PARTNER"
+  ],
+  "binary_id": "BIN.TAG.PARTNER",
+  "class": "TAG",
+  "crate": "aria_res_tag_partner",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.PARTNER",
+  "package": "aria-res-tag-partner",
+  "parent": "PARTNER",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.partner",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/partner@v1",
+  "verify": true,
+  "wave": "A"
+}

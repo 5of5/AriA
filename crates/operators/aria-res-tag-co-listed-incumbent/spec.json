@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CO_LISTED_INCUMBENT"
+  ],
+  "binary_id": "BIN.TAG.CO_LISTED_INCUMBENT",
+  "class": "TAG",
+  "crate": "aria_res_tag_co_listed_incumbent",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CO_LISTED_INCUMBENT",
+  "package": "aria-res-tag-co-listed-incumbent",
+  "parent": "COMPANY",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.co_listed_incumbent",
+  "retrieval_step": "memory",
+  "taxonomy": "COMPANY_TYPE",
+  "telemetry_fork": "aria/res/tag/co_listed_incumbent@v1",
+  "verify": true,
+  "wave": "A"
+}

@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CAT_BRIEF"
+  ],
+  "binary_id": "BIN.TAG.CAT_BRIEF",
+  "class": "TAG",
+  "crate": "aria_res_tag_cat_brief",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CAT_BRIEF",
+  "package": "aria-res-tag-cat-brief",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.cat_brief",
+  "retrieval_step": "memory",
+  "taxonomy": "CATEGORY_TAG",
+  "telemetry_fork": "aria/res/tag/cat_brief@v1",
+  "verify": true,
+  "wave": "A"
+}
