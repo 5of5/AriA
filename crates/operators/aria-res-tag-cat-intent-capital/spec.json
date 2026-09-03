@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CAT_INTENT_CAPITAL"
+  ],
+  "binary_id": "BIN.TAG.CAT_INTENT_CAPITAL",
+  "class": "TAG",
+  "crate": "aria_res_tag_cat_intent_capital",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CAT_INTENT_CAPITAL",
+  "package": "aria-res-tag-cat-intent-capital",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.cat_intent_capital",
+  "retrieval_step": "memory",
+  "taxonomy": "CATEGORY_TAG",
+  "telemetry_fork": "aria/res/tag/cat_intent_capital@v1",
+  "verify": true,
+  "wave": "A"
+}

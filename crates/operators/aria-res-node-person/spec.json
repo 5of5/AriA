@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.NODE.PERSON",
+  "class": "NODE",
+  "crate": "aria_res_node_person",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [
+    "Person"
+  ],
+  "operator": "NODE.PERSON",
+  "package": "aria-res-node-person",
+  "parent": "PEOPLE",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "residual.node.person",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/node/person@v1",
+  "verify": true,
+  "wave": "A"
+}

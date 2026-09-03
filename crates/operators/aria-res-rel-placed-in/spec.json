@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.REL.PLACED_IN",
+  "class": "REL",
+  "crate": "aria_res_rel_placed_in",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "REL.PLACED_IN",
+  "package": "aria-res-rel-placed-in",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "PLACED_IN"
+  ],
+  "result_definition_ref": "residual.rel.placed_in",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/rel/placed_in@v1",
+  "verify": true,
+  "wave": "B"
+}

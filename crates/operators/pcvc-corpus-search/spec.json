@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CORPUS",
+    "QUERY",
+    "ELIGIBLE"
+  ],
+  "binary_id": "BIN.CORPUS_SEARCH",
+  "class": "HOST",
+  "crate": "pcvc_corpus_search",
+  "default_limit": null,
+  "layer": "HOST",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "corpus-search",
+  "package": "pcvc-corpus-search",
+  "parent": "\u2014",
+  "pass_through": true,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "host.corpus_search",
+  "retrieval_step": "lift",
+  "taxonomy": null,
+  "telemetry_fork": "pcvc/corpus-search@dev",
+  "verify": true,
+  "wave": null
+}

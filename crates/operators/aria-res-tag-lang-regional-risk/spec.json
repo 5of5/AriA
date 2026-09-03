@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "LANG_REGIONAL_RISK"
+  ],
+  "binary_id": "BIN.TAG.LANG_REGIONAL_RISK",
+  "class": "TAG",
+  "crate": "aria_res_tag_lang_regional_risk",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.LANG_REGIONAL_RISK",
+  "package": "aria-res-tag-lang-regional-risk",
+  "parent": "MARKET",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.lang_regional_risk",
+  "retrieval_step": "memory",
+  "taxonomy": "MAP_LANGUAGE",
+  "telemetry_fork": "aria/res/tag/lang_regional_risk@v1",
+  "verify": true,
+  "wave": "B"
+}

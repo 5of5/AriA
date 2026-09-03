@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "GEO_SCOPE"
+  ],
+  "binary_id": "BIN.TAG.GEO_SCOPE",
+  "class": "TAG",
+  "crate": "aria_res_tag_geo_scope",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.GEO_SCOPE",
+  "package": "aria-res-tag-geo-scope",
+  "parent": "MARKET",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.geo_scope",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/geo_scope@v1",
+  "verify": true,
+  "wave": "B"
+}

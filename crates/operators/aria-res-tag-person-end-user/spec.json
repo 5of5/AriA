@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "PERSON_END_USER"
+  ],
+  "binary_id": "BIN.TAG.PERSON_END_USER",
+  "class": "TAG",
+  "crate": "aria_res_tag_person_end_user",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.PERSON_END_USER",
+  "package": "aria-res-tag-person-end-user",
+  "parent": "CUSTOMER",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.person_end_user",
+  "retrieval_step": "memory",
+  "taxonomy": "PERSON_TYPE",
+  "telemetry_fork": "aria/res/tag/person_end_user@v1",
+  "verify": true,
+  "wave": "A"
+}

@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.SIGNAL_TYPE",
+  "class": "PROP",
+  "crate": "aria_res_prop_signal_type",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.SIGNAL_TYPE",
+  "package": "aria-res-prop-signal-type",
+  "parent": "SIGNAL",
+  "pass_through": false,
+  "property_key": "signal_type",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.signal_type",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/signal_type@v1",
+  "verify": true,
+  "wave": "B"
+}

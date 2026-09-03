@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.SEGMENT",
+  "class": "PROP",
+  "crate": "aria_res_prop_segment",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.SEGMENT",
+  "package": "aria-res-prop-segment",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": "segment",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.segment",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/segment@v1",
+  "verify": true,
+  "wave": "B"
+}

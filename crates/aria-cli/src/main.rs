@@ -349,11 +349,214 @@ enum Commands {
         d_cap: usize,
     },
 
+    /// Run the whole telemetry operation: JSON in, guaranteed JSON query out.
+    ///
+    /// This is the callable a host research binary wraps. It ingests a full
+    /// payload (a literal spreadsheet, a typed graph, or a note list) as `G₀`,
+    /// runs a bounded Φ schedule, and writes exactly one
+    /// `aria-telemetry-query-v1` document: the structured query, the typed
+    /// graph, every host record preserved, the counted facts behind each
+    /// structural decision, a probable pruned map view, and an invariant
+    /// receipt.
+    ///
+    /// Aria is an internal transform here, not a judge. The envelope carries no
+    /// Trust state, no coverage score, no Goal disposition, and no prose. No
+    /// prior training is required — omit `--predictor` and the seeded stub
+    /// produces a valid body.
+    ///
+    /// Exit codes are meant to be branched on by a coordinator:
+    /// 0 envelope written · 1 invariant failure · 2 config/schema/resource ·
+    /// 3 I/O. On any non-zero exit the primary sink is left untouched, so a
+    /// partial envelope can never be mistaken for a result.
+    Node {
+        /// Payload JSON. `-` or omitted reads stdin.
+        #[arg(long)]
+        r#in: Option<PathBuf>,
+
+        /// Write the envelope here (stdout when omitted).
+        #[arg(short, long)]
+        out: Option<PathBuf>,
+
+        /// Φ steps to run.
+        #[arg(long, default_value = "32")]
+        steps: u64,
+
+        /// Seed for reproducibility. Equal payload + config + seed ⇒ equal bytes.
+        #[arg(long)]
+        seed: Option<u64>,
+
+        /// Number of optical modes N.
+        #[arg(long)]
+        n_modes: Option<usize>,
+
+        /// Latent dimension dim(Z).
+        #[arg(long)]
+        latent_dim: Option<usize>,
+
+        /// Match policy. Defaults to `merge` for this subcommand: identity
+        /// saturates |V| and yields an empty map (issue #11).
+        #[arg(long)]
+        match_policy: Option<String>,
+
+        /// Merge distance τ.
+        #[arg(long)]
+        merge_tau: Option<f64>,
+
+        /// Trained predictor weights (JSON v1 or safetensors v2). Optional.
+        #[arg(long)]
+        predictor: Option<PathBuf>,
+
+        /// Attach the passive observer ledger (ℂ2: cannot change the run).
+        #[arg(long)]
+        observe: bool,
+
+        /// Pretty-print the envelope. Off by default so stdout is byte-stable.
+        #[arg(long)]
+        pretty: bool,
+
+        /// Also write just the graph IPO object here.
+        #[arg(long)]
+        graph_out: Option<PathBuf>,
+
+        /// Also write just the observer ledger here (implies --observe).
+        #[arg(long)]
+        ledger_out: Option<PathBuf>,
+
+        /// Also write just the receipt here.
+        #[arg(long)]
+        receipt_out: Option<PathBuf>,
+
+        /// Maximum accepted payload size in bytes.
+        #[arg(long)]
+        max_input_bytes: Option<usize>,
+
+        /// Maximum host nodes admitted to G₀.
+        #[arg(long)]
+        max_nodes: Option<usize>,
+
+        /// Maximum host edges admitted to G₀.
+        #[arg(long)]
+        max_edges: Option<usize>,
+
+        /// Maximum Φ steps permitted.
+        #[arg(long)]
+        max_steps: Option<u64>,
+
+        /// Ed25519 **public** key (64 hex digits) to bind into the OCID.
+        ///
+        /// Aria never holds a private key — a signing key is a credential, and
+        /// this binary is a transform, not an authority. Supplying a public key
+        /// anchors the commitment to an identity; supplying `--ocid-sig` as
+        /// well proves custody of the payload.
+        #[arg(long)]
+        ocid_key: Option<String>,
+
+        /// Ed25519 signature (128 hex digits) over the exact payload bytes.
+        ///
+        /// Verified with `verify_strict`, which rejects small-order keys.
+        /// Requires `--ocid-key`. A signature that does not verify is a hard
+        /// failure (exit 2), never a document with a warning field.
+        #[arg(long)]
+        ocid_sig: Option<String>,
+    },
+
+    /// Independently verify the OCID on an envelope this binary did not produce.
+    ///
+    /// Recomputes every digest the commitment binds — payload, configuration,
+    /// graph, structure — from the envelope's own content plus the original
+    /// payload bytes, then recomputes the commitment. Passing means the graph
+    /// in that document came from exactly that payload under exactly that
+    /// configuration.
+    ///
+    /// Requires no trust in Aria, no access to its internals, and no key.
+    Ocid {
+        /// The `aria-telemetry-query-v1` document to check.
+        #[arg(long)]
+        envelope: PathBuf,
+
+        /// The exact payload bytes the envelope was produced from.
+        #[arg(long)]
+        payload: PathBuf,
+    },
+}
+
+/// Exit codes for `aria node`, so a caller can branch on the class
+/// of failure instead of parsing stderr.
+///
+/// Deliberately scoped to this subcommand: `run` and `verify` keep their
+/// existing single-failure behavior and their committed goldens.
+mod node_exit {
+    /// Envelope written, Inv1–4 held.
+    pub const OK: u8 = 0;
+    /// Invariant failure — Φ ran but the state is not admissible.
+    pub const INVARIANT: u8 = 1;
+    /// Config, schema, GraphOK, predictor-dimension, or resource failure.
+    pub const CONFIG: u8 = 2;
+    /// Could not read the payload or write the sink.
+    pub const IO: u8 = 3;
+}
+
+/// A `node` failure carrying the exit class the coordinator should see.
+struct NodeError {
+    code: u8,
+    message: String,
+}
+
+impl NodeError {
+    fn config(message: impl Into<String>) -> Self {
+        NodeError {
+            code: node_exit::CONFIG,
+            message: message.into(),
+        }
+    }
+    fn io(message: impl Into<String>) -> Self {
+        NodeError {
+            code: node_exit::IO,
+            message: message.into(),
+        }
+    }
+    fn invariant(message: impl Into<String>) -> Self {
+        NodeError {
+            code: node_exit::INVARIANT,
+            message: message.into(),
+        }
+    }
 }
 
 fn main() -> ExitCode {
     env_logger::init();
     let cli = Cli::parse();
+
+    // `node` owns a richer exit vocabulary than the rest of the CLI, because a
+    // coordinator releasing a worker needs to distinguish "the payload was
+    // malformed" from "Φ ran and the state was inadmissible". Every other
+    // subcommand keeps its historical success/failure pair.
+    if matches!(cli.command, Commands::Node { .. } | Commands::Ocid { .. }) {
+        let label = if matches!(cli.command, Commands::Ocid { .. }) {
+            "aria ocid"
+        } else {
+            "aria node"
+        };
+        let base = match load_base_config(cli.config.as_deref()) {
+            Ok(c) => c,
+            Err(e) => {
+                eprintln!("{label}: {e}");
+                return ExitCode::from(node_exit::CONFIG);
+            }
+        };
+        let result = if matches!(cli.command, Commands::Ocid { .. }) {
+            ocid_cmd(cli.command)
+        } else {
+            node_cmd(base, cli.command)
+        };
+        return match result {
+            Ok(()) => ExitCode::from(node_exit::OK),
+            Err(e) => {
+                eprintln!("{label}: {}", e.message);
+                ExitCode::from(e.code)
+            }
+        };
+    }
 
     match real_main(cli) {
         Ok(()) => ExitCode::SUCCESS,
@@ -364,19 +567,261 @@ fn main() -> ExitCode {
     }
 }
 
+/// Load the optional TOML base config. Shared by `main`'s two dispatch arms.
+fn load_base_config(path: Option<&std::path::Path>) -> Result<AriaConfig, String> {
+    match path {
+        Some(p) => {
+            let contents = fs::read_to_string(p)
+                .map_err(|e| format!("failed to read config {}: {e}", p.display()))?;
+            AriaConfig::from_toml(&contents).map_err(|e| format!("failed to parse config: {e}"))
+        }
+        None => Ok(AriaConfig::default()),
+    }
+}
+
+/// `aria node` — the telemetry callable.
+///
+/// Order matters and is load-bearing: the envelope is built and validated
+/// **entirely in memory** before a single byte is written anywhere. That is
+/// what makes the L8 guarantee real — on any failure the primary sink is
+/// untouched, so a partial document can never be mistaken for a result.
+#[allow(clippy::too_many_lines)]
+fn node_cmd(base: AriaConfig, command: Commands) -> Result<(), NodeError> {
+    use aria_engine_backends::ipo::Limits;
+    use aria_engine_backends::telemetry::{transform, TelemetryRequest};
+
+    let Commands::Node {
+        r#in,
+        out,
+        steps,
+        seed,
+        n_modes,
+        latent_dim,
+        match_policy,
+        merge_tau,
+        predictor,
+        observe,
+        pretty,
+        graph_out,
+        ledger_out,
+        receipt_out,
+        max_input_bytes,
+        max_nodes,
+        max_edges,
+        max_steps,
+        ocid_key,
+        ocid_sig,
+    } = command
+    else {
+        return Err(NodeError::config("node_cmd called with another subcommand"));
+    };
+
+    // --- payload: file or stdin.
+    let payload = match r#in.as_deref() {
+        Some(p) if p.as_os_str() != "-" => fs::read(p)
+            .map_err(|e| NodeError::io(format!("failed to read {}: {e}", p.display())))?,
+        _ => {
+            use std::io::Read;
+            let mut buf = Vec::new();
+            std::io::stdin()
+                .read_to_end(&mut buf)
+                .map_err(|e| NodeError::io(format!("failed to read stdin: {e}")))?;
+            buf
+        }
+    };
+
+    // --- config overrides.
+    let mut config = base;
+    if let Some(v) = n_modes {
+        config.n_modes = v;
+    }
+    if let Some(v) = latent_dim {
+        config.latent_dim = v;
+    }
+    if let Some(v) = seed {
+        config.seed = Some(v);
+    }
+    if let Some(v) = merge_tau {
+        config.merge_tau = v;
+    }
+    let respect_config_policy = match_policy.as_deref().is_some();
+    if let Some(ref p) = match_policy {
+        config.match_policy = parse_match_policy(p).map_err(NodeError::config)?;
+    }
+
+    let mut limits = Limits::default();
+    if let Some(v) = max_input_bytes {
+        limits.max_input_bytes = v;
+    }
+    if let Some(v) = max_nodes {
+        limits.max_nodes = v;
+    }
+    if let Some(v) = max_edges {
+        limits.max_edges = v;
+    }
+    if let Some(v) = max_steps {
+        limits.max_steps = v;
+    }
+
+    let trained = match predictor.as_deref() {
+        Some(path) => Some(
+            TrainedPredictor::from_file(path)
+                .map_err(|e| NodeError::config(format!("failed to load {}: {e}", path.display())))?,
+        ),
+        None => None,
+    };
+
+    // `--ledger-out` without `--observe` would silently write nothing; treat
+    // asking for the file as asking for the ledger.
+    let observe = observe || ledger_out.is_some();
+
+    // --- the whole operation, in one call.
+    let envelope = transform(TelemetryRequest {
+        payload,
+        config,
+        steps,
+        predictor: trained,
+        observe,
+        limits,
+        respect_config_policy,
+        query: None,
+        ocid: aria_engine_backends::ocid::OcidRequest {
+            public_key_hex: ocid_key,
+            signature_hex: ocid_sig,
+        },
+    })
+    .map_err(|e| match &e {
+        aria_engine_core::error::AriaError::InvariantViolation(_) => {
+            NodeError::invariant(e.to_string())
+        }
+        _ => NodeError::config(e.to_string()),
+    })?;
+
+    // Φ ran but produced an inadmissible state: that is exit 1, not exit 0
+    // with a receipt the host has to notice. Diagnostics only — no envelope.
+    if !envelope.receipt.invariants_ok {
+        for f in &envelope.receipt.failures {
+            eprintln!("  {f}");
+        }
+        return Err(NodeError::invariant(format!(
+            "invariants failed on the final state ({} failure(s))",
+            envelope.receipt.failures.len()
+        )));
+    }
+
+    let render = |v: &serde_json::Value| -> Result<String, NodeError> {
+        if pretty {
+            serde_json::to_string_pretty(v)
+        } else {
+            serde_json::to_string(v)
+        }
+        .map_err(|e| NodeError::config(format!("serialization failed: {e}")))
+    };
+
+    let doc = serde_json::to_value(&envelope)
+        .map_err(|e| NodeError::config(format!("serialization failed: {e}")))?;
+    let body = render(&doc)?;
+
+    // --- sinks. Splits are written first so a failure there does not leave a
+    // complete primary document implying they succeeded.
+    if let Some(path) = graph_out.as_deref() {
+        let text = render(&doc["graph"])?;
+        fs::write(path, text)
+            .map_err(|e| NodeError::io(format!("failed to write {}: {e}", path.display())))?;
+    }
+    if let Some(path) = ledger_out.as_deref() {
+        let text = render(&doc["ledger"])?;
+        fs::write(path, text)
+            .map_err(|e| NodeError::io(format!("failed to write {}: {e}", path.display())))?;
+    }
+    if let Some(path) = receipt_out.as_deref() {
+        let text = render(&doc["receipt"])?;
+        fs::write(path, text)
+            .map_err(|e| NodeError::io(format!("failed to write {}: {e}", path.display())))?;
+    }
+
+    match out.as_deref() {
+        Some(path) => {
+            fs::write(path, &body)
+                .map_err(|e| NodeError::io(format!("failed to write {}: {e}", path.display())))?;
+            eprintln!(
+                "aria node: {} nodes ({} host, {} transform), {} edges, {} probable, {} cluster(s) -> {}",
+                envelope.receipt.node_count,
+                envelope.receipt.input_node_count,
+                envelope.receipt.transform_node_count,
+                envelope.receipt.edge_count,
+                envelope.tags.probable_edges.len(),
+                envelope.tags.clusters.len(),
+                path.display()
+            );
+        }
+        // stdout carries the document and nothing else.
+        None => println!("{body}"),
+    }
+    if let Some(commitment) = &envelope.ocid {
+        eprintln!(
+            "aria node: OCID {} ({})",
+            commitment.ocid,
+            match commitment.signature_verified {
+                Some(true) => "Ed25519 signature verified",
+                _ => commitment.note.as_deref().unwrap_or("unsigned"),
+            }
+        );
+    }
+    Ok(())
+}
+
+/// `aria ocid` — independently verify a commitment.
+///
+/// The point of this subcommand is that it is *not* privileged: it recomputes
+/// every bound digest from the document and the payload. A host can run the
+/// same checks itself; this is the reference implementation of that procedure,
+/// not a trusted oracle.
+fn ocid_cmd(command: Commands) -> Result<(), NodeError> {
+    use aria_engine_backends::ipo::TelemetryEnvelope;
+
+    let Commands::Ocid { envelope, payload } = command else {
+        return Err(NodeError::config("ocid_cmd called with another subcommand"));
+    };
+
+    let doc = fs::read(&envelope)
+        .map_err(|e| NodeError::io(format!("failed to read {}: {e}", envelope.display())))?;
+    let bytes = fs::read(&payload)
+        .map_err(|e| NodeError::io(format!("failed to read {}: {e}", payload.display())))?;
+
+    let parsed: TelemetryEnvelope = serde_json::from_slice(&doc).map_err(|e| {
+        NodeError::config(format!(
+            "{} is not an aria-telemetry-query-v1 document: {e}",
+            envelope.display()
+        ))
+    })?;
+
+    aria_engine_backends::ocid::verify_envelope(&parsed, &bytes)
+        .map_err(|e| NodeError::invariant(e.to_string()))?;
+
+    let commitment = parsed
+        .ocid
+        .as_ref()
+        .ok_or_else(|| NodeError::config("no OCID present"))?;
+    println!("{}", commitment.ocid);
+    eprintln!(
+        "aria ocid: VERIFIED — payload, config, graph and structure all match the commitment"
+    );
+    if commitment.signature_verified == Some(true) {
+        eprintln!(
+            "aria ocid: bound to Ed25519 key {} with a verified signature",
+            commitment.key.as_deref().unwrap_or("?")
+        );
+    }
+    Ok(())
+}
+
 // One block per subcommand (run/step/check/bench/dataset); WS6 of
 // plan_v0.2.0.md adds `verify` and is the right moment to split this into
 // per-subcommand handlers.
 #[allow(clippy::too_many_lines)]
 fn real_main(cli: Cli) -> Result<(), String> {
-    let base = match cli.config {
-        Some(ref path) => {
-            let contents = fs::read_to_string(path)
-                .map_err(|e| format!("failed to read config {}: {}", path.display(), e))?;
-            AriaConfig::from_toml(&contents).map_err(|e| format!("failed to parse config: {e}"))?
-        }
-        None => AriaConfig::default(),
-    };
+    let base = load_base_config(cli.config.as_deref())?;
 
     match cli.command {
         Commands::Run {
@@ -883,6 +1328,12 @@ fn real_main(cli: Cli) -> Result<(), String> {
             window,
             d_cap,
         ),
+
+        // Dispatched in `main` so it can return its own exit-code vocabulary.
+        // Dispatched in `main` so they can return the node exit vocabulary.
+        Commands::Node { .. } | Commands::Ocid { .. } => {
+            unreachable!("node and ocid are handled before real_main")
+        }
     }
 }
 

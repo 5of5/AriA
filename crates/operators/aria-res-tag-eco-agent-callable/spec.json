@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "ECO_AGENT_CALLABLE"
+  ],
+  "binary_id": "BIN.TAG.ECO_AGENT_CALLABLE",
+  "class": "TAG",
+  "crate": "aria_res_tag_eco_agent_callable",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.ECO_AGENT_CALLABLE",
+  "package": "aria-res-tag-eco-agent-callable",
+  "parent": "PRODUCT",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.eco_agent_callable",
+  "retrieval_step": "memory",
+  "taxonomy": "ECOSYSTEM_TAG",
+  "telemetry_fork": "aria/res/tag/eco_agent_callable@v1",
+  "verify": true,
+  "wave": "B"
+}

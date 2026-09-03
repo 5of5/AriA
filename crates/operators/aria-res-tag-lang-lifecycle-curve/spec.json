@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "LANG_LIFECYCLE_CURVE"
+  ],
+  "binary_id": "BIN.TAG.LANG_LIFECYCLE_CURVE",
+  "class": "TAG",
+  "crate": "aria_res_tag_lang_lifecycle_curve",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.LANG_LIFECYCLE_CURVE",
+  "package": "aria-res-tag-lang-lifecycle-curve",
+  "parent": "MARKET",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.lang_lifecycle_curve",
+  "retrieval_step": "memory",
+  "taxonomy": "MAP_LANGUAGE",
+  "telemetry_fork": "aria/res/tag/lang_lifecycle_curve@v1",
+  "verify": true,
+  "wave": "B"
+}

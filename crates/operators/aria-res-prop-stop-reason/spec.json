@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.STOP_REASON",
+  "class": "PROP",
+  "crate": "aria_res_prop_stop_reason",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.STOP_REASON",
+  "package": "aria-res-prop-stop-reason",
+  "parent": "all operators",
+  "pass_through": false,
+  "property_key": "stop_reason",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.stop_reason",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/stop_reason@v1",
+  "verify": true,
+  "wave": "B"
+}

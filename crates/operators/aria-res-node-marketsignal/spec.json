@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.NODE.MARKETSIGNAL",
+  "class": "NODE",
+  "crate": "aria_res_node_marketsignal",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [
+    "MarketSignal"
+  ],
+  "operator": "NODE.MARKETSIGNAL",
+  "package": "aria-res-node-marketsignal",
+  "parent": "SIGNAL",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "residual.node.marketsignal",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/node/marketsignal@v1",
+  "verify": true,
+  "wave": "B"
+}

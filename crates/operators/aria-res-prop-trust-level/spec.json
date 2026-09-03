@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.TRUST_LEVEL",
+  "class": "PROP",
+  "crate": "aria_res_prop_trust_level",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "PROP.TRUST_LEVEL",
+  "package": "aria-res-prop-trust-level",
+  "parent": "CLAIM",
+  "pass_through": false,
+  "property_key": "trust_level",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.trust_level",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/trust_level@v1",
+  "verify": true,
+  "wave": "C"
+}

@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "LANG_LOGO_LANE"
+  ],
+  "binary_id": "BIN.TAG.LANG_LOGO_LANE",
+  "class": "TAG",
+  "crate": "aria_res_tag_lang_logo_lane",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.LANG_LOGO_LANE",
+  "package": "aria-res-tag-lang-logo-lane",
+  "parent": "CUSTOMER",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.lang_logo_lane",
+  "retrieval_step": "memory",
+  "taxonomy": "MAP_LANGUAGE",
+  "telemetry_fork": "aria/res/tag/lang_logo_lane@v1",
+  "verify": true,
+  "wave": "B"
+}

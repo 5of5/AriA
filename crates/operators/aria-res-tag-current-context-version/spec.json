@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CURRENT_CONTEXT_VERSION"
+  ],
+  "binary_id": "BIN.TAG.CURRENT_CONTEXT_VERSION",
+  "class": "TAG",
+  "crate": "aria_res_tag_current_context_version",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "TAG.CURRENT_CONTEXT_VERSION",
+  "package": "aria-res-tag-current-context-version",
+  "parent": "PORTFOLIO",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.current_context_version",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/current_context_version@v1",
+  "verify": true,
+  "wave": "A"
+}

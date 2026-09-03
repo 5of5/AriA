@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "COMPETITOR_TAG"
+  ],
+  "binary_id": "BIN.TAG.COMPETITOR_TAG",
+  "class": "TAG",
+  "crate": "aria_res_tag_competitor_tag",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.COMPETITOR_TAG",
+  "package": "aria-res-tag-competitor-tag",
+  "parent": "COMPETITOR",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.competitor_tag",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/competitor_tag@v1",
+  "verify": true,
+  "wave": "A"
+}

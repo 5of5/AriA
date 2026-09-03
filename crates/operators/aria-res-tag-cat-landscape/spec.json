@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CAT_LANDSCAPE"
+  ],
+  "binary_id": "BIN.TAG.CAT_LANDSCAPE",
+  "class": "TAG",
+  "crate": "aria_res_tag_cat_landscape",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CAT_LANDSCAPE",
+  "package": "aria-res-tag-cat-landscape",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.cat_landscape",
+  "retrieval_step": "memory",
+  "taxonomy": "CATEGORY_TAG",
+  "telemetry_fork": "aria/res/tag/cat_landscape@v1",
+  "verify": true,
+  "wave": "A"
+}

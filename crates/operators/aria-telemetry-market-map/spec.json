@@ -1,0 +1,36 @@
+{
+  "anchor_tags": [
+    "MARKET_MAP",
+    "MAP_TYPE",
+    "SEGMENT",
+    "READINESS"
+  ],
+  "binary_id": "BIN.MARKET_MAP",
+  "class": "ENVELOPE",
+  "crate": "aria_telemetry_market_map",
+  "default_limit": null,
+  "layer": "ENVELOPE",
+  "neo4j_pass": true,
+  "node_types": [
+    "MarketMap",
+    "MapNode",
+    "Segment"
+  ],
+  "operator": "MARKET_MAP",
+  "package": "aria-telemetry-market-map",
+  "parent": "PORTFOLIO",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "INSTANCE_OF",
+    "PLACED_IN",
+    "REQUIRES_EDGE",
+    "REQUIRES_SIGNAL"
+  ],
+  "result_definition_ref": "market_map.instance",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/market_map@v1",
+  "verify": true,
+  "wave": null
+}

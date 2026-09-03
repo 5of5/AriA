@@ -1,0 +1,32 @@
+{
+  "anchor_tags": [
+    "PARTNER_TAG",
+    "COMPANY",
+    "PATH"
+  ],
+  "binary_id": "BIN.PARTNER",
+  "class": "TAG",
+  "crate": "aria_telemetry_partner",
+  "default_limit": null,
+  "layer": "TAG",
+  "neo4j_pass": true,
+  "node_types": [
+    "Company"
+  ],
+  "operator": "PARTNER",
+  "package": "aria-telemetry-partner",
+  "parent": "COMPANY",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "PARTNERS_WITH",
+    "PATH_TO",
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "tag.partner",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/partner@v1",
+  "verify": true,
+  "wave": null
+}

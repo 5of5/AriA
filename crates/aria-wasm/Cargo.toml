@@ -17,8 +17,8 @@ categories = ["wasm", "science"]
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-aria-engine-core = { version = "0.2.0", path = "../aria-core" }
-aria-engine-backends = { version = "0.2.0", path = "../aria-backends" }
+aria-engine-core = { workspace = true }
+aria-engine-backends = { workspace = true }
 wasm-bindgen.workspace = true
 serde.workspace = true
 serde_json.workspace = true

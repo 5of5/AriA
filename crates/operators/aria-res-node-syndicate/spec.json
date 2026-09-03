@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.NODE.SYNDICATE",
+  "class": "NODE",
+  "crate": "aria_res_node_syndicate",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [
+    "Syndicate"
+  ],
+  "operator": "NODE.SYNDICATE",
+  "package": "aria-res-node-syndicate",
+  "parent": "SYNDICATE",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "residual.node.syndicate",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/node/syndicate@v1",
+  "verify": true,
+  "wave": "B"
+}

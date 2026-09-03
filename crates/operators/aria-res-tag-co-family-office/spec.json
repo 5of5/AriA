@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CO_FAMILY_OFFICE"
+  ],
+  "binary_id": "BIN.TAG.CO_FAMILY_OFFICE",
+  "class": "TAG",
+  "crate": "aria_res_tag_co_family_office",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CO_FAMILY_OFFICE",
+  "package": "aria-res-tag-co-family-office",
+  "parent": "VENTURE_CAPITAL",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.co_family_office",
+  "retrieval_step": "memory",
+  "taxonomy": "COMPANY_TYPE",
+  "telemetry_fork": "aria/res/tag/co_family_office@v1",
+  "verify": true,
+  "wave": "A"
+}

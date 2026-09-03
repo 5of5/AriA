@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "ASSET"
+  ],
+  "binary_id": "BIN.TAG.ASSET",
+  "class": "TAG",
+  "crate": "aria_res_tag_asset",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.ASSET",
+  "package": "aria-res-tag-asset",
+  "parent": "SOURCE",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.asset",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/asset@v1",
+  "verify": true,
+  "wave": "A"
+}

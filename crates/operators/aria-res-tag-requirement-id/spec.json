@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "REQUIREMENT_ID"
+  ],
+  "binary_id": "BIN.TAG.REQUIREMENT_ID",
+  "class": "TAG",
+  "crate": "aria_res_tag_requirement_id",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "TAG.REQUIREMENT_ID",
+  "package": "aria-res-tag-requirement-id",
+  "parent": "PORTFOLIO",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.requirement_id",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/requirement_id@v1",
+  "verify": true,
+  "wave": "C"
+}

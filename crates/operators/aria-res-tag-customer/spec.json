@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CUSTOMER"
+  ],
+  "binary_id": "BIN.TAG.CUSTOMER",
+  "class": "TAG",
+  "crate": "aria_res_tag_customer",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CUSTOMER",
+  "package": "aria-res-tag-customer",
+  "parent": "CUSTOMER",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.customer",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/customer@v1",
+  "verify": true,
+  "wave": "A"
+}

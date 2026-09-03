@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CLAIM"
+  ],
+  "binary_id": "BIN.TAG.CLAIM",
+  "class": "TAG",
+  "crate": "aria_res_tag_claim",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CLAIM",
+  "package": "aria-res-tag-claim",
+  "parent": "CLAIM",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.claim",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/claim@v1",
+  "verify": true,
+  "wave": "B"
+}

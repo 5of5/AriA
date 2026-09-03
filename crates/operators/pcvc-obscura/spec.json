@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "URL",
+    "ALLOWLIST",
+    "DEPTH"
+  ],
+  "binary_id": "BIN.OBSCURA",
+  "class": "HOST",
+  "crate": "pcvc_obscura",
+  "default_limit": null,
+  "layer": "HOST",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "obscura",
+  "package": "pcvc-obscura",
+  "parent": "\u2014",
+  "pass_through": true,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "host.obscura",
+  "retrieval_step": "live",
+  "taxonomy": null,
+  "telemetry_fork": "pcvc/obscura@dev",
+  "verify": true,
+  "wave": null
+}

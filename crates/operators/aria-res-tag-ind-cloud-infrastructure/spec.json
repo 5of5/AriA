@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "IND_CLOUD_INFRASTRUCTURE"
+  ],
+  "binary_id": "BIN.TAG.IND_CLOUD_INFRASTRUCTURE",
+  "class": "TAG",
+  "crate": "aria_res_tag_ind_cloud_infrastructure",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.IND_CLOUD_INFRASTRUCTURE",
+  "package": "aria-res-tag-ind-cloud-infrastructure",
+  "parent": "MARKET",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.ind_cloud_infrastructure",
+  "retrieval_step": "memory",
+  "taxonomy": "INDUSTRY_TYPE",
+  "telemetry_fork": "aria/res/tag/ind_cloud_infrastructure@v1",
+  "verify": true,
+  "wave": "A"
+}

@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "DATA_POINT_BUDGET"
+  ],
+  "binary_id": "BIN.TAG.DATA_POINT_BUDGET",
+  "class": "TAG",
+  "crate": "aria_res_tag_data_point_budget",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "TAG.DATA_POINT_BUDGET",
+  "package": "aria-res-tag-data-point-budget",
+  "parent": "PORTFOLIO",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.data_point_budget",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/data_point_budget@v1",
+  "verify": true,
+  "wave": "C"
+}

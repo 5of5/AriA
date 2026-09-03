@@ -1,0 +1,37 @@
+{
+  "anchor_tags": [
+    "COMPANY",
+    "MARKET",
+    "TIMESTAMP",
+    "Market Maturity",
+    "MAP_TYPE"
+  ],
+  "binary_id": "BIN.REF.MARKET_MATURITY",
+  "class": "REFINEMENT",
+  "crate": "aria_ref_market_maturity",
+  "default_limit": null,
+  "layer": "REFINEMENT",
+  "neo4j_pass": true,
+  "node_types": [
+    "Company",
+    "Market",
+    "Category",
+    "Event",
+    "MarketSignal"
+  ],
+  "operator": "REF.MARKET_MATURITY",
+  "package": "aria-ref-market-maturity",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "OPERATES_IN",
+    "OCCURRED_AT"
+  ],
+  "result_definition_ref": "map.ref.market_maturity",
+  "retrieval_step": "memory",
+  "taxonomy": "Market Maturity",
+  "telemetry_fork": "aria/ref/market_maturity@v1",
+  "verify": true,
+  "wave": null
+}

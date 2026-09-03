@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.COMPETITIVE_PRESSURE",
+  "class": "PROP",
+  "crate": "aria_res_prop_competitive_pressure",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.COMPETITIVE_PRESSURE",
+  "package": "aria-res-prop-competitive-pressure",
+  "parent": "COMPETITOR",
+  "pass_through": false,
+  "property_key": "competitive_pressure",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.competitive_pressure",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/competitive_pressure@v1",
+  "verify": true,
+  "wave": "B"
+}

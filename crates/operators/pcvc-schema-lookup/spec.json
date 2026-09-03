@@ -1,0 +1,25 @@
+{
+  "anchor_tags": [
+    "RESULT_DEFINITION_REF",
+    "FIELD"
+  ],
+  "binary_id": "BIN.SCHEMA_LOOKUP",
+  "class": "HOST",
+  "crate": "pcvc_schema_lookup",
+  "default_limit": null,
+  "layer": "HOST",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "schema-lookup",
+  "package": "pcvc-schema-lookup",
+  "parent": "\u2014",
+  "pass_through": true,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "host.schema_lookup",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "pcvc/schema-lookup@dev",
+  "verify": true,
+  "wave": null
+}

@@ -1,0 +1,10 @@
+[
+  { "ticker": "STRP", "company": "Stripe",    "sector": "fintech",    "region": "us-west",    "country": "US", "stage": "late",   "note": "payments infrastructure" },
+  { "ticker": "ADYN", "company": "Adyen",     "sector": "fintech",    "region": "eu-benelux", "country": "NL", "stage": "public", "note": "payments infrastructure" },
+  { "ticker": "PLAD", "company": "Plaid",     "sector": "fintech",    "region": "us-west",    "country": "US", "stage": "growth", "note": "bank data connectivity" },
+  { "ticker": "MRQT", "company": "Marqeta",   "sector": "fintech",    "region": "us-west",    "country": "US", "stage": "public", "note": "card issuing platform" },
+  { "ticker": "TMPS", "company": "Tempus",    "sector": "healthcare", "region": "us-east",    "country": "US", "stage": "late",   "note": "clinical genomic sequencing" },
+  { "ticker": "RXRX", "company": "Recursion", "sector": "healthcare", "region": "us-west",    "country": "US", "stage": "public", "note": "computational drug discovery" },
+  { "ticker": "BNCH", "company": "Benchling", "sector": "healthcare", "region": "us-west",    "country": "US", "stage": "growth", "note": "life science research platform" },
+  { "ticker": "OWKN", "company": "Owkin",     "sector": "healthcare", "region": "eu-france",  "country": "FR", "stage": "growth", "note": "federated learning for oncology" }
+]

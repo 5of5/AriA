@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "LANG_TEMPORAL_SIGNAL"
+  ],
+  "binary_id": "BIN.TAG.LANG_TEMPORAL_SIGNAL",
+  "class": "TAG",
+  "crate": "aria_res_tag_lang_temporal_signal",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.LANG_TEMPORAL_SIGNAL",
+  "package": "aria-res-tag-lang-temporal-signal",
+  "parent": "SIGNAL",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.lang_temporal_signal",
+  "retrieval_step": "memory",
+  "taxonomy": "MAP_LANGUAGE",
+  "telemetry_fork": "aria/res/tag/lang_temporal_signal@v1",
+  "verify": true,
+  "wave": "B"
+}

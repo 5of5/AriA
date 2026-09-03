@@ -1,0 +1,37 @@
+{
+  "anchor_tags": [
+    "ACCOUNT",
+    "PERSON",
+    "BUYER_TAG",
+    "ICP",
+    "ICP Expansion",
+    "MAP_TYPE"
+  ],
+  "binary_id": "BIN.REF.ICP_EXPANSION",
+  "class": "REFINEMENT",
+  "crate": "aria_ref_icp_expansion",
+  "default_limit": null,
+  "layer": "REFINEMENT",
+  "neo4j_pass": true,
+  "node_types": [
+    "Account",
+    "Person",
+    "Customer"
+  ],
+  "operator": "REF.ICP_EXPANSION",
+  "package": "aria-ref-icp-expansion",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "HAS_PERSONA",
+    "ADJACENT_TO",
+    "BUYS"
+  ],
+  "result_definition_ref": "map.ref.icp_expansion",
+  "retrieval_step": "memory",
+  "taxonomy": "ICP Expansion",
+  "telemetry_fork": "aria/ref/icp_expansion@v1",
+  "verify": true,
+  "wave": null
+}

@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.COVERAGE_STATE",
+  "class": "PROP",
+  "crate": "aria_res_prop_coverage_state",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.COVERAGE_STATE",
+  "package": "aria-res-prop-coverage-state",
+  "parent": "all operators",
+  "pass_through": false,
+  "property_key": "coverage_state",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.coverage_state",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/coverage_state@v1",
+  "verify": true,
+  "wave": "B"
+}

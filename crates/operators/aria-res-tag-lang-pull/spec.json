@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "LANG_PULL"
+  ],
+  "binary_id": "BIN.TAG.LANG_PULL",
+  "class": "TAG",
+  "crate": "aria_res_tag_lang_pull",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.LANG_PULL",
+  "package": "aria-res-tag-lang-pull",
+  "parent": "COMPANY",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.lang_pull",
+  "retrieval_step": "memory",
+  "taxonomy": "MAP_LANGUAGE",
+  "telemetry_fork": "aria/res/tag/lang_pull@v1",
+  "verify": true,
+  "wave": "B"
+}

@@ -1,0 +1,26 @@
+# Generated. Unique operator crate; AriA is linked via aria-operator.
+[package]
+name = 'aria-telemetry-market-map'
+description = 'Aria operator binary BIN.MARKET_MAP (MARKET_MAP)'
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+documentation.workspace = true
+rust-version.workspace = true
+publish = false
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = 'aria-telemetry-market-map'
+path = "src/main.rs"
+
+[dependencies]
+aria-json-telemetry = { workspace = true, features = ["cli"] }
+
+[lints]
+workspace = true

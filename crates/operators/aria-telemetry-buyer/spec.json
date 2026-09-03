@@ -1,0 +1,33 @@
+{
+  "anchor_tags": [
+    "BUYER_TAG",
+    "PERSON",
+    "ACCOUNT"
+  ],
+  "binary_id": "BIN.BUYER",
+  "class": "TAG",
+  "crate": "aria_telemetry_buyer",
+  "default_limit": null,
+  "layer": "TAG",
+  "neo4j_pass": true,
+  "node_types": [
+    "Person",
+    "Account"
+  ],
+  "operator": "BUYER",
+  "package": "aria-telemetry-buyer",
+  "parent": "PEOPLE",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "BUYS",
+    "HAS_PERSONA",
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "tag.buyer",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/buyer@v1",
+  "verify": true,
+  "wave": null
+}

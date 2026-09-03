@@ -10,6 +10,7 @@ homepage.workspace = true
 documentation.workspace = true
 readme = "README.md"
 rust-version.workspace = true
+publish = false
 keywords = ["aria", "jepa", "training", "spectral", "lipschitz"]
 categories = ["science", "algorithms"]
 
@@ -18,8 +19,8 @@ categories = ["science", "algorithms"]
 # Zero new external dependencies — the minimal-dependency doctrine is satisfied
 # by construction (everything below is already a workspace pin).
 [dependencies]
-aria-engine-core = { version = "0.2.0", path = "../aria-core" }
-aria-engine-backends = { version = "0.2.0", path = "../aria-backends" }
+aria-engine-core = { workspace = true }
+aria-engine-backends = { workspace = true }
 serde.workspace = true
 serde_json.workspace = true
 thiserror.workspace = true

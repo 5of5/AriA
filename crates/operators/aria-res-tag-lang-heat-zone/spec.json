@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "LANG_HEAT_ZONE"
+  ],
+  "binary_id": "BIN.TAG.LANG_HEAT_ZONE",
+  "class": "TAG",
+  "crate": "aria_res_tag_lang_heat_zone",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.LANG_HEAT_ZONE",
+  "package": "aria-res-tag-lang-heat-zone",
+  "parent": "SIGNAL",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.lang_heat_zone",
+  "retrieval_step": "memory",
+  "taxonomy": "MAP_LANGUAGE",
+  "telemetry_fork": "aria/res/tag/lang_heat_zone@v1",
+  "verify": true,
+  "wave": "B"
+}

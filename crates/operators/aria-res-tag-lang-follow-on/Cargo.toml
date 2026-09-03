@@ -1,0 +1,26 @@
+# Generated. Unique operator crate; AriA is linked via aria-operator.
+[package]
+name = 'aria-res-tag-lang-follow-on'
+description = 'Aria operator binary BIN.TAG.LANG_FOLLOW_ON (TAG.LANG_FOLLOW_ON)'
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+documentation.workspace = true
+rust-version.workspace = true
+publish = false
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = 'aria-res-tag-lang-follow-on'
+path = "src/main.rs"
+
+[dependencies]
+aria-json-telemetry = { workspace = true, features = ["cli"] }
+
+[lints]
+workspace = true

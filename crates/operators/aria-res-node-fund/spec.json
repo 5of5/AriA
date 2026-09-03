@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.NODE.FUND",
+  "class": "NODE",
+  "crate": "aria_res_node_fund",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [
+    "Fund"
+  ],
+  "operator": "NODE.FUND",
+  "package": "aria-res-node-fund",
+  "parent": "VENTURE_CAPITAL",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "residual.node.fund",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/node/fund@v1",
+  "verify": true,
+  "wave": "B"
+}

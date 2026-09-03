@@ -1,0 +1,37 @@
+{
+  "anchor_tags": [
+    "COMPANY",
+    "PRODUCT",
+    "LAYER",
+    "CATEGORY",
+    "Category Stack",
+    "MAP_TYPE"
+  ],
+  "binary_id": "BIN.REF.CATEGORY_STACK",
+  "class": "REFINEMENT",
+  "crate": "aria_ref_category_stack",
+  "default_limit": null,
+  "layer": "REFINEMENT",
+  "neo4j_pass": true,
+  "node_types": [
+    "Company",
+    "Product",
+    "Market",
+    "Category"
+  ],
+  "operator": "REF.CATEGORY_STACK",
+  "package": "aria-ref-category-stack",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "IN_CATEGORY",
+    "OFFERED_BY"
+  ],
+  "result_definition_ref": "map.ref.category_stack",
+  "retrieval_step": "memory",
+  "taxonomy": "Category Stack",
+  "telemetry_fork": "aria/ref/category_stack@v1",
+  "verify": true,
+  "wave": null
+}

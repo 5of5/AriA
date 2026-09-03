@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CONTENT_HASH"
+  ],
+  "binary_id": "BIN.TAG.CONTENT_HASH",
+  "class": "TAG",
+  "crate": "aria_res_tag_content_hash",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "TAG.CONTENT_HASH",
+  "package": "aria-res-tag-content-hash",
+  "parent": "hash-stamp",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.content_hash",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/content_hash@v1",
+  "verify": true,
+  "wave": "C"
+}

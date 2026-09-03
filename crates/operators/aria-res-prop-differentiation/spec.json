@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.DIFFERENTIATION",
+  "class": "PROP",
+  "crate": "aria_res_prop_differentiation",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.DIFFERENTIATION",
+  "package": "aria-res-prop-differentiation",
+  "parent": "COMPETITOR",
+  "pass_through": false,
+  "property_key": "differentiation",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.differentiation",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/differentiation@v1",
+  "verify": true,
+  "wave": "B"
+}

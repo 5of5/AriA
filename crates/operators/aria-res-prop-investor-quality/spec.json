@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.INVESTOR_QUALITY",
+  "class": "PROP",
+  "crate": "aria_res_prop_investor_quality",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.INVESTOR_QUALITY",
+  "package": "aria-res-prop-investor-quality",
+  "parent": "VC",
+  "pass_through": false,
+  "property_key": "investor_quality",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.investor_quality",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/investor_quality@v1",
+  "verify": true,
+  "wave": "B"
+}

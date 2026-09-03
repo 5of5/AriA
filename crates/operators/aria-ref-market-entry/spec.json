@@ -1,0 +1,37 @@
+{
+  "anchor_tags": [
+    "MARKET",
+    "GEOGRAPHY",
+    "PARTNER_TAG",
+    "WARM_PATH",
+    "Market Entry",
+    "MAP_TYPE"
+  ],
+  "binary_id": "BIN.REF.MARKET_ENTRY",
+  "class": "REFINEMENT",
+  "crate": "aria_ref_market_entry",
+  "default_limit": null,
+  "layer": "REFINEMENT",
+  "neo4j_pass": true,
+  "node_types": [
+    "Market",
+    "Category",
+    "Company"
+  ],
+  "operator": "REF.MARKET_ENTRY",
+  "package": "aria-ref-market-entry",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "OPERATES_IN",
+    "PATH_TO",
+    "PARTNERS_WITH"
+  ],
+  "result_definition_ref": "map.ref.market_entry",
+  "retrieval_step": "memory",
+  "taxonomy": "Market Entry",
+  "telemetry_fork": "aria/ref/market_entry@v1",
+  "verify": true,
+  "wave": null
+}

@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.EVIDENCE_STRENGTH",
+  "class": "PROP",
+  "crate": "aria_res_prop_evidence_strength",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.EVIDENCE_STRENGTH",
+  "package": "aria-res-prop-evidence-strength",
+  "parent": "CLAIM",
+  "pass_through": false,
+  "property_key": "evidence_strength",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.evidence_strength",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/evidence_strength@v1",
+  "verify": true,
+  "wave": "B"
+}

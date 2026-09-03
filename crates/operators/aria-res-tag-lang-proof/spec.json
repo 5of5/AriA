@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "LANG_PROOF"
+  ],
+  "binary_id": "BIN.TAG.LANG_PROOF",
+  "class": "TAG",
+  "crate": "aria_res_tag_lang_proof",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.LANG_PROOF",
+  "package": "aria-res-tag-lang-proof",
+  "parent": "CLAIM",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.lang_proof",
+  "retrieval_step": "memory",
+  "taxonomy": "MAP_LANGUAGE",
+  "telemetry_fork": "aria/res/tag/lang_proof@v1",
+  "verify": true,
+  "wave": "B"
+}

@@ -14,7 +14,7 @@ keywords = ["aria", "simulation", "unitary", "jepa", "optical"]
 categories = ["science", "simulation", "algorithms"]
 
 [dependencies]
-aria-engine-core = { version = "0.2.0", path = "../aria-core" }
+aria-engine-core = { workspace = true }
 num-complex.workspace = true
 num-traits.workspace = true
 rand.workspace = true
@@ -44,9 +44,27 @@ safetensors = { workspace = true }
 # bit-determinism is unproven — Q-2026-08-12-5). OFF by default; the WS3
 # VectorIndex seam decides whether a run enables it.
 usearch = { workspace = true, optional = true }
+# OCID signature verification (objective O5). Optional and OFF by default, per
+# the minimal-dependency doctrine. Audited 2026-08-31: MSRV 1.60 (lock ≤ 1.97),
+# published 2025-07-09 (lock ≥ 7 days), BSD-3-Clause, no_std-capable, and no OS
+# entropy on the verify path — entropy arrives only with the non-default
+# `rand_core` feature, which enables key *generation*, something Aria never
+# does (a signing key is a credential the refusal surface forbids).
+#
+# 2.2.0 is pinned over the newer 3.0.0 deliberately: 72M downloads vs 1.9M, and
+# MSRV 1.60 vs 1.85 leaves far more headroom under the lock.
+#
+# NAMED IN-REPO FALLBACK: the commitment needs no dependency. With this feature
+# off, OCID is still computed and still independently recomputable; only the
+# curve check is unavailable, reported honestly as `signature_verified: null`.
+# The acceptance predicate for a verifiable commitment does not move.
+ed25519-dalek = { version = "2.2.0", default-features = false, features = ["fast"], optional = true }
 
 [features]
 usearch = ["dep:usearch"]
+# Enables Ed25519 signature verification for OCID. The CLI turns this on; the
+# WASM surface deliberately does not, keeping wasm32 free of curve code.
+ocid-ed25519 = ["dep:ed25519-dalek"]
 
 [dev-dependencies]
 proptest.workspace = true

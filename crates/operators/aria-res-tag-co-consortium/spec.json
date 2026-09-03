@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CO_CONSORTIUM"
+  ],
+  "binary_id": "BIN.TAG.CO_CONSORTIUM",
+  "class": "TAG",
+  "crate": "aria_res_tag_co_consortium",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CO_CONSORTIUM",
+  "package": "aria-res-tag-co-consortium",
+  "parent": "COMPANY",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.co_consortium",
+  "retrieval_step": "memory",
+  "taxonomy": "COMPANY_TYPE",
+  "telemetry_fork": "aria/res/tag/co_consortium@v1",
+  "verify": true,
+  "wave": "A"
+}

@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.RESULT_LIMIT",
+  "class": "PROP",
+  "crate": "aria_res_prop_result_limit",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.RESULT_LIMIT",
+  "package": "aria-res-prop-result-limit",
+  "parent": "all operators",
+  "pass_through": false,
+  "property_key": "result_limit",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.result_limit",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/result_limit@v1",
+  "verify": true,
+  "wave": "B"
+}

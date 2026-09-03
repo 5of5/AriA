@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.REL.SELLS_TO",
+  "class": "REL",
+  "crate": "aria_res_rel_sells_to",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "REL.SELLS_TO",
+  "package": "aria-res-rel-sells-to",
+  "parent": "SELLER",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "SELLS_TO"
+  ],
+  "result_definition_ref": "residual.rel.sells_to",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/rel/sells_to@v1",
+  "verify": true,
+  "wave": "B"
+}

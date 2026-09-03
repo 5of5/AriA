@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.REL.TAGGED_AS",
+  "class": "REL",
+  "crate": "aria_res_rel_tagged_as",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "REL.TAGGED_AS",
+  "package": "aria-res-rel-tagged-as",
+  "parent": "COMPETITOR",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.rel.tagged_as",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/rel/tagged_as@v1",
+  "verify": true,
+  "wave": "A"
+}

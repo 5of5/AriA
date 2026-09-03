@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CO_ACQUIRER"
+  ],
+  "binary_id": "BIN.TAG.CO_ACQUIRER",
+  "class": "TAG",
+  "crate": "aria_res_tag_co_acquirer",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CO_ACQUIRER",
+  "package": "aria-res-tag-co-acquirer",
+  "parent": "COMPANY",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.co_acquirer",
+  "retrieval_step": "memory",
+  "taxonomy": "COMPANY_TYPE",
+  "telemetry_fork": "aria/res/tag/co_acquirer@v1",
+  "verify": true,
+  "wave": "A"
+}

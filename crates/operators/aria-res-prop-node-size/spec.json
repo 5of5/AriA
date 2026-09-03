@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.NODE_SIZE",
+  "class": "PROP",
+  "crate": "aria_res_prop_node_size",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.NODE_SIZE",
+  "package": "aria-res-prop-node-size",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": "node_size",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.node_size",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/node_size@v1",
+  "verify": true,
+  "wave": "C"
+}

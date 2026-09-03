@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CAT_MARKET_INTEL"
+  ],
+  "binary_id": "BIN.TAG.CAT_MARKET_INTEL",
+  "class": "TAG",
+  "crate": "aria_res_tag_cat_market_intel",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CAT_MARKET_INTEL",
+  "package": "aria-res-tag-cat-market-intel",
+  "parent": "MARKET",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.cat_market_intel",
+  "retrieval_step": "memory",
+  "taxonomy": "CATEGORY_TAG",
+  "telemetry_fork": "aria/res/tag/cat_market_intel@v1",
+  "verify": true,
+  "wave": "A"
+}

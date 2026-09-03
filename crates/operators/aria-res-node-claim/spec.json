@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.NODE.CLAIM",
+  "class": "NODE",
+  "crate": "aria_res_node_claim",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [
+    "Claim"
+  ],
+  "operator": "NODE.CLAIM",
+  "package": "aria-res-node-claim",
+  "parent": "CLAIM",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "residual.node.claim",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/node/claim@v1",
+  "verify": true,
+  "wave": "B"
+}

@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "TRAJECTORY"
+  ],
+  "binary_id": "BIN.TAG.TRAJECTORY",
+  "class": "TAG",
+  "crate": "aria_res_tag_trajectory",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "TAG.TRAJECTORY",
+  "package": "aria-res-tag-trajectory",
+  "parent": "AriA",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.trajectory",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/trajectory@v1",
+  "verify": true,
+  "wave": "C"
+}

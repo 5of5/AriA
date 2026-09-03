@@ -1,0 +1,39 @@
+{
+  "anchor_tags": [
+    "COMPANY",
+    "MARKET",
+    "MARKET_MAP",
+    "SEGMENT",
+    "Market Map Canvas",
+    "MAP_TYPE"
+  ],
+  "binary_id": "BIN.REF.MARKET_MAP_CANVAS",
+  "class": "REFINEMENT",
+  "crate": "aria_ref_market_map_canvas",
+  "default_limit": null,
+  "layer": "REFINEMENT",
+  "neo4j_pass": true,
+  "node_types": [
+    "Company",
+    "Market",
+    "Category",
+    "Portfolio",
+    "MarketMap",
+    "Workspace"
+  ],
+  "operator": "REF.MARKET_MAP_CANVAS",
+  "package": "aria-ref-market-map-canvas",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "IN_CATEGORY",
+    "PLACED_IN"
+  ],
+  "result_definition_ref": "map.ref.market_map_canvas",
+  "retrieval_step": "memory",
+  "taxonomy": "Market Map Canvas",
+  "telemetry_fork": "aria/ref/market_map_canvas@v1",
+  "verify": true,
+  "wave": null
+}

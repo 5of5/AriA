@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.WHITE_SPACE_DENSITY",
+  "class": "PROP",
+  "crate": "aria_res_prop_white_space_density",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.WHITE_SPACE_DENSITY",
+  "package": "aria-res-prop-white-space-density",
+  "parent": "MARKET",
+  "pass_through": false,
+  "property_key": "white_space_density",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.white_space_density",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/white_space_density@v1",
+  "verify": true,
+  "wave": "B"
+}

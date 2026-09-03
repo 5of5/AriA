@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.REL.TARGETED_BY",
+  "class": "REL",
+  "crate": "aria_res_rel_targeted_by",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "REL.TARGETED_BY",
+  "package": "aria-res-rel-targeted-by",
+  "parent": "ACCOUNT",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TARGETED_BY"
+  ],
+  "result_definition_ref": "residual.rel.targeted_by",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/rel/targeted_by@v1",
+  "verify": true,
+  "wave": "B"
+}

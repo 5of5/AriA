@@ -1,0 +1,26 @@
+# Generated. Unique operator crate; AriA is linked via aria-operator.
+[package]
+name = 'aria-res-tag-ind-ai-assisted-enterprise'
+description = 'Aria operator binary BIN.TAG.IND_AI_ASSISTED_ENTERPRISE (TAG.IND_AI_ASSISTED_ENTERPRISE)'
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+documentation.workspace = true
+rust-version.workspace = true
+publish = false
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = 'aria-res-tag-ind-ai-assisted-enterprise'
+path = "src/main.rs"
+
+[dependencies]
+aria-json-telemetry = { workspace = true, features = ["cli"] }
+
+[lints]
+workspace = true

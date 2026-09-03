@@ -1,0 +1,36 @@
+{
+  "anchor_tags": [
+    "SIGNAL",
+    "FUNDING",
+    "HIRING",
+    "LAUNCH",
+    "MEDIA",
+    "INTENT",
+    "CUSTOMER_PROOF"
+  ],
+  "binary_id": "BIN.SIGNAL",
+  "class": "FACT",
+  "crate": "aria_telemetry_signal",
+  "default_limit": 81,
+  "layer": "FACT",
+  "neo4j_pass": true,
+  "node_types": [
+    "MarketSignal"
+  ],
+  "operator": "SIGNAL",
+  "package": "aria-telemetry-signal",
+  "parent": "EVENT",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "SIGNALS",
+    "ABOUT",
+    "SOURCED_FROM"
+  ],
+  "result_definition_ref": "fact.market_signal",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/signal@v1",
+  "verify": true,
+  "wave": null
+}

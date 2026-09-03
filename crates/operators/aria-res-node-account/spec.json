@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.NODE.ACCOUNT",
+  "class": "NODE",
+  "crate": "aria_res_node_account",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [
+    "Account"
+  ],
+  "operator": "NODE.ACCOUNT",
+  "package": "aria-res-node-account",
+  "parent": "ACCOUNT",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "residual.node.account",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/node/account@v1",
+  "verify": true,
+  "wave": "A"
+}

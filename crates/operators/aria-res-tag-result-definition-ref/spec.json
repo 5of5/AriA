@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "RESULT_DEFINITION_REF"
+  ],
+  "binary_id": "BIN.TAG.RESULT_DEFINITION_REF",
+  "class": "TAG",
+  "crate": "aria_res_tag_result_definition_ref",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "TAG.RESULT_DEFINITION_REF",
+  "package": "aria-res-tag-result-definition-ref",
+  "parent": "schema-lookup",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.result_definition_ref",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/result_definition_ref@v1",
+  "verify": true,
+  "wave": "C"
+}

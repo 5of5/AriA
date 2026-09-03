@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "FUND"
+  ],
+  "binary_id": "BIN.TAG.FUND",
+  "class": "TAG",
+  "crate": "aria_res_tag_fund",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.FUND",
+  "package": "aria-res-tag-fund",
+  "parent": "VENTURE_CAPITAL",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.fund",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/fund@v1",
+  "verify": true,
+  "wave": "A"
+}

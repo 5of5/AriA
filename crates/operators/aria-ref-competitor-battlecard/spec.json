@@ -1,0 +1,37 @@
+{
+  "anchor_tags": [
+    "COMPANY",
+    "PRODUCT",
+    "COMPETITOR_TAG",
+    "CLAIM",
+    "Competitor Battlecard",
+    "MAP_TYPE"
+  ],
+  "binary_id": "BIN.REF.COMPETITOR_BATTLECARD",
+  "class": "REFINEMENT",
+  "crate": "aria_ref_competitor_battlecard",
+  "default_limit": null,
+  "layer": "REFINEMENT",
+  "neo4j_pass": true,
+  "node_types": [
+    "Company",
+    "Product",
+    "Claim"
+  ],
+  "operator": "REF.COMPETITOR_BATTLECARD",
+  "package": "aria-ref-competitor-battlecard",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "COMPETES_WITH",
+    "SUBSTITUTES",
+    "CITES"
+  ],
+  "result_definition_ref": "map.ref.competitor_battlecard",
+  "retrieval_step": "memory",
+  "taxonomy": "Competitor Battlecard",
+  "telemetry_fork": "aria/ref/competitor_battlecard@v1",
+  "verify": true,
+  "wave": null
+}

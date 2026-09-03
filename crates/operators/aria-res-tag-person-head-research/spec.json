@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "PERSON_HEAD_RESEARCH"
+  ],
+  "binary_id": "BIN.TAG.PERSON_HEAD_RESEARCH",
+  "class": "TAG",
+  "crate": "aria_res_tag_person_head_research",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.PERSON_HEAD_RESEARCH",
+  "package": "aria-res-tag-person-head-research",
+  "parent": "PEOPLE",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.person_head_research",
+  "retrieval_step": "memory",
+  "taxonomy": "PERSON_TYPE",
+  "telemetry_fork": "aria/res/tag/person_head_research@v1",
+  "verify": true,
+  "wave": "A"
+}

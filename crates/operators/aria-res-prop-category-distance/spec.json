@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.CATEGORY_DISTANCE",
+  "class": "PROP",
+  "crate": "aria_res_prop_category_distance",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.CATEGORY_DISTANCE",
+  "package": "aria-res-prop-category-distance",
+  "parent": "MARKET",
+  "pass_through": false,
+  "property_key": "category_distance",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.category_distance",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/category_distance@v1",
+  "verify": true,
+  "wave": "B"
+}

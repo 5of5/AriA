@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.AXIS_Y",
+  "class": "PROP",
+  "crate": "aria_res_prop_axis_y",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.AXIS_Y",
+  "package": "aria-res-prop-axis-y",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": "axis_y",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.axis_y",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/axis_y@v1",
+  "verify": true,
+  "wave": "C"
+}

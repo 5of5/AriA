@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "PERSONA_ECONOMIC"
+  ],
+  "binary_id": "BIN.TAG.PERSONA_ECONOMIC",
+  "class": "TAG",
+  "crate": "aria_res_tag_persona_economic",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.PERSONA_ECONOMIC",
+  "package": "aria-res-tag-persona-economic",
+  "parent": "BUYER",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.persona_economic",
+  "retrieval_step": "memory",
+  "taxonomy": "PERSONA_ARCHETYPE",
+  "telemetry_fork": "aria/res/tag/persona_economic@v1",
+  "verify": true,
+  "wave": "B"
+}

@@ -1,0 +1,47 @@
+[package]
+name = "aria-json-telemetry"
+description = "Aria JSON telemetry — closed operator envelopes, hosted command list, work gateway. 560 catalog identities; one transform."
+version = "0.2.2"
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository = "https://github.com/5of5/json-telemetry"
+homepage = "https://github.com/5of5/json-telemetry"
+documentation = "https://docs.rs/aria-json-telemetry"
+readme = "README.md"
+rust-version.workspace = true
+keywords = ["aria", "telemetry", "json", "graph", "operator"]
+categories = ["science", "command-line-utilities", "data-structures"]
+publish = true
+include = [
+    "src/**/*",
+    "catalog/**/*",
+    "maps/**/*",
+    "README.md",
+    "WORKER.md",
+    "OPTIMIZATION.md",
+]
+
+[lib]
+name = "aria_operator"
+path = "src/lib.rs"
+
+[[bin]]
+name = "work"
+path = "src/bin/work.rs"
+required-features = ["cli"]
+
+[features]
+default = ["cli"]
+cli = ["dep:clap"]
+
+[dependencies]
+aria-engine-core = { workspace = true }
+aria-engine-backends = { workspace = true }
+clap = { workspace = true, optional = true }
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+
+[lints]
+workspace = true
