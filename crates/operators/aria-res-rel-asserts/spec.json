@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.REL.ASSERTS",
+  "class": "REL",
+  "crate": "aria_res_rel_asserts",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "REL.ASSERTS",
+  "package": "aria-res-rel-asserts",
+  "parent": "CLAIM",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "ASSERTS"
+  ],
+  "result_definition_ref": "residual.rel.asserts",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/rel/asserts@v1",
+  "verify": true,
+  "wave": "B"
+}

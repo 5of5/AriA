@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "PRODUCT"
+  ],
+  "binary_id": "BIN.TAG.PRODUCT",
+  "class": "TAG",
+  "crate": "aria_res_tag_product",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.PRODUCT",
+  "package": "aria-res-tag-product",
+  "parent": "PRODUCT",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.product",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/product@v1",
+  "verify": true,
+  "wave": "A"
+}

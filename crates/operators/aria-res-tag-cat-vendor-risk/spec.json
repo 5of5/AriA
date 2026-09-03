@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CAT_VENDOR_RISK"
+  ],
+  "binary_id": "BIN.TAG.CAT_VENDOR_RISK",
+  "class": "TAG",
+  "crate": "aria_res_tag_cat_vendor_risk",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CAT_VENDOR_RISK",
+  "package": "aria-res-tag-cat-vendor-risk",
+  "parent": "MARKET",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.cat_vendor_risk",
+  "retrieval_step": "memory",
+  "taxonomy": "CATEGORY_TAG",
+  "telemetry_fork": "aria/res/tag/cat_vendor_risk@v1",
+  "verify": true,
+  "wave": "A"
+}

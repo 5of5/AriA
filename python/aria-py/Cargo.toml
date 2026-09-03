@@ -19,8 +19,8 @@ name = "aria"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-aria-engine-core = { version = "0.2.0", path = "../../crates/aria-core" }
-aria-engine-backends = { version = "0.2.0", path = "../../crates/aria-backends" }
+aria-engine-core = { workspace = true }
+aria-engine-backends = { workspace = true }
 pyo3 = { workspace = true, features = ["extension-module", "abi3-py38"] }
 serde.workspace = true
 serde_json.workspace = true

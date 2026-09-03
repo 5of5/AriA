@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "PERSON_BUYER_USER"
+  ],
+  "binary_id": "BIN.TAG.PERSON_BUYER_USER",
+  "class": "TAG",
+  "crate": "aria_res_tag_person_buyer_user",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.PERSON_BUYER_USER",
+  "package": "aria-res-tag-person-buyer-user",
+  "parent": "BUYER",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.person_buyer_user",
+  "retrieval_step": "memory",
+  "taxonomy": "PERSON_TYPE",
+  "telemetry_fork": "aria/res/tag/person_buyer_user@v1",
+  "verify": true,
+  "wave": "A"
+}

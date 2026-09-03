@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.SUBJECT_IDS",
+  "class": "PROP",
+  "crate": "aria_res_prop_subject_ids",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.SUBJECT_IDS",
+  "package": "aria-res-prop-subject-ids",
+  "parent": "all operators",
+  "pass_through": false,
+  "property_key": "subject_ids",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.subject_ids",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/subject_ids@v1",
+  "verify": true,
+  "wave": "A"
+}

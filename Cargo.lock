@@ -69,7 +69,7 @@ dependencies = [
 
 [[package]]
 name = "aria-engine"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "aria-engine-backends",
  "aria-engine-core",
@@ -85,9 +85,10 @@ dependencies = [
 
 [[package]]
 name = "aria-engine-backends"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "aria-engine-core",
+ "ed25519-dalek",
  "libm",
  "log",
  "num-complex",
@@ -105,7 +106,7 @@ dependencies = [
 
 [[package]]
 name = "aria-engine-core"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "log",
  "num-complex",
@@ -121,7 +122,7 @@ dependencies = [
 
 [[package]]
 name = "aria-engine-py"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "aria-engine-backends",
  "aria-engine-core",
@@ -132,7 +133,7 @@ dependencies = [
 
 [[package]]
 name = "aria-engine-wasm"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "aria-engine-backends",
  "aria-engine-core",
@@ -146,8 +147,3877 @@ dependencies = [
 ]
 
 [[package]]
+name = "aria-json-telemetry"
+version = "0.2.2"
+dependencies = [
+ "aria-engine-backends",
+ "aria-engine-core",
+ "clap",
+ "serde",
+ "serde_json",
+ "thiserror",
+]
+
+[[package]]
+name = "aria-optical-jepa-graph"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-account-targeting"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-buyer-persona-relationship"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-category-creation-timeline"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-category-galaxy"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-category-stack"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-competitive-radar"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-competitor-battlecard"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-customer-logos"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-developer-ecosystem"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-ecosystem-gravity"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-founder-operator-lineage"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-funding-momentum"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-icp-expansion"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-influence-network"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-investor-syndicate"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-market-entry"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-market-heat-island"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-market-intelligence-brief"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-market-map-canvas"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-market-maturity"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-market-white-space"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-narrative-positioning"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-partnership-path"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-product-capability"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-ref-wedge-to-platform"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-account"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-asset"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-claim"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-company"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-concept"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-content"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-contextversion"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-customer"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-event"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-fund"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-geography"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-investor"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-mapnode"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-market"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-marketmap"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-marketsignal"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-partner"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-person"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-portfolio"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-product"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-segment"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-source"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-syndicate"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-node-workspace"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-axis-x"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-axis-y"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-category-distance"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-cluster-gravity"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-competitive-pressure"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-content-hash"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-conviction"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-coverage-state"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-crate"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-decay-half-life"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-differentiation"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-display-name"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-entity-kind"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-epistemic-reach"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-evidence-strength"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-founded-year"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-funding-amount"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-headcount"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-hq-geography"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-investor-quality"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-lifecycle-position"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-limitation"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-method"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-need-intensity"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-neo4j-hit"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-no-finding-reason"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-node-size"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-persona-role"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-plan-hash"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-proof-strength"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-props"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-relationship-strength"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-requirement-id"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-result-limit"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-resultdefinitionref"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-retrieved-at"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-round-date"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-schema-version"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-segment"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-signal-strength"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-signal-type"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-source-url"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-stop-reason"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-subject-ids"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-supply-density"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-trust-level"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-verify"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-viral-coefficient"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-warm-path-hops"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-prop-white-space-density"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-about"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-adjacent-to"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-announced"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-asserts"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-attended-by"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-buys"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-cites"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-co-invests-with"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-competes-with"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-conflicts-with"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-contains-map"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-contains-segment"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-customer-of"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-founded"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-has-capability"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-has-persona"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-in-category"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-influences"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-instance-of"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-integrates-with"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-invests-in"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-leads"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-member-of"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-occurred-at"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-offered-by"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-operates-in"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-partners-with"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-path-to"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-placed-in"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-previously-at"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-raises-from"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-requires-edge"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-requires-signal"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-retrieved-from"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-scoped-to"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-sells-to"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-signals"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-sourced-from"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-substitutes"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-supports"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-syndicates-with"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-tagged-as"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-targeted-by"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-uses"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-version-of"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-rel-works-at"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-account"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-asset"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-axis-x"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-axis-y"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-buyer-tag"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-capability"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-adjacent"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-bridge-band"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-brief"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-canvas"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-core"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-coverage"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-family-brief"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-family-hub"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-family-network"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-family-quadrant"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-family-swimlane"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-family-timeline"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-fintech-infra"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-intent-capital"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-intent-compare"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-intent-opportunity"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-intent-output"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-intent-understand"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-investor"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-landscape"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-market-expansion"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-market-intel"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-network"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-provenance"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-refresh"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-structure"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-vendor-risk"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cat-white-space"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-category"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-claim"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-accelerator"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-acquirer"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-acquisition-target"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-agency"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-application"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-category-creator"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-challenger"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-consortium"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-corporate"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-cvc"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-distribution"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-early-stage"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-family-office"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-fund-vehicle"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-government"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-growth-stage"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-incubator"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-incumbent"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-infrastructure"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-lab"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-late-stage"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-listed-incumbent"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-marketplace"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-middleware"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-nonprofit"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-open-source-org"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-platform"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-point-solution"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-private"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-public"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-scaleup"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-seed-stage"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-spinout"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-standard-body"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-startup"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-studio"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-subsidiary"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-suite-vendor"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-university"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-co-vendor"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-company"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-competitor-tag"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-concept"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-content"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-content-hash"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-current-context-version"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-customer"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-customer-proof"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-cypher-template"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-data-point-budget"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-agent-callable"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-api-surface"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-builder"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-champion"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-cloud-partner"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-cold-path"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-community"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-contributor"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-distribution-owner"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-extension"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-focal"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-gravity-hub"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-integrator"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-isv"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-maintainer"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-marketplace"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-mcp-surface"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-oss-project"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-platform-owner"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-plugin"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-protocol"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-reseller"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-sdk"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-si"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-spoke"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-standard"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-tooling"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eco-warm-path"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-eligible-source-class"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-event"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-existing-coverage"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-field"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-fund"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-funding"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-geo-scope"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-geography"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-hiring"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-icp"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-account-intelligence"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-ai-assisted-enterprise"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-ai-infrastructure"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-analytics-platforms"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-banking"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-blockchain"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-capital-markets"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-cloud-infrastructure"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-competitive-intelligence"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-confidential-compute"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-cybersecurity"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-data-infrastructure"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-developer-tools"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-enrichment-signals"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-enterprise-saas"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-fintech"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-fintech-infrastructure"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-graph-context-systems"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-gtm-infrastructure"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-healthtech"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-identity"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-insurtech"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-knowledge-graphs"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-legaltech"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-lending"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-market-intelligence"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-partner-ecosystem-intel"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-payments"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-privacy-tech"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-private-equity"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-private-markets"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-proptech"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-regtech"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-research-decision-intel"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-sales-intelligence"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-third-party-risk"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-vendor-risk"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-venture-capital"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-wealthtech"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-ind-web3-infrastructure"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-intent"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-investor"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-active-context"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-active-market-context"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-adjacent-buyer"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-analyst-node"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-attention-heat"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-attractiveness"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-builder-node"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-buyer-role"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-capability-atom"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-capital-path"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-category-creator-lane"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-category-distance"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-category-formation"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-category-neighborhood"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-claim-row"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-cluster-gravity"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-co-investor"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-compact-narrative"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-comparison-matrix"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-compete-program"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-competitive-pressure"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-completeness-metric"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-consolidating"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-core-category-member"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-creator-node"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-crowded-area"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-differentiation"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-distinctiveness"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-ecosystem-champion"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-emerging"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-entry-wedge"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-evidence-strength"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-executive-brief"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-expansion-path"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-expansion-step"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-field-contract"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-fit"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-flexible-placement"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-follow-on"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-framing"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-funding-act"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-funding-heat"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-gap"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-gravity-hub"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-growing"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-heat-zone"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-hiring-heat"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-influence-path"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-initial-wedge"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-integration"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-investor-quality"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-launch-heat"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-layer-app"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-layer-dist"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-layer-infra"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-layer-mid"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-lead-investor"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-lifecycle-curve"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-list-price-absent"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-logo-lane"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-market-risk"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-mature"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-missing-proof"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-missing-proof-lane"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-momentum-down"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-momentum-flat"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-momentum-up"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-naming-act"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-need-intensity"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-one-screen"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-open-area"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-operator-node"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-operator-path"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-opportunity-gap"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-partner-path"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-partner-path-entry"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-persona-link"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-platform-pull"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-platform-thesis"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-portfolio-overlap"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-position"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-positioning-lane"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-previous-company"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-problem-point"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-project-node"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-proof"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-proof-backed-strength"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-proof-needed-quadrant"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-proof-point"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-proven-customer-context"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-pull"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-ranked-account"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-recency-heat"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-refreshable"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-regional-risk"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-relationship-strength"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-round-size"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-spin-out"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-stack-application"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-stack-distribution"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-stack-infra"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-stack-middleware"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-strategic-ring"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-strategic-target"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-structural-claim"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-supply-density"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-talent-lineage"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-temporal-signal"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-threat-critical"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-threat-high"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-threat-low"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-threat-medium"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-timing"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-underserved-cluster"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-vendor"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-vintage"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-warm-path-account"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-warm-path-hop"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-lang-white-space-density"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-launch"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-layer"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-map-type"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-market"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-market-map"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-media"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-method"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-partner"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-partner-tag"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-path-id"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-account-owner"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-advisor"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-analyst-firm"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-analyst-industry"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-angel"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-associate"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-board"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-buyer-champion"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-buyer-economic"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-buyer-technical"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-buyer-user"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-ceo"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-cfo"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-ciso"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-cmo"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-co-founder"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-commercial-strategy"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-compliance"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-consulting-partner"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-coo"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-corp-dev"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-corp-strategy"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-counsel"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-cpo"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-creator"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-cro"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-cto"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-customer-champion"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-designer"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-devrel"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-end-user"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-engineer"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-executive"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-founder"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-gp"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-head-devrel"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-head-engineering"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-head-growth"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-head-payments"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-head-product"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-head-research"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-head-sales"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-ic-member"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-influencer"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-investment-partner"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-investor"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-journalist"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-lp"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-market-intel-lead"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-operator"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-pm"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-portfolio-operator"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-principal"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-procurement"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-regulator"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-researcher"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-revops"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-scout"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-solutions-engineer"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-vendor-manager"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-venture-partner"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-person-vp-partnerships"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-persona-analyst"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-persona-builder"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-persona-economic"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-persona-executive"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-persona-governance"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-persona-investor"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-persona-operator"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-persona-partner"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-persona-technical"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-persona-user"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-portfolio"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-product"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-readiness"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-regulatory"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-requirement-id"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-result-definition-ref"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-retrieved-at"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-segment"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-seller-tag"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-signal"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-source"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-syndicate-tag"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-telemetry-spine"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-timestamp"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-trajectory"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-trust-state"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-url"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-virality-metrics"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-res-tag-warm-path"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-telemetry-account"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-telemetry-buyer"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-telemetry-claim"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-telemetry-company"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-telemetry-competitor"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-telemetry-customer"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-telemetry-event"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-telemetry-market"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-telemetry-market-map"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-telemetry-partner"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-telemetry-people"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-telemetry-portfolio"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-telemetry-product"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-telemetry-seller"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-telemetry-signal"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-telemetry-source"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-telemetry-syndicate"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "aria-telemetry-vc"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
 name = "aria-training"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "aria-engine-backends",
  "aria-engine-core",
@@ -203,6 +4073,15 @@ name = "bitflags"
 version = "2.13.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b588b76d00fde79687d7646a9b5bdf3cc0f655e0bbd080335a95d7e96f3587da"
+
+[[package]]
+name = "block-buffer"
+version = "0.10.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3078c7629b62d3f0439517fa394996acacc5cbc91c5a20d8c658e77abd503a71"
+dependencies = [
+ "generic-array",
+]
 
 [[package]]
 name = "bumpalo"
@@ -300,6 +4179,51 @@ dependencies = [
 ]
 
 [[package]]
+name = "cpufeatures"
+version = "0.2.17"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "59ed5838eebb26a2bb2e58f6d5b5316989ae9d08bab10e0e6d103e656d1b0280"
+dependencies = [
+ "libc",
+]
+
+[[package]]
+name = "crypto-common"
+version = "0.1.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "78c8292055d1c1df0cce5d180393dc8cce0abec0a7102adb6c7b1eef6016d60a"
+dependencies = [
+ "generic-array",
+ "typenum",
+]
+
+[[package]]
+name = "curve25519-dalek"
+version = "4.1.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "97fb8b7c4503de7d6ae7b42ab72a5a59857b4c937ec27a3d4539dba95b5ab2be"
+dependencies = [
+ "cfg-if",
+ "cpufeatures",
+ "curve25519-dalek-derive",
+ "digest",
+ "fiat-crypto",
+ "rustc_version",
+ "subtle",
+]
+
+[[package]]
+name = "curve25519-dalek-derive"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f46882e17999c6cc590af592290432be3bce0428cb0d5f8b6715e4dc7b383eb3"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 2.0.119",
+]
+
+[[package]]
 name = "cxx"
 version = "1.0.199"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -393,6 +4317,37 @@ dependencies = [
 ]
 
 [[package]]
+name = "digest"
+version = "0.10.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9ed9a281f7bc9b7576e61468ba615a66a5c8cfdff42420a70aa82701a3b1e292"
+dependencies = [
+ "block-buffer",
+ "crypto-common",
+]
+
+[[package]]
+name = "ed25519"
+version = "2.2.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "115531babc129696a58c64a4fef0a8bf9e9698629fb97e9e40767d235cfbcd53"
+dependencies = [
+ "signature",
+]
+
+[[package]]
+name = "ed25519-dalek"
+version = "2.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "70e796c081cee67dc755e1a36a0a172b897fab85fc3f6bc48307991f64e4eca9"
+dependencies = [
+ "curve25519-dalek",
+ "ed25519",
+ "sha2",
+ "subtle",
+]
+
+[[package]]
 name = "env_filter"
 version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -438,6 +4393,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "da7c62ceae207dd37ea5b845da6a0696c799f85e97da1ab5b7910be3c1c80223"
 
 [[package]]
+name = "fiat-crypto"
+version = "0.2.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "28dea519a9695b9977216879a3ebfddf92f1c08c05d984f8996aecd6ecdc811d"
+
+[[package]]
 name = "find-msvc-tools"
 version = "0.1.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -477,6 +4438,16 @@ dependencies = [
  "futures-task",
  "pin-project-lite",
  "slab",
+]
+
+[[package]]
+name = "generic-array"
+version = "0.14.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "85649ca51fd72272d7821adaf274ad91c288277713d9c18820d8499a7ff69e9a"
+dependencies = [
+ "typenum",
+ "version_check",
 ]
 
 [[package]]
@@ -718,6 +4689,69 @@ name = "oorandom"
 version = "11.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d6790f58c7ff633d8771f42965289203411a5e5c68388703c06e14f24770b41e"
+
+[[package]]
+name = "pcvc-corpus-search"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "pcvc-document-extract"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "pcvc-existing-coverage"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "pcvc-feed-by-name"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "pcvc-hash-stamp"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "pcvc-http-allowlist"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "pcvc-neo4j-aura"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "pcvc-obscura"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
+
+[[package]]
+name = "pcvc-schema-lookup"
+version = "0.2.1"
+dependencies = [
+ "aria-json-telemetry",
+]
 
 [[package]]
 name = "pin-project-lite"
@@ -980,6 +5014,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d6f6ff9a378485b298a5286656da665ba74413d36db0979633275d2e708145d4"
 
 [[package]]
+name = "rustc_version"
+version = "0.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cfcb3a22ef46e85b45de6ee7e79d063319ebb6594faafcf1c225ea92ab6e9b92"
+dependencies = [
+ "semver",
+]
+
+[[package]]
 name = "rustfft"
 version = "6.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1053,6 +5096,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d68f2ec51b097e4c1a75b681a8bec621909b5e91f15bb7b840c4f2f7b01148b2"
 
 [[package]]
+name = "semver"
+version = "1.0.28"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8a7852d02fc848982e0c167ef163aaff9cd91dc640ba85e263cb1ce46fae51cd"
+
+[[package]]
 name = "serde"
 version = "1.0.229"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1116,10 +5165,27 @@ dependencies = [
 ]
 
 [[package]]
+name = "sha2"
+version = "0.10.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a7507d819769d01a365ab707794a4084392c824f54a7a6a7862f8c3d0892b283"
+dependencies = [
+ "cfg-if",
+ "cpufeatures",
+ "digest",
+]
+
+[[package]]
 name = "shlex"
 version = "2.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f8fadd59c855ef2080decdef8ff161eb6661b86933c9d82e5ba29dc602a55aba"
+
+[[package]]
+name = "signature"
+version = "2.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "77549399552de45a898a580c1b41d445bf730df867cc44e6c0233bbc4b8329de"
 
 [[package]]
 name = "slab"
@@ -1138,6 +5204,12 @@ name = "strsim"
 version = "0.11.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7da8b5736845d9f2fcb837ea5d9e2628564b3b043a70948a3f0b778838c5fb4f"
+
+[[package]]
+name = "subtle"
+version = "2.6.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
 
 [[package]]
 name = "syn"
@@ -1261,6 +5333,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "typenum"
+version = "1.20.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b6f5e870be6c3b371b77fe0ee0bafb859fa4964b4404c27de1d380043c4dda20"
+
+[[package]]
 name = "unarray"
 version = "0.1.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1299,6 +5377,12 @@ name = "utf8parse"
 version = "0.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "06abde3611657adf66d383f00b093d7faecc7fa57071cce2578660c9f1010821"
+
+[[package]]
+name = "version_check"
+version = "0.9.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0b928f33d975fc6ad9f86c8f283853ad26bdd5b10b7f1542aa2fa15e2289105a"
 
 [[package]]
 name = "wait-timeout"

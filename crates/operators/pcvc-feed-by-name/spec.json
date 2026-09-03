@@ -1,0 +1,25 @@
+{
+  "anchor_tags": [
+    "PATH_ID",
+    "ELIGIBLE_SOURCE_CLASS"
+  ],
+  "binary_id": "BIN.FEED_BY_NAME",
+  "class": "HOST",
+  "crate": "pcvc_feed_by_name",
+  "default_limit": null,
+  "layer": "HOST",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "feed.by-name",
+  "package": "pcvc-feed-by-name",
+  "parent": "\u2014",
+  "pass_through": true,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "host.feed_by_name",
+  "retrieval_step": "lift",
+  "taxonomy": null,
+  "telemetry_fork": "pcvc/feed.by-name@dev",
+  "verify": true,
+  "wave": null
+}

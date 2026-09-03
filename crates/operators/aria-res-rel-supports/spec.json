@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.REL.SUPPORTS",
+  "class": "REL",
+  "crate": "aria_res_rel_supports",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "REL.SUPPORTS",
+  "package": "aria-res-rel-supports",
+  "parent": "SOURCE",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "SUPPORTS"
+  ],
+  "result_definition_ref": "residual.rel.supports",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/rel/supports@v1",
+  "verify": true,
+  "wave": "B"
+}

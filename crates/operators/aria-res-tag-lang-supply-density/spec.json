@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "LANG_SUPPLY_DENSITY"
+  ],
+  "binary_id": "BIN.TAG.LANG_SUPPLY_DENSITY",
+  "class": "TAG",
+  "crate": "aria_res_tag_lang_supply_density",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.LANG_SUPPLY_DENSITY",
+  "package": "aria-res-tag-lang-supply-density",
+  "parent": "MARKET",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.lang_supply_density",
+  "retrieval_step": "memory",
+  "taxonomy": "MAP_LANGUAGE",
+  "telemetry_fork": "aria/res/tag/lang_supply_density@v1",
+  "verify": true,
+  "wave": "B"
+}

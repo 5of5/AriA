@@ -1,0 +1,17 @@
+{
+  "nodes": [
+    { "id": 1, "label": "Stripe", "notes": "payments infrastructure", "type": "observation", "sector": "fintech", "stage": "late" },
+    { "id": 2, "label": "Adyen", "notes": "payments infrastructure", "type": "observation", "sector": "fintech", "stage": "public" },
+    { "id": 3, "label": "Plaid", "notes": "bank data connectivity", "type": "observation", "sector": "fintech", "stage": "growth" },
+    { "id": 4, "label": "Tempus", "notes": "clinical genomic sequencing", "type": "observation", "sector": "healthcare", "stage": "late" },
+    { "id": 5, "label": "Recursion", "notes": "computational drug discovery", "type": "observation", "sector": "healthcare", "stage": "public" },
+    { "id": 6, "label": "Benchling", "notes": "life science research platform", "type": "observation", "sector": "healthcare", "stage": "growth" }
+  ],
+  "edges": [
+    { "from": 1, "to": 2, "type": "refines" },
+    { "from": 2, "to": 3, "type": "refines" },
+    { "from": 4, "to": 5, "type": "refines" },
+    { "from": 5, "to": 6, "type": "refines" },
+    { "from": 3, "to": 4, "type": "causally_precedes" }
+  ]
+}

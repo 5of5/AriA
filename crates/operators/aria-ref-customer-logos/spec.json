@@ -1,0 +1,37 @@
+{
+  "anchor_tags": [
+    "CUSTOMER",
+    "SELLER_TAG",
+    "CUSTOMER_PROOF",
+    "Customer Logos",
+    "MAP_TYPE"
+  ],
+  "binary_id": "BIN.REF.CUSTOMER_LOGOS",
+  "class": "REFINEMENT",
+  "crate": "aria_ref_customer_logos",
+  "default_limit": null,
+  "layer": "REFINEMENT",
+  "neo4j_pass": true,
+  "node_types": [
+    "Customer",
+    "Account",
+    "Company",
+    "Product",
+    "Claim"
+  ],
+  "operator": "REF.CUSTOMER_LOGOS",
+  "package": "aria-ref-customer-logos",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "CUSTOMER_OF",
+    "SELLS_TO"
+  ],
+  "result_definition_ref": "map.ref.customer_logos",
+  "retrieval_step": "memory",
+  "taxonomy": "Customer Logos",
+  "telemetry_fork": "aria/ref/customer_logos@v1",
+  "verify": true,
+  "wave": null
+}

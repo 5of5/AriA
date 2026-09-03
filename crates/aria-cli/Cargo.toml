@@ -18,8 +18,10 @@ name = "aria"
 path = "src/main.rs"
 
 [dependencies]
-aria-engine-core = { version = "0.2.0", path = "../aria-core" }
-aria-engine-backends = { version = "0.2.0", path = "../aria-backends" }
+aria-engine-core = { workspace = true }
+# The native binary enables OCID signature verification; the WASM surface
+# deliberately does not, so wasm32 stays free of curve code.
+aria-engine-backends = { workspace = true, features = ["ocid-ed25519"] }
 clap.workspace = true
 serde.workspace = true
 serde_json.workspace = true

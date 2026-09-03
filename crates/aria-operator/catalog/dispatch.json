@@ -1,0 +1,5606 @@
+{
+  "schema": "aria-dispatch-table-v1",
+  "catalog": 560,
+  "binaries": [
+    {
+      "binary_id": "BIN.ACCOUNT",
+      "operator": "ACCOUNT",
+      "package": "aria-telemetry-account",
+      "resultDefinitionRef": "entity.account",
+      "layer": "ENTITY",
+      "class": "ENTITY",
+      "verify": true,
+      "parent": "CUSTOMER"
+    },
+    {
+      "binary_id": "BIN.ARIA",
+      "operator": "AriA",
+      "package": "aria-optical-jepa-graph",
+      "resultDefinitionRef": "transform.aria",
+      "layer": "TRANSFORM",
+      "class": "TRANSFORM",
+      "verify": true,
+      "parent": "\u2014"
+    },
+    {
+      "binary_id": "BIN.BUYER",
+      "operator": "BUYER",
+      "package": "aria-telemetry-buyer",
+      "resultDefinitionRef": "tag.buyer",
+      "layer": "TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.CLAIM",
+      "operator": "CLAIM",
+      "package": "aria-telemetry-claim",
+      "resultDefinitionRef": "fact.claim",
+      "layer": "FACT",
+      "class": "FACT",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.COMPANY",
+      "operator": "COMPANY",
+      "package": "aria-telemetry-company",
+      "resultDefinitionRef": "entity.company",
+      "layer": "ENTITY",
+      "class": "ENTITY",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.COMPETITOR",
+      "operator": "COMPETITOR",
+      "package": "aria-telemetry-competitor",
+      "resultDefinitionRef": "tag.competitor",
+      "layer": "TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.CORPUS_SEARCH",
+      "operator": "corpus-search",
+      "package": "pcvc-corpus-search",
+      "resultDefinitionRef": "host.corpus_search",
+      "layer": "HOST",
+      "class": "HOST",
+      "verify": true,
+      "parent": "\u2014"
+    },
+    {
+      "binary_id": "BIN.CUSTOMER",
+      "operator": "CUSTOMER",
+      "package": "aria-telemetry-customer",
+      "resultDefinitionRef": "entity.customer",
+      "layer": "ENTITY",
+      "class": "ENTITY",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.DOC_EXTRACT",
+      "operator": "document-extract",
+      "package": "pcvc-document-extract",
+      "resultDefinitionRef": "host.document_extract",
+      "layer": "HOST",
+      "class": "HOST",
+      "verify": false,
+      "parent": "\u2014"
+    },
+    {
+      "binary_id": "BIN.EVENT",
+      "operator": "EVENT",
+      "package": "aria-telemetry-event",
+      "resultDefinitionRef": "entity.event",
+      "layer": "ENTITY",
+      "class": "ENTITY",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.EXISTING_COVERAGE",
+      "operator": "existing-coverage",
+      "package": "pcvc-existing-coverage",
+      "resultDefinitionRef": "host.existing_coverage",
+      "layer": "HOST",
+      "class": "HOST",
+      "verify": true,
+      "parent": "\u2014"
+    },
+    {
+      "binary_id": "BIN.FEED_BY_NAME",
+      "operator": "feed.by-name",
+      "package": "pcvc-feed-by-name",
+      "resultDefinitionRef": "host.feed_by_name",
+      "layer": "HOST",
+      "class": "HOST",
+      "verify": true,
+      "parent": "\u2014"
+    },
+    {
+      "binary_id": "BIN.HASH_STAMP",
+      "operator": "hash-stamp",
+      "package": "pcvc-hash-stamp",
+      "resultDefinitionRef": "host.hash_stamp",
+      "layer": "HOST",
+      "class": "HOST",
+      "verify": true,
+      "parent": "\u2014"
+    },
+    {
+      "binary_id": "BIN.HTTP_ALLOWLIST",
+      "operator": "allowlisted-http",
+      "package": "pcvc-http-allowlist",
+      "resultDefinitionRef": "host.allowlisted_http",
+      "layer": "HOST",
+      "class": "HOST",
+      "verify": true,
+      "parent": "\u2014"
+    },
+    {
+      "binary_id": "BIN.MARKET",
+      "operator": "MARKET",
+      "package": "aria-telemetry-market",
+      "resultDefinitionRef": "entity.market",
+      "layer": "ENTITY",
+      "class": "ENTITY",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.MARKET_MAP",
+      "operator": "MARKET_MAP",
+      "package": "aria-telemetry-market-map",
+      "resultDefinitionRef": "market_map.instance",
+      "layer": "ENVELOPE",
+      "class": "ENVELOPE",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.NEO4J_AURA",
+      "operator": "neo4j-aura",
+      "package": "pcvc-neo4j-aura",
+      "resultDefinitionRef": "host.neo4j_aura",
+      "layer": "HOST",
+      "class": "HOST",
+      "verify": true,
+      "parent": "\u2014"
+    },
+    {
+      "binary_id": "BIN.NODE.ACCOUNT",
+      "operator": "NODE.ACCOUNT",
+      "package": "aria-res-node-account",
+      "resultDefinitionRef": "residual.node.account",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "ACCOUNT"
+    },
+    {
+      "binary_id": "BIN.NODE.ASSET",
+      "operator": "NODE.ASSET",
+      "package": "aria-res-node-asset",
+      "resultDefinitionRef": "residual.node.asset",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "SOURCE"
+    },
+    {
+      "binary_id": "BIN.NODE.CLAIM",
+      "operator": "NODE.CLAIM",
+      "package": "aria-res-node-claim",
+      "resultDefinitionRef": "residual.node.claim",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.NODE.COMPANY",
+      "operator": "NODE.COMPANY",
+      "package": "aria-res-node-company",
+      "resultDefinitionRef": "residual.node.company",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.NODE.CONCEPT",
+      "operator": "NODE.CONCEPT",
+      "package": "aria-res-node-concept",
+      "resultDefinitionRef": "residual.node.concept",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.NODE.CONTENT",
+      "operator": "NODE.CONTENT",
+      "package": "aria-res-node-content",
+      "resultDefinitionRef": "residual.node.content",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.NODE.CONTEXTVERSION",
+      "operator": "NODE.CONTEXTVERSION",
+      "package": "aria-res-node-contextversion",
+      "resultDefinitionRef": "residual.node.contextversion",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.NODE.CUSTOMER",
+      "operator": "NODE.CUSTOMER",
+      "package": "aria-res-node-customer",
+      "resultDefinitionRef": "residual.node.customer",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "CUSTOMER"
+    },
+    {
+      "binary_id": "BIN.NODE.EVENT",
+      "operator": "NODE.EVENT",
+      "package": "aria-res-node-event",
+      "resultDefinitionRef": "residual.node.event",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "EVENT"
+    },
+    {
+      "binary_id": "BIN.NODE.FUND",
+      "operator": "NODE.FUND",
+      "package": "aria-res-node-fund",
+      "resultDefinitionRef": "residual.node.fund",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "VENTURE_CAPITAL"
+    },
+    {
+      "binary_id": "BIN.NODE.GEOGRAPHY",
+      "operator": "NODE.GEOGRAPHY",
+      "package": "aria-res-node-geography",
+      "resultDefinitionRef": "residual.node.geography",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.NODE.INVESTOR",
+      "operator": "NODE.INVESTOR",
+      "package": "aria-res-node-investor",
+      "resultDefinitionRef": "residual.node.investor",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "VENTURE_CAPITAL"
+    },
+    {
+      "binary_id": "BIN.NODE.MAPNODE",
+      "operator": "NODE.MAPNODE",
+      "package": "aria-res-node-mapnode",
+      "resultDefinitionRef": "residual.node.mapnode",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.NODE.MARKET",
+      "operator": "NODE.MARKET",
+      "package": "aria-res-node-market",
+      "resultDefinitionRef": "residual.node.market",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.NODE.MARKETMAP",
+      "operator": "NODE.MARKETMAP",
+      "package": "aria-res-node-marketmap",
+      "resultDefinitionRef": "residual.node.marketmap",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.NODE.MARKETSIGNAL",
+      "operator": "NODE.MARKETSIGNAL",
+      "package": "aria-res-node-marketsignal",
+      "resultDefinitionRef": "residual.node.marketsignal",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.NODE.PARTNER",
+      "operator": "NODE.PARTNER",
+      "package": "aria-res-node-partner",
+      "resultDefinitionRef": "residual.node.partner",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.NODE.PERSON",
+      "operator": "NODE.PERSON",
+      "package": "aria-res-node-person",
+      "resultDefinitionRef": "residual.node.person",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.NODE.PORTFOLIO",
+      "operator": "NODE.PORTFOLIO",
+      "package": "aria-res-node-portfolio",
+      "resultDefinitionRef": "residual.node.portfolio",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.NODE.PRODUCT",
+      "operator": "NODE.PRODUCT",
+      "package": "aria-res-node-product",
+      "resultDefinitionRef": "residual.node.product",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.NODE.SEGMENT",
+      "operator": "NODE.SEGMENT",
+      "package": "aria-res-node-segment",
+      "resultDefinitionRef": "residual.node.segment",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.NODE.SOURCE",
+      "operator": "NODE.SOURCE",
+      "package": "aria-res-node-source",
+      "resultDefinitionRef": "residual.node.source",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "SOURCE"
+    },
+    {
+      "binary_id": "BIN.NODE.SYNDICATE",
+      "operator": "NODE.SYNDICATE",
+      "package": "aria-res-node-syndicate",
+      "resultDefinitionRef": "residual.node.syndicate",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "SYNDICATE"
+    },
+    {
+      "binary_id": "BIN.NODE.WORKSPACE",
+      "operator": "NODE.WORKSPACE",
+      "package": "aria-res-node-workspace",
+      "resultDefinitionRef": "residual.node.workspace",
+      "layer": "RESIDUAL",
+      "class": "NODE",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.OBSCURA",
+      "operator": "obscura",
+      "package": "pcvc-obscura",
+      "resultDefinitionRef": "host.obscura",
+      "layer": "HOST",
+      "class": "HOST",
+      "verify": true,
+      "parent": "\u2014"
+    },
+    {
+      "binary_id": "BIN.PARTNER",
+      "operator": "PARTNER",
+      "package": "aria-telemetry-partner",
+      "resultDefinitionRef": "tag.partner",
+      "layer": "TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.PEOPLE",
+      "operator": "PEOPLE",
+      "package": "aria-telemetry-people",
+      "resultDefinitionRef": "entity.person",
+      "layer": "ENTITY",
+      "class": "ENTITY",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.PORTFOLIO",
+      "operator": "PORTFOLIO",
+      "package": "aria-telemetry-portfolio",
+      "resultDefinitionRef": "portfolio.envelope",
+      "layer": "ENVELOPE",
+      "class": "ENVELOPE",
+      "verify": true,
+      "parent": "\u2014"
+    },
+    {
+      "binary_id": "BIN.PRODUCT",
+      "operator": "PRODUCT",
+      "package": "aria-telemetry-product",
+      "resultDefinitionRef": "entity.product",
+      "layer": "ENTITY",
+      "class": "ENTITY",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.PROP.AXIS_X",
+      "operator": "PROP.AXIS_X",
+      "package": "aria-res-prop-axis-x",
+      "resultDefinitionRef": "residual.prop.axis_x",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.PROP.AXIS_Y",
+      "operator": "PROP.AXIS_Y",
+      "package": "aria-res-prop-axis-y",
+      "resultDefinitionRef": "residual.prop.axis_y",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.PROP.CATEGORY_DISTANCE",
+      "operator": "PROP.CATEGORY_DISTANCE",
+      "package": "aria-res-prop-category-distance",
+      "resultDefinitionRef": "residual.prop.category_distance",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.PROP.CLUSTER_GRAVITY",
+      "operator": "PROP.CLUSTER_GRAVITY",
+      "package": "aria-res-prop-cluster-gravity",
+      "resultDefinitionRef": "residual.prop.cluster_gravity",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.PROP.COMPETITIVE_PRESSURE",
+      "operator": "PROP.COMPETITIVE_PRESSURE",
+      "package": "aria-res-prop-competitive-pressure",
+      "resultDefinitionRef": "residual.prop.competitive_pressure",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "COMPETITOR"
+    },
+    {
+      "binary_id": "BIN.PROP.CONTENT_HASH",
+      "operator": "PROP.CONTENT_HASH",
+      "package": "aria-res-prop-content-hash",
+      "resultDefinitionRef": "residual.prop.content_hash",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "all writers"
+    },
+    {
+      "binary_id": "BIN.PROP.CONVICTION",
+      "operator": "PROP.CONVICTION",
+      "package": "aria-res-prop-conviction",
+      "resultDefinitionRef": "residual.prop.conviction",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "atlas only"
+    },
+    {
+      "binary_id": "BIN.PROP.COVERAGE_STATE",
+      "operator": "PROP.COVERAGE_STATE",
+      "package": "aria-res-prop-coverage-state",
+      "resultDefinitionRef": "residual.prop.coverage_state",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "all operators"
+    },
+    {
+      "binary_id": "BIN.PROP.CRATE",
+      "operator": "PROP.CRATE",
+      "package": "aria-res-prop-crate",
+      "resultDefinitionRef": "residual.prop.crate",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "all operators"
+    },
+    {
+      "binary_id": "BIN.PROP.DECAY_HALF_LIFE",
+      "operator": "PROP.DECAY_HALF_LIFE",
+      "package": "aria-res-prop-decay-half-life",
+      "resultDefinitionRef": "residual.prop.decay_half_life",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.PROP.DIFFERENTIATION",
+      "operator": "PROP.DIFFERENTIATION",
+      "package": "aria-res-prop-differentiation",
+      "resultDefinitionRef": "residual.prop.differentiation",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "COMPETITOR"
+    },
+    {
+      "binary_id": "BIN.PROP.DISPLAY_NAME",
+      "operator": "PROP.DISPLAY_NAME",
+      "package": "aria-res-prop-display-name",
+      "resultDefinitionRef": "residual.prop.display_name",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "all entity"
+    },
+    {
+      "binary_id": "BIN.PROP.ENTITY_KIND",
+      "operator": "PROP.ENTITY_KIND",
+      "package": "aria-res-prop-entity-kind",
+      "resultDefinitionRef": "residual.prop.entity_kind",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "all entity"
+    },
+    {
+      "binary_id": "BIN.PROP.EPISTEMIC_REACH",
+      "operator": "PROP.EPISTEMIC_REACH",
+      "package": "aria-res-prop-epistemic-reach",
+      "resultDefinitionRef": "residual.prop.epistemic_reach",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.PROP.EVIDENCE_STRENGTH",
+      "operator": "PROP.EVIDENCE_STRENGTH",
+      "package": "aria-res-prop-evidence-strength",
+      "resultDefinitionRef": "residual.prop.evidence_strength",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.PROP.FOUNDED_YEAR",
+      "operator": "PROP.FOUNDED_YEAR",
+      "package": "aria-res-prop-founded-year",
+      "resultDefinitionRef": "residual.prop.founded_year",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.PROP.FUNDING_AMOUNT",
+      "operator": "PROP.FUNDING_AMOUNT",
+      "package": "aria-res-prop-funding-amount",
+      "resultDefinitionRef": "residual.prop.funding_amount",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.PROP.HEADCOUNT",
+      "operator": "PROP.HEADCOUNT",
+      "package": "aria-res-prop-headcount",
+      "resultDefinitionRef": "residual.prop.headcount",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.PROP.HQ_GEOGRAPHY",
+      "operator": "PROP.HQ_GEOGRAPHY",
+      "package": "aria-res-prop-hq-geography",
+      "resultDefinitionRef": "residual.prop.hq_geography",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.PROP.INVESTOR_QUALITY",
+      "operator": "PROP.INVESTOR_QUALITY",
+      "package": "aria-res-prop-investor-quality",
+      "resultDefinitionRef": "residual.prop.investor_quality",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "VC"
+    },
+    {
+      "binary_id": "BIN.PROP.LIFECYCLE_POSITION",
+      "operator": "PROP.LIFECYCLE_POSITION",
+      "package": "aria-res-prop-lifecycle-position",
+      "resultDefinitionRef": "residual.prop.lifecycle_position",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.PROP.LIMITATION",
+      "operator": "PROP.LIMITATION",
+      "package": "aria-res-prop-limitation",
+      "resultDefinitionRef": "residual.prop.limitation",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "all operators"
+    },
+    {
+      "binary_id": "BIN.PROP.METHOD",
+      "operator": "PROP.METHOD",
+      "package": "aria-res-prop-method",
+      "resultDefinitionRef": "residual.prop.method",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "SOURCE"
+    },
+    {
+      "binary_id": "BIN.PROP.NEED_INTENSITY",
+      "operator": "PROP.NEED_INTENSITY",
+      "package": "aria-res-prop-need-intensity",
+      "resultDefinitionRef": "residual.prop.need_intensity",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.PROP.NEO4J_HIT",
+      "operator": "PROP.NEO4J_HIT",
+      "package": "aria-res-prop-neo4j-hit",
+      "resultDefinitionRef": "residual.prop.neo4j_hit",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "all operators"
+    },
+    {
+      "binary_id": "BIN.PROP.NODE_SIZE",
+      "operator": "PROP.NODE_SIZE",
+      "package": "aria-res-prop-node-size",
+      "resultDefinitionRef": "residual.prop.node_size",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.PROP.NO_FINDING_REASON",
+      "operator": "PROP.NO_FINDING_REASON",
+      "package": "aria-res-prop-no-finding-reason",
+      "resultDefinitionRef": "residual.prop.no_finding_reason",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "all operators"
+    },
+    {
+      "binary_id": "BIN.PROP.PERSONA_ROLE",
+      "operator": "PROP.PERSONA_ROLE",
+      "package": "aria-res-prop-persona-role",
+      "resultDefinitionRef": "residual.prop.persona_role",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.PROP.PLAN_HASH",
+      "operator": "PROP.PLAN_HASH",
+      "package": "aria-res-prop-plan-hash",
+      "resultDefinitionRef": "residual.prop.plan_hash",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "all operators"
+    },
+    {
+      "binary_id": "BIN.PROP.PROOF_STRENGTH",
+      "operator": "PROP.PROOF_STRENGTH",
+      "package": "aria-res-prop-proof-strength",
+      "resultDefinitionRef": "residual.prop.proof_strength",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.PROP.PROPS",
+      "operator": "PROP.PROPS",
+      "package": "aria-res-prop-props",
+      "resultDefinitionRef": "residual.prop.props",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "all entity"
+    },
+    {
+      "binary_id": "BIN.PROP.RELATIONSHIP_STRENGTH",
+      "operator": "PROP.RELATIONSHIP_STRENGTH",
+      "package": "aria-res-prop-relationship-strength",
+      "resultDefinitionRef": "residual.prop.relationship_strength",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "CUSTOMER"
+    },
+    {
+      "binary_id": "BIN.PROP.REQUIREMENT_ID",
+      "operator": "PROP.REQUIREMENT_ID",
+      "package": "aria-res-prop-requirement-id",
+      "resultDefinitionRef": "residual.prop.requirement_id",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "all operators"
+    },
+    {
+      "binary_id": "BIN.PROP.RESULTDEFINITIONREF",
+      "operator": "PROP.RESULTDEFINITIONREF",
+      "package": "aria-res-prop-resultdefinitionref",
+      "resultDefinitionRef": "residual.prop.resultdefinitionref",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "all operators"
+    },
+    {
+      "binary_id": "BIN.PROP.RESULT_LIMIT",
+      "operator": "PROP.RESULT_LIMIT",
+      "package": "aria-res-prop-result-limit",
+      "resultDefinitionRef": "residual.prop.result_limit",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "all operators"
+    },
+    {
+      "binary_id": "BIN.PROP.RETRIEVED_AT",
+      "operator": "PROP.RETRIEVED_AT",
+      "package": "aria-res-prop-retrieved-at",
+      "resultDefinitionRef": "residual.prop.retrieved_at",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "SOURCE"
+    },
+    {
+      "binary_id": "BIN.PROP.ROUND_DATE",
+      "operator": "PROP.ROUND_DATE",
+      "package": "aria-res-prop-round-date",
+      "resultDefinitionRef": "residual.prop.round_date",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.PROP.SCHEMA_VERSION",
+      "operator": "PROP.SCHEMA_VERSION",
+      "package": "aria-res-prop-schema-version",
+      "resultDefinitionRef": "residual.prop.schema_version",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "all operators"
+    },
+    {
+      "binary_id": "BIN.PROP.SEGMENT",
+      "operator": "PROP.SEGMENT",
+      "package": "aria-res-prop-segment",
+      "resultDefinitionRef": "residual.prop.segment",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.PROP.SIGNAL_STRENGTH",
+      "operator": "PROP.SIGNAL_STRENGTH",
+      "package": "aria-res-prop-signal-strength",
+      "resultDefinitionRef": "residual.prop.signal_strength",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.PROP.SIGNAL_TYPE",
+      "operator": "PROP.SIGNAL_TYPE",
+      "package": "aria-res-prop-signal-type",
+      "resultDefinitionRef": "residual.prop.signal_type",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.PROP.SOURCE_URL",
+      "operator": "PROP.SOURCE_URL",
+      "package": "aria-res-prop-source-url",
+      "resultDefinitionRef": "residual.prop.source_url",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "SOURCE"
+    },
+    {
+      "binary_id": "BIN.PROP.STOP_REASON",
+      "operator": "PROP.STOP_REASON",
+      "package": "aria-res-prop-stop-reason",
+      "resultDefinitionRef": "residual.prop.stop_reason",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "all operators"
+    },
+    {
+      "binary_id": "BIN.PROP.SUBJECT_IDS",
+      "operator": "PROP.SUBJECT_IDS",
+      "package": "aria-res-prop-subject-ids",
+      "resultDefinitionRef": "residual.prop.subject_ids",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "all operators"
+    },
+    {
+      "binary_id": "BIN.PROP.SUPPLY_DENSITY",
+      "operator": "PROP.SUPPLY_DENSITY",
+      "package": "aria-res-prop-supply-density",
+      "resultDefinitionRef": "residual.prop.supply_density",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.PROP.TRUST_LEVEL",
+      "operator": "PROP.TRUST_LEVEL",
+      "package": "aria-res-prop-trust-level",
+      "resultDefinitionRef": "residual.prop.trust_level",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.PROP.VERIFY",
+      "operator": "PROP.VERIFY",
+      "package": "aria-res-prop-verify",
+      "resultDefinitionRef": "residual.prop.verify",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "all operators"
+    },
+    {
+      "binary_id": "BIN.PROP.VIRAL_COEFFICIENT",
+      "operator": "PROP.VIRAL_COEFFICIENT",
+      "package": "aria-res-prop-viral-coefficient",
+      "resultDefinitionRef": "residual.prop.viral_coefficient",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.PROP.WARM_PATH_HOPS",
+      "operator": "PROP.WARM_PATH_HOPS",
+      "package": "aria-res-prop-warm-path-hops",
+      "resultDefinitionRef": "residual.prop.warm_path_hops",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.PROP.WHITE_SPACE_DENSITY",
+      "operator": "PROP.WHITE_SPACE_DENSITY",
+      "package": "aria-res-prop-white-space-density",
+      "resultDefinitionRef": "residual.prop.white_space_density",
+      "layer": "RESIDUAL",
+      "class": "PROP",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.REF.ACCOUNT_TARGETING",
+      "operator": "REF.ACCOUNT_TARGETING",
+      "package": "aria-ref-account-targeting",
+      "resultDefinitionRef": "map.ref.account_targeting",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.BUYER_PERSONA_RELATIONSHIP",
+      "operator": "REF.BUYER_PERSONA_RELATIONSHIP",
+      "package": "aria-ref-buyer-persona-relationship",
+      "resultDefinitionRef": "map.ref.buyer_persona_relationship",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.CATEGORY_CREATION_TIMELINE",
+      "operator": "REF.CATEGORY_CREATION_TIMELINE",
+      "package": "aria-ref-category-creation-timeline",
+      "resultDefinitionRef": "map.ref.category_creation_timeline",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.CATEGORY_GALAXY",
+      "operator": "REF.CATEGORY_GALAXY",
+      "package": "aria-ref-category-galaxy",
+      "resultDefinitionRef": "map.ref.category_galaxy",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.CATEGORY_STACK",
+      "operator": "REF.CATEGORY_STACK",
+      "package": "aria-ref-category-stack",
+      "resultDefinitionRef": "map.ref.category_stack",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.COMPETITIVE_RADAR",
+      "operator": "REF.COMPETITIVE_RADAR",
+      "package": "aria-ref-competitive-radar",
+      "resultDefinitionRef": "map.ref.competitive_radar",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.COMPETITOR_BATTLECARD",
+      "operator": "REF.COMPETITOR_BATTLECARD",
+      "package": "aria-ref-competitor-battlecard",
+      "resultDefinitionRef": "map.ref.competitor_battlecard",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.CUSTOMER_LOGOS",
+      "operator": "REF.CUSTOMER_LOGOS",
+      "package": "aria-ref-customer-logos",
+      "resultDefinitionRef": "map.ref.customer_logos",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.DEVELOPER_ECOSYSTEM",
+      "operator": "REF.DEVELOPER_ECOSYSTEM",
+      "package": "aria-ref-developer-ecosystem",
+      "resultDefinitionRef": "map.ref.developer_ecosystem",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.ECOSYSTEM_GRAVITY",
+      "operator": "REF.ECOSYSTEM_GRAVITY",
+      "package": "aria-ref-ecosystem-gravity",
+      "resultDefinitionRef": "map.ref.ecosystem_gravity",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.FOUNDER_OPERATOR_LINEAGE",
+      "operator": "REF.FOUNDER_OPERATOR_LINEAGE",
+      "package": "aria-ref-founder-operator-lineage",
+      "resultDefinitionRef": "map.ref.founder_operator_lineage",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.FUNDING_MOMENTUM",
+      "operator": "REF.FUNDING_MOMENTUM",
+      "package": "aria-ref-funding-momentum",
+      "resultDefinitionRef": "map.ref.funding_momentum",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.ICP_EXPANSION",
+      "operator": "REF.ICP_EXPANSION",
+      "package": "aria-ref-icp-expansion",
+      "resultDefinitionRef": "map.ref.icp_expansion",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.INFLUENCE_NETWORK",
+      "operator": "REF.INFLUENCE_NETWORK",
+      "package": "aria-ref-influence-network",
+      "resultDefinitionRef": "map.ref.influence_network",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.INVESTOR_SYNDICATE",
+      "operator": "REF.INVESTOR_SYNDICATE",
+      "package": "aria-ref-investor-syndicate",
+      "resultDefinitionRef": "map.ref.investor_syndicate",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.MARKET_ENTRY",
+      "operator": "REF.MARKET_ENTRY",
+      "package": "aria-ref-market-entry",
+      "resultDefinitionRef": "map.ref.market_entry",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.MARKET_HEAT_ISLAND",
+      "operator": "REF.MARKET_HEAT_ISLAND",
+      "package": "aria-ref-market-heat-island",
+      "resultDefinitionRef": "map.ref.market_heat_island",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.MARKET_INTELLIGENCE_BRIEF",
+      "operator": "REF.MARKET_INTELLIGENCE_BRIEF",
+      "package": "aria-ref-market-intelligence-brief",
+      "resultDefinitionRef": "map.ref.market_intelligence_brief",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.MARKET_MAP_CANVAS",
+      "operator": "REF.MARKET_MAP_CANVAS",
+      "package": "aria-ref-market-map-canvas",
+      "resultDefinitionRef": "map.ref.market_map_canvas",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.MARKET_MATURITY",
+      "operator": "REF.MARKET_MATURITY",
+      "package": "aria-ref-market-maturity",
+      "resultDefinitionRef": "map.ref.market_maturity",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.MARKET_WHITE_SPACE",
+      "operator": "REF.MARKET_WHITE_SPACE",
+      "package": "aria-ref-market-white-space",
+      "resultDefinitionRef": "map.ref.market_white_space",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.NARRATIVE_POSITIONING",
+      "operator": "REF.NARRATIVE_POSITIONING",
+      "package": "aria-ref-narrative-positioning",
+      "resultDefinitionRef": "map.ref.narrative_positioning",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.PARTNERSHIP_PATH",
+      "operator": "REF.PARTNERSHIP_PATH",
+      "package": "aria-ref-partnership-path",
+      "resultDefinitionRef": "map.ref.partnership_path",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.PRODUCT_CAPABILITY",
+      "operator": "REF.PRODUCT_CAPABILITY",
+      "package": "aria-ref-product-capability",
+      "resultDefinitionRef": "map.ref.product_capability",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REF.WEDGE_TO_PLATFORM",
+      "operator": "REF.WEDGE_TO_PLATFORM",
+      "package": "aria-ref-wedge-to-platform",
+      "resultDefinitionRef": "map.ref.wedge_to_platform",
+      "layer": "REFINEMENT",
+      "class": "REFINEMENT",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REL.ABOUT",
+      "operator": "REL.ABOUT",
+      "package": "aria-res-rel-about",
+      "resultDefinitionRef": "residual.rel.about",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.REL.ADJACENT_TO",
+      "operator": "REL.ADJACENT_TO",
+      "package": "aria-res-rel-adjacent-to",
+      "resultDefinitionRef": "residual.rel.adjacent_to",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.REL.ANNOUNCED",
+      "operator": "REL.ANNOUNCED",
+      "package": "aria-res-rel-announced",
+      "resultDefinitionRef": "residual.rel.announced",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "EVENT"
+    },
+    {
+      "binary_id": "BIN.REL.ASSERTS",
+      "operator": "REL.ASSERTS",
+      "package": "aria-res-rel-asserts",
+      "resultDefinitionRef": "residual.rel.asserts",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.REL.ATTENDED_BY",
+      "operator": "REL.ATTENDED_BY",
+      "package": "aria-res-rel-attended-by",
+      "resultDefinitionRef": "residual.rel.attended_by",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.REL.BUYS",
+      "operator": "REL.BUYS",
+      "package": "aria-res-rel-buys",
+      "resultDefinitionRef": "residual.rel.buys",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.REL.CITES",
+      "operator": "REL.CITES",
+      "package": "aria-res-rel-cites",
+      "resultDefinitionRef": "residual.rel.cites",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.REL.COMPETES_WITH",
+      "operator": "REL.COMPETES_WITH",
+      "package": "aria-res-rel-competes-with",
+      "resultDefinitionRef": "residual.rel.competes_with",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "COMPETITOR"
+    },
+    {
+      "binary_id": "BIN.REL.CONFLICTS_WITH",
+      "operator": "REL.CONFLICTS_WITH",
+      "package": "aria-res-rel-conflicts-with",
+      "resultDefinitionRef": "residual.rel.conflicts_with",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.REL.CONTAINS_MAP",
+      "operator": "REL.CONTAINS_MAP",
+      "package": "aria-res-rel-contains-map",
+      "resultDefinitionRef": "residual.rel.contains_map",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.REL.CONTAINS_SEGMENT",
+      "operator": "REL.CONTAINS_SEGMENT",
+      "package": "aria-res-rel-contains-segment",
+      "resultDefinitionRef": "residual.rel.contains_segment",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REL.CO_INVESTS_WITH",
+      "operator": "REL.CO_INVESTS_WITH",
+      "package": "aria-res-rel-co-invests-with",
+      "resultDefinitionRef": "residual.rel.co_invests_with",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "SYNDICATE"
+    },
+    {
+      "binary_id": "BIN.REL.CUSTOMER_OF",
+      "operator": "REL.CUSTOMER_OF",
+      "package": "aria-res-rel-customer-of",
+      "resultDefinitionRef": "residual.rel.customer_of",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "CUSTOMER"
+    },
+    {
+      "binary_id": "BIN.REL.FOUNDED",
+      "operator": "REL.FOUNDED",
+      "package": "aria-res-rel-founded",
+      "resultDefinitionRef": "residual.rel.founded",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.REL.HAS_CAPABILITY",
+      "operator": "REL.HAS_CAPABILITY",
+      "package": "aria-res-rel-has-capability",
+      "resultDefinitionRef": "residual.rel.has_capability",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.REL.HAS_PERSONA",
+      "operator": "REL.HAS_PERSONA",
+      "package": "aria-res-rel-has-persona",
+      "resultDefinitionRef": "residual.rel.has_persona",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "ACCOUNT"
+    },
+    {
+      "binary_id": "BIN.REL.INFLUENCES",
+      "operator": "REL.INFLUENCES",
+      "package": "aria-res-rel-influences",
+      "resultDefinitionRef": "residual.rel.influences",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.REL.INSTANCE_OF",
+      "operator": "REL.INSTANCE_OF",
+      "package": "aria-res-rel-instance-of",
+      "resultDefinitionRef": "residual.rel.instance_of",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REL.INTEGRATES_WITH",
+      "operator": "REL.INTEGRATES_WITH",
+      "package": "aria-res-rel-integrates-with",
+      "resultDefinitionRef": "residual.rel.integrates_with",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.REL.INVESTS_IN",
+      "operator": "REL.INVESTS_IN",
+      "package": "aria-res-rel-invests-in",
+      "resultDefinitionRef": "residual.rel.invests_in",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "VENTURE_CAPITAL"
+    },
+    {
+      "binary_id": "BIN.REL.IN_CATEGORY",
+      "operator": "REL.IN_CATEGORY",
+      "package": "aria-res-rel-in-category",
+      "resultDefinitionRef": "residual.rel.in_category",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.REL.LEADS",
+      "operator": "REL.LEADS",
+      "package": "aria-res-rel-leads",
+      "resultDefinitionRef": "residual.rel.leads",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "VC"
+    },
+    {
+      "binary_id": "BIN.REL.MEMBER_OF",
+      "operator": "REL.MEMBER_OF",
+      "package": "aria-res-rel-member-of",
+      "resultDefinitionRef": "residual.rel.member_of",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "SYNDICATE"
+    },
+    {
+      "binary_id": "BIN.REL.OCCURRED_AT",
+      "operator": "REL.OCCURRED_AT",
+      "package": "aria-res-rel-occurred-at",
+      "resultDefinitionRef": "residual.rel.occurred_at",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "EVENT"
+    },
+    {
+      "binary_id": "BIN.REL.OFFERED_BY",
+      "operator": "REL.OFFERED_BY",
+      "package": "aria-res-rel-offered-by",
+      "resultDefinitionRef": "residual.rel.offered_by",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.REL.OPERATES_IN",
+      "operator": "REL.OPERATES_IN",
+      "package": "aria-res-rel-operates-in",
+      "resultDefinitionRef": "residual.rel.operates_in",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.REL.PARTNERS_WITH",
+      "operator": "REL.PARTNERS_WITH",
+      "package": "aria-res-rel-partners-with",
+      "resultDefinitionRef": "residual.rel.partners_with",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.REL.PATH_TO",
+      "operator": "REL.PATH_TO",
+      "package": "aria-res-rel-path-to",
+      "resultDefinitionRef": "residual.rel.path_to",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.REL.PLACED_IN",
+      "operator": "REL.PLACED_IN",
+      "package": "aria-res-rel-placed-in",
+      "resultDefinitionRef": "residual.rel.placed_in",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REL.PREVIOUSLY_AT",
+      "operator": "REL.PREVIOUSLY_AT",
+      "package": "aria-res-rel-previously-at",
+      "resultDefinitionRef": "residual.rel.previously_at",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.REL.RAISES_FROM",
+      "operator": "REL.RAISES_FROM",
+      "package": "aria-res-rel-raises-from",
+      "resultDefinitionRef": "residual.rel.raises_from",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.REL.REQUIRES_EDGE",
+      "operator": "REL.REQUIRES_EDGE",
+      "package": "aria-res-rel-requires-edge",
+      "resultDefinitionRef": "residual.rel.requires_edge",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REL.REQUIRES_SIGNAL",
+      "operator": "REL.REQUIRES_SIGNAL",
+      "package": "aria-res-rel-requires-signal",
+      "resultDefinitionRef": "residual.rel.requires_signal",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.REL.RETRIEVED_FROM",
+      "operator": "REL.RETRIEVED_FROM",
+      "package": "aria-res-rel-retrieved-from",
+      "resultDefinitionRef": "residual.rel.retrieved_from",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "SOURCE"
+    },
+    {
+      "binary_id": "BIN.REL.SCOPED_TO",
+      "operator": "REL.SCOPED_TO",
+      "package": "aria-res-rel-scoped-to",
+      "resultDefinitionRef": "residual.rel.scoped_to",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.REL.SELLS_TO",
+      "operator": "REL.SELLS_TO",
+      "package": "aria-res-rel-sells-to",
+      "resultDefinitionRef": "residual.rel.sells_to",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "SELLER"
+    },
+    {
+      "binary_id": "BIN.REL.SIGNALS",
+      "operator": "REL.SIGNALS",
+      "package": "aria-res-rel-signals",
+      "resultDefinitionRef": "residual.rel.signals",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.REL.SOURCED_FROM",
+      "operator": "REL.SOURCED_FROM",
+      "package": "aria-res-rel-sourced-from",
+      "resultDefinitionRef": "residual.rel.sourced_from",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.REL.SUBSTITUTES",
+      "operator": "REL.SUBSTITUTES",
+      "package": "aria-res-rel-substitutes",
+      "resultDefinitionRef": "residual.rel.substitutes",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.REL.SUPPORTS",
+      "operator": "REL.SUPPORTS",
+      "package": "aria-res-rel-supports",
+      "resultDefinitionRef": "residual.rel.supports",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "SOURCE"
+    },
+    {
+      "binary_id": "BIN.REL.SYNDICATES_WITH",
+      "operator": "REL.SYNDICATES_WITH",
+      "package": "aria-res-rel-syndicates-with",
+      "resultDefinitionRef": "residual.rel.syndicates_with",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "SYNDICATE"
+    },
+    {
+      "binary_id": "BIN.REL.TAGGED_AS",
+      "operator": "REL.TAGGED_AS",
+      "package": "aria-res-rel-tagged-as",
+      "resultDefinitionRef": "residual.rel.tagged_as",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "COMPETITOR"
+    },
+    {
+      "binary_id": "BIN.REL.TARGETED_BY",
+      "operator": "REL.TARGETED_BY",
+      "package": "aria-res-rel-targeted-by",
+      "resultDefinitionRef": "residual.rel.targeted_by",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "ACCOUNT"
+    },
+    {
+      "binary_id": "BIN.REL.USES",
+      "operator": "REL.USES",
+      "package": "aria-res-rel-uses",
+      "resultDefinitionRef": "residual.rel.uses",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "CUSTOMER"
+    },
+    {
+      "binary_id": "BIN.REL.VERSION_OF",
+      "operator": "REL.VERSION_OF",
+      "package": "aria-res-rel-version-of",
+      "resultDefinitionRef": "residual.rel.version_of",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.REL.WORKS_AT",
+      "operator": "REL.WORKS_AT",
+      "package": "aria-res-rel-works-at",
+      "resultDefinitionRef": "residual.rel.works_at",
+      "layer": "RESIDUAL",
+      "class": "REL",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.SCHEMA_LOOKUP",
+      "operator": "schema-lookup",
+      "package": "pcvc-schema-lookup",
+      "resultDefinitionRef": "host.schema_lookup",
+      "layer": "HOST",
+      "class": "HOST",
+      "verify": true,
+      "parent": "\u2014"
+    },
+    {
+      "binary_id": "BIN.SELLER",
+      "operator": "SELLER",
+      "package": "aria-telemetry-seller",
+      "resultDefinitionRef": "tag.seller",
+      "layer": "TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.SIGNAL",
+      "operator": "SIGNAL",
+      "package": "aria-telemetry-signal",
+      "resultDefinitionRef": "fact.market_signal",
+      "layer": "FACT",
+      "class": "FACT",
+      "verify": true,
+      "parent": "EVENT"
+    },
+    {
+      "binary_id": "BIN.SOURCE",
+      "operator": "SOURCE",
+      "package": "aria-telemetry-source",
+      "resultDefinitionRef": "fact.source",
+      "layer": "FACT",
+      "class": "FACT",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.SYNDICATE",
+      "operator": "SYNDICATE",
+      "package": "aria-telemetry-syndicate",
+      "resultDefinitionRef": "tag.syndicate",
+      "layer": "TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "VENTURE_CAPITAL"
+    },
+    {
+      "binary_id": "BIN.TAG.ACCOUNT",
+      "operator": "TAG.ACCOUNT",
+      "package": "aria-res-tag-account",
+      "resultDefinitionRef": "residual.tag.account",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "ACCOUNT"
+    },
+    {
+      "binary_id": "BIN.TAG.ASSET",
+      "operator": "TAG.ASSET",
+      "package": "aria-res-tag-asset",
+      "resultDefinitionRef": "residual.tag.asset",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SOURCE"
+    },
+    {
+      "binary_id": "BIN.TAG.AXIS_X",
+      "operator": "TAG.AXIS_X",
+      "package": "aria-res-tag-axis-x",
+      "resultDefinitionRef": "residual.tag.axis_x",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.AXIS_Y",
+      "operator": "TAG.AXIS_Y",
+      "package": "aria-res-tag-axis-y",
+      "resultDefinitionRef": "residual.tag.axis_y",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.BUYER_TAG",
+      "operator": "TAG.BUYER_TAG",
+      "package": "aria-res-tag-buyer-tag",
+      "resultDefinitionRef": "residual.tag.buyer_tag",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.CAPABILITY",
+      "operator": "TAG.CAPABILITY",
+      "package": "aria-res-tag-capability",
+      "resultDefinitionRef": "residual.tag.capability",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.CATEGORY",
+      "operator": "TAG.CATEGORY",
+      "package": "aria-res-tag-category",
+      "resultDefinitionRef": "residual.tag.category",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_ADJACENT",
+      "operator": "TAG.CAT_ADJACENT",
+      "package": "aria-res-tag-cat-adjacent",
+      "resultDefinitionRef": "residual.tag.cat_adjacent",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_BRIDGE_BAND",
+      "operator": "TAG.CAT_BRIDGE_BAND",
+      "package": "aria-res-tag-cat-bridge-band",
+      "resultDefinitionRef": "residual.tag.cat_bridge_band",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_BRIEF",
+      "operator": "TAG.CAT_BRIEF",
+      "package": "aria-res-tag-cat-brief",
+      "resultDefinitionRef": "residual.tag.cat_brief",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_CANVAS",
+      "operator": "TAG.CAT_CANVAS",
+      "package": "aria-res-tag-cat-canvas",
+      "resultDefinitionRef": "residual.tag.cat_canvas",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_CORE",
+      "operator": "TAG.CAT_CORE",
+      "package": "aria-res-tag-cat-core",
+      "resultDefinitionRef": "residual.tag.cat_core",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_COVERAGE",
+      "operator": "TAG.CAT_COVERAGE",
+      "package": "aria-res-tag-cat-coverage",
+      "resultDefinitionRef": "residual.tag.cat_coverage",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_FAMILY_BRIEF",
+      "operator": "TAG.CAT_FAMILY_BRIEF",
+      "package": "aria-res-tag-cat-family-brief",
+      "resultDefinitionRef": "residual.tag.cat_family_brief",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_FAMILY_HUB",
+      "operator": "TAG.CAT_FAMILY_HUB",
+      "package": "aria-res-tag-cat-family-hub",
+      "resultDefinitionRef": "residual.tag.cat_family_hub",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_FAMILY_NETWORK",
+      "operator": "TAG.CAT_FAMILY_NETWORK",
+      "package": "aria-res-tag-cat-family-network",
+      "resultDefinitionRef": "residual.tag.cat_family_network",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_FAMILY_QUADRANT",
+      "operator": "TAG.CAT_FAMILY_QUADRANT",
+      "package": "aria-res-tag-cat-family-quadrant",
+      "resultDefinitionRef": "residual.tag.cat_family_quadrant",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_FAMILY_SWIMLANE",
+      "operator": "TAG.CAT_FAMILY_SWIMLANE",
+      "package": "aria-res-tag-cat-family-swimlane",
+      "resultDefinitionRef": "residual.tag.cat_family_swimlane",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_FAMILY_TIMELINE",
+      "operator": "TAG.CAT_FAMILY_TIMELINE",
+      "package": "aria-res-tag-cat-family-timeline",
+      "resultDefinitionRef": "residual.tag.cat_family_timeline",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_FINTECH_INFRA",
+      "operator": "TAG.CAT_FINTECH_INFRA",
+      "package": "aria-res-tag-cat-fintech-infra",
+      "resultDefinitionRef": "residual.tag.cat_fintech_infra",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_INTENT_CAPITAL",
+      "operator": "TAG.CAT_INTENT_CAPITAL",
+      "package": "aria-res-tag-cat-intent-capital",
+      "resultDefinitionRef": "residual.tag.cat_intent_capital",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_INTENT_COMPARE",
+      "operator": "TAG.CAT_INTENT_COMPARE",
+      "package": "aria-res-tag-cat-intent-compare",
+      "resultDefinitionRef": "residual.tag.cat_intent_compare",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_INTENT_OPPORTUNITY",
+      "operator": "TAG.CAT_INTENT_OPPORTUNITY",
+      "package": "aria-res-tag-cat-intent-opportunity",
+      "resultDefinitionRef": "residual.tag.cat_intent_opportunity",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_INTENT_OUTPUT",
+      "operator": "TAG.CAT_INTENT_OUTPUT",
+      "package": "aria-res-tag-cat-intent-output",
+      "resultDefinitionRef": "residual.tag.cat_intent_output",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_INTENT_UNDERSTAND",
+      "operator": "TAG.CAT_INTENT_UNDERSTAND",
+      "package": "aria-res-tag-cat-intent-understand",
+      "resultDefinitionRef": "residual.tag.cat_intent_understand",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_INVESTOR",
+      "operator": "TAG.CAT_INVESTOR",
+      "package": "aria-res-tag-cat-investor",
+      "resultDefinitionRef": "residual.tag.cat_investor",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_LANDSCAPE",
+      "operator": "TAG.CAT_LANDSCAPE",
+      "package": "aria-res-tag-cat-landscape",
+      "resultDefinitionRef": "residual.tag.cat_landscape",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_MARKET_EXPANSION",
+      "operator": "TAG.CAT_MARKET_EXPANSION",
+      "package": "aria-res-tag-cat-market-expansion",
+      "resultDefinitionRef": "residual.tag.cat_market_expansion",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_MARKET_INTEL",
+      "operator": "TAG.CAT_MARKET_INTEL",
+      "package": "aria-res-tag-cat-market-intel",
+      "resultDefinitionRef": "residual.tag.cat_market_intel",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_NETWORK",
+      "operator": "TAG.CAT_NETWORK",
+      "package": "aria-res-tag-cat-network",
+      "resultDefinitionRef": "residual.tag.cat_network",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_PROVENANCE",
+      "operator": "TAG.CAT_PROVENANCE",
+      "package": "aria-res-tag-cat-provenance",
+      "resultDefinitionRef": "residual.tag.cat_provenance",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_REFRESH",
+      "operator": "TAG.CAT_REFRESH",
+      "package": "aria-res-tag-cat-refresh",
+      "resultDefinitionRef": "residual.tag.cat_refresh",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_STRUCTURE",
+      "operator": "TAG.CAT_STRUCTURE",
+      "package": "aria-res-tag-cat-structure",
+      "resultDefinitionRef": "residual.tag.cat_structure",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_VENDOR_RISK",
+      "operator": "TAG.CAT_VENDOR_RISK",
+      "package": "aria-res-tag-cat-vendor-risk",
+      "resultDefinitionRef": "residual.tag.cat_vendor_risk",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.CAT_WHITE_SPACE",
+      "operator": "TAG.CAT_WHITE_SPACE",
+      "package": "aria-res-tag-cat-white-space",
+      "resultDefinitionRef": "residual.tag.cat_white_space",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.CLAIM",
+      "operator": "TAG.CLAIM",
+      "package": "aria-res-tag-claim",
+      "resultDefinitionRef": "residual.tag.claim",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.TAG.COMPANY",
+      "operator": "TAG.COMPANY",
+      "package": "aria-res-tag-company",
+      "resultDefinitionRef": "residual.tag.company",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.COMPETITOR_TAG",
+      "operator": "TAG.COMPETITOR_TAG",
+      "package": "aria-res-tag-competitor-tag",
+      "resultDefinitionRef": "residual.tag.competitor_tag",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPETITOR"
+    },
+    {
+      "binary_id": "BIN.TAG.CONCEPT",
+      "operator": "TAG.CONCEPT",
+      "package": "aria-res-tag-concept",
+      "resultDefinitionRef": "residual.tag.concept",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.CONTENT",
+      "operator": "TAG.CONTENT",
+      "package": "aria-res-tag-content",
+      "resultDefinitionRef": "residual.tag.content",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.TAG.CONTENT_HASH",
+      "operator": "TAG.CONTENT_HASH",
+      "package": "aria-res-tag-content-hash",
+      "resultDefinitionRef": "residual.tag.content_hash",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "hash-stamp"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_ACCELERATOR",
+      "operator": "TAG.CO_ACCELERATOR",
+      "package": "aria-res-tag-co-accelerator",
+      "resultDefinitionRef": "residual.tag.co_accelerator",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "VENTURE_CAPITAL"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_ACQUIRER",
+      "operator": "TAG.CO_ACQUIRER",
+      "package": "aria-res-tag-co-acquirer",
+      "resultDefinitionRef": "residual.tag.co_acquirer",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_ACQUISITION_TARGET",
+      "operator": "TAG.CO_ACQUISITION_TARGET",
+      "package": "aria-res-tag-co-acquisition-target",
+      "resultDefinitionRef": "residual.tag.co_acquisition_target",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_AGENCY",
+      "operator": "TAG.CO_AGENCY",
+      "package": "aria-res-tag-co-agency",
+      "resultDefinitionRef": "residual.tag.co_agency",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_APPLICATION",
+      "operator": "TAG.CO_APPLICATION",
+      "package": "aria-res-tag-co-application",
+      "resultDefinitionRef": "residual.tag.co_application",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_CATEGORY_CREATOR",
+      "operator": "TAG.CO_CATEGORY_CREATOR",
+      "package": "aria-res-tag-co-category-creator",
+      "resultDefinitionRef": "residual.tag.co_category_creator",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_CHALLENGER",
+      "operator": "TAG.CO_CHALLENGER",
+      "package": "aria-res-tag-co-challenger",
+      "resultDefinitionRef": "residual.tag.co_challenger",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_CONSORTIUM",
+      "operator": "TAG.CO_CONSORTIUM",
+      "package": "aria-res-tag-co-consortium",
+      "resultDefinitionRef": "residual.tag.co_consortium",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_CORPORATE",
+      "operator": "TAG.CO_CORPORATE",
+      "package": "aria-res-tag-co-corporate",
+      "resultDefinitionRef": "residual.tag.co_corporate",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_CVC",
+      "operator": "TAG.CO_CVC",
+      "package": "aria-res-tag-co-cvc",
+      "resultDefinitionRef": "residual.tag.co_cvc",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "VENTURE_CAPITAL"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_DISTRIBUTION",
+      "operator": "TAG.CO_DISTRIBUTION",
+      "package": "aria-res-tag-co-distribution",
+      "resultDefinitionRef": "residual.tag.co_distribution",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_EARLY_STAGE",
+      "operator": "TAG.CO_EARLY_STAGE",
+      "package": "aria-res-tag-co-early-stage",
+      "resultDefinitionRef": "residual.tag.co_early_stage",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_FAMILY_OFFICE",
+      "operator": "TAG.CO_FAMILY_OFFICE",
+      "package": "aria-res-tag-co-family-office",
+      "resultDefinitionRef": "residual.tag.co_family_office",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "VENTURE_CAPITAL"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_FUND_VEHICLE",
+      "operator": "TAG.CO_FUND_VEHICLE",
+      "package": "aria-res-tag-co-fund-vehicle",
+      "resultDefinitionRef": "residual.tag.co_fund_vehicle",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "VENTURE_CAPITAL"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_GOVERNMENT",
+      "operator": "TAG.CO_GOVERNMENT",
+      "package": "aria-res-tag-co-government",
+      "resultDefinitionRef": "residual.tag.co_government",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_GROWTH_STAGE",
+      "operator": "TAG.CO_GROWTH_STAGE",
+      "package": "aria-res-tag-co-growth-stage",
+      "resultDefinitionRef": "residual.tag.co_growth_stage",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_INCUBATOR",
+      "operator": "TAG.CO_INCUBATOR",
+      "package": "aria-res-tag-co-incubator",
+      "resultDefinitionRef": "residual.tag.co_incubator",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "VENTURE_CAPITAL"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_INCUMBENT",
+      "operator": "TAG.CO_INCUMBENT",
+      "package": "aria-res-tag-co-incumbent",
+      "resultDefinitionRef": "residual.tag.co_incumbent",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_INFRASTRUCTURE",
+      "operator": "TAG.CO_INFRASTRUCTURE",
+      "package": "aria-res-tag-co-infrastructure",
+      "resultDefinitionRef": "residual.tag.co_infrastructure",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_LAB",
+      "operator": "TAG.CO_LAB",
+      "package": "aria-res-tag-co-lab",
+      "resultDefinitionRef": "residual.tag.co_lab",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_LATE_STAGE",
+      "operator": "TAG.CO_LATE_STAGE",
+      "package": "aria-res-tag-co-late-stage",
+      "resultDefinitionRef": "residual.tag.co_late_stage",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_LISTED_INCUMBENT",
+      "operator": "TAG.CO_LISTED_INCUMBENT",
+      "package": "aria-res-tag-co-listed-incumbent",
+      "resultDefinitionRef": "residual.tag.co_listed_incumbent",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_MARKETPLACE",
+      "operator": "TAG.CO_MARKETPLACE",
+      "package": "aria-res-tag-co-marketplace",
+      "resultDefinitionRef": "residual.tag.co_marketplace",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_MIDDLEWARE",
+      "operator": "TAG.CO_MIDDLEWARE",
+      "package": "aria-res-tag-co-middleware",
+      "resultDefinitionRef": "residual.tag.co_middleware",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_NONPROFIT",
+      "operator": "TAG.CO_NONPROFIT",
+      "package": "aria-res-tag-co-nonprofit",
+      "resultDefinitionRef": "residual.tag.co_nonprofit",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_OPEN_SOURCE_ORG",
+      "operator": "TAG.CO_OPEN_SOURCE_ORG",
+      "package": "aria-res-tag-co-open-source-org",
+      "resultDefinitionRef": "residual.tag.co_open_source_org",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_PLATFORM",
+      "operator": "TAG.CO_PLATFORM",
+      "package": "aria-res-tag-co-platform",
+      "resultDefinitionRef": "residual.tag.co_platform",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_POINT_SOLUTION",
+      "operator": "TAG.CO_POINT_SOLUTION",
+      "package": "aria-res-tag-co-point-solution",
+      "resultDefinitionRef": "residual.tag.co_point_solution",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_PRIVATE",
+      "operator": "TAG.CO_PRIVATE",
+      "package": "aria-res-tag-co-private",
+      "resultDefinitionRef": "residual.tag.co_private",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_PUBLIC",
+      "operator": "TAG.CO_PUBLIC",
+      "package": "aria-res-tag-co-public",
+      "resultDefinitionRef": "residual.tag.co_public",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_SCALEUP",
+      "operator": "TAG.CO_SCALEUP",
+      "package": "aria-res-tag-co-scaleup",
+      "resultDefinitionRef": "residual.tag.co_scaleup",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_SEED_STAGE",
+      "operator": "TAG.CO_SEED_STAGE",
+      "package": "aria-res-tag-co-seed-stage",
+      "resultDefinitionRef": "residual.tag.co_seed_stage",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_SPINOUT",
+      "operator": "TAG.CO_SPINOUT",
+      "package": "aria-res-tag-co-spinout",
+      "resultDefinitionRef": "residual.tag.co_spinout",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_STANDARD_BODY",
+      "operator": "TAG.CO_STANDARD_BODY",
+      "package": "aria-res-tag-co-standard-body",
+      "resultDefinitionRef": "residual.tag.co_standard_body",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_STARTUP",
+      "operator": "TAG.CO_STARTUP",
+      "package": "aria-res-tag-co-startup",
+      "resultDefinitionRef": "residual.tag.co_startup",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_STUDIO",
+      "operator": "TAG.CO_STUDIO",
+      "package": "aria-res-tag-co-studio",
+      "resultDefinitionRef": "residual.tag.co_studio",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_SUBSIDIARY",
+      "operator": "TAG.CO_SUBSIDIARY",
+      "package": "aria-res-tag-co-subsidiary",
+      "resultDefinitionRef": "residual.tag.co_subsidiary",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_SUITE_VENDOR",
+      "operator": "TAG.CO_SUITE_VENDOR",
+      "package": "aria-res-tag-co-suite-vendor",
+      "resultDefinitionRef": "residual.tag.co_suite_vendor",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_UNIVERSITY",
+      "operator": "TAG.CO_UNIVERSITY",
+      "package": "aria-res-tag-co-university",
+      "resultDefinitionRef": "residual.tag.co_university",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CO_VENDOR",
+      "operator": "TAG.CO_VENDOR",
+      "package": "aria-res-tag-co-vendor",
+      "resultDefinitionRef": "residual.tag.co_vendor",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.CURRENT_CONTEXT_VERSION",
+      "operator": "TAG.CURRENT_CONTEXT_VERSION",
+      "package": "aria-res-tag-current-context-version",
+      "resultDefinitionRef": "residual.tag.current_context_version",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.TAG.CUSTOMER",
+      "operator": "TAG.CUSTOMER",
+      "package": "aria-res-tag-customer",
+      "resultDefinitionRef": "residual.tag.customer",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CUSTOMER"
+    },
+    {
+      "binary_id": "BIN.TAG.CUSTOMER_PROOF",
+      "operator": "TAG.CUSTOMER_PROOF",
+      "package": "aria-res-tag-customer-proof",
+      "resultDefinitionRef": "residual.tag.customer_proof",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.TAG.CYPHER_TEMPLATE",
+      "operator": "TAG.CYPHER_TEMPLATE",
+      "package": "aria-res-tag-cypher-template",
+      "resultDefinitionRef": "residual.tag.cypher_template",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "neo4j-aura"
+    },
+    {
+      "binary_id": "BIN.TAG.DATA_POINT_BUDGET",
+      "operator": "TAG.DATA_POINT_BUDGET",
+      "package": "aria-res-tag-data-point-budget",
+      "resultDefinitionRef": "residual.tag.data_point_budget",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_AGENT_CALLABLE",
+      "operator": "TAG.ECO_AGENT_CALLABLE",
+      "package": "aria-res-tag-eco-agent-callable",
+      "resultDefinitionRef": "residual.tag.eco_agent_callable",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_API_SURFACE",
+      "operator": "TAG.ECO_API_SURFACE",
+      "package": "aria-res-tag-eco-api-surface",
+      "resultDefinitionRef": "residual.tag.eco_api_surface",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_BUILDER",
+      "operator": "TAG.ECO_BUILDER",
+      "package": "aria-res-tag-eco-builder",
+      "resultDefinitionRef": "residual.tag.eco_builder",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_CHAMPION",
+      "operator": "TAG.ECO_CHAMPION",
+      "package": "aria-res-tag-eco-champion",
+      "resultDefinitionRef": "residual.tag.eco_champion",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_CLOUD_PARTNER",
+      "operator": "TAG.ECO_CLOUD_PARTNER",
+      "package": "aria-res-tag-eco-cloud-partner",
+      "resultDefinitionRef": "residual.tag.eco_cloud_partner",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_COLD_PATH",
+      "operator": "TAG.ECO_COLD_PATH",
+      "package": "aria-res-tag-eco-cold-path",
+      "resultDefinitionRef": "residual.tag.eco_cold_path",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_COMMUNITY",
+      "operator": "TAG.ECO_COMMUNITY",
+      "package": "aria-res-tag-eco-community",
+      "resultDefinitionRef": "residual.tag.eco_community",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_CONTRIBUTOR",
+      "operator": "TAG.ECO_CONTRIBUTOR",
+      "package": "aria-res-tag-eco-contributor",
+      "resultDefinitionRef": "residual.tag.eco_contributor",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_DISTRIBUTION_OWNER",
+      "operator": "TAG.ECO_DISTRIBUTION_OWNER",
+      "package": "aria-res-tag-eco-distribution-owner",
+      "resultDefinitionRef": "residual.tag.eco_distribution_owner",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_EXTENSION",
+      "operator": "TAG.ECO_EXTENSION",
+      "package": "aria-res-tag-eco-extension",
+      "resultDefinitionRef": "residual.tag.eco_extension",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_FOCAL",
+      "operator": "TAG.ECO_FOCAL",
+      "package": "aria-res-tag-eco-focal",
+      "resultDefinitionRef": "residual.tag.eco_focal",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_GRAVITY_HUB",
+      "operator": "TAG.ECO_GRAVITY_HUB",
+      "package": "aria-res-tag-eco-gravity-hub",
+      "resultDefinitionRef": "residual.tag.eco_gravity_hub",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_INTEGRATOR",
+      "operator": "TAG.ECO_INTEGRATOR",
+      "package": "aria-res-tag-eco-integrator",
+      "resultDefinitionRef": "residual.tag.eco_integrator",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_ISV",
+      "operator": "TAG.ECO_ISV",
+      "package": "aria-res-tag-eco-isv",
+      "resultDefinitionRef": "residual.tag.eco_isv",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_MAINTAINER",
+      "operator": "TAG.ECO_MAINTAINER",
+      "package": "aria-res-tag-eco-maintainer",
+      "resultDefinitionRef": "residual.tag.eco_maintainer",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_MARKETPLACE",
+      "operator": "TAG.ECO_MARKETPLACE",
+      "package": "aria-res-tag-eco-marketplace",
+      "resultDefinitionRef": "residual.tag.eco_marketplace",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_MCP_SURFACE",
+      "operator": "TAG.ECO_MCP_SURFACE",
+      "package": "aria-res-tag-eco-mcp-surface",
+      "resultDefinitionRef": "residual.tag.eco_mcp_surface",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_OSS_PROJECT",
+      "operator": "TAG.ECO_OSS_PROJECT",
+      "package": "aria-res-tag-eco-oss-project",
+      "resultDefinitionRef": "residual.tag.eco_oss_project",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_PLATFORM_OWNER",
+      "operator": "TAG.ECO_PLATFORM_OWNER",
+      "package": "aria-res-tag-eco-platform-owner",
+      "resultDefinitionRef": "residual.tag.eco_platform_owner",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_PLUGIN",
+      "operator": "TAG.ECO_PLUGIN",
+      "package": "aria-res-tag-eco-plugin",
+      "resultDefinitionRef": "residual.tag.eco_plugin",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_PROTOCOL",
+      "operator": "TAG.ECO_PROTOCOL",
+      "package": "aria-res-tag-eco-protocol",
+      "resultDefinitionRef": "residual.tag.eco_protocol",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_RESELLER",
+      "operator": "TAG.ECO_RESELLER",
+      "package": "aria-res-tag-eco-reseller",
+      "resultDefinitionRef": "residual.tag.eco_reseller",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_SDK",
+      "operator": "TAG.ECO_SDK",
+      "package": "aria-res-tag-eco-sdk",
+      "resultDefinitionRef": "residual.tag.eco_sdk",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_SI",
+      "operator": "TAG.ECO_SI",
+      "package": "aria-res-tag-eco-si",
+      "resultDefinitionRef": "residual.tag.eco_si",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_SPOKE",
+      "operator": "TAG.ECO_SPOKE",
+      "package": "aria-res-tag-eco-spoke",
+      "resultDefinitionRef": "residual.tag.eco_spoke",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_STANDARD",
+      "operator": "TAG.ECO_STANDARD",
+      "package": "aria-res-tag-eco-standard",
+      "resultDefinitionRef": "residual.tag.eco_standard",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_TOOLING",
+      "operator": "TAG.ECO_TOOLING",
+      "package": "aria-res-tag-eco-tooling",
+      "resultDefinitionRef": "residual.tag.eco_tooling",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.ECO_WARM_PATH",
+      "operator": "TAG.ECO_WARM_PATH",
+      "package": "aria-res-tag-eco-warm-path",
+      "resultDefinitionRef": "residual.tag.eco_warm_path",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.ELIGIBLE_SOURCE_CLASS",
+      "operator": "TAG.ELIGIBLE_SOURCE_CLASS",
+      "package": "aria-res-tag-eligible-source-class",
+      "resultDefinitionRef": "residual.tag.eligible_source_class",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "feed.by-name"
+    },
+    {
+      "binary_id": "BIN.TAG.EVENT",
+      "operator": "TAG.EVENT",
+      "package": "aria-res-tag-event",
+      "resultDefinitionRef": "residual.tag.event",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "EVENT"
+    },
+    {
+      "binary_id": "BIN.TAG.EXISTING_COVERAGE",
+      "operator": "TAG.EXISTING_COVERAGE",
+      "package": "aria-res-tag-existing-coverage",
+      "resultDefinitionRef": "residual.tag.existing_coverage",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "existing-coverage"
+    },
+    {
+      "binary_id": "BIN.TAG.FIELD",
+      "operator": "TAG.FIELD",
+      "package": "aria-res-tag-field",
+      "resultDefinitionRef": "residual.tag.field",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.TAG.FUND",
+      "operator": "TAG.FUND",
+      "package": "aria-res-tag-fund",
+      "resultDefinitionRef": "residual.tag.fund",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "VENTURE_CAPITAL"
+    },
+    {
+      "binary_id": "BIN.TAG.FUNDING",
+      "operator": "TAG.FUNDING",
+      "package": "aria-res-tag-funding",
+      "resultDefinitionRef": "residual.tag.funding",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.TAG.GEOGRAPHY",
+      "operator": "TAG.GEOGRAPHY",
+      "package": "aria-res-tag-geography",
+      "resultDefinitionRef": "residual.tag.geography",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.GEO_SCOPE",
+      "operator": "TAG.GEO_SCOPE",
+      "package": "aria-res-tag-geo-scope",
+      "resultDefinitionRef": "residual.tag.geo_scope",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.HIRING",
+      "operator": "TAG.HIRING",
+      "package": "aria-res-tag-hiring",
+      "resultDefinitionRef": "residual.tag.hiring",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.TAG.ICP",
+      "operator": "TAG.ICP",
+      "package": "aria-res-tag-icp",
+      "resultDefinitionRef": "residual.tag.icp",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "ACCOUNT"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_ACCOUNT_INTELLIGENCE",
+      "operator": "TAG.IND_ACCOUNT_INTELLIGENCE",
+      "package": "aria-res-tag-ind-account-intelligence",
+      "resultDefinitionRef": "residual.tag.ind_account_intelligence",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_AI_ASSISTED_ENTERPRISE",
+      "operator": "TAG.IND_AI_ASSISTED_ENTERPRISE",
+      "package": "aria-res-tag-ind-ai-assisted-enterprise",
+      "resultDefinitionRef": "residual.tag.ind_ai_assisted_enterprise",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_AI_INFRASTRUCTURE",
+      "operator": "TAG.IND_AI_INFRASTRUCTURE",
+      "package": "aria-res-tag-ind-ai-infrastructure",
+      "resultDefinitionRef": "residual.tag.ind_ai_infrastructure",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_ANALYTICS_PLATFORMS",
+      "operator": "TAG.IND_ANALYTICS_PLATFORMS",
+      "package": "aria-res-tag-ind-analytics-platforms",
+      "resultDefinitionRef": "residual.tag.ind_analytics_platforms",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_BANKING",
+      "operator": "TAG.IND_BANKING",
+      "package": "aria-res-tag-ind-banking",
+      "resultDefinitionRef": "residual.tag.ind_banking",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_BLOCKCHAIN",
+      "operator": "TAG.IND_BLOCKCHAIN",
+      "package": "aria-res-tag-ind-blockchain",
+      "resultDefinitionRef": "residual.tag.ind_blockchain",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_CAPITAL_MARKETS",
+      "operator": "TAG.IND_CAPITAL_MARKETS",
+      "package": "aria-res-tag-ind-capital-markets",
+      "resultDefinitionRef": "residual.tag.ind_capital_markets",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_CLOUD_INFRASTRUCTURE",
+      "operator": "TAG.IND_CLOUD_INFRASTRUCTURE",
+      "package": "aria-res-tag-ind-cloud-infrastructure",
+      "resultDefinitionRef": "residual.tag.ind_cloud_infrastructure",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_COMPETITIVE_INTELLIGENCE",
+      "operator": "TAG.IND_COMPETITIVE_INTELLIGENCE",
+      "package": "aria-res-tag-ind-competitive-intelligence",
+      "resultDefinitionRef": "residual.tag.ind_competitive_intelligence",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_CONFIDENTIAL_COMPUTE",
+      "operator": "TAG.IND_CONFIDENTIAL_COMPUTE",
+      "package": "aria-res-tag-ind-confidential-compute",
+      "resultDefinitionRef": "residual.tag.ind_confidential_compute",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_CYBERSECURITY",
+      "operator": "TAG.IND_CYBERSECURITY",
+      "package": "aria-res-tag-ind-cybersecurity",
+      "resultDefinitionRef": "residual.tag.ind_cybersecurity",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_DATA_INFRASTRUCTURE",
+      "operator": "TAG.IND_DATA_INFRASTRUCTURE",
+      "package": "aria-res-tag-ind-data-infrastructure",
+      "resultDefinitionRef": "residual.tag.ind_data_infrastructure",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_DEVELOPER_TOOLS",
+      "operator": "TAG.IND_DEVELOPER_TOOLS",
+      "package": "aria-res-tag-ind-developer-tools",
+      "resultDefinitionRef": "residual.tag.ind_developer_tools",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_ENRICHMENT_SIGNALS",
+      "operator": "TAG.IND_ENRICHMENT_SIGNALS",
+      "package": "aria-res-tag-ind-enrichment-signals",
+      "resultDefinitionRef": "residual.tag.ind_enrichment_signals",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_ENTERPRISE_SAAS",
+      "operator": "TAG.IND_ENTERPRISE_SAAS",
+      "package": "aria-res-tag-ind-enterprise-saas",
+      "resultDefinitionRef": "residual.tag.ind_enterprise_saas",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_FINTECH",
+      "operator": "TAG.IND_FINTECH",
+      "package": "aria-res-tag-ind-fintech",
+      "resultDefinitionRef": "residual.tag.ind_fintech",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_FINTECH_INFRASTRUCTURE",
+      "operator": "TAG.IND_FINTECH_INFRASTRUCTURE",
+      "package": "aria-res-tag-ind-fintech-infrastructure",
+      "resultDefinitionRef": "residual.tag.ind_fintech_infrastructure",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_GRAPH_CONTEXT_SYSTEMS",
+      "operator": "TAG.IND_GRAPH_CONTEXT_SYSTEMS",
+      "package": "aria-res-tag-ind-graph-context-systems",
+      "resultDefinitionRef": "residual.tag.ind_graph_context_systems",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_GTM_INFRASTRUCTURE",
+      "operator": "TAG.IND_GTM_INFRASTRUCTURE",
+      "package": "aria-res-tag-ind-gtm-infrastructure",
+      "resultDefinitionRef": "residual.tag.ind_gtm_infrastructure",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_HEALTHTECH",
+      "operator": "TAG.IND_HEALTHTECH",
+      "package": "aria-res-tag-ind-healthtech",
+      "resultDefinitionRef": "residual.tag.ind_healthtech",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_IDENTITY",
+      "operator": "TAG.IND_IDENTITY",
+      "package": "aria-res-tag-ind-identity",
+      "resultDefinitionRef": "residual.tag.ind_identity",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_INSURTECH",
+      "operator": "TAG.IND_INSURTECH",
+      "package": "aria-res-tag-ind-insurtech",
+      "resultDefinitionRef": "residual.tag.ind_insurtech",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_KNOWLEDGE_GRAPHS",
+      "operator": "TAG.IND_KNOWLEDGE_GRAPHS",
+      "package": "aria-res-tag-ind-knowledge-graphs",
+      "resultDefinitionRef": "residual.tag.ind_knowledge_graphs",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_LEGALTECH",
+      "operator": "TAG.IND_LEGALTECH",
+      "package": "aria-res-tag-ind-legaltech",
+      "resultDefinitionRef": "residual.tag.ind_legaltech",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_LENDING",
+      "operator": "TAG.IND_LENDING",
+      "package": "aria-res-tag-ind-lending",
+      "resultDefinitionRef": "residual.tag.ind_lending",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_MARKET_INTELLIGENCE",
+      "operator": "TAG.IND_MARKET_INTELLIGENCE",
+      "package": "aria-res-tag-ind-market-intelligence",
+      "resultDefinitionRef": "residual.tag.ind_market_intelligence",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_PARTNER_ECOSYSTEM_INTEL",
+      "operator": "TAG.IND_PARTNER_ECOSYSTEM_INTEL",
+      "package": "aria-res-tag-ind-partner-ecosystem-intel",
+      "resultDefinitionRef": "residual.tag.ind_partner_ecosystem_intel",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_PAYMENTS",
+      "operator": "TAG.IND_PAYMENTS",
+      "package": "aria-res-tag-ind-payments",
+      "resultDefinitionRef": "residual.tag.ind_payments",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_PRIVACY_TECH",
+      "operator": "TAG.IND_PRIVACY_TECH",
+      "package": "aria-res-tag-ind-privacy-tech",
+      "resultDefinitionRef": "residual.tag.ind_privacy_tech",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_PRIVATE_EQUITY",
+      "operator": "TAG.IND_PRIVATE_EQUITY",
+      "package": "aria-res-tag-ind-private-equity",
+      "resultDefinitionRef": "residual.tag.ind_private_equity",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_PRIVATE_MARKETS",
+      "operator": "TAG.IND_PRIVATE_MARKETS",
+      "package": "aria-res-tag-ind-private-markets",
+      "resultDefinitionRef": "residual.tag.ind_private_markets",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_PROPTECH",
+      "operator": "TAG.IND_PROPTECH",
+      "package": "aria-res-tag-ind-proptech",
+      "resultDefinitionRef": "residual.tag.ind_proptech",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_REGTECH",
+      "operator": "TAG.IND_REGTECH",
+      "package": "aria-res-tag-ind-regtech",
+      "resultDefinitionRef": "residual.tag.ind_regtech",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_RESEARCH_DECISION_INTEL",
+      "operator": "TAG.IND_RESEARCH_DECISION_INTEL",
+      "package": "aria-res-tag-ind-research-decision-intel",
+      "resultDefinitionRef": "residual.tag.ind_research_decision_intel",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_SALES_INTELLIGENCE",
+      "operator": "TAG.IND_SALES_INTELLIGENCE",
+      "package": "aria-res-tag-ind-sales-intelligence",
+      "resultDefinitionRef": "residual.tag.ind_sales_intelligence",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_THIRD_PARTY_RISK",
+      "operator": "TAG.IND_THIRD_PARTY_RISK",
+      "package": "aria-res-tag-ind-third-party-risk",
+      "resultDefinitionRef": "residual.tag.ind_third_party_risk",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_VENDOR_RISK",
+      "operator": "TAG.IND_VENDOR_RISK",
+      "package": "aria-res-tag-ind-vendor-risk",
+      "resultDefinitionRef": "residual.tag.ind_vendor_risk",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_VENTURE_CAPITAL",
+      "operator": "TAG.IND_VENTURE_CAPITAL",
+      "package": "aria-res-tag-ind-venture-capital",
+      "resultDefinitionRef": "residual.tag.ind_venture_capital",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_WEALTHTECH",
+      "operator": "TAG.IND_WEALTHTECH",
+      "package": "aria-res-tag-ind-wealthtech",
+      "resultDefinitionRef": "residual.tag.ind_wealthtech",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.IND_WEB3_INFRASTRUCTURE",
+      "operator": "TAG.IND_WEB3_INFRASTRUCTURE",
+      "package": "aria-res-tag-ind-web3-infrastructure",
+      "resultDefinitionRef": "residual.tag.ind_web3_infrastructure",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.INTENT",
+      "operator": "TAG.INTENT",
+      "package": "aria-res-tag-intent",
+      "resultDefinitionRef": "residual.tag.intent",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.TAG.INVESTOR",
+      "operator": "TAG.INVESTOR",
+      "package": "aria-res-tag-investor",
+      "resultDefinitionRef": "residual.tag.investor",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "VENTURE_CAPITAL"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_ACTIVE_CONTEXT",
+      "operator": "TAG.LANG_ACTIVE_CONTEXT",
+      "package": "aria-res-tag-lang-active-context",
+      "resultDefinitionRef": "residual.tag.lang_active_context",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_ACTIVE_MARKET_CONTEXT",
+      "operator": "TAG.LANG_ACTIVE_MARKET_CONTEXT",
+      "package": "aria-res-tag-lang-active-market-context",
+      "resultDefinitionRef": "residual.tag.lang_active_market_context",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_ADJACENT_BUYER",
+      "operator": "TAG.LANG_ADJACENT_BUYER",
+      "package": "aria-res-tag-lang-adjacent-buyer",
+      "resultDefinitionRef": "residual.tag.lang_adjacent_buyer",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_ANALYST_NODE",
+      "operator": "TAG.LANG_ANALYST_NODE",
+      "package": "aria-res-tag-lang-analyst-node",
+      "resultDefinitionRef": "residual.tag.lang_analyst_node",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_ATTENTION_HEAT",
+      "operator": "TAG.LANG_ATTENTION_HEAT",
+      "package": "aria-res-tag-lang-attention-heat",
+      "resultDefinitionRef": "residual.tag.lang_attention_heat",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_ATTRACTIVENESS",
+      "operator": "TAG.LANG_ATTRACTIVENESS",
+      "package": "aria-res-tag-lang-attractiveness",
+      "resultDefinitionRef": "residual.tag.lang_attractiveness",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_BUILDER_NODE",
+      "operator": "TAG.LANG_BUILDER_NODE",
+      "package": "aria-res-tag-lang-builder-node",
+      "resultDefinitionRef": "residual.tag.lang_builder_node",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_BUYER_ROLE",
+      "operator": "TAG.LANG_BUYER_ROLE",
+      "package": "aria-res-tag-lang-buyer-role",
+      "resultDefinitionRef": "residual.tag.lang_buyer_role",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_CAPABILITY_ATOM",
+      "operator": "TAG.LANG_CAPABILITY_ATOM",
+      "package": "aria-res-tag-lang-capability-atom",
+      "resultDefinitionRef": "residual.tag.lang_capability_atom",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_CAPITAL_PATH",
+      "operator": "TAG.LANG_CAPITAL_PATH",
+      "package": "aria-res-tag-lang-capital-path",
+      "resultDefinitionRef": "residual.tag.lang_capital_path",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SYNDICATE"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_CATEGORY_CREATOR_LANE",
+      "operator": "TAG.LANG_CATEGORY_CREATOR_LANE",
+      "package": "aria-res-tag-lang-category-creator-lane",
+      "resultDefinitionRef": "residual.tag.lang_category_creator_lane",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_CATEGORY_DISTANCE",
+      "operator": "TAG.LANG_CATEGORY_DISTANCE",
+      "package": "aria-res-tag-lang-category-distance",
+      "resultDefinitionRef": "residual.tag.lang_category_distance",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_CATEGORY_FORMATION",
+      "operator": "TAG.LANG_CATEGORY_FORMATION",
+      "package": "aria-res-tag-lang-category-formation",
+      "resultDefinitionRef": "residual.tag.lang_category_formation",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_CATEGORY_NEIGHBORHOOD",
+      "operator": "TAG.LANG_CATEGORY_NEIGHBORHOOD",
+      "package": "aria-res-tag-lang-category-neighborhood",
+      "resultDefinitionRef": "residual.tag.lang_category_neighborhood",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_CLAIM_ROW",
+      "operator": "TAG.LANG_CLAIM_ROW",
+      "package": "aria-res-tag-lang-claim-row",
+      "resultDefinitionRef": "residual.tag.lang_claim_row",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_CLUSTER_GRAVITY",
+      "operator": "TAG.LANG_CLUSTER_GRAVITY",
+      "package": "aria-res-tag-lang-cluster-gravity",
+      "resultDefinitionRef": "residual.tag.lang_cluster_gravity",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_COMPACT_NARRATIVE",
+      "operator": "TAG.LANG_COMPACT_NARRATIVE",
+      "package": "aria-res-tag-lang-compact-narrative",
+      "resultDefinitionRef": "residual.tag.lang_compact_narrative",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_COMPARISON_MATRIX",
+      "operator": "TAG.LANG_COMPARISON_MATRIX",
+      "package": "aria-res-tag-lang-comparison-matrix",
+      "resultDefinitionRef": "residual.tag.lang_comparison_matrix",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_COMPETE_PROGRAM",
+      "operator": "TAG.LANG_COMPETE_PROGRAM",
+      "package": "aria-res-tag-lang-compete-program",
+      "resultDefinitionRef": "residual.tag.lang_compete_program",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_COMPETITIVE_PRESSURE",
+      "operator": "TAG.LANG_COMPETITIVE_PRESSURE",
+      "package": "aria-res-tag-lang-competitive-pressure",
+      "resultDefinitionRef": "residual.tag.lang_competitive_pressure",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPETITOR"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_COMPLETENESS_METRIC",
+      "operator": "TAG.LANG_COMPLETENESS_METRIC",
+      "package": "aria-res-tag-lang-completeness-metric",
+      "resultDefinitionRef": "residual.tag.lang_completeness_metric",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_CONSOLIDATING",
+      "operator": "TAG.LANG_CONSOLIDATING",
+      "package": "aria-res-tag-lang-consolidating",
+      "resultDefinitionRef": "residual.tag.lang_consolidating",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_CORE_CATEGORY_MEMBER",
+      "operator": "TAG.LANG_CORE_CATEGORY_MEMBER",
+      "package": "aria-res-tag-lang-core-category-member",
+      "resultDefinitionRef": "residual.tag.lang_core_category_member",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_CO_INVESTOR",
+      "operator": "TAG.LANG_CO_INVESTOR",
+      "package": "aria-res-tag-lang-co-investor",
+      "resultDefinitionRef": "residual.tag.lang_co_investor",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SYNDICATE"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_CREATOR_NODE",
+      "operator": "TAG.LANG_CREATOR_NODE",
+      "package": "aria-res-tag-lang-creator-node",
+      "resultDefinitionRef": "residual.tag.lang_creator_node",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_CROWDED_AREA",
+      "operator": "TAG.LANG_CROWDED_AREA",
+      "package": "aria-res-tag-lang-crowded-area",
+      "resultDefinitionRef": "residual.tag.lang_crowded_area",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_DIFFERENTIATION",
+      "operator": "TAG.LANG_DIFFERENTIATION",
+      "package": "aria-res-tag-lang-differentiation",
+      "resultDefinitionRef": "residual.tag.lang_differentiation",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPETITOR"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_DISTINCTIVENESS",
+      "operator": "TAG.LANG_DISTINCTIVENESS",
+      "package": "aria-res-tag-lang-distinctiveness",
+      "resultDefinitionRef": "residual.tag.lang_distinctiveness",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_ECOSYSTEM_CHAMPION",
+      "operator": "TAG.LANG_ECOSYSTEM_CHAMPION",
+      "package": "aria-res-tag-lang-ecosystem-champion",
+      "resultDefinitionRef": "residual.tag.lang_ecosystem_champion",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_EMERGING",
+      "operator": "TAG.LANG_EMERGING",
+      "package": "aria-res-tag-lang-emerging",
+      "resultDefinitionRef": "residual.tag.lang_emerging",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_ENTRY_WEDGE",
+      "operator": "TAG.LANG_ENTRY_WEDGE",
+      "package": "aria-res-tag-lang-entry-wedge",
+      "resultDefinitionRef": "residual.tag.lang_entry_wedge",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_EVIDENCE_STRENGTH",
+      "operator": "TAG.LANG_EVIDENCE_STRENGTH",
+      "package": "aria-res-tag-lang-evidence-strength",
+      "resultDefinitionRef": "residual.tag.lang_evidence_strength",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_EXECUTIVE_BRIEF",
+      "operator": "TAG.LANG_EXECUTIVE_BRIEF",
+      "package": "aria-res-tag-lang-executive-brief",
+      "resultDefinitionRef": "residual.tag.lang_executive_brief",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_EXPANSION_PATH",
+      "operator": "TAG.LANG_EXPANSION_PATH",
+      "package": "aria-res-tag-lang-expansion-path",
+      "resultDefinitionRef": "residual.tag.lang_expansion_path",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "ACCOUNT"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_EXPANSION_STEP",
+      "operator": "TAG.LANG_EXPANSION_STEP",
+      "package": "aria-res-tag-lang-expansion-step",
+      "resultDefinitionRef": "residual.tag.lang_expansion_step",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_FIELD_CONTRACT",
+      "operator": "TAG.LANG_FIELD_CONTRACT",
+      "package": "aria-res-tag-lang-field-contract",
+      "resultDefinitionRef": "residual.tag.lang_field_contract",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_FIT",
+      "operator": "TAG.LANG_FIT",
+      "package": "aria-res-tag-lang-fit",
+      "resultDefinitionRef": "residual.tag.lang_fit",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "ACCOUNT"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_FLEXIBLE_PLACEMENT",
+      "operator": "TAG.LANG_FLEXIBLE_PLACEMENT",
+      "package": "aria-res-tag-lang-flexible-placement",
+      "resultDefinitionRef": "residual.tag.lang_flexible_placement",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_FOLLOW_ON",
+      "operator": "TAG.LANG_FOLLOW_ON",
+      "package": "aria-res-tag-lang-follow-on",
+      "resultDefinitionRef": "residual.tag.lang_follow_on",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "VENTURE_CAPITAL"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_FRAMING",
+      "operator": "TAG.LANG_FRAMING",
+      "package": "aria-res-tag-lang-framing",
+      "resultDefinitionRef": "residual.tag.lang_framing",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_FUNDING_ACT",
+      "operator": "TAG.LANG_FUNDING_ACT",
+      "package": "aria-res-tag-lang-funding-act",
+      "resultDefinitionRef": "residual.tag.lang_funding_act",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "EVENT"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_FUNDING_HEAT",
+      "operator": "TAG.LANG_FUNDING_HEAT",
+      "package": "aria-res-tag-lang-funding-heat",
+      "resultDefinitionRef": "residual.tag.lang_funding_heat",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_GAP",
+      "operator": "TAG.LANG_GAP",
+      "package": "aria-res-tag-lang-gap",
+      "resultDefinitionRef": "residual.tag.lang_gap",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_GRAVITY_HUB",
+      "operator": "TAG.LANG_GRAVITY_HUB",
+      "package": "aria-res-tag-lang-gravity-hub",
+      "resultDefinitionRef": "residual.tag.lang_gravity_hub",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_GROWING",
+      "operator": "TAG.LANG_GROWING",
+      "package": "aria-res-tag-lang-growing",
+      "resultDefinitionRef": "residual.tag.lang_growing",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_HEAT_ZONE",
+      "operator": "TAG.LANG_HEAT_ZONE",
+      "package": "aria-res-tag-lang-heat-zone",
+      "resultDefinitionRef": "residual.tag.lang_heat_zone",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_HIRING_HEAT",
+      "operator": "TAG.LANG_HIRING_HEAT",
+      "package": "aria-res-tag-lang-hiring-heat",
+      "resultDefinitionRef": "residual.tag.lang_hiring_heat",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_INFLUENCE_PATH",
+      "operator": "TAG.LANG_INFLUENCE_PATH",
+      "package": "aria-res-tag-lang-influence-path",
+      "resultDefinitionRef": "residual.tag.lang_influence_path",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_INITIAL_WEDGE",
+      "operator": "TAG.LANG_INITIAL_WEDGE",
+      "package": "aria-res-tag-lang-initial-wedge",
+      "resultDefinitionRef": "residual.tag.lang_initial_wedge",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_INTEGRATION",
+      "operator": "TAG.LANG_INTEGRATION",
+      "package": "aria-res-tag-lang-integration",
+      "resultDefinitionRef": "residual.tag.lang_integration",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_INVESTOR_QUALITY",
+      "operator": "TAG.LANG_INVESTOR_QUALITY",
+      "package": "aria-res-tag-lang-investor-quality",
+      "resultDefinitionRef": "residual.tag.lang_investor_quality",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "VENTURE_CAPITAL"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_LAUNCH_HEAT",
+      "operator": "TAG.LANG_LAUNCH_HEAT",
+      "package": "aria-res-tag-lang-launch-heat",
+      "resultDefinitionRef": "residual.tag.lang_launch_heat",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_LAYER_APP",
+      "operator": "TAG.LANG_LAYER_APP",
+      "package": "aria-res-tag-lang-layer-app",
+      "resultDefinitionRef": "residual.tag.lang_layer_app",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_LAYER_DIST",
+      "operator": "TAG.LANG_LAYER_DIST",
+      "package": "aria-res-tag-lang-layer-dist",
+      "resultDefinitionRef": "residual.tag.lang_layer_dist",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_LAYER_INFRA",
+      "operator": "TAG.LANG_LAYER_INFRA",
+      "package": "aria-res-tag-lang-layer-infra",
+      "resultDefinitionRef": "residual.tag.lang_layer_infra",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_LAYER_MID",
+      "operator": "TAG.LANG_LAYER_MID",
+      "package": "aria-res-tag-lang-layer-mid",
+      "resultDefinitionRef": "residual.tag.lang_layer_mid",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_LEAD_INVESTOR",
+      "operator": "TAG.LANG_LEAD_INVESTOR",
+      "package": "aria-res-tag-lang-lead-investor",
+      "resultDefinitionRef": "residual.tag.lang_lead_investor",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "VENTURE_CAPITAL"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_LIFECYCLE_CURVE",
+      "operator": "TAG.LANG_LIFECYCLE_CURVE",
+      "package": "aria-res-tag-lang-lifecycle-curve",
+      "resultDefinitionRef": "residual.tag.lang_lifecycle_curve",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_LIST_PRICE_ABSENT",
+      "operator": "TAG.LANG_LIST_PRICE_ABSENT",
+      "package": "aria-res-tag-lang-list-price-absent",
+      "resultDefinitionRef": "residual.tag.lang_list_price_absent",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_LOGO_LANE",
+      "operator": "TAG.LANG_LOGO_LANE",
+      "package": "aria-res-tag-lang-logo-lane",
+      "resultDefinitionRef": "residual.tag.lang_logo_lane",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CUSTOMER"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_MARKET_RISK",
+      "operator": "TAG.LANG_MARKET_RISK",
+      "package": "aria-res-tag-lang-market-risk",
+      "resultDefinitionRef": "residual.tag.lang_market_risk",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_MATURE",
+      "operator": "TAG.LANG_MATURE",
+      "package": "aria-res-tag-lang-mature",
+      "resultDefinitionRef": "residual.tag.lang_mature",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_MISSING_PROOF",
+      "operator": "TAG.LANG_MISSING_PROOF",
+      "package": "aria-res-tag-lang-missing-proof",
+      "resultDefinitionRef": "residual.tag.lang_missing_proof",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_MISSING_PROOF_LANE",
+      "operator": "TAG.LANG_MISSING_PROOF_LANE",
+      "package": "aria-res-tag-lang-missing-proof-lane",
+      "resultDefinitionRef": "residual.tag.lang_missing_proof_lane",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_MOMENTUM_DOWN",
+      "operator": "TAG.LANG_MOMENTUM_DOWN",
+      "package": "aria-res-tag-lang-momentum-down",
+      "resultDefinitionRef": "residual.tag.lang_momentum_down",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_MOMENTUM_FLAT",
+      "operator": "TAG.LANG_MOMENTUM_FLAT",
+      "package": "aria-res-tag-lang-momentum-flat",
+      "resultDefinitionRef": "residual.tag.lang_momentum_flat",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_MOMENTUM_UP",
+      "operator": "TAG.LANG_MOMENTUM_UP",
+      "package": "aria-res-tag-lang-momentum-up",
+      "resultDefinitionRef": "residual.tag.lang_momentum_up",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_NAMING_ACT",
+      "operator": "TAG.LANG_NAMING_ACT",
+      "package": "aria-res-tag-lang-naming-act",
+      "resultDefinitionRef": "residual.tag.lang_naming_act",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "EVENT"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_NEED_INTENSITY",
+      "operator": "TAG.LANG_NEED_INTENSITY",
+      "package": "aria-res-tag-lang-need-intensity",
+      "resultDefinitionRef": "residual.tag.lang_need_intensity",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_ONE_SCREEN",
+      "operator": "TAG.LANG_ONE_SCREEN",
+      "package": "aria-res-tag-lang-one-screen",
+      "resultDefinitionRef": "residual.tag.lang_one_screen",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_OPEN_AREA",
+      "operator": "TAG.LANG_OPEN_AREA",
+      "package": "aria-res-tag-lang-open-area",
+      "resultDefinitionRef": "residual.tag.lang_open_area",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_OPERATOR_NODE",
+      "operator": "TAG.LANG_OPERATOR_NODE",
+      "package": "aria-res-tag-lang-operator-node",
+      "resultDefinitionRef": "residual.tag.lang_operator_node",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_OPERATOR_PATH",
+      "operator": "TAG.LANG_OPERATOR_PATH",
+      "package": "aria-res-tag-lang-operator-path",
+      "resultDefinitionRef": "residual.tag.lang_operator_path",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_OPPORTUNITY_GAP",
+      "operator": "TAG.LANG_OPPORTUNITY_GAP",
+      "package": "aria-res-tag-lang-opportunity-gap",
+      "resultDefinitionRef": "residual.tag.lang_opportunity_gap",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_PARTNER_PATH",
+      "operator": "TAG.LANG_PARTNER_PATH",
+      "package": "aria-res-tag-lang-partner-path",
+      "resultDefinitionRef": "residual.tag.lang_partner_path",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_PARTNER_PATH_ENTRY",
+      "operator": "TAG.LANG_PARTNER_PATH_ENTRY",
+      "package": "aria-res-tag-lang-partner-path-entry",
+      "resultDefinitionRef": "residual.tag.lang_partner_path_entry",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_PERSONA_LINK",
+      "operator": "TAG.LANG_PERSONA_LINK",
+      "package": "aria-res-tag-lang-persona-link",
+      "resultDefinitionRef": "residual.tag.lang_persona_link",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_PLATFORM_PULL",
+      "operator": "TAG.LANG_PLATFORM_PULL",
+      "package": "aria-res-tag-lang-platform-pull",
+      "resultDefinitionRef": "residual.tag.lang_platform_pull",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_PLATFORM_THESIS",
+      "operator": "TAG.LANG_PLATFORM_THESIS",
+      "package": "aria-res-tag-lang-platform-thesis",
+      "resultDefinitionRef": "residual.tag.lang_platform_thesis",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_PORTFOLIO_OVERLAP",
+      "operator": "TAG.LANG_PORTFOLIO_OVERLAP",
+      "package": "aria-res-tag-lang-portfolio-overlap",
+      "resultDefinitionRef": "residual.tag.lang_portfolio_overlap",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SYNDICATE"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_POSITION",
+      "operator": "TAG.LANG_POSITION",
+      "package": "aria-res-tag-lang-position",
+      "resultDefinitionRef": "residual.tag.lang_position",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPETITOR"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_POSITIONING_LANE",
+      "operator": "TAG.LANG_POSITIONING_LANE",
+      "package": "aria-res-tag-lang-positioning-lane",
+      "resultDefinitionRef": "residual.tag.lang_positioning_lane",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_PREVIOUS_COMPANY",
+      "operator": "TAG.LANG_PREVIOUS_COMPANY",
+      "package": "aria-res-tag-lang-previous-company",
+      "resultDefinitionRef": "residual.tag.lang_previous_company",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_PROBLEM_POINT",
+      "operator": "TAG.LANG_PROBLEM_POINT",
+      "package": "aria-res-tag-lang-problem-point",
+      "resultDefinitionRef": "residual.tag.lang_problem_point",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_PROJECT_NODE",
+      "operator": "TAG.LANG_PROJECT_NODE",
+      "package": "aria-res-tag-lang-project-node",
+      "resultDefinitionRef": "residual.tag.lang_project_node",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_PROOF",
+      "operator": "TAG.LANG_PROOF",
+      "package": "aria-res-tag-lang-proof",
+      "resultDefinitionRef": "residual.tag.lang_proof",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_PROOF_BACKED_STRENGTH",
+      "operator": "TAG.LANG_PROOF_BACKED_STRENGTH",
+      "package": "aria-res-tag-lang-proof-backed-strength",
+      "resultDefinitionRef": "residual.tag.lang_proof_backed_strength",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_PROOF_NEEDED_QUADRANT",
+      "operator": "TAG.LANG_PROOF_NEEDED_QUADRANT",
+      "package": "aria-res-tag-lang-proof-needed-quadrant",
+      "resultDefinitionRef": "residual.tag.lang_proof_needed_quadrant",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_PROOF_POINT",
+      "operator": "TAG.LANG_PROOF_POINT",
+      "package": "aria-res-tag-lang-proof-point",
+      "resultDefinitionRef": "residual.tag.lang_proof_point",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_PROVEN_CUSTOMER_CONTEXT",
+      "operator": "TAG.LANG_PROVEN_CUSTOMER_CONTEXT",
+      "package": "aria-res-tag-lang-proven-customer-context",
+      "resultDefinitionRef": "residual.tag.lang_proven_customer_context",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CUSTOMER"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_PULL",
+      "operator": "TAG.LANG_PULL",
+      "package": "aria-res-tag-lang-pull",
+      "resultDefinitionRef": "residual.tag.lang_pull",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_RANKED_ACCOUNT",
+      "operator": "TAG.LANG_RANKED_ACCOUNT",
+      "package": "aria-res-tag-lang-ranked-account",
+      "resultDefinitionRef": "residual.tag.lang_ranked_account",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "ACCOUNT"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_RECENCY_HEAT",
+      "operator": "TAG.LANG_RECENCY_HEAT",
+      "package": "aria-res-tag-lang-recency-heat",
+      "resultDefinitionRef": "residual.tag.lang_recency_heat",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_REFRESHABLE",
+      "operator": "TAG.LANG_REFRESHABLE",
+      "package": "aria-res-tag-lang-refreshable",
+      "resultDefinitionRef": "residual.tag.lang_refreshable",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_REGIONAL_RISK",
+      "operator": "TAG.LANG_REGIONAL_RISK",
+      "package": "aria-res-tag-lang-regional-risk",
+      "resultDefinitionRef": "residual.tag.lang_regional_risk",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_RELATIONSHIP_STRENGTH",
+      "operator": "TAG.LANG_RELATIONSHIP_STRENGTH",
+      "package": "aria-res-tag-lang-relationship-strength",
+      "resultDefinitionRef": "residual.tag.lang_relationship_strength",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CUSTOMER"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_ROUND_SIZE",
+      "operator": "TAG.LANG_ROUND_SIZE",
+      "package": "aria-res-tag-lang-round-size",
+      "resultDefinitionRef": "residual.tag.lang_round_size",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_SPIN_OUT",
+      "operator": "TAG.LANG_SPIN_OUT",
+      "package": "aria-res-tag-lang-spin-out",
+      "resultDefinitionRef": "residual.tag.lang_spin_out",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPANY"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_STACK_APPLICATION",
+      "operator": "TAG.LANG_STACK_APPLICATION",
+      "package": "aria-res-tag-lang-stack-application",
+      "resultDefinitionRef": "residual.tag.lang_stack_application",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_STACK_DISTRIBUTION",
+      "operator": "TAG.LANG_STACK_DISTRIBUTION",
+      "package": "aria-res-tag-lang-stack-distribution",
+      "resultDefinitionRef": "residual.tag.lang_stack_distribution",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_STACK_INFRA",
+      "operator": "TAG.LANG_STACK_INFRA",
+      "package": "aria-res-tag-lang-stack-infra",
+      "resultDefinitionRef": "residual.tag.lang_stack_infra",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_STACK_MIDDLEWARE",
+      "operator": "TAG.LANG_STACK_MIDDLEWARE",
+      "package": "aria-res-tag-lang-stack-middleware",
+      "resultDefinitionRef": "residual.tag.lang_stack_middleware",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_STRATEGIC_RING",
+      "operator": "TAG.LANG_STRATEGIC_RING",
+      "package": "aria-res-tag-lang-strategic-ring",
+      "resultDefinitionRef": "residual.tag.lang_strategic_ring",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "VENTURE_CAPITAL"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_STRATEGIC_TARGET",
+      "operator": "TAG.LANG_STRATEGIC_TARGET",
+      "package": "aria-res-tag-lang-strategic-target",
+      "resultDefinitionRef": "residual.tag.lang_strategic_target",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_STRUCTURAL_CLAIM",
+      "operator": "TAG.LANG_STRUCTURAL_CLAIM",
+      "package": "aria-res-tag-lang-structural-claim",
+      "resultDefinitionRef": "residual.tag.lang_structural_claim",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_SUPPLY_DENSITY",
+      "operator": "TAG.LANG_SUPPLY_DENSITY",
+      "package": "aria-res-tag-lang-supply-density",
+      "resultDefinitionRef": "residual.tag.lang_supply_density",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_TALENT_LINEAGE",
+      "operator": "TAG.LANG_TALENT_LINEAGE",
+      "package": "aria-res-tag-lang-talent-lineage",
+      "resultDefinitionRef": "residual.tag.lang_talent_lineage",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_TEMPORAL_SIGNAL",
+      "operator": "TAG.LANG_TEMPORAL_SIGNAL",
+      "package": "aria-res-tag-lang-temporal-signal",
+      "resultDefinitionRef": "residual.tag.lang_temporal_signal",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_THREAT_CRITICAL",
+      "operator": "TAG.LANG_THREAT_CRITICAL",
+      "package": "aria-res-tag-lang-threat-critical",
+      "resultDefinitionRef": "residual.tag.lang_threat_critical",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPETITOR"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_THREAT_HIGH",
+      "operator": "TAG.LANG_THREAT_HIGH",
+      "package": "aria-res-tag-lang-threat-high",
+      "resultDefinitionRef": "residual.tag.lang_threat_high",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPETITOR"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_THREAT_LOW",
+      "operator": "TAG.LANG_THREAT_LOW",
+      "package": "aria-res-tag-lang-threat-low",
+      "resultDefinitionRef": "residual.tag.lang_threat_low",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPETITOR"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_THREAT_MEDIUM",
+      "operator": "TAG.LANG_THREAT_MEDIUM",
+      "package": "aria-res-tag-lang-threat-medium",
+      "resultDefinitionRef": "residual.tag.lang_threat_medium",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "COMPETITOR"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_TIMING",
+      "operator": "TAG.LANG_TIMING",
+      "package": "aria-res-tag-lang-timing",
+      "resultDefinitionRef": "residual.tag.lang_timing",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "ACCOUNT"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_UNDERSERVED_CLUSTER",
+      "operator": "TAG.LANG_UNDERSERVED_CLUSTER",
+      "package": "aria-res-tag-lang-underserved-cluster",
+      "resultDefinitionRef": "residual.tag.lang_underserved_cluster",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_VENDOR",
+      "operator": "TAG.LANG_VENDOR",
+      "package": "aria-res-tag-lang-vendor",
+      "resultDefinitionRef": "residual.tag.lang_vendor",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SELLER"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_VINTAGE",
+      "operator": "TAG.LANG_VINTAGE",
+      "package": "aria-res-tag-lang-vintage",
+      "resultDefinitionRef": "residual.tag.lang_vintage",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "VENTURE_CAPITAL"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_WARM_PATH_ACCOUNT",
+      "operator": "TAG.LANG_WARM_PATH_ACCOUNT",
+      "package": "aria-res-tag-lang-warm-path-account",
+      "resultDefinitionRef": "residual.tag.lang_warm_path_account",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "ACCOUNT"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_WARM_PATH_HOP",
+      "operator": "TAG.LANG_WARM_PATH_HOP",
+      "package": "aria-res-tag-lang-warm-path-hop",
+      "resultDefinitionRef": "residual.tag.lang_warm_path_hop",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.LANG_WHITE_SPACE_DENSITY",
+      "operator": "TAG.LANG_WHITE_SPACE_DENSITY",
+      "package": "aria-res-tag-lang-white-space-density",
+      "resultDefinitionRef": "residual.tag.lang_white_space_density",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.LAUNCH",
+      "operator": "TAG.LAUNCH",
+      "package": "aria-res-tag-launch",
+      "resultDefinitionRef": "residual.tag.launch",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.TAG.LAYER",
+      "operator": "TAG.LAYER",
+      "package": "aria-res-tag-layer",
+      "resultDefinitionRef": "residual.tag.layer",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.MAP_TYPE",
+      "operator": "TAG.MAP_TYPE",
+      "package": "aria-res-tag-map-type",
+      "resultDefinitionRef": "residual.tag.map_type",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.MARKET",
+      "operator": "TAG.MARKET",
+      "package": "aria-res-tag-market",
+      "resultDefinitionRef": "residual.tag.market",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET"
+    },
+    {
+      "binary_id": "BIN.TAG.MARKET_MAP",
+      "operator": "TAG.MARKET_MAP",
+      "package": "aria-res-tag-market-map",
+      "resultDefinitionRef": "residual.tag.market_map",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.MEDIA",
+      "operator": "TAG.MEDIA",
+      "package": "aria-res-tag-media",
+      "resultDefinitionRef": "residual.tag.media",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.TAG.METHOD",
+      "operator": "TAG.METHOD",
+      "package": "aria-res-tag-method",
+      "resultDefinitionRef": "residual.tag.method",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SOURCE"
+    },
+    {
+      "binary_id": "BIN.TAG.PARTNER",
+      "operator": "TAG.PARTNER",
+      "package": "aria-res-tag-partner",
+      "resultDefinitionRef": "residual.tag.partner",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.PARTNER_TAG",
+      "operator": "TAG.PARTNER_TAG",
+      "package": "aria-res-tag-partner-tag",
+      "resultDefinitionRef": "residual.tag.partner_tag",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.TAG.PATH_ID",
+      "operator": "TAG.PATH_ID",
+      "package": "aria-res-tag-path-id",
+      "resultDefinitionRef": "residual.tag.path_id",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "feed.by-name"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON",
+      "operator": "TAG.PERSON",
+      "package": "aria-res-tag-person",
+      "resultDefinitionRef": "residual.tag.person",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSONA_ANALYST",
+      "operator": "TAG.PERSONA_ANALYST",
+      "package": "aria-res-tag-persona-analyst",
+      "resultDefinitionRef": "residual.tag.persona_analyst",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSONA_BUILDER",
+      "operator": "TAG.PERSONA_BUILDER",
+      "package": "aria-res-tag-persona-builder",
+      "resultDefinitionRef": "residual.tag.persona_builder",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSONA_ECONOMIC",
+      "operator": "TAG.PERSONA_ECONOMIC",
+      "package": "aria-res-tag-persona-economic",
+      "resultDefinitionRef": "residual.tag.persona_economic",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSONA_EXECUTIVE",
+      "operator": "TAG.PERSONA_EXECUTIVE",
+      "package": "aria-res-tag-persona-executive",
+      "resultDefinitionRef": "residual.tag.persona_executive",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSONA_GOVERNANCE",
+      "operator": "TAG.PERSONA_GOVERNANCE",
+      "package": "aria-res-tag-persona-governance",
+      "resultDefinitionRef": "residual.tag.persona_governance",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSONA_INVESTOR",
+      "operator": "TAG.PERSONA_INVESTOR",
+      "package": "aria-res-tag-persona-investor",
+      "resultDefinitionRef": "residual.tag.persona_investor",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSONA_OPERATOR",
+      "operator": "TAG.PERSONA_OPERATOR",
+      "package": "aria-res-tag-persona-operator",
+      "resultDefinitionRef": "residual.tag.persona_operator",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSONA_PARTNER",
+      "operator": "TAG.PERSONA_PARTNER",
+      "package": "aria-res-tag-persona-partner",
+      "resultDefinitionRef": "residual.tag.persona_partner",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSONA_TECHNICAL",
+      "operator": "TAG.PERSONA_TECHNICAL",
+      "package": "aria-res-tag-persona-technical",
+      "resultDefinitionRef": "residual.tag.persona_technical",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSONA_USER",
+      "operator": "TAG.PERSONA_USER",
+      "package": "aria-res-tag-persona-user",
+      "resultDefinitionRef": "residual.tag.persona_user",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_ACCOUNT_OWNER",
+      "operator": "TAG.PERSON_ACCOUNT_OWNER",
+      "package": "aria-res-tag-person-account-owner",
+      "resultDefinitionRef": "residual.tag.person_account_owner",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "ACCOUNT"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_ADVISOR",
+      "operator": "TAG.PERSON_ADVISOR",
+      "package": "aria-res-tag-person-advisor",
+      "resultDefinitionRef": "residual.tag.person_advisor",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_ANALYST_FIRM",
+      "operator": "TAG.PERSON_ANALYST_FIRM",
+      "package": "aria-res-tag-person-analyst-firm",
+      "resultDefinitionRef": "residual.tag.person_analyst_firm",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_ANALYST_INDUSTRY",
+      "operator": "TAG.PERSON_ANALYST_INDUSTRY",
+      "package": "aria-res-tag-person-analyst-industry",
+      "resultDefinitionRef": "residual.tag.person_analyst_industry",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_ANGEL",
+      "operator": "TAG.PERSON_ANGEL",
+      "package": "aria-res-tag-person-angel",
+      "resultDefinitionRef": "residual.tag.person_angel",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_ASSOCIATE",
+      "operator": "TAG.PERSON_ASSOCIATE",
+      "package": "aria-res-tag-person-associate",
+      "resultDefinitionRef": "residual.tag.person_associate",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_BOARD",
+      "operator": "TAG.PERSON_BOARD",
+      "package": "aria-res-tag-person-board",
+      "resultDefinitionRef": "residual.tag.person_board",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_BUYER_CHAMPION",
+      "operator": "TAG.PERSON_BUYER_CHAMPION",
+      "package": "aria-res-tag-person-buyer-champion",
+      "resultDefinitionRef": "residual.tag.person_buyer_champion",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_BUYER_ECONOMIC",
+      "operator": "TAG.PERSON_BUYER_ECONOMIC",
+      "package": "aria-res-tag-person-buyer-economic",
+      "resultDefinitionRef": "residual.tag.person_buyer_economic",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_BUYER_TECHNICAL",
+      "operator": "TAG.PERSON_BUYER_TECHNICAL",
+      "package": "aria-res-tag-person-buyer-technical",
+      "resultDefinitionRef": "residual.tag.person_buyer_technical",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_BUYER_USER",
+      "operator": "TAG.PERSON_BUYER_USER",
+      "package": "aria-res-tag-person-buyer-user",
+      "resultDefinitionRef": "residual.tag.person_buyer_user",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_CEO",
+      "operator": "TAG.PERSON_CEO",
+      "package": "aria-res-tag-person-ceo",
+      "resultDefinitionRef": "residual.tag.person_ceo",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_CFO",
+      "operator": "TAG.PERSON_CFO",
+      "package": "aria-res-tag-person-cfo",
+      "resultDefinitionRef": "residual.tag.person_cfo",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_CISO",
+      "operator": "TAG.PERSON_CISO",
+      "package": "aria-res-tag-person-ciso",
+      "resultDefinitionRef": "residual.tag.person_ciso",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_CMO",
+      "operator": "TAG.PERSON_CMO",
+      "package": "aria-res-tag-person-cmo",
+      "resultDefinitionRef": "residual.tag.person_cmo",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_COMMERCIAL_STRATEGY",
+      "operator": "TAG.PERSON_COMMERCIAL_STRATEGY",
+      "package": "aria-res-tag-person-commercial-strategy",
+      "resultDefinitionRef": "residual.tag.person_commercial_strategy",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_COMPLIANCE",
+      "operator": "TAG.PERSON_COMPLIANCE",
+      "package": "aria-res-tag-person-compliance",
+      "resultDefinitionRef": "residual.tag.person_compliance",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_CONSULTING_PARTNER",
+      "operator": "TAG.PERSON_CONSULTING_PARTNER",
+      "package": "aria-res-tag-person-consulting-partner",
+      "resultDefinitionRef": "residual.tag.person_consulting_partner",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_COO",
+      "operator": "TAG.PERSON_COO",
+      "package": "aria-res-tag-person-coo",
+      "resultDefinitionRef": "residual.tag.person_coo",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_CORP_DEV",
+      "operator": "TAG.PERSON_CORP_DEV",
+      "package": "aria-res-tag-person-corp-dev",
+      "resultDefinitionRef": "residual.tag.person_corp_dev",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_CORP_STRATEGY",
+      "operator": "TAG.PERSON_CORP_STRATEGY",
+      "package": "aria-res-tag-person-corp-strategy",
+      "resultDefinitionRef": "residual.tag.person_corp_strategy",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_COUNSEL",
+      "operator": "TAG.PERSON_COUNSEL",
+      "package": "aria-res-tag-person-counsel",
+      "resultDefinitionRef": "residual.tag.person_counsel",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_CO_FOUNDER",
+      "operator": "TAG.PERSON_CO_FOUNDER",
+      "package": "aria-res-tag-person-co-founder",
+      "resultDefinitionRef": "residual.tag.person_co_founder",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_CPO",
+      "operator": "TAG.PERSON_CPO",
+      "package": "aria-res-tag-person-cpo",
+      "resultDefinitionRef": "residual.tag.person_cpo",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_CREATOR",
+      "operator": "TAG.PERSON_CREATOR",
+      "package": "aria-res-tag-person-creator",
+      "resultDefinitionRef": "residual.tag.person_creator",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_CRO",
+      "operator": "TAG.PERSON_CRO",
+      "package": "aria-res-tag-person-cro",
+      "resultDefinitionRef": "residual.tag.person_cro",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_CTO",
+      "operator": "TAG.PERSON_CTO",
+      "package": "aria-res-tag-person-cto",
+      "resultDefinitionRef": "residual.tag.person_cto",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_CUSTOMER_CHAMPION",
+      "operator": "TAG.PERSON_CUSTOMER_CHAMPION",
+      "package": "aria-res-tag-person-customer-champion",
+      "resultDefinitionRef": "residual.tag.person_customer_champion",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CUSTOMER"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_DESIGNER",
+      "operator": "TAG.PERSON_DESIGNER",
+      "package": "aria-res-tag-person-designer",
+      "resultDefinitionRef": "residual.tag.person_designer",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_DEVREL",
+      "operator": "TAG.PERSON_DEVREL",
+      "package": "aria-res-tag-person-devrel",
+      "resultDefinitionRef": "residual.tag.person_devrel",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_END_USER",
+      "operator": "TAG.PERSON_END_USER",
+      "package": "aria-res-tag-person-end-user",
+      "resultDefinitionRef": "residual.tag.person_end_user",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CUSTOMER"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_ENGINEER",
+      "operator": "TAG.PERSON_ENGINEER",
+      "package": "aria-res-tag-person-engineer",
+      "resultDefinitionRef": "residual.tag.person_engineer",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_EXECUTIVE",
+      "operator": "TAG.PERSON_EXECUTIVE",
+      "package": "aria-res-tag-person-executive",
+      "resultDefinitionRef": "residual.tag.person_executive",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_FOUNDER",
+      "operator": "TAG.PERSON_FOUNDER",
+      "package": "aria-res-tag-person-founder",
+      "resultDefinitionRef": "residual.tag.person_founder",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_GP",
+      "operator": "TAG.PERSON_GP",
+      "package": "aria-res-tag-person-gp",
+      "resultDefinitionRef": "residual.tag.person_gp",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_HEAD_DEVREL",
+      "operator": "TAG.PERSON_HEAD_DEVREL",
+      "package": "aria-res-tag-person-head-devrel",
+      "resultDefinitionRef": "residual.tag.person_head_devrel",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_HEAD_ENGINEERING",
+      "operator": "TAG.PERSON_HEAD_ENGINEERING",
+      "package": "aria-res-tag-person-head-engineering",
+      "resultDefinitionRef": "residual.tag.person_head_engineering",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_HEAD_GROWTH",
+      "operator": "TAG.PERSON_HEAD_GROWTH",
+      "package": "aria-res-tag-person-head-growth",
+      "resultDefinitionRef": "residual.tag.person_head_growth",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_HEAD_PAYMENTS",
+      "operator": "TAG.PERSON_HEAD_PAYMENTS",
+      "package": "aria-res-tag-person-head-payments",
+      "resultDefinitionRef": "residual.tag.person_head_payments",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_HEAD_PRODUCT",
+      "operator": "TAG.PERSON_HEAD_PRODUCT",
+      "package": "aria-res-tag-person-head-product",
+      "resultDefinitionRef": "residual.tag.person_head_product",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_HEAD_RESEARCH",
+      "operator": "TAG.PERSON_HEAD_RESEARCH",
+      "package": "aria-res-tag-person-head-research",
+      "resultDefinitionRef": "residual.tag.person_head_research",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_HEAD_SALES",
+      "operator": "TAG.PERSON_HEAD_SALES",
+      "package": "aria-res-tag-person-head-sales",
+      "resultDefinitionRef": "residual.tag.person_head_sales",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_IC_MEMBER",
+      "operator": "TAG.PERSON_IC_MEMBER",
+      "package": "aria-res-tag-person-ic-member",
+      "resultDefinitionRef": "residual.tag.person_ic_member",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_INFLUENCER",
+      "operator": "TAG.PERSON_INFLUENCER",
+      "package": "aria-res-tag-person-influencer",
+      "resultDefinitionRef": "residual.tag.person_influencer",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_INVESTMENT_PARTNER",
+      "operator": "TAG.PERSON_INVESTMENT_PARTNER",
+      "package": "aria-res-tag-person-investment-partner",
+      "resultDefinitionRef": "residual.tag.person_investment_partner",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_INVESTOR",
+      "operator": "TAG.PERSON_INVESTOR",
+      "package": "aria-res-tag-person-investor",
+      "resultDefinitionRef": "residual.tag.person_investor",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_JOURNALIST",
+      "operator": "TAG.PERSON_JOURNALIST",
+      "package": "aria-res-tag-person-journalist",
+      "resultDefinitionRef": "residual.tag.person_journalist",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_LP",
+      "operator": "TAG.PERSON_LP",
+      "package": "aria-res-tag-person-lp",
+      "resultDefinitionRef": "residual.tag.person_lp",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_MARKET_INTEL_LEAD",
+      "operator": "TAG.PERSON_MARKET_INTEL_LEAD",
+      "package": "aria-res-tag-person-market-intel-lead",
+      "resultDefinitionRef": "residual.tag.person_market_intel_lead",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_OPERATOR",
+      "operator": "TAG.PERSON_OPERATOR",
+      "package": "aria-res-tag-person-operator",
+      "resultDefinitionRef": "residual.tag.person_operator",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_PM",
+      "operator": "TAG.PERSON_PM",
+      "package": "aria-res-tag-person-pm",
+      "resultDefinitionRef": "residual.tag.person_pm",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_PORTFOLIO_OPERATOR",
+      "operator": "TAG.PERSON_PORTFOLIO_OPERATOR",
+      "package": "aria-res-tag-person-portfolio-operator",
+      "resultDefinitionRef": "residual.tag.person_portfolio_operator",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_PRINCIPAL",
+      "operator": "TAG.PERSON_PRINCIPAL",
+      "package": "aria-res-tag-person-principal",
+      "resultDefinitionRef": "residual.tag.person_principal",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_PROCUREMENT",
+      "operator": "TAG.PERSON_PROCUREMENT",
+      "package": "aria-res-tag-person-procurement",
+      "resultDefinitionRef": "residual.tag.person_procurement",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_REGULATOR",
+      "operator": "TAG.PERSON_REGULATOR",
+      "package": "aria-res-tag-person-regulator",
+      "resultDefinitionRef": "residual.tag.person_regulator",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_RESEARCHER",
+      "operator": "TAG.PERSON_RESEARCHER",
+      "package": "aria-res-tag-person-researcher",
+      "resultDefinitionRef": "residual.tag.person_researcher",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_REVOPS",
+      "operator": "TAG.PERSON_REVOPS",
+      "package": "aria-res-tag-person-revops",
+      "resultDefinitionRef": "residual.tag.person_revops",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_SCOUT",
+      "operator": "TAG.PERSON_SCOUT",
+      "package": "aria-res-tag-person-scout",
+      "resultDefinitionRef": "residual.tag.person_scout",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_SOLUTIONS_ENGINEER",
+      "operator": "TAG.PERSON_SOLUTIONS_ENGINEER",
+      "package": "aria-res-tag-person-solutions-engineer",
+      "resultDefinitionRef": "residual.tag.person_solutions_engineer",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_VENDOR_MANAGER",
+      "operator": "TAG.PERSON_VENDOR_MANAGER",
+      "package": "aria-res-tag-person-vendor-manager",
+      "resultDefinitionRef": "residual.tag.person_vendor_manager",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "BUYER"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_VENTURE_PARTNER",
+      "operator": "TAG.PERSON_VENTURE_PARTNER",
+      "package": "aria-res-tag-person-venture-partner",
+      "resultDefinitionRef": "residual.tag.person_venture_partner",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PERSON_VP_PARTNERSHIPS",
+      "operator": "TAG.PERSON_VP_PARTNERSHIPS",
+      "package": "aria-res-tag-person-vp-partnerships",
+      "resultDefinitionRef": "residual.tag.person_vp_partnerships",
+      "layer": "DEEP_TAG",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PEOPLE"
+    },
+    {
+      "binary_id": "BIN.TAG.PORTFOLIO",
+      "operator": "TAG.PORTFOLIO",
+      "package": "aria-res-tag-portfolio",
+      "resultDefinitionRef": "residual.tag.portfolio",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.TAG.PRODUCT",
+      "operator": "TAG.PRODUCT",
+      "package": "aria-res-tag-product",
+      "resultDefinitionRef": "residual.tag.product",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PRODUCT"
+    },
+    {
+      "binary_id": "BIN.TAG.READINESS",
+      "operator": "TAG.READINESS",
+      "package": "aria-res-tag-readiness",
+      "resultDefinitionRef": "residual.tag.readiness",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.REGULATORY",
+      "operator": "TAG.REGULATORY",
+      "package": "aria-res-tag-regulatory",
+      "resultDefinitionRef": "residual.tag.regulatory",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.TAG.REQUIREMENT_ID",
+      "operator": "TAG.REQUIREMENT_ID",
+      "package": "aria-res-tag-requirement-id",
+      "resultDefinitionRef": "residual.tag.requirement_id",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.TAG.RESULT_DEFINITION_REF",
+      "operator": "TAG.RESULT_DEFINITION_REF",
+      "package": "aria-res-tag-result-definition-ref",
+      "resultDefinitionRef": "residual.tag.result_definition_ref",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "schema-lookup"
+    },
+    {
+      "binary_id": "BIN.TAG.RETRIEVED_AT",
+      "operator": "TAG.RETRIEVED_AT",
+      "package": "aria-res-tag-retrieved-at",
+      "resultDefinitionRef": "residual.tag.retrieved_at",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SOURCE"
+    },
+    {
+      "binary_id": "BIN.TAG.SEGMENT",
+      "operator": "TAG.SEGMENT",
+      "package": "aria-res-tag-segment",
+      "resultDefinitionRef": "residual.tag.segment",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "MARKET_MAP"
+    },
+    {
+      "binary_id": "BIN.TAG.SELLER_TAG",
+      "operator": "TAG.SELLER_TAG",
+      "package": "aria-res-tag-seller-tag",
+      "resultDefinitionRef": "residual.tag.seller_tag",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SELLER"
+    },
+    {
+      "binary_id": "BIN.TAG.SIGNAL",
+      "operator": "TAG.SIGNAL",
+      "package": "aria-res-tag-signal",
+      "resultDefinitionRef": "residual.tag.signal",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SIGNAL"
+    },
+    {
+      "binary_id": "BIN.TAG.SOURCE",
+      "operator": "TAG.SOURCE",
+      "package": "aria-res-tag-source",
+      "resultDefinitionRef": "residual.tag.source",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SOURCE"
+    },
+    {
+      "binary_id": "BIN.TAG.SYNDICATE_TAG",
+      "operator": "TAG.SYNDICATE_TAG",
+      "package": "aria-res-tag-syndicate-tag",
+      "resultDefinitionRef": "residual.tag.syndicate_tag",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SYNDICATE"
+    },
+    {
+      "binary_id": "BIN.TAG.TELEMETRY_SPINE",
+      "operator": "TAG.TELEMETRY_SPINE",
+      "package": "aria-res-tag-telemetry-spine",
+      "resultDefinitionRef": "residual.tag.telemetry_spine",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "AriA"
+    },
+    {
+      "binary_id": "BIN.TAG.TIMESTAMP",
+      "operator": "TAG.TIMESTAMP",
+      "package": "aria-res-tag-timestamp",
+      "resultDefinitionRef": "residual.tag.timestamp",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "EVENT"
+    },
+    {
+      "binary_id": "BIN.TAG.TRAJECTORY",
+      "operator": "TAG.TRAJECTORY",
+      "package": "aria-res-tag-trajectory",
+      "resultDefinitionRef": "residual.tag.trajectory",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "AriA"
+    },
+    {
+      "binary_id": "BIN.TAG.TRUST_STATE",
+      "operator": "TAG.TRUST_STATE",
+      "package": "aria-res-tag-trust-state",
+      "resultDefinitionRef": "residual.tag.trust_state",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "CLAIM"
+    },
+    {
+      "binary_id": "BIN.TAG.URL",
+      "operator": "TAG.URL",
+      "package": "aria-res-tag-url",
+      "resultDefinitionRef": "residual.tag.url",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "SOURCE"
+    },
+    {
+      "binary_id": "BIN.TAG.VIRALITY_METRICS",
+      "operator": "TAG.VIRALITY_METRICS",
+      "package": "aria-res-tag-virality-metrics",
+      "resultDefinitionRef": "residual.tag.virality_metrics",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    },
+    {
+      "binary_id": "BIN.TAG.WARM_PATH",
+      "operator": "TAG.WARM_PATH",
+      "package": "aria-res-tag-warm-path",
+      "resultDefinitionRef": "residual.tag.warm_path",
+      "layer": "RESIDUAL",
+      "class": "TAG",
+      "verify": true,
+      "parent": "PARTNER"
+    },
+    {
+      "binary_id": "BIN.VENTURE_CAPITAL",
+      "operator": "VENTURE_CAPITAL",
+      "package": "aria-telemetry-vc",
+      "resultDefinitionRef": "entity.investor",
+      "layer": "ENTITY",
+      "class": "ENTITY",
+      "verify": true,
+      "parent": "PORTFOLIO"
+    }
+  ]
+}

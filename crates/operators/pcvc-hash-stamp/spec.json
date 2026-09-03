@@ -1,0 +1,25 @@
+{
+  "anchor_tags": [
+    "CONTENT_HASH",
+    "PAYLOAD"
+  ],
+  "binary_id": "BIN.HASH_STAMP",
+  "class": "HOST",
+  "crate": "pcvc_hash_stamp",
+  "default_limit": 1,
+  "layer": "HOST",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "hash-stamp",
+  "package": "pcvc-hash-stamp",
+  "parent": "\u2014",
+  "pass_through": true,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "host.hash_stamp",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "pcvc/hash-stamp@dev",
+  "verify": true,
+  "wave": null
+}

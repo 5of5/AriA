@@ -1,0 +1,37 @@
+{
+  "anchor_tags": [
+    "PRODUCT",
+    "COMPANY",
+    "CAPABILITY",
+    "CUSTOMER_PROOF",
+    "Product Capability",
+    "MAP_TYPE"
+  ],
+  "binary_id": "BIN.REF.PRODUCT_CAPABILITY",
+  "class": "REFINEMENT",
+  "crate": "aria_ref_product_capability",
+  "default_limit": null,
+  "layer": "REFINEMENT",
+  "neo4j_pass": true,
+  "node_types": [
+    "Product",
+    "Company",
+    "Claim"
+  ],
+  "operator": "REF.PRODUCT_CAPABILITY",
+  "package": "aria-ref-product-capability",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "HAS_CAPABILITY",
+    "OFFERED_BY",
+    "SUBSTITUTES"
+  ],
+  "result_definition_ref": "map.ref.product_capability",
+  "retrieval_step": "memory",
+  "taxonomy": "Product Capability",
+  "telemetry_fork": "aria/ref/product_capability@v1",
+  "verify": true,
+  "wave": null
+}

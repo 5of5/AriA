@@ -1,0 +1,32 @@
+{
+  "anchor_tags": [
+    "CLAIM",
+    "FIELD",
+    "TRUST_STATE"
+  ],
+  "binary_id": "BIN.CLAIM",
+  "class": "FACT",
+  "crate": "aria_telemetry_claim",
+  "default_limit": 47,
+  "layer": "FACT",
+  "neo4j_pass": true,
+  "node_types": [
+    "Claim"
+  ],
+  "operator": "CLAIM",
+  "package": "aria-telemetry-claim",
+  "parent": "PORTFOLIO",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "ASSERTS",
+    "CITES",
+    "CONFLICTS_WITH"
+  ],
+  "result_definition_ref": "fact.claim",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/claim@v1",
+  "verify": true,
+  "wave": null
+}

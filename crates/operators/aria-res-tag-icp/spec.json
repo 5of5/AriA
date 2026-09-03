@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "ICP"
+  ],
+  "binary_id": "BIN.TAG.ICP",
+  "class": "TAG",
+  "crate": "aria_res_tag_icp",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.ICP",
+  "package": "aria-res-tag-icp",
+  "parent": "ACCOUNT",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.icp",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/icp@v1",
+  "verify": true,
+  "wave": "A"
+}

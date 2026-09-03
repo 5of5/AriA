@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "MEDIA"
+  ],
+  "binary_id": "BIN.TAG.MEDIA",
+  "class": "TAG",
+  "crate": "aria_res_tag_media",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.MEDIA",
+  "package": "aria-res-tag-media",
+  "parent": "SIGNAL",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.media",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/media@v1",
+  "verify": true,
+  "wave": "B"
+}

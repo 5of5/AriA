@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "ECO_CHAMPION"
+  ],
+  "binary_id": "BIN.TAG.ECO_CHAMPION",
+  "class": "TAG",
+  "crate": "aria_res_tag_eco_champion",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.ECO_CHAMPION",
+  "package": "aria-res-tag-eco-champion",
+  "parent": "PARTNER",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.eco_champion",
+  "retrieval_step": "memory",
+  "taxonomy": "ECOSYSTEM_TAG",
+  "telemetry_fork": "aria/res/tag/eco_champion@v1",
+  "verify": true,
+  "wave": "B"
+}

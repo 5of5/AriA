@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.FUNDING_AMOUNT",
+  "class": "PROP",
+  "crate": "aria_res_prop_funding_amount",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.FUNDING_AMOUNT",
+  "package": "aria-res-prop-funding-amount",
+  "parent": "SIGNAL",
+  "pass_through": false,
+  "property_key": "funding_amount",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.funding_amount",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/funding_amount@v1",
+  "verify": true,
+  "wave": "B"
+}

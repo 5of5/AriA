@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CO_SCALEUP"
+  ],
+  "binary_id": "BIN.TAG.CO_SCALEUP",
+  "class": "TAG",
+  "crate": "aria_res_tag_co_scaleup",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CO_SCALEUP",
+  "package": "aria-res-tag-co-scaleup",
+  "parent": "COMPANY",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.co_scaleup",
+  "retrieval_step": "memory",
+  "taxonomy": "COMPANY_TYPE",
+  "telemetry_fork": "aria/res/tag/co_scaleup@v1",
+  "verify": true,
+  "wave": "A"
+}

@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CUSTOMER_PROOF"
+  ],
+  "binary_id": "BIN.TAG.CUSTOMER_PROOF",
+  "class": "TAG",
+  "crate": "aria_res_tag_customer_proof",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CUSTOMER_PROOF",
+  "package": "aria-res-tag-customer-proof",
+  "parent": "SIGNAL",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.customer_proof",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/customer_proof@v1",
+  "verify": true,
+  "wave": "B"
+}

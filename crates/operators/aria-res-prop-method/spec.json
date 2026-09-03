@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.METHOD",
+  "class": "PROP",
+  "crate": "aria_res_prop_method",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.METHOD",
+  "package": "aria-res-prop-method",
+  "parent": "SOURCE",
+  "pass_through": false,
+  "property_key": "method",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.method",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/method@v1",
+  "verify": true,
+  "wave": "B"
+}

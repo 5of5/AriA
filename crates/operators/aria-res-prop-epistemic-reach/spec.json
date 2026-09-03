@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.EPISTEMIC_REACH",
+  "class": "PROP",
+  "crate": "aria_res_prop_epistemic_reach",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "PROP.EPISTEMIC_REACH",
+  "package": "aria-res-prop-epistemic-reach",
+  "parent": "PORTFOLIO",
+  "pass_through": false,
+  "property_key": "epistemic_reach",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.epistemic_reach",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/epistemic_reach@v1",
+  "verify": true,
+  "wave": "C"
+}

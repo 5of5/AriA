@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.NODE.SOURCE",
+  "class": "NODE",
+  "crate": "aria_res_node_source",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [
+    "Source"
+  ],
+  "operator": "NODE.SOURCE",
+  "package": "aria-res-node-source",
+  "parent": "SOURCE",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "residual.node.source",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/node/source@v1",
+  "verify": true,
+  "wave": "B"
+}

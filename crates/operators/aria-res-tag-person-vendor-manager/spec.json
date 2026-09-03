@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "PERSON_VENDOR_MANAGER"
+  ],
+  "binary_id": "BIN.TAG.PERSON_VENDOR_MANAGER",
+  "class": "TAG",
+  "crate": "aria_res_tag_person_vendor_manager",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.PERSON_VENDOR_MANAGER",
+  "package": "aria-res-tag-person-vendor-manager",
+  "parent": "BUYER",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.person_vendor_manager",
+  "retrieval_step": "memory",
+  "taxonomy": "PERSON_TYPE",
+  "telemetry_fork": "aria/res/tag/person_vendor_manager@v1",
+  "verify": true,
+  "wave": "A"
+}

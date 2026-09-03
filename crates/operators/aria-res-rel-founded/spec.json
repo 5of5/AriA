@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.REL.FOUNDED",
+  "class": "REL",
+  "crate": "aria_res_rel_founded",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "REL.FOUNDED",
+  "package": "aria-res-rel-founded",
+  "parent": "PEOPLE",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "FOUNDED"
+  ],
+  "result_definition_ref": "residual.rel.founded",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/rel/founded@v1",
+  "verify": true,
+  "wave": "A"
+}

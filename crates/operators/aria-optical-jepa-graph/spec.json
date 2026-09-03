@@ -1,0 +1,25 @@
+{
+  "anchor_tags": [
+    "TELEMETRY_SPINE",
+    "TRAJECTORY"
+  ],
+  "binary_id": "BIN.ARIA",
+  "class": "TRANSFORM",
+  "crate": "aria_optical_jepa_graph",
+  "default_limit": null,
+  "layer": "TRANSFORM",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "AriA",
+  "package": "aria-optical-jepa-graph",
+  "parent": "\u2014",
+  "pass_through": true,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "transform.aria",
+  "retrieval_step": "compile",
+  "taxonomy": null,
+  "telemetry_fork": "aria/core@v1",
+  "verify": true,
+  "wave": null
+}

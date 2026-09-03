@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "FIELD"
+  ],
+  "binary_id": "BIN.TAG.FIELD",
+  "class": "TAG",
+  "crate": "aria_res_tag_field",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.FIELD",
+  "package": "aria-res-tag-field",
+  "parent": "CLAIM",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.field",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/field@v1",
+  "verify": true,
+  "wave": "B"
+}

@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CAT_COVERAGE"
+  ],
+  "binary_id": "BIN.TAG.CAT_COVERAGE",
+  "class": "TAG",
+  "crate": "aria_res_tag_cat_coverage",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CAT_COVERAGE",
+  "package": "aria-res-tag-cat-coverage",
+  "parent": "MARKET",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.cat_coverage",
+  "retrieval_step": "memory",
+  "taxonomy": "CATEGORY_TAG",
+  "telemetry_fork": "aria/res/tag/cat_coverage@v1",
+  "verify": true,
+  "wave": "A"
+}

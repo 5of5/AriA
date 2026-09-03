@@ -120,6 +120,53 @@ impl GraphLaplacian {
         }
     }
 
+    /// Laplacian from **structural edges only** — no latent-affinity floor.
+    ///
+    /// [`Self::from_graph`] adds a cosine-similarity edge for every pair above
+    /// 0.3, which is the right call when the graph is sparse and the latents
+    /// carry the signal. It is the wrong call for a map whose edges are already
+    /// meaningful: an ingested spreadsheet is a bipartite row/facet graph, and
+    /// because a contractive predictor confines latents to a narrow cone, the
+    /// affinity floor connects nearly every pair and drives the graph toward
+    /// complete. Fiedler then has no cut to find — measured on the shipped
+    /// fixture the affinity form bisected 21 nodes as 1 / 20, hiding the two
+    /// sectors the sheet obviously contains.
+    ///
+    /// Use this when the caller wants clusters of the structure the host
+    /// actually asserted.
+    pub fn from_graph_structural(g: &Graph) -> Self {
+        let node_ids: Vec<NodeId> = g.nodes.keys().copied().collect();
+        let n = node_ids.len();
+        let mut node_index = BTreeMap::new();
+        for (i, &id) in node_ids.iter().enumerate() {
+            node_index.insert(id, i);
+        }
+
+        let mut adj = vec![vec![0.0; n]; n];
+        for edge in &g.edges {
+            if let (Some(&iu), Some(&iv)) =
+                (node_index.get(&edge.from), node_index.get(&edge.to))
+            {
+                if iu != iv {
+                    adj[iu][iv] = 1.0;
+                    adj[iv][iu] = 1.0;
+                }
+            }
+        }
+
+        let mut degrees = vec![0.0; n];
+        for i in 0..n {
+            degrees[i] = adj[i].iter().sum();
+        }
+
+        GraphLaplacian {
+            node_ids,
+            node_index,
+            adj,
+            degrees,
+        }
+    }
+
     /// Size $n = |V|$.
     pub fn size(&self) -> usize {
         self.node_ids.len()

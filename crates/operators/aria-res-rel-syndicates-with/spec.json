@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.REL.SYNDICATES_WITH",
+  "class": "REL",
+  "crate": "aria_res_rel_syndicates_with",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "REL.SYNDICATES_WITH",
+  "package": "aria-res-rel-syndicates-with",
+  "parent": "SYNDICATE",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "SYNDICATES_WITH"
+  ],
+  "result_definition_ref": "residual.rel.syndicates_with",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/rel/syndicates_with@v1",
+  "verify": true,
+  "wave": "B"
+}

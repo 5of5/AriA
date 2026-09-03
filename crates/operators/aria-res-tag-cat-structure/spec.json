@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CAT_STRUCTURE"
+  ],
+  "binary_id": "BIN.TAG.CAT_STRUCTURE",
+  "class": "TAG",
+  "crate": "aria_res_tag_cat_structure",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CAT_STRUCTURE",
+  "package": "aria-res-tag-cat-structure",
+  "parent": "MARKET",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.cat_structure",
+  "retrieval_step": "memory",
+  "taxonomy": "CATEGORY_TAG",
+  "telemetry_fork": "aria/res/tag/cat_structure@v1",
+  "verify": true,
+  "wave": "A"
+}

@@ -1,0 +1,28 @@
+# Build context hygiene: the image needs the workspace sources and lockfile,
+# nothing else. Everything below is either generated, private planning
+# material, or a surface the container never compiles.
+target/
+.git/
+.venv/
+.reasonix/
+.devin/
+.cargo/
+docs/
+spec/
+www/
+dump/
+*.xlsx
+# python/aria-py is a workspace member: its manifest must resolve even though
+# the container never compiles it. Only the test suite is excluded.
+python/tests/
+tests/
+assets/
+*.md
+!README.md
+!crates/**/README.md
+.env
+reasonix.toml
+plan-3.md
+measure-binary-repo-now.md
+compose.telemetry.yaml
+Dockerfile

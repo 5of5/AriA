@@ -1,0 +1,34 @@
+{
+  "anchor_tags": [
+    "COMPANY",
+    "CATEGORY",
+    "GEOGRAPHY"
+  ],
+  "binary_id": "BIN.COMPANY",
+  "class": "ENTITY",
+  "crate": "aria_telemetry_company",
+  "default_limit": 100,
+  "layer": "ENTITY",
+  "neo4j_pass": true,
+  "node_types": [
+    "Company"
+  ],
+  "operator": "COMPANY",
+  "package": "aria-telemetry-company",
+  "parent": "PORTFOLIO",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "COMPETES_WITH",
+    "OPERATES_IN",
+    "SELLS_TO",
+    "PARTNERS_WITH",
+    "RAISES_FROM"
+  ],
+  "result_definition_ref": "entity.company",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/company@v1",
+  "verify": true,
+  "wave": null
+}

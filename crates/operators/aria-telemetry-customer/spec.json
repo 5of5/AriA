@@ -1,0 +1,33 @@
+{
+  "anchor_tags": [
+    "CUSTOMER",
+    "ACCOUNT",
+    "PROOF"
+  ],
+  "binary_id": "BIN.CUSTOMER",
+  "class": "ENTITY",
+  "crate": "aria_telemetry_customer",
+  "default_limit": 18,
+  "layer": "ENTITY",
+  "neo4j_pass": true,
+  "node_types": [
+    "Customer",
+    "Account"
+  ],
+  "operator": "CUSTOMER",
+  "package": "aria-telemetry-customer",
+  "parent": "COMPANY",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "CUSTOMER_OF",
+    "BUYS",
+    "USES"
+  ],
+  "result_definition_ref": "entity.customer",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/customer@v1",
+  "verify": true,
+  "wave": null
+}

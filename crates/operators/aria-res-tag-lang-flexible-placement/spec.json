@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "LANG_FLEXIBLE_PLACEMENT"
+  ],
+  "binary_id": "BIN.TAG.LANG_FLEXIBLE_PLACEMENT",
+  "class": "TAG",
+  "crate": "aria_res_tag_lang_flexible_placement",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.LANG_FLEXIBLE_PLACEMENT",
+  "package": "aria-res-tag-lang-flexible-placement",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.lang_flexible_placement",
+  "retrieval_step": "memory",
+  "taxonomy": "MAP_LANGUAGE",
+  "telemetry_fork": "aria/res/tag/lang_flexible_placement@v1",
+  "verify": true,
+  "wave": "B"
+}

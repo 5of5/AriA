@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "IND_IDENTITY"
+  ],
+  "binary_id": "BIN.TAG.IND_IDENTITY",
+  "class": "TAG",
+  "crate": "aria_res_tag_ind_identity",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.IND_IDENTITY",
+  "package": "aria-res-tag-ind-identity",
+  "parent": "MARKET",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.ind_identity",
+  "retrieval_step": "memory",
+  "taxonomy": "INDUSTRY_TYPE",
+  "telemetry_fork": "aria/res/tag/ind_identity@v1",
+  "verify": true,
+  "wave": "A"
+}

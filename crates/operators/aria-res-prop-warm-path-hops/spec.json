@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.WARM_PATH_HOPS",
+  "class": "PROP",
+  "crate": "aria_res_prop_warm_path_hops",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.WARM_PATH_HOPS",
+  "package": "aria-res-prop-warm-path-hops",
+  "parent": "PARTNER",
+  "pass_through": false,
+  "property_key": "warm_path_hops",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.warm_path_hops",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/warm_path_hops@v1",
+  "verify": true,
+  "wave": "B"
+}

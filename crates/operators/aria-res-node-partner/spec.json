@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.NODE.PARTNER",
+  "class": "NODE",
+  "crate": "aria_res_node_partner",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [
+    "Partner"
+  ],
+  "operator": "NODE.PARTNER",
+  "package": "aria-res-node-partner",
+  "parent": "PARTNER",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "residual.node.partner",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/node/partner@v1",
+  "verify": true,
+  "wave": "A"
+}

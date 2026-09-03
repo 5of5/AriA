@@ -1,0 +1,43 @@
+{
+  "anchor_tags": [
+    "COMPANY",
+    "MARKET",
+    "CLAIM",
+    "SOURCE",
+    "PORTFOLIO",
+    "Market Intelligence Brief",
+    "MAP_TYPE"
+  ],
+  "binary_id": "BIN.REF.MARKET_INTELLIGENCE_BRIEF",
+  "class": "REFINEMENT",
+  "crate": "aria_ref_market_intelligence_brief",
+  "default_limit": null,
+  "layer": "REFINEMENT",
+  "neo4j_pass": true,
+  "node_types": [
+    "Company",
+    "Market",
+    "Category",
+    "Claim",
+    "Source",
+    "Portfolio",
+    "MarketMap",
+    "Workspace"
+  ],
+  "operator": "REF.MARKET_INTELLIGENCE_BRIEF",
+  "package": "aria-ref-market-intelligence-brief",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "ASSERTS",
+    "CITES",
+    "CONTAINS_MAP"
+  ],
+  "result_definition_ref": "map.ref.market_intelligence_brief",
+  "retrieval_step": "memory",
+  "taxonomy": "Market Intelligence Brief",
+  "telemetry_fork": "aria/ref/market_intelligence_brief@v1",
+  "verify": true,
+  "wave": null
+}

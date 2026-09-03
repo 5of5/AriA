@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CAPABILITY"
+  ],
+  "binary_id": "BIN.TAG.CAPABILITY",
+  "class": "TAG",
+  "crate": "aria_res_tag_capability",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CAPABILITY",
+  "package": "aria-res-tag-capability",
+  "parent": "PRODUCT",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.capability",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/capability@v1",
+  "verify": true,
+  "wave": "B"
+}

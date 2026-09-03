@@ -3,7 +3,7 @@
 //! Loads an `aria-dev-seed-v1` document (text nodes + typed edges), embeds
 //! each node's text with the same spectral encoder + `SimPredictor::embed`
 //! the engine uses, and returns an Inv3-valid [`Graph`]. Used by the
-//! PCVC→Obsidian probe so Aria sees *real* entity text as points of 𝒵.
+//! Seed probe so Aria sees *real* entity text as points of 𝒵.
 
 use aria_engine_core::engine::Predictor;
 use aria_engine_core::error::AriaError;
@@ -33,7 +33,7 @@ pub struct DevSeed {
 pub struct DevSeedNode {
     /// Arena id (must be unique, monotone preferred).
     pub id: u64,
-    /// Display label (Obsidian note title).
+    /// Display label (note title).
     pub label: String,
     /// Wire node type (`observation`, `custom:company`, …).
     pub ntype: String,

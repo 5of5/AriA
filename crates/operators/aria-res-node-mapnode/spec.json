@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.NODE.MAPNODE",
+  "class": "NODE",
+  "crate": "aria_res_node_mapnode",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [
+    "MapNode"
+  ],
+  "operator": "NODE.MAPNODE",
+  "package": "aria-res-node-mapnode",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [],
+  "result_definition_ref": "residual.node.mapnode",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/node/mapnode@v1",
+  "verify": true,
+  "wave": "B"
+}

@@ -1,0 +1,32 @@
+{
+  "anchor_tags": [
+    "SOURCE",
+    "URL",
+    "RETRIEVED_AT",
+    "METHOD"
+  ],
+  "binary_id": "BIN.SOURCE",
+  "class": "FACT",
+  "crate": "aria_telemetry_source",
+  "default_limit": 52,
+  "layer": "FACT",
+  "neo4j_pass": true,
+  "node_types": [
+    "Source"
+  ],
+  "operator": "SOURCE",
+  "package": "aria-telemetry-source",
+  "parent": "CLAIM",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "SUPPORTS",
+    "RETRIEVED_FROM"
+  ],
+  "result_definition_ref": "fact.source",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/source@v1",
+  "verify": true,
+  "wave": null
+}

@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CAT_ADJACENT"
+  ],
+  "binary_id": "BIN.TAG.CAT_ADJACENT",
+  "class": "TAG",
+  "crate": "aria_res_tag_cat_adjacent",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CAT_ADJACENT",
+  "package": "aria-res-tag-cat-adjacent",
+  "parent": "MARKET",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.cat_adjacent",
+  "retrieval_step": "memory",
+  "taxonomy": "CATEGORY_TAG",
+  "telemetry_fork": "aria/res/tag/cat_adjacent@v1",
+  "verify": true,
+  "wave": "A"
+}

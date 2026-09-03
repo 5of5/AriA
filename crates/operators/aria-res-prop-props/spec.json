@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.PROPS",
+  "class": "PROP",
+  "crate": "aria_res_prop_props",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.PROPS",
+  "package": "aria-res-prop-props",
+  "parent": "all entity",
+  "pass_through": false,
+  "property_key": "props",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.props",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/props@v1",
+  "verify": true,
+  "wave": "B"
+}

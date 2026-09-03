@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "LANG_VINTAGE"
+  ],
+  "binary_id": "BIN.TAG.LANG_VINTAGE",
+  "class": "TAG",
+  "crate": "aria_res_tag_lang_vintage",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.LANG_VINTAGE",
+  "package": "aria-res-tag-lang-vintage",
+  "parent": "VENTURE_CAPITAL",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.lang_vintage",
+  "retrieval_step": "memory",
+  "taxonomy": "MAP_LANGUAGE",
+  "telemetry_fork": "aria/res/tag/lang_vintage@v1",
+  "verify": true,
+  "wave": "B"
+}

@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "EXISTING_COVERAGE"
+  ],
+  "binary_id": "BIN.TAG.EXISTING_COVERAGE",
+  "class": "TAG",
+  "crate": "aria_res_tag_existing_coverage",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "TAG.EXISTING_COVERAGE",
+  "package": "aria-res-tag-existing-coverage",
+  "parent": "existing-coverage",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.existing_coverage",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/existing_coverage@v1",
+  "verify": true,
+  "wave": "C"
+}

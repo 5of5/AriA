@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.REL.CO_INVESTS_WITH",
+  "class": "REL",
+  "crate": "aria_res_rel_co_invests_with",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "REL.CO_INVESTS_WITH",
+  "package": "aria-res-rel-co-invests-with",
+  "parent": "SYNDICATE",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "CO_INVESTS_WITH"
+  ],
+  "result_definition_ref": "residual.rel.co_invests_with",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/rel/co_invests_with@v1",
+  "verify": true,
+  "wave": "B"
+}

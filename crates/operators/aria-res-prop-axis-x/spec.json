@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.AXIS_X",
+  "class": "PROP",
+  "crate": "aria_res_prop_axis_x",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.AXIS_X",
+  "package": "aria-res-prop-axis-x",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": "axis_x",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.axis_x",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/axis_x@v1",
+  "verify": true,
+  "wave": "C"
+}

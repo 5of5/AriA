@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.NO_FINDING_REASON",
+  "class": "PROP",
+  "crate": "aria_res_prop_no_finding_reason",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.NO_FINDING_REASON",
+  "package": "aria-res-prop-no-finding-reason",
+  "parent": "all operators",
+  "pass_through": false,
+  "property_key": "no_finding_reason",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.no_finding_reason",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/no_finding_reason@v1",
+  "verify": true,
+  "wave": "B"
+}

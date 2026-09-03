@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.SOURCE_URL",
+  "class": "PROP",
+  "crate": "aria_res_prop_source_url",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.SOURCE_URL",
+  "package": "aria-res-prop-source-url",
+  "parent": "SOURCE",
+  "pass_through": false,
+  "property_key": "source_url",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.source_url",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/source_url@v1",
+  "verify": true,
+  "wave": "B"
+}

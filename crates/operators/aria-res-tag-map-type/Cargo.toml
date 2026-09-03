@@ -1,0 +1,26 @@
+# Generated. Unique operator crate; AriA is linked via aria-operator.
+[package]
+name = 'aria-res-tag-map-type'
+description = 'Aria operator binary BIN.TAG.MAP_TYPE (TAG.MAP_TYPE)'
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+documentation.workspace = true
+rust-version.workspace = true
+publish = false
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = 'aria-res-tag-map-type'
+path = "src/main.rs"
+
+[dependencies]
+aria-json-telemetry = { workspace = true, features = ["cli"] }
+
+[lints]
+workspace = true

@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "LANG_COMPLETENESS_METRIC"
+  ],
+  "binary_id": "BIN.TAG.LANG_COMPLETENESS_METRIC",
+  "class": "TAG",
+  "crate": "aria_res_tag_lang_completeness_metric",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.LANG_COMPLETENESS_METRIC",
+  "package": "aria-res-tag-lang-completeness-metric",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.lang_completeness_metric",
+  "retrieval_step": "memory",
+  "taxonomy": "MAP_LANGUAGE",
+  "telemetry_fork": "aria/res/tag/lang_completeness_metric@v1",
+  "verify": true,
+  "wave": "B"
+}

@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "PERSON_CO_FOUNDER"
+  ],
+  "binary_id": "BIN.TAG.PERSON_CO_FOUNDER",
+  "class": "TAG",
+  "crate": "aria_res_tag_person_co_founder",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.PERSON_CO_FOUNDER",
+  "package": "aria-res-tag-person-co-founder",
+  "parent": "PEOPLE",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.person_co_founder",
+  "retrieval_step": "memory",
+  "taxonomy": "PERSON_TYPE",
+  "telemetry_fork": "aria/res/tag/person_co_founder@v1",
+  "verify": true,
+  "wave": "A"
+}

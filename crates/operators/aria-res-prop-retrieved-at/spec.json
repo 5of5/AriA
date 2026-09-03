@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.RETRIEVED_AT",
+  "class": "PROP",
+  "crate": "aria_res_prop_retrieved_at",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.RETRIEVED_AT",
+  "package": "aria-res-prop-retrieved-at",
+  "parent": "SOURCE",
+  "pass_through": false,
+  "property_key": "retrieved_at",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.retrieved_at",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/retrieved_at@v1",
+  "verify": true,
+  "wave": "B"
+}

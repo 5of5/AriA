@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.CONTENT_HASH",
+  "class": "PROP",
+  "crate": "aria_res_prop_content_hash",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.CONTENT_HASH",
+  "package": "aria-res-prop-content-hash",
+  "parent": "all writers",
+  "pass_through": false,
+  "property_key": "content_hash",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.content_hash",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/content_hash@v1",
+  "verify": true,
+  "wave": "A"
+}

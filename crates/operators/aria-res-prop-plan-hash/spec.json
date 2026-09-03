@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.PLAN_HASH",
+  "class": "PROP",
+  "crate": "aria_res_prop_plan_hash",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.PLAN_HASH",
+  "package": "aria-res-prop-plan-hash",
+  "parent": "all operators",
+  "pass_through": false,
+  "property_key": "plan_hash",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.plan_hash",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/plan_hash@v1",
+  "verify": true,
+  "wave": "A"
+}

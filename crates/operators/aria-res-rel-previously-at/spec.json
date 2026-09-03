@@ -1,0 +1,24 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.REL.PREVIOUSLY_AT",
+  "class": "REL",
+  "crate": "aria_res_rel_previously_at",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "REL.PREVIOUSLY_AT",
+  "package": "aria-res-rel-previously-at",
+  "parent": "PEOPLE",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "PREVIOUSLY_AT"
+  ],
+  "result_definition_ref": "residual.rel.previously_at",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/rel/previously_at@v1",
+  "verify": true,
+  "wave": "B"
+}

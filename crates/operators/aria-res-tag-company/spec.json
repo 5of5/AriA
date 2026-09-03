@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "COMPANY"
+  ],
+  "binary_id": "BIN.TAG.COMPANY",
+  "class": "TAG",
+  "crate": "aria_res_tag_company",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.COMPANY",
+  "package": "aria-res-tag-company",
+  "parent": "COMPANY",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.company",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/tag/company@v1",
+  "verify": true,
+  "wave": "A"
+}

@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.NEED_INTENSITY",
+  "class": "PROP",
+  "crate": "aria_res_prop_need_intensity",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.NEED_INTENSITY",
+  "package": "aria-res-prop-need-intensity",
+  "parent": "MARKET",
+  "pass_through": false,
+  "property_key": "need_intensity",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.need_intensity",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/need_intensity@v1",
+  "verify": true,
+  "wave": "B"
+}

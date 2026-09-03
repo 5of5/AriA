@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.PROOF_STRENGTH",
+  "class": "PROP",
+  "crate": "aria_res_prop_proof_strength",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.PROOF_STRENGTH",
+  "package": "aria-res-prop-proof-strength",
+  "parent": "CLAIM",
+  "pass_through": false,
+  "property_key": "proof_strength",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.proof_strength",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/proof_strength@v1",
+  "verify": true,
+  "wave": "B"
+}

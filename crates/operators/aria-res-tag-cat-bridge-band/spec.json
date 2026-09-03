@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "CAT_BRIDGE_BAND"
+  ],
+  "binary_id": "BIN.TAG.CAT_BRIDGE_BAND",
+  "class": "TAG",
+  "crate": "aria_res_tag_cat_bridge_band",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.CAT_BRIDGE_BAND",
+  "package": "aria-res-tag-cat-bridge-band",
+  "parent": "MARKET",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.cat_bridge_band",
+  "retrieval_step": "memory",
+  "taxonomy": "CATEGORY_TAG",
+  "telemetry_fork": "aria/res/tag/cat_bridge_band@v1",
+  "verify": true,
+  "wave": "A"
+}

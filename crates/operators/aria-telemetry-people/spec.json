@@ -1,0 +1,35 @@
+{
+  "anchor_tags": [
+    "PERSON",
+    "ROLE",
+    "BUYER_TAG"
+  ],
+  "binary_id": "BIN.PEOPLE",
+  "class": "ENTITY",
+  "crate": "aria_telemetry_people",
+  "default_limit": 25,
+  "layer": "ENTITY",
+  "neo4j_pass": true,
+  "node_types": [
+    "Person"
+  ],
+  "operator": "PEOPLE",
+  "package": "aria-telemetry-people",
+  "parent": "PORTFOLIO",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "WORKS_AT",
+    "FOUNDED",
+    "PREVIOUSLY_AT",
+    "INFLUENCES",
+    "MEMBER_OF",
+    "BUYS"
+  ],
+  "result_definition_ref": "entity.person",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/people@v1",
+  "verify": true,
+  "wave": null
+}

@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "LANG_EXECUTIVE_BRIEF"
+  ],
+  "binary_id": "BIN.TAG.LANG_EXECUTIVE_BRIEF",
+  "class": "TAG",
+  "crate": "aria_res_tag_lang_executive_brief",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.LANG_EXECUTIVE_BRIEF",
+  "package": "aria-res-tag-lang-executive-brief",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.lang_executive_brief",
+  "retrieval_step": "memory",
+  "taxonomy": "MAP_LANGUAGE",
+  "telemetry_fork": "aria/res/tag/lang_executive_brief@v1",
+  "verify": true,
+  "wave": "B"
+}

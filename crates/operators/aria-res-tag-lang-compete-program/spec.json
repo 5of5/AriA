@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "LANG_COMPETE_PROGRAM"
+  ],
+  "binary_id": "BIN.TAG.LANG_COMPETE_PROGRAM",
+  "class": "TAG",
+  "crate": "aria_res_tag_lang_compete_program",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.LANG_COMPETE_PROGRAM",
+  "package": "aria-res-tag-lang-compete-program",
+  "parent": "MARKET_MAP",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.lang_compete_program",
+  "retrieval_step": "memory",
+  "taxonomy": "MAP_LANGUAGE",
+  "telemetry_fork": "aria/res/tag/lang_compete_program@v1",
+  "verify": true,
+  "wave": "B"
+}

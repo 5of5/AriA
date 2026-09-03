@@ -1,0 +1,30 @@
+{
+  "anchor_tags": [
+    "CYPHER_TEMPLATE",
+    "SUBJECT_ID",
+    "TAG"
+  ],
+  "binary_id": "BIN.NEO4J_AURA",
+  "class": "HOST",
+  "crate": "pcvc_neo4j_aura",
+  "default_limit": null,
+  "layer": "HOST",
+  "neo4j_pass": true,
+  "node_types": [
+    "projection"
+  ],
+  "operator": "neo4j-aura",
+  "package": "pcvc-neo4j-aura",
+  "parent": "\u2014",
+  "pass_through": true,
+  "property_key": null,
+  "relationship_types": [
+    "projection"
+  ],
+  "result_definition_ref": "host.neo4j_aura",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "pcvc/neo4j-aura@dev",
+  "verify": true,
+  "wave": null
+}

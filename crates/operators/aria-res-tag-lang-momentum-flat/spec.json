@@ -1,0 +1,26 @@
+{
+  "anchor_tags": [
+    "LANG_MOMENTUM_FLAT"
+  ],
+  "binary_id": "BIN.TAG.LANG_MOMENTUM_FLAT",
+  "class": "TAG",
+  "crate": "aria_res_tag_lang_momentum_flat",
+  "default_limit": null,
+  "layer": "DEEP_TAG",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "TAG.LANG_MOMENTUM_FLAT",
+  "package": "aria-res-tag-lang-momentum-flat",
+  "parent": "SIGNAL",
+  "pass_through": false,
+  "property_key": null,
+  "relationship_types": [
+    "TAGGED_AS"
+  ],
+  "result_definition_ref": "residual.tag.lang_momentum_flat",
+  "retrieval_step": "memory",
+  "taxonomy": "MAP_LANGUAGE",
+  "telemetry_fork": "aria/res/tag/lang_momentum_flat@v1",
+  "verify": true,
+  "wave": "B"
+}

@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.CONVICTION",
+  "class": "PROP",
+  "crate": "aria_res_prop_conviction",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": false,
+  "node_types": [],
+  "operator": "PROP.CONVICTION",
+  "package": "aria-res-prop-conviction",
+  "parent": "atlas only",
+  "pass_through": false,
+  "property_key": "conviction",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.conviction",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/conviction@v1",
+  "verify": true,
+  "wave": "C"
+}

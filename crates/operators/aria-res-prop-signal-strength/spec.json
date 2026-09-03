@@ -1,0 +1,22 @@
+{
+  "anchor_tags": [],
+  "binary_id": "BIN.PROP.SIGNAL_STRENGTH",
+  "class": "PROP",
+  "crate": "aria_res_prop_signal_strength",
+  "default_limit": null,
+  "layer": "RESIDUAL",
+  "neo4j_pass": true,
+  "node_types": [],
+  "operator": "PROP.SIGNAL_STRENGTH",
+  "package": "aria-res-prop-signal-strength",
+  "parent": "SIGNAL",
+  "pass_through": false,
+  "property_key": "signal_strength",
+  "relationship_types": [],
+  "result_definition_ref": "residual.prop.signal_strength",
+  "retrieval_step": "memory",
+  "taxonomy": null,
+  "telemetry_fork": "aria/res/prop/signal_strength@v1",
+  "verify": true,
+  "wave": "B"
+}
